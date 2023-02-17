@@ -1,0 +1,96 @@
+:root {
+  --primary: #00bb31;
+  --secondary: #0039a6;
+  --secondaryrgb: rgb(0, 57, 166);
+  --light: #fbfbfb;
+  --white: #fff;
+  --silver: #d9dadb;
+  --sky: #ccd7ed;
+  --skydark: #6688ca;
+  --dark: #0f191e;
+  --darkrgb: rgb(15, 25, 30);
+}
+
+@mixin screen-max($max) {
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-min($min) {
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+.mk {
+  /**
+   *
+   * Framework
+   *
+   */
+  &-bold {
+    font-weight: 700;
+  }
+
+  &-semibold {
+    font-weight: 500;
+  }
+
+  &-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1066px;
+
+    @include screen-max(1023px) {
+      padding: 0 24px;
+    }
+  }
+
+  &-br {
+    &--moviles {
+      display: none;
+
+      @include screen-min(767px) {
+        display: inline;
+      }
+    }
+  }
+
+  /**
+   *
+   * Modules.
+   *
+   */
+  &-faq {
+  }
+}
+
+.mk-faq {
+  margin: 25px;
+
+  &__item {
+    margin-bottom: 15px;
+    background-color: coral;
+    border-radius: 3px;
+    color: white;
+    padding: 0 10px;
+    line-height: 1.3;
+
+    &-header {
+      font-size: 18px;
+      padding: 5px 0 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+    }
+
+    &-content {
+      padding: 5px 0 5px;
+      img {
+        max-width: 100%;
+        margin: 25px auto;
+        display: block;
+      }
+    }
+  }
+}
