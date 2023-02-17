@@ -91,6 +91,13 @@
 
     &-btn {
       cursor: pointer;
+
+      &_plus {
+      }
+
+      &_minus {
+        display: none;
+      }
     }
 
     &-content {
