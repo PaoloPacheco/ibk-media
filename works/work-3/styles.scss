@@ -58,59 +58,113 @@
     }
   }
 
+  &-list {
+    &--decimal {
+      padding-left: 20px;
+      list-style: decimal;
+    }
+
+    &--disc {
+      li {
+        position: relative;
+        padding-left: 20px;
+
+        &:before {
+          display: flex;
+          position: absolute;
+          content: "·";
+          font-size: 30px;
+          line-height: 20px;
+          left: 6px;
+          top: 2px;
+        }
+      }
+    }
+  }
+
   /**
    *
    * Modules.
    *
    */
   &-faq {
-  }
-}
-
-.mk-faq {
-  margin: 25px;
-
-  &__item {
-    margin-bottom: 15px;
-    background-color: var(--semiwhite);
-    border-radius: 8px;
-    padding: 0 10px;
-    line-height: 1.3;
-
-    &-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 18px;
-      padding: 5px 0 5px 0;
+    &--header {
+      margin-bottom: 8px;
     }
 
-    &-question {
-      font-size: 18px;
-      font-weight: 500;
-    }
+    &--title {
+      font-size: 20px;
+      font-weight: 600;
 
-    &-btn {
-      cursor: pointer;
-
-      &_plus {
-      }
-
-      &_minus {
-        display: none;
+      @include screen-min(767px) {
+        font-size: 24px;
       }
     }
 
-    &-content {
-      padding: 5px 0 5px;
+    &__item {
+      margin-bottom: 8px;
+      background-color: var(--semiwhite);
+      border-radius: 8px;
+      line-height: 1.3;
 
-      img {
-        max-width: 100%;
-        display: block;
+      &-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        padding: 12px 32px;
       }
-    }
 
-    &-answer {
-      font-size: 16px;
+      &-question {
+        font-size: 17px;
+        line-height: 1.15;
+        font-weight: 500;
+
+        @include screen-min(767px) {
+          font-size: 18px;
+        }
+      }
+
+      &-btn {
+        cursor: pointer;
+        width: 22px;
+        min-width: 22px;
+        flex: 22xp;
+        margin-left: 12px;
+
+        &_minus {
+          display: none;
+        }
+      }
+
+      &-content {
+        img {
+          max-width: 100%;
+          display: block;
+        }
+      }
+
+      &-answer {
+        font-size: 16px;
+        padding: 4px 32px 12px 32px;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+
+      &.active {
+        .mk-faq__item-question {
+          color: var(--secondary);
+        }
+
+        .mk-faq__item-btn_plus {
+          display: none;
+        }
+
+        .mk-faq__item-btn_minus {
+          display: flex;
+        }
+      }
     }
   }
 }
