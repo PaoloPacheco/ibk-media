@@ -1,0 +1,214 @@
+:root {
+  --primary: #00bb31;
+  --secondary: #0039a6;
+  --blue: #2f4a9f;
+  --secondaryrgb: rgb(0, 57, 166);
+  --light: #fbfbfb;
+  --white: #fff;
+  --silver: #d9dadb;
+  --sky: #ccd7ed;
+  --semiwhite: #f3f6fb;
+  --skydark: #6688ca;
+  --dark: #0f191e;
+  --darkrgb: rgb(15, 25, 30);
+}
+
+@mixin screen-max($max) {
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-min($min) {
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+.mk {
+  &-bold {
+    font-weight: 700;
+  }
+
+  &-semibold {
+    font-weight: 500;
+  }
+
+  &-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1066px;
+
+    @include screen-max(1023px) {
+      padding: 0 24px;
+    }
+  }
+
+  &-list {
+    &--decimal {
+      padding-left: 20px;
+      list-style: decimal;
+    }
+
+    &--disc {
+      li {
+        position: relative;
+        padding-left: 20px;
+
+        &:before {
+          display: flex;
+          position: absolute;
+          content: "·";
+          font-size: 30px;
+          line-height: 20px;
+          left: 6px;
+          top: 2px;
+        }
+      }
+    }
+  }
+
+  &v2 {
+    &--overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+    }
+
+    &--popup {
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      &__wrapper {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 304px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      &__header {
+        background: #021d5f;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      &__close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 16px;
+        height: 16px;
+      }
+
+      &__close::before,
+      &__close::after {
+        content: "";
+        display: block;
+        background: #000;
+        margin-bottom: 4px;
+        border-radius: 2px;
+        width: 16px;
+        height: 4px;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        cursor: pointer;
+      }
+
+      &__close::before {
+        transform: rotate(45deg) translate(-1px, 10px);
+      }
+
+      &__close::after {
+        transform: rotate(-45deg) translate(-10px, -1px);
+      }
+
+      &__body {
+        width: 100%;
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &__title {
+        color: var(--blue);
+        width: 100%;
+        font-family: "Geometria";
+        font-size: 16px;
+        line-height: 1.15;
+        letter-spacing: -1px;
+        line-height: 28px;
+        text-align: center;
+        margin-bottom: 12px;
+
+        @include screen-min(767px) {
+          margin-bottom: 16px;
+          font-size: 20px;
+        }
+      }
+
+      &__content {
+        color: #0f191e;
+        font-size: 12px;
+        font-family: "Geometria";
+        letter-spacing: -0.1px;
+        line-height: 20px;
+        text-align: center;
+        width: 90%;
+        align-content: center;
+        margin-bottom: 20px;
+
+        @include screen-min(767px) {
+          font-size: 12px;
+        }
+      }
+
+      &__content strong {
+        font-weight: 600;
+      }
+
+      &__btn {
+        width: 100%;
+        color: #ffffff;
+        font-family: "Geometria";
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.09px;
+        text-align: center;
+        text-decoration: none;
+        line-height: 48px;
+        border-radius: 4px;
+        background-color: #05be50;
+        display: block;
+      }
+
+      @media (min-width: 600px) {
+        &__wrapper {
+          width: 416px;
+        }
+
+        &__body {
+          padding: 20px 32px 36px;
+        }
+
+        &__content {
+          width: 80%;
+        }
+      }
+    }
+  }
+}

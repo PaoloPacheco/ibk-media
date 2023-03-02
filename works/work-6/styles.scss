@@ -1,0 +1,166 @@
+:root {
+  --primary: #00bb31;
+  --secondary: #0039a6;
+  --secondaryrgb: rgb(0, 57, 166);
+  --light: #fbfbfb;
+  --white: #fff;
+  --silver: #d9dadb;
+  --sky: #ccd7ed;
+  --semiwhite: #f3f6fb;
+  --skydark: #6688ca;
+  --dark: #0f191e;
+  --darkrgb: rgb(15, 25, 30);
+}
+
+@mixin screen-max($max) {
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-min($min) {
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+.mk {
+  &-bold {
+    font-weight: 700;
+  }
+
+  &-semibold {
+    font-weight: 500;
+  }
+
+  &-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1066px;
+
+    @include screen-max(1023px) {
+      padding: 0 24px;
+    }
+  }
+
+  &-faqs {
+    &--title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+
+      @include screen-min(767px) {
+        font-size: 24px;
+      }
+    }
+
+    &--item {
+      margin-bottom: 8px;
+      background-color: var(--semiwhite);
+      border-radius: 8px;
+      line-height: 1.3;
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        padding: 12px 32px;
+      }
+
+      &__content {
+        max-height: 0;
+        overflow-y: hidden;
+        transition: all 300ms;
+      }
+
+      &__answer {
+        font-size: 16px;
+        padding: 4px 32px 12px 32px;
+      }
+    }
+
+    &--question {
+      display: block;
+      font-size: 17px;
+      line-height: 1.15;
+      font-weight: 500;
+
+      @include screen-min(767px) {
+        font-size: 18px;
+      }
+    }
+
+    &--label {
+      position: relative;
+      cursor: pointer;
+
+      &__span {
+        position: relative;
+        width: 100%;
+        display: block;
+      }
+    }
+
+    &--icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &__minus {
+        display: none;
+      }
+    }
+
+    &--radio {
+      position: absolute;
+      visibility: hidden;
+      left: 0;
+      top: 0;
+      z-index: -1;
+
+      &:checked {
+        & ~ .mk-faqs--item__content {
+          max-height: none;
+        }
+
+        & + .mk-faqs--item__header {
+          .mk-faqs--icon__minus {
+            display: block;
+          }
+
+          .mk-faqs--icon__plus {
+            display: none;
+          }
+
+          .mk-faqs--question {
+            color: var(--secondary);
+          }
+        }
+      }
+    }
+  }
+
+  &-list {
+    &--decimal {
+      padding-left: 20px;
+      list-style: decimal;
+    }
+
+    &--disc {
+      li {
+        position: relative;
+        padding-left: 20px;
+
+        &:before {
+          display: flex;
+          position: absolute;
+          content: "·";
+          font-size: 30px;
+          line-height: 20px;
+          left: 6px;
+          top: 2px;
+        }
+      }
+    }
+  }
+}

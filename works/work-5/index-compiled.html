@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style id="normalize">
+    /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      outline: none;
+      margin: 0;
+      padding: 0
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      background-color: transparent;
+      color: inherit;
+      border-width: 0;
+      padding: 0;
+      cursor: pointer
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    input::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+      margin: 0
+    }
+
+    ul,
+    ol,
+    dd {
+      list-style: none
+    }
+
+    html {
+      line-height: 1.15;
+      -webkit-text-size-adjust: 100%
+    }
+
+    main {
+      display: block
+    }
+
+    h1 {
+      font-size: 2em
+    }
+
+    hr {
+      box-sizing: content-box;
+      height: 0;
+      overflow: visible
+    }
+
+    pre {
+      font-family: monospace, monospace;
+      font-size: 1em
+    }
+
+    a {
+      background-color: transparent
+    }
+
+    abbr[title] {
+      border-bottom: none;
+      text-decoration: underline;
+      text-decoration: underline dotted
+    }
+
+    b,
+    strong {
+      font-weight: bolder
+    }
+
+    code,
+    kbd,
+    samp {
+      font-family: monospace, monospace;
+      font-size: 1em
+    }
+
+    small {
+      font-size: 80%
+    }
+
+    sub,
+    sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline
+    }
+
+    sub {
+      bottom: -0.25em
+    }
+
+    sup {
+      top: -0.5em
+    }
+
+    img {
+      border-style: none
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0
+    }
+
+    button,
+    input {
+      overflow: visible
+    }
+
+    button,
+    select {
+      text-transform: none
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0
+    }
+
+    fieldset {
+      padding: 0.35em 0.75em 0.625em
+    }
+
+    legend {
+      box-sizing: border-box;
+      color: inherit;
+      display: table;
+      max-width: 100%;
+      padding: 0;
+      white-space: normal
+    }
+
+    progress {
+      vertical-align: baseline
+    }
+
+    textarea {
+      overflow: auto
+    }
+
+    [type="checkbox"],
+    [type="radio"] {
+      box-sizing: border-box;
+      padding: 0
+    }
+
+    [type="number"]::-webkit-inner-spin-button,
+    [type="number"]::-webkit-outer-spin-button {
+      height: auto
+    }
+
+    [type="search"] {
+      -webkit-appearance: textfield;
+      outline-offset: -2px
+    }
+
+    [type="search"]::-webkit-search-decoration {
+      -webkit-appearance: none
+    }
+
+    ::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      font: inherit
+    }
+
+    details {
+      display: block
+    }
+
+    summary {
+      display: list-item
+    }
+
+    template {
+      display: none
+    }
+
+    [hidden] {
+      display: none
+    }
+  </style>
+
+  <style>
+    :root {
+      --primary: #00bb31;
+      --secondary: #0039a6;
+      --secondaryrgb: rgb(0, 57, 166);
+      --light: #fbfbfb;
+      --white: #fff;
+      --silver: #d9dadb;
+      --sky: #ccd7ed;
+      --skydark: #6688ca;
+      --dark: #0f191e;
+      --darkrgb: rgb(15, 25, 30)
+    }
+
+    .mk {}
+
+    .mk-bold {
+      font-weight: 700
+    }
+
+    .mk-semibold {
+      font-weight: 500
+    }
+
+    .mk-container {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1066px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+    }
+
+    @media (max-width:1023px) {
+      .mk-container {
+        padding: 0 24px
+      }
+    }
+
+    .mk-br--moviles {
+      display: none
+    }
+
+    @media (min-width:767px) {
+      .mk-br--moviles {
+        display: inline
+      }
+    }
+
+    .mk-overlay {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(15, 25, 30, 0.5);
+      padding: 16px
+    }
+
+    .mk-process {
+      width: 100%;
+      max-width: 860px
+    }
+
+    .mk-process--content {
+      width: 100%;
+      max-width: 965px;
+      margin-bottom: 24px
+    }
+
+    @media (min-width:767px) {
+      .mk-process--content {
+        margin-bottom: 52px
+      }
+    }
+
+    .mk-process--header {
+      margin-bottom: 24px
+    }
+
+    @media (min-width:767px) {
+      .mk-process--header {
+        margin-bottom: 52px
+      }
+    }
+
+    .mk-process--title {
+      color: var(--dark);
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: -1px;
+      font-size: 24px;
+      line-height: 1.15
+    }
+
+    @media (min-width:767px) {
+      .mk-process--title {
+        font-size: 32px
+      }
+    }
+
+    .mk-process--title__br {
+      display: none
+    }
+
+    @media (min-width:767px) {
+      .mk-process--title__br {
+        display: inline
+      }
+    }
+
+    .mk-process--subtitle {
+      text-align: center;
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: -1px
+    }
+
+    @media (min-width:767px) {
+      .mk-process--subtitle {
+        font-size: 28px
+      }
+    }
+
+    .mk-checked--icon {
+      width: 12px;
+      height: 10px;
+      display: none
+    }
+
+    .mk-steps--row {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+      margin-bottom: 24px
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--row {
+        margin-bottom: 52px;
+        -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    .mk-steps--item {
+      font-size: 14px
+    }
+
+    @media (max-width:766px) {
+      .mk-steps--item {
+        padding: 12px 0
+      }
+    }
+
+    .mk-steps--item__mark-1 {
+      position: absolute;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      height: 160%;
+      width: 18px;
+      left: 0
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__mark-1 {
+        right: 0;
+        width: 100%;
+        height: 45px;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: start
+      }
+    }
+
+    .mk-steps--item__mark-1_text {
+      padding: 2px;
+      position: absolute;
+      z-index: 10;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      font-weight: bold;
+      display: inline-block;
+      background-color: var(--white);
+      top: 50%
+    }
+
+    @media (max-width:766px) {
+      .mk-steps--item__mark-1_text {
+        font-size: 10px
+      }
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__mark-1_text {
+        top: 0;
+        position: relative
+      }
+    }
+
+    .mk-steps--item__mark-1_points {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border-style: dotted;
+      border-width: 2px 0 2px 2px;
+      background-color: var(--white)
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__mark-1_points {
+        border-width: 2px 2px 0
+      }
+    }
+
+    .mk-steps--item__mark-2 {
+      position: absolute;
+      height: 100%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      left: 0;
+      height: 130%;
+      width: 18px
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__mark-2 {
+        left: 50%;
+        width: 0;
+        height: 45px;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: start
+      }
+    }
+
+    .mk-steps--item__mark-2_text {
+      word-wrap: normal;
+      position: absolute;
+      padding: 2px;
+      z-index: 10;
+      font-weight: bold;
+      display: inline-block;
+      background-color: var(--white)
+    }
+
+    @media (max-width:766px) {
+      .mk-steps--item__mark-2_text {
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 0;
+        min-width: 56px;
+        font-size: 10px;
+        right: 0
+      }
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__mark-2_text {
+        -webkit-transform: translate(-50%, -40%);
+        transform: translate(-50%, -40%);
+        left: 0;
+        white-space: nowrap
+      }
+    }
+
+    .mk-steps--item__mark-2_points {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-style: dotted;
+      border-width: 0 0 2px 2px
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__mark-2_points {
+        border-width: 0 2px 0 0;
+        border-right-width: 2px;
+        left: auto
+      }
+    }
+
+    .mk-steps--item:not(:first-child) .mk-steps--item__number_header:before {
+      position: absolute;
+      display: block;
+      content: "";
+      background-color: var(--silver);
+      width: 4px;
+      height: 100%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%)
+    }
+
+    @media (max-width:766px) {
+      .mk-steps--item:not(:first-child) .mk-steps--item__number_header:before {
+        height: 120%
+      }
+    }
+
+    @media (max-width:480px) {
+      .mk-steps--item:not(:first-child) .mk-steps--item__number_header:before {
+        height: 155%
+      }
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item:not(:first-child) .mk-steps--item__number_header:before {
+        left: 0;
+        width: 100%;
+        height: 4px;
+        top: 50%
+      }
+    }
+
+    .mk-steps--item.mkt-active .mk-steps--item__number_span {
+      background-color: var(--secondary)
+    }
+
+    .mk-steps--item.mkt-active .mk-steps--item__title {
+      color: var(--secondary)
+    }
+
+    .mk-steps--item.mkt-active .mk-steps--item__mark-1_points,
+    .mk-steps--item.mkt-active .mk-steps--item__mark-2_points {
+      border-color: var(--secondary)
+    }
+
+    .mk-steps--item.mkt-active .mk-steps--item__mark-1_text,
+    .mk-steps--item.mkt-active .mk-steps--item__mark-2_text {
+      color: var(--secondary)
+    }
+
+    .mk-steps--item.mkt-active:not(:first-child) .mk-steps--item__number_header:before {
+      background-color: var(--secondary)
+    }
+
+    .mk-steps--item.mkt-checked .mk-steps--item__number_span {
+      background-color: var(--skydark)
+    }
+
+    .mk-steps--item.mkt-checked .mk-checked--icon {
+      display: block
+    }
+
+    .mk-steps--item.mkt-checked .mk-steps--item__number_number {
+      display: none
+    }
+
+    .mk-steps--item__grid {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+    }
+
+    @media (max-width:767px) {
+      .mk-steps--item__grid {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+      }
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__grid {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column
+      }
+    }
+
+    .mk-steps--item__title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 7px;
+      letter-spacing: -0.5px
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__text {
+        padding: 0 16px
+      }
+    }
+
+    .mk-steps--item__number {
+      position: relative;
+      z-index: 5;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__number {
+        height: 52px;
+        width: 52px
+      }
+    }
+
+    .mk-steps--item__number_header {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center
+    }
+
+    @media (max-width:766px) {
+      .mk-steps--item__number_header {
+        margin-right: 12px;
+        height: 70px
+      }
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__number_header {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        margin-bottom: 4px
+      }
+    }
+
+    .mk-steps--item__number_span {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      line-height: 1;
+      color: var(--white);
+      background-color: var(--silver);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 14px
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__number_span {
+        width: 30px;
+        height: 30px;
+        font-size: 16px
+      }
+    }
+
+    .mk-steps--item__number_number {
+      font-weight: 500
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__number_number {
+        font-size: 20px
+      }
+    }
+
+    .mk-steps--item__paragraph:not(:last-of-type) {
+      margin-bottom: 10px
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item__min {
+        min-height: 32px
+      }
+    }
+
+    @media (min-width:767px) {
+      .mk-steps--item {
+        text-align: center
+      }
+    }
+
+    .mk-legal {
+      width: 100%;
+      max-width: 860px
+    }
+
+    .mk-legal--content {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      padding: 36px 0;
+      border-top: 1px solid var(--silver);
+      border-bottom: 1px solid var(--silver)
+    }
+
+    .mk-legal--paragraph {
+      font-size: 12px;
+      text-align: center;
+      color: var(--secondary)
+    }
+
+    @media (max-width:766px) {
+      .mk-legal--paragraph {
+        margin-bottom: 24px
+      }
+    }
+
+    .mk-remember {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin-bottom: 36px
+    }
+
+    .mk-remember--content {
+      background-color: var(--light);
+      width: 100%;
+      border-radius: 5px;
+      padding: 16px
+    }
+
+    @media (min-width:767px) {
+      .mk-remember--content {
+        padding: 20px
+      }
+    }
+
+    .mk-remember--row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+    }
+
+    .mk-remember--icon {
+      -webkit-box-flex: 40px;
+      -ms-flex: 40px;
+      flex: 40px;
+      min-width: 40px;
+      margin-right: 12px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+    }
+
+    @media (min-width:767px) {
+      .mk-remember--icon {
+        -webkit-box-flex: 56px;
+        -ms-flex: 56px;
+        flex: 56px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        min-width: 56px
+      }
+    }
+
+    .mk-remember--icon__img {
+      width: 100%
+    }
+
+    .mk-remember--text {
+      -webkit-box-flex: 1;
+      -ms-flex: auto;
+      flex: auto
+    }
+
+    .mk-remember--text__paragraph {
+      color: var(--secondary);
+      font-size: 16px;
+      letter-spacing: -0.1
+    }
+
+    @media (min-width:767px) {
+      .mk-remember--text__paragraph {
+        font-size: 18px
+      }
+    }
+
+    .mk-list--icons__li {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+    }
+
+    .mk-list--icons__li:not(:last-child) {
+      margin-bottom: 12px
+    }
+
+    .mk-list--icons__figure {
+      width: 56px;
+      min-width: 56px;
+      margin-right: 12px
+    }
+
+    @media (max-width:766px) {
+      .mk-list--icons__figure {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center
+      }
+    }
+
+    @media (min-width:767px) {
+      .mk-list--icons__figure {
+        width: 30px;
+        min-width: 30px
+      }
+    }
+
+    .mk-list--icons__icon {
+      width: 30px
+    }
+
+    .mk-list--icons__text {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      font-size: 16px;
+      color: var(--secondary)
+    }
+
+    .mk-btn {
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      text-align: center;
+      line-height: 1;
+      cursor: pointer;
+      position: relative
+    }
+
+    .mk-btn--base {
+      font-size: 14px;
+      min-width: 204px;
+      height: 48px;
+      border-radius: 4px;
+      border: 2px solid #00bb31;
+      padding: 0px 20px
+    }
+
+    .mk-btn--primary {
+      background-color: var(--primary);
+      color: var(--white)
+    }
+
+    .mk-btn--row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center
+    }
+
+    @media (min-width:767px) {
+      .mk-btn--row {
+        margin-bottom: 20px
+      }
+    }
+
+    /*# sourceMappingURL=styles.css.map */
+  </style>
+</head>
+
+<body>
+  <section class="mk-process--section">
+    <div class="mk-container">
+      <div class="mk-process--content">
+        <div class="mk-process--header">
+          <h1 class="mk-process--title">
+            Felicidades, ¡Estás más cerca de activar tu Cuenta Negocios!
+          </h1>
+          <h3 class="mk-process--subtitle">Continua con los siguientes pasos
+            mientras validamos tus poderes</h3>
+        </div>
+        <div class="mk-process--body">
+          <div class="mk-steps--row">
+            <div class="mk-steps--item mkt-active">
+              <div class="mk-steps--item__grid">
+                <div class="mk-steps--item__number_header">
+                  <div class="mk-steps--item__number">
+                    <span class="mk-steps--item__number_span">
+                      <span class="mk-steps--item__number_number">1</span>
+                      <img
+                        src="https://paolopacheco.github.io/ibk-media/images/check.svg"
+                        class="mk-checked--icon">
+                    </span>
+                  </div>
+                </div>
+                <div class="mk-steps--item__text">
+                  <h5 class="mk-steps--item__title">Descarga e ingresa a tu App
+                    Interbank
+                    Empresas para visualizar depósitos</h5>
+                  <p class="mk-steps--item__paragraph mk-steps--item__min">
+                    Accede con la contraseña temporal enviada a tu correo (vence
+                    en 24 hrs).</p>
+                  <p class="mk-steps--item__paragraph mk-semibold">
+                    ¡Revisa tu bandeja de spam!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mk-steps--item mkt-active">
+              <div class="mk-steps--item__grid">
+                <div class="mk-steps--item__number_header">
+                  <div class="mk-steps--item__number">
+                    <span class="mk-steps--item__number_span">
+                      <span class="mk-steps--item__number_number">2</span>
+                      <img
+                        src="https://paolopacheco.github.io/ibk-media/images/check.svg"
+                        class="mk-checked--icon">
+                    </span>
+                  </div>
+                  <div class="mk-steps--item__mark-1">
+                    <span class="mk-steps--item__mark-1_text">¡Hazlo
+                      ahora!</span>
+                    <div class="mk-steps--item__mark-1_points"></div>
+                  </div>
+                </div>
+                <div class="mk-steps--item__text">
+                  <h5 class="mk-steps--item__title">Activa tu Token digital
+                    desde el App Interbank Empresas</h5>
+                  <p class="mk-steps--item__paragraph mk-steps--item__min">Te
+                    tomará menos de 1 minuto.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mk-steps--item">
+              <div class="mk-steps--item__grid">
+                <div class="mk-steps--item__number_header">
+                  <div class="mk-steps--item__number">
+                    <span class="mk-steps--item__number_span">
+                      <span class="mk-steps--item__number_number">3</span>
+                      <img
+                        src="https://paolopacheco.github.io/ibk-media/images/check.svg"
+                        class="mk-checked--icon">
+                    </span>
+                  </div>
+                  <div class="mk-steps--item__mark-2">
+                    <span class="mk-steps--item__mark-2_text">Dentro de 48
+                      hrs</span>
+                    <div class="mk-steps--item__mark-2_points"></div>
+                  </div>
+                </div>
+                <div class="mk-steps--item__text">
+                  <h5 class="mk-steps--item__title">Podrás hacer tus <br>
+                    operaciones
+                    bancarias
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mk-remember">
+          <div class="mk-remember--content">
+            <div class="mk-remember--row">
+              <div class="mk-remember--icon">
+                <img
+                  src="https://paolopacheco.github.io/ibk-media/images/mk-clock-1.svg"
+                  class="mk-remember--icon__img" alt="">
+              </div>
+              <div class="mk-remember--text">
+                <p class="mk-remember--text__paragraph"><span
+                    class="mk-bold">¡Recuerda!</span> Validaremos los poderes de
+                  tu empresa en un plazo máximo de <span class="mk-bold">48
+                    horas
+                    hábiles.</span> Una vez validadas tus facultades podrás
+                  empezar a hacer operaciones con
+                  tu cuenta.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mk-list--icons__content">
+          <ul class="mk-list--icons">
+            <li class="mk-list--icons__li">
+              <figure class="mk-list--icons__figure">
+                <img
+                  src="https://paolopacheco.github.io/ibk-media/images/ideal-card.svg"
+                  class="mk-list--icons__icon"
+                  alt="
+  Además, una vez tengas tus poderes conformes también podrás solicitar tu Tarjeta de Débito Cuenta Negocios. Si necesitas una tarjeta física, acércate a un tienda Interbank con tu DNI para solicitarla.">
+              </figure>
+              <span class="mk-list--icons__text">Además, una vez tengas tus
+                poderes conformes también podrás solicitar tu Tarjeta
+                de Débito Cuenta Negocios. Si necesitas una <span
+                  class="mk-semibold">tarjeta física,</span>
+                acércate a un tienda
+                Interbank con tu DNI para solicitarla.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mk-legal--content">
+        <div class="mk-legal">
+          <p class="mk-legal--paragraph">
+            Este proceso solo aplica para clientes nuevos que abran su primera
+            Cuenta
+            Negocios. Para clientes Interbank que ya cuente con accesos a la
+            Banca por
+            Internet Empresas, verá su cuenta asociada una vez se confirme la
+            revisión de
+            poderes, en un plazo máximo de 48 horas hábiles.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

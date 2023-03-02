@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+    <meta charset="utf-8">
+    <title>[WEB] Modal soloWeb</title>
+
+<style>
+
+/*
+@font-face{font-family:Omnes;src:url(omnes-medium-webfont.woff2) format("woff2"),url(omnes-medium-webfont.woff) format("woff");font-weight:500;font-style:normal}@font-face{font-family:Omnes;src:url(omnes-mediumitalic-webfont.woff2) format("woff2"),url(omnes-mediumitalic-webfont.woff) format("woff");font-weight:500;font-style:italic}@font-face{font-family:Omnes;src:url(omnes-regular-webfont.woff2) format("woff2"),url(omnes-regular-webfont.woff) format("woff");font-weight:400;font-style:normal}
+*/
+
+      .overlay_web {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+      }
+
+      .popup_web * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .popup__wrapper_web {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 304px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+
+      .popup__header_web {
+        background: #021d5f;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      .popup__close_web {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 16px;
+        height: 16px;
+      }
+
+      .popup__close_web::before,
+      .popup__close_web::after {
+        content: "";
+        display: block;
+        background: #000000;
+        margin-bottom: 4px;
+        border-radius: 2px;
+        width: 16px;
+        height: 4px;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        cursor: pointer;
+      }
+
+      .popup__close_web::before {
+        transform: rotate(45deg) translate(-1px, 10px);
+      }
+
+      .popup__close_web::after {
+        transform: rotate(-45deg) translate(-10px, -1px);
+      }
+
+      .popup__body_web {
+        width: 100%;
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .popup__title_web {
+        width: 100%;
+        color: #0f191e;
+        font-family: "Omnes";
+        font-weight: 500;
+        letter-spacing: -1px;
+        text-align: center;
+        margin: 5px 0 10px 0;
+        font-size: 18px;
+        line-height: 25px;
+      }
+
+      .popup__content_web {
+        color: #0f191e;
+        font-size: 16px;
+        font-family: "Omnes";
+        letter-spacing: -0.1px;
+        line-height: 20px;
+        text-align: center;
+        width: 90%;
+        align-content: center;
+        margin: 0 0 20px 0;
+      }
+
+      .testing_web {
+        color: #0f191e;
+        font-size: 14px;
+        font-family: "Omnes";
+        letter-spacing: -0.1px;
+        text-align: center;
+        width: 90%;
+        align-content: center;
+        margin: 20px 0 10px 0;
+      }
+
+      #popup__link_web {
+        text-decoration: underline;
+        color: #05be50;
+      }
+
+      .popup__content_web strong {
+        font-weight: 600;
+      }
+
+      .popup__btn_web {
+        width: 50%;
+        color: #ffffff;
+        font-family: "Omnes";
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 0.09px;
+        text-align: center;
+        text-decoration: none;
+        line-height: 45px;
+        border-radius: 4px;
+        background-color: #05be50;
+        display: block;
+      }
+
+       #pic_web{
+        height: 84px;
+      }
+
+      @media (min-width: 768px) {
+       .popup__wrapper_web {
+        width: 416px;
+      }
+       .popup__body_web {
+        padding: 20px 32px 36px;
+      }
+       .popup__title_web {
+        font-size: 24px;
+        line-height: 28px;
+      }
+
+      }
+     </style>
+      </head>
+    <div>
+  </div>
+    <script>
+      var popupJS = /** @class */ (function () {
+        function popupJS(options) {
+          options.link.target = options.link.target || "_self";
+          this.elementOverlay = this.overlay_web();
+        }
+
+        popupJS.prototype.events = function (close) {
+          var body = document.querySelector("body") || document.body;
+          body.classList.add("tg");
+          var overlay_web = this.elementOverlay;
+          close.addEventListener("click", function (e) {
+            e.preventDefault();
+            overlay_web.classList.add("animate__fadeOut");
+            overlay_web.remove();
+            console.log("close test");
+          });
+        };
+        popupJS.prototype.show = function () {
+          var overlay_web = this.elementOverlay;
+          var popup_web = document.createElement("div");
+          popup_web.classList.add("popup_web");
+          popup_web.innerHTML = `
+<div class="popup__wrapper_web">
+  <div class="popup__header_web">
+    <div id="popup__cerrar" class="popup__close_web"></div>
+    <picture id='pic_web'></picture>
+  </div>
+  <div class="popup__body_web">
+  </div>
+</div>
+`;
+          var popupBody = popup_web.querySelector(".popup__body_web");
+          var divTitle = document.createElement("div");
+          divTitle.classList.add("popup__title_web");
+          divTitle.innerHTML = options.title;
+          divTitle.style.display = 'none';
+          popupBody.appendChild(divTitle);
+
+          var picture = popup_web.querySelector("#pic_web");
+          var divSource = document.createElement("source");
+          divSource.srcset = options.imgDesktop1x + ' ,'+options.imgDesktop2x + ' 2x';
+          divSource.media = '(min-width: 768px)';
+          var divTitle2 = document.createElement("img");
+          divTitle2.srcset = options.imgMobile1x + ' ,'+options.imgMobile2x + ' 2x';
+          picture.appendChild(divSource);
+          picture.appendChild(divTitle2);
+
+          var divContent = document.createElement("div");
+          divContent.classList.add("popup__content_web");
+          divContent.innerHTML = options.content;
+          popupBody.appendChild(divContent);
+
+          var aLink = document.createElement("a");
+          aLink.classList.add("popup__btn_web");
+          aLink.id = "popup__entendido_web";
+          aLink.href = options.link.url;
+          if (options.link.target) aLink.target = options.link.target;
+          aLink.title = options.link.text;
+          aLink.innerHTML = options.link.text;
+          popupBody.appendChild(aLink);
+
+          var close2 = popup_web.querySelector(".popup__close_web");
+          var close = popup_web.querySelector(".popup__btn_web");
+
+          this.events(close2);
+          overlay_web.appendChild(popup_web);
+          document.body.appendChild(overlay_web);
+
+          this.events(close);
+          overlay_web.appendChild(popup_web);
+          document.body.appendChild(overlay_web);
+        };
+        popupJS.prototype.overlay_web = function () {
+          var overlay_web = document.createElement("div");
+          overlay_web.classList.add("overlay_web");
+          return overlay_web;
+        };
+        return popupJS;
+      })();
+      var options = {
+        title: "<strong>Cambia tu inicio de sesión para seguir usando tu APP</strong>",
+        content: "Para proteger y hacer más segura tu cuenta, ahora deberás ingresar con tu DNI.<br><br>1. Verifica que tus datos personales sean correctos. Si no es así, podrás actualizarlos.<br><br>Después de esto, podrás utilizar tu Banca por internet sin problemas.",
+        link: {
+          url:
+            "javascript:void(0)",
+          text: "Iniciar",
+        },
+        imgDesktop1x:
+          "https://raw.githubusercontent.com/mitmur/ibkActualizacionAPP/main/Autogestion/Banner_DNI_Desktop_chico.png",
+        imgDesktop2x:
+          "https://raw.githubusercontent.com/mitmur/ibkActualizacionAPP/main/Autogestion/Banner_DNI_Desktop_grande.png",
+        imgMobile1x:
+          "https://raw.githubusercontent.com/mitmur/ibkActualizacionAPP/main/Autogestion/Banner_DNI_chico.png",
+        imgMobile2x:
+          "https://raw.githubusercontent.com/mitmur/ibkActualizacionAPP/main/Autogestion/Banner_DNI_grande.png",
+      };
+      var popup_web = new popupJS(options);
+      popup_web.show();
+    </script>
+
+    <script>
+      document.getElementById("popup__cerrar").onclick = function () {
+        popUpClose();
+      };
+
+
+      function popUpClose() {
+        _satellite.track("trackAction", {
+          eventProperties: {
+            action: {
+              action: "click",
+              category: "TargetAutogestion - soloWeb",
+              label: "cerrar"
+            }
+          }
+        });
+      }
+
+      //Boton Entendido
+      document.getElementById("popup__entendido_web").onclick = function () {
+        popUpBtn();
+      };
+
+         function popUpBtn() {
+        _satellite.track("trackAction", {
+          eventProperties: {
+            action: {
+              action: "click",
+              category: "TargetAutogestion - soloWeb",
+              label: "iniciar"
+            }
+          }
+        });
+      }
+
+      function popUpView() {
+        _satellite.track("trackView", {
+          eventProperties: {
+            view: {
+              action: "popupView",
+              category: "TargetAutogestion - soloWeb"
+            }
+          }
+        });
+      }
+
+      document.body.onload = function() {
+        popUpView();
+      }
+
+/*
+      //Boton Entendido
+      document.getElementById("popup__entendido_web").onclick = function () {
+        popUpBte();
+      };
+
+      function popUpBte() {
+        console.log("-> popUpBte");
+        cordova.InAppBrowser.open(
+          "https://empresas.interbank.pe/login",
+          "_system",
+          "location=yes"
+        );
+      }
+    */
+    </script>
+
+</html>

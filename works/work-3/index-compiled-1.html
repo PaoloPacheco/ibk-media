@@ -291,29 +291,29 @@
       top: 2px
     }
 
-    .mk-faq--header {
+    .mk-faqs--header {
       margin-bottom: 8px
     }
 
-    .mk-faq--title {
+    .mk-faqs--title {
       font-size: 20px;
       font-weight: 600
     }
 
     @media (min-width:767px) {
-      .mk-faq--title {
+      .mk-faqs--title {
         font-size: 24px
       }
     }
 
-    .mk-faq__item {
+    .mk-faqs__item {
       margin-bottom: 8px;
       background-color: var(--semiwhite);
       border-radius: 8px;
       line-height: 1.3
     }
 
-    .mk-faq__item-header {
+    .mk-faqs__item-header {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -324,19 +324,19 @@
       padding: 12px 32px
     }
 
-    .mk-faq__item-question {
+    .mk-faqs__item-question {
       font-size: 17px;
       line-height: 1.15;
       font-weight: 500
     }
 
     @media (min-width:767px) {
-      .mk-faq__item-question {
+      .mk-faqs__item-question {
         font-size: 18px
       }
     }
 
-    .mk-faq__item-btn {
+    .mk-faqs__item-btn {
       cursor: pointer;
       width: 22px;
       min-width: 22px;
@@ -346,33 +346,33 @@
       margin-left: 12px
     }
 
-    .mk-faq__item-btn_minus {
+    .mk-faqs__item-btn_minus {
       display: none
     }
 
-    .mk-faq__item-content img {
+    .mk-faqs__item-content img {
       max-width: 100%;
       display: block
     }
 
-    .mk-faq__item-answer {
+    .mk-faqs__item-answer {
       font-size: 16px;
       padding: 4px 32px 12px 32px
     }
 
-    .mk-faq__item-answer a {
+    .mk-faqs__item-answer a {
       text-decoration: underline
     }
 
-    .mk-faq__item.active .mk-faq__item-question {
+    .mk-faqs__item.active .mk-faq__item-question {
       color: var(--secondary)
     }
 
-    .mk-faq__item.active .mk-faq__item-btn_plus {
+    .mk-faqs__item.active .mk-faq__item-btn_plus {
       display: none
     }
 
-    .mk-faq__item.active .mk-faq__item-btn_minus {
+    .mk-faqs__item.active .mk-faq__item-btn_minus {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex
@@ -392,22 +392,22 @@
         <div class="mk-faq--body">
           <div class="mk-faq--collpase__list">
             <!--  -->
-            <div class="mk-faq" data-mk-faq>
-              <div class="mk-faq__item">
-                <div class="mk-faq__item-header">
-                  <h5 class="mk-faq__item-question">¿Donde encuentro mi
+            <div class="mk-faq" id="data-mk-faqs">
+              <div class="mk-faqs__item">
+                <div class="mk-faqs__item-header">
+                  <h5 class="mk-faqs__item-question">¿Donde encuentro mi
                     contraseña temporal?</h5>
-                  <a class="mk-faq__item-btn">
+                  <a class="mk-faqs__item-btn">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
-                      class="mk-faq__item-btn_plus">
+                      class="mk-faqs__item-btn_plus">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
-                      class="mk-faq__item-btn_minus">
+                      class="mk-faqs__item-btn_minus">
                   </a>
                 </div>
-                <div class="mk-faq__item-content">
-                  <div class="mk-faq__item-answer">Hemos enviado a tu correo la
+                <div class="mk-faqs__item-content">
+                  <div class="mk-faqs__item-answer">Hemos enviado a tu correo la
                     contraseña temporal para que puedas ingresar a tu
                     Banca por Internet Empresas, dentro de un PDF encriptado.
                     Para desbloquearlo,
@@ -419,21 +419,21 @@
                     “Recuperar contraseña”.</div>
                 </div>
               </div>
-              <div class="mk-faq__item">
-                <div class="mk-faq__item-header">
-                  <h5 class="mk-faq__item-question">¿Qué hago si no me llegó mi
+              <div class="mk-faqs__item">
+                <div class="mk-faqs__item-header">
+                  <h5 class="mk-faqs__item-question">¿Qué hago si no me llegó mi
                     contraseña temporal?</h5>
-                  <a class="mk-faq__item-btn">
+                  <a class="mk-faqs__item-btn">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
-                      class="mk-faq__item-btn_plus">
+                      class="mk-faqs__item-btn_plus">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
-                      class="mk-faq__item-btn_minus">
+                      class="mk-faqs__item-btn_minus">
                   </a>
                 </div>
-                <div class="mk-faq__item-content">
-                  <div class="mk-faq__item-answer">Revisa primero tu bandeja de
+                <div class="mk-faqs__item-content">
+                  <div class="mk-faqs__item-answer">Revisa primero tu bandeja de
                     spam, buscando un correo enviado desde el buzón
                     <a
                       href="mailto:notificaciones@avisos.interbank.pe">notificaciones@avisos.interbank.pe</a>.
@@ -448,21 +448,21 @@
                   </div>
                 </div>
               </div>
-              <div class="mk-faq__item">
-                <div class="mk-faq__item-header">
-                  <h5 class="mk-faq__item-question">¿Qué hago si olvido mi
+              <div class="mk-faqs__item">
+                <div class="mk-faqs__item-header">
+                  <h5 class="mk-faqs__item-question">¿Qué hago si olvido mi
                     contraseña?</h5>
-                  <a class="mk-faq__item-btn">
+                  <a class="mk-faqs__item-btn">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
-                      class="mk-faq__item-btn_plus">
+                      class="mk-faqs__item-btn_plus">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
-                      class="mk-faq__item-btn_minus">
+                      class="mk-faqs__item-btn_minus">
                   </a>
                 </div>
-                <div class="mk-faq__item-content">
-                  <div class="mk-faq__item-answer">Deberás hacer uso de la
+                <div class="mk-faqs__item-content">
+                  <div class="mk-faqs__item-answer">Deberás hacer uso de la
                     opción “Recuperar contraseña” al ingreso del APP o Banca
                     por Internet Empresas para enviar una nueva contraseña
                     temporal a tu correo.
@@ -474,21 +474,21 @@
                     0801-00801 (Provincia).</div>
                 </div>
               </div>
-              <div class="mk-faq__item">
-                <div class="mk-faq__item-header">
-                  <h5 class="mk-faq__item-question">¿Cómo activo mi Token
+              <div class="mk-faqs__item">
+                <div class="mk-faqs__item-header">
+                  <h5 class="mk-faqs__item-question">¿Cómo activo mi Token
                     digital?</h5>
-                  <a class="mk-faq__item-btn">
+                  <a class="mk-faqs__item-btn">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
-                      class="mk-faq__item-btn_plus">
+                      class="mk-faqs__item-btn_plus">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
-                      class="mk-faq__item-btn_minus">
+                      class="mk-faqs__item-btn_minus">
                   </a>
                 </div>
-                <div class="mk-faq__item-content">
-                  <div class="mk-faq__item-answer">Sigue los siguientes pasos
+                <div class="mk-faqs__item-content">
+                  <div class="mk-faqs__item-answer">Sigue los siguientes pasos
                     para activar tu Token digital:
                     <ol class="mk-list--decimal">
                       <li>Descarga el APP Interbank Empresas.</li>
@@ -511,21 +511,21 @@
                   </div>
                 </div>
               </div>
-              <div class="mk-faq__item">
-                <div class="mk-faq__item-header">
-                  <h5 class="mk-faq__item-question">¿Cuáles son los costos
+              <div class="mk-faqs__item">
+                <div class="mk-faqs__item-header">
+                  <h5 class="mk-faqs__item-question">¿Cuáles son los costos
                     asociados a mi cuenta?</h5>
-                  <a class="mk-faq__item-btn">
+                  <a class="mk-faqs__item-btn">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
-                      class="mk-faq__item-btn_plus">
+                      class="mk-faqs__item-btn_plus">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
-                      class="mk-faq__item-btn_minus">
+                      class="mk-faqs__item-btn_minus">
                   </a>
                 </div>
-                <div class="mk-faq__item-content">
-                  <div class="mk-faq__item-answer">Te contamos sobre los
+                <div class="mk-faqs__item-content">
+                  <div class="mk-faqs__item-answer">Te contamos sobre los
                     principales costos asociados a la Cuenta Negocios:
                     <ul class="mk-list--disc">
                       <li>La revisión de poderes por la apertura de cuenta tiene
@@ -564,21 +564,21 @@
                   </div>
                 </div>
               </div>
-              <div class="mk-faq__item">
-                <div class="mk-faq__item-header">
-                  <h5 class="mk-faq__item-question">¿Cómo saber el estado de la
+              <div class="mk-faqs__item">
+                <div class="mk-faqs__item-header">
+                  <h5 class="mk-faqs__item-question">¿Cómo saber el estado de la
                     revisión de mis poderes?</h5>
-                  <a class="mk-faq__item-btn">
+                  <a class="mk-faqs__item-btn">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
-                      class="mk-faq__item-btn_plus">
+                      class="mk-faqs__item-btn_plus">
                     <img
                       src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
-                      class="mk-faq__item-btn_minus">
+                      class="mk-faqs__item-btn_minus">
                   </a>
                 </div>
-                <div class="mk-faq__item-content">
-                  <div class="mk-faq__item-answer">La revisión de poderes toma
+                <div class="mk-faqs__item-content">
+                  <div class="mk-faqs__item-answer">La revisión de poderes toma
                     máximo dos días hábiles desde que abriste tu Cuenta
                     Negocios. Ten en cuenta que:
                     <ul class="mk-list--disc">
@@ -603,7 +603,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
             <!--  -->
           </div>
@@ -611,74 +610,73 @@
       </div>
     </div>
   </section>
-</body>
 
-<script>
-  function Flow(opt = { el: null, type: null, speed: null }) {
-    opt.el = opt.el == null ? '[data-mk-faq]' : opt.el; // Destino.
-    opt.type = opt.type == null ? 'linear' : opt.type; // Tipo
-    opt.speed = opt.speed == null ? .3 : opt.speed; // Velocidad.
+  <script type="text/javascript">
+    function Flow(opt = { el: null, type: null, speed: null }) {
+      opt.el = opt.el == null ? document.querySelector('#data-mk-faqs') : opt.el; // Destino.
+      opt.type = opt.type == null ? 'linear' : opt.type; // Tipo
+      opt.speed = opt.speed == null ? .3 : opt.speed; // Velocidad.
 
-    let childrens = document.querySelector(opt.el).children[0].tagName,
-      // list = document.querySelectorAll(`${opt.el} > ${childrens}`);
-      list = document.querySelectorAll('.mk-faq__item');
+      let childrens = opt.el.children[0].tagName,
+        // list = document.querySelectorAll(`${opt.el} > ${childrens}`);
+        list = document.querySelectorAll('.mk-faqs__item');
 
-    window.addEventListener('load', () => {
-      let activeItem;
+      window.addEventListener('load', () => {
+        let activeItem;
 
-      list.forEach((el, ind) => {
-        let initSizes, initAcc, initDefault, heightH, heightC, heightHV, heightCV;
-        el.style.cssText = `overflow-y: hidden; transition: height ${opt.type} ${opt.speed}s`;
+        list.forEach((el, ind) => {
+          let initSizes, initAcc, initDefault, heightH, heightC, heightHV, heightCV;
+          el.style.cssText = `overflow-y: hidden; transition: height ${opt.type} ${opt.speed}s`;
 
-        initSizes = item => {
-          heightH = item.children[0].offsetHeight,
-            heightC = item.children[1].offsetHeight,
-            heightHV = parseFloat(heightH),
-            heightCV = parseFloat(heightC);
-        }
-        initDefault = pos => {
-          initSizes(el);
-          if (ind == pos) {
-            el.style.height = `${heightHV + heightCV}px`;
-            el.classList.add('active');
-          } else {
-            el.style.height = `${heightHV}px`;
+          initSizes = item => {
+            heightH = item.children[0].offsetHeight,
+              heightC = item.children[1].offsetHeight,
+              heightHV = parseFloat(heightH),
+              heightCV = parseFloat(heightC);
           }
-        }
-        initDefault(activeItem);
-        initAcc = () => {
-          initSizes(el);
+          initDefault = pos => {
+            initSizes(el);
+            if (ind == pos) {
+              el.style.height = `${heightHV + heightCV}px`;
+              el.classList.add('active');
+            } else {
+              el.style.height = `${heightHV}px`;
+            }
+          }
+          initDefault(activeItem);
+          initAcc = () => {
+            initSizes(el);
 
-          let sc = el.querySelector('.mk-faq__item-btn');
+            let sc = el.querySelector('.mk-faqs__item-btn');
 
-          sc.addEventListener('click', e => {
-            activeItem = ind;
-            list.forEach((elC, indC) => {
-              initSizes(elC);
-              if (ind == indC) {
-                if (elC.classList.value.match('active')) {
-                  elC.classList.remove('active');
-                  elC.style.height = `${heightHV}px`;
+            sc.addEventListener('click', e => {
+              activeItem = ind;
+              list.forEach((elC, indC) => {
+                initSizes(elC);
+                if (ind == indC) {
+                  if (elC.classList.value.match('active')) {
+                    elC.classList.remove('active');
+                    elC.style.height = `${heightHV}px`;
+                  }
+                  else {
+                    elC.classList.add('active');
+                    elC.style.height = `${heightHV + heightCV}px`;
+                  }
                 }
                 else {
-                  elC.classList.add('active');
-                  elC.style.height = `${heightHV + heightCV}px`;
+                  elC.style.height = `${heightHV}px`;
+                  elC.classList.remove('active');
                 }
-              }
-              else {
-                elC.style.height = `${heightHV}px`;
-                elC.classList.remove('active');
-              }
+              })
             })
-          })
-        }
-        initAcc(activeItem);
-        window.addEventListener('resize', () => initDefault(activeItem))
+          }
+          initAcc(activeItem);
+          window.addEventListener('resize', () => initDefault(activeItem))
+        })
       })
-    })
-  }
-
-  Flow()
-</script>
+    }
+    Flow();
+  </script>
+</body>
 
 </html>

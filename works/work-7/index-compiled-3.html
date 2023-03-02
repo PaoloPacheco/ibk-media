@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style id="normalize">
+    /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      outline: none;
+      margin: 0;
+      padding: 0
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      background-color: transparent;
+      color: inherit;
+      border-width: 0;
+      padding: 0;
+      cursor: pointer
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    input::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+      margin: 0
+    }
+
+    ul,
+    ol,
+    dd {
+      list-style: none
+    }
+
+    html {
+      line-height: 1.15;
+      -webkit-text-size-adjust: 100%
+    }
+
+    main {
+      display: block
+    }
+
+    h1 {
+      font-size: 2em
+    }
+
+    hr {
+      box-sizing: content-box;
+      height: 0;
+      overflow: visible
+    }
+
+    pre {
+      font-family: monospace, monospace;
+      font-size: 1em
+    }
+
+    a {
+      background-color: transparent
+    }
+
+    abbr[title] {
+      border-bottom: none;
+      text-decoration: underline;
+      text-decoration: underline dotted
+    }
+
+    b,
+    strong {
+      font-weight: bolder
+    }
+
+    code,
+    kbd,
+    samp {
+      font-family: monospace, monospace;
+      font-size: 1em
+    }
+
+    small {
+      font-size: 80%
+    }
+
+    sub,
+    sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline
+    }
+
+    sub {
+      bottom: -0.25em
+    }
+
+    sup {
+      top: -0.5em
+    }
+
+    img {
+      border-style: none
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0
+    }
+
+    button,
+    input {
+      overflow: visible
+    }
+
+    button,
+    select {
+      text-transform: none
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0
+    }
+
+    fieldset {
+      padding: 0.35em 0.75em 0.625em
+    }
+
+    legend {
+      box-sizing: border-box;
+      color: inherit;
+      display: table;
+      max-width: 100%;
+      padding: 0;
+      white-space: normal
+    }
+
+    progress {
+      vertical-align: baseline
+    }
+
+    textarea {
+      overflow: auto
+    }
+
+    [type="checkbox"],
+    [type="radio"] {
+      box-sizing: border-box;
+      padding: 0
+    }
+
+    [type="number"]::-webkit-inner-spin-button,
+    [type="number"]::-webkit-outer-spin-button {
+      height: auto
+    }
+
+    [type="search"] {
+      -webkit-appearance: textfield;
+      outline-offset: -2px
+    }
+
+    [type="search"]::-webkit-search-decoration {
+      -webkit-appearance: none
+    }
+
+    ::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      font: inherit
+    }
+
+    details {
+      display: block
+    }
+
+    summary {
+      display: list-item
+    }
+
+    template {
+      display: none
+    }
+
+    [hidden] {
+      display: none
+    }
+  </style>
+
+  <style>
+    @charset "UTF-8";
+
+    :root {
+      --primary: #00bb31;
+      --secondary: #0039a6;
+      --secondaryrgb: rgb(0, 57, 166);
+      --light: #fbfbfb;
+      --white: #fff;
+      --silver: #d9dadb;
+      --sky: #ccd7ed;
+      --semiwhite: #f3f6fb;
+      --skydark: #6688ca;
+      --dark: #0f191e;
+      --darkrgb: rgb(15, 25, 30)
+    }
+
+    .mk-bold {
+      font-weight: 700
+    }
+
+    .mk-semibold {
+      font-weight: 500
+    }
+
+    .mk-container {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1066px
+    }
+
+    @media (max-width:1023px) {
+      .mk-container {
+        padding: 0 24px
+      }
+    }
+
+    .mk-faqs--title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px
+    }
+
+    @media (min-width:767px) {
+      .mk-faqs--title {
+        font-size: 24px
+      }
+    }
+
+    .mk-faqs--item {
+      margin-bottom: 8px;
+      background-color: var(--semiwhite);
+      border-radius: 8px;
+      line-height: 1.3
+    }
+
+    .mk-faqs--item__header {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      font-size: 18px;
+      padding: 12px 32px
+    }
+
+    .mk-faqs--item__content {
+      max-height: 0;
+      overflow-y: hidden;
+      -webkit-transition: all 300ms;
+      transition: all 300ms
+    }
+
+    .mk-faqs--item__answer {
+      font-size: 16px;
+      padding: 4px 32px 12px 32px
+    }
+
+    .mk-faqs--item__question {
+      display: block;
+      font-size: 17px;
+      line-height: 1.15;
+      font-weight: 500
+    }
+
+    @media (min-width:767px) {
+      .mk-faqs--item__question {
+        font-size: 18px
+      }
+    }
+
+    .mk-faqs--item__btn_minus {
+      display: none
+    }
+
+    .mk-faqs--label {
+      position: relative;
+      cursor: pointer
+    }
+
+    .mk-faqs--label__span {
+      position: relative;
+      width: 100%;
+      display: block
+    }
+
+    .mk-faqs--icon {
+      position: absolute;
+      top: 0;
+      right: 0
+    }
+
+    .mk-faqs--icon__minus {
+      display: none
+    }
+
+    .mk-faqs--radio {
+      position: absolute;
+      visibility: hidden;
+      left: 0;
+      top: 0;
+      z-index: -1
+    }
+
+    .mk-faqs--radio:checked~.mk-faqs--item__content {
+      max-height: none
+    }
+
+    .mk-faqs--radio:checked+.mk-faqs--item__header .mk-faqs--icon__minus {
+      display: block
+    }
+
+    .mk-faqs--radio:checked+.mk-faqs--item__header .mk-faqs--icon__plus {
+      display: none
+    }
+
+    .mk-faqs--radio:checked+.mk-faqs--item__header .mk-faqs--question {
+      color: var(--secondary)
+    }
+
+    .mk-list--decimal {
+      padding-left: 20px;
+      list-style: decimal
+    }
+
+    .mk-list--disc li {
+      position: relative;
+      padding-left: 20px
+    }
+
+    .mk-list--disc li:before {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      position: absolute;
+      content: "·";
+      font-size: 30px;
+      line-height: 20px;
+      left: 6px;
+      top: 2px
+    }
+
+    .collapse {
+      overflow: hidden;
+      -webkit-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      -webkit-transition-property: opacity, height;
+      transition-property: opacity, height;
+      will-change: opacity, contents
+    }
+
+    .collapse:not(.is-active) {
+      height: 0;
+      opacity: 0
+    }
+
+    .accordion .card {
+      overflow: hidden;
+      background: var(--semiwhite);
+      -webkit-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: contents;
+      text-align: left;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      line-height: 1.3
+    }
+
+    .accordion .card:not(:last-child):not(.is-active) {
+      border-bottom-color: transparent
+    }
+
+    .accordion .card__title {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 12px 32px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none
+    }
+
+    .accordion .card__title.is-active {
+      color: var(--secondary)
+    }
+
+    .accordion .card__title.is-active .mk-faqs--item__btn_plus {
+      display: none
+    }
+
+    .accordion .card__title.is-active .mk-faqs--item__btn_minus {
+      display: block
+    }
+
+    .accordion .card__content {
+      padding: 0 32px 12px
+    }
+  </style>
+</head>
+
+<body>
+  <section class="section_accordion">
+    <div class="mk-faqs--header">
+      <h3 class="mk-faqs--title">También puedes consultar nuestras
+        preguntas
+        frecuentes:</h3>
+    </div>
+
+    <div class="accordion">
+      <div class="card">
+        <a class="card__title" data-toggle="collapse" href="#content1">
+          <h5 class="mk-faqs--item__question">¿Donde encuentro mi
+            contraseña temporal?</h5>
+          <span class="mk-faqs--item__btn">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
+              class="mk-faqs--item__btn_plus">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
+              class="mk-faqs--item__btn_minus">
+          </span>
+        </a>
+
+        <div id="content1" class="collapse" data-parent=".accordion">
+          <div class="card__content">
+            <div class="mk-faqs__item-answer">Hemos enviado a tu correo la
+              contraseña temporal para que puedas ingresar a tu
+              Banca por Internet Empresas, dentro de un PDF encriptado.
+              Para desbloquearlo,
+              inserta el número de tu DNI.
+              Recuerda que esta contraseña tiene una vigencia de 24 horas,
+              por lo que si
+              ingresas por primera vez pasado este plazo deberás hacer uso
+              de la opción
+              “Recuperar contraseña”.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="card__title" data-toggle="collapse" href="#content2">
+          <h5 class="mk-faqs--item__question">¿Qué hago si no me llegó mi
+            contraseña temporal?</h5>
+          <span class="mk-faqs--item__btn">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
+              class="mk-faqs--item__btn_plus">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
+              class="mk-faqs--item__btn_minus">
+          </span>
+        </a>
+
+        <div id="content2" class="collapse" data-parent=".accordion">
+          <div class="card__content">
+            <div class="mk-faqs__item-answer">Revisa primero tu bandeja de
+              spam, buscando un correo enviado desde el buzón
+              <a
+                href="mailto:notificaciones@avisos.interbank.pe">notificaciones@avisos.interbank.pe</a>.
+              En caso no lo
+              encuentres, puedes hacer uso
+              de la opción “Recuperar contraseña” al ingreso del APP o
+              Banca por Internet
+              Empresas para enviar una nueva contraseña temporal a tu
+              correo. Recuerda que
+              para hacer el cambio de contraseña te pediremos tu clave
+              Token.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="card__title" data-toggle="collapse" data-target="#content3">
+          <h5 class="mk-faqs--item__question">¿Qué hago si olvido mi
+            contraseña?</h5>
+          <span class="mk-faqs--item__btn">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
+              class="mk-faqs--item__btn_plus">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
+              class="mk-faqs--item__btn_minus">
+          </span>
+        </a>
+        <div id="content3" class="collapse" data-parent=".accordion">
+          <div class="card__content">
+            <div class="mk-faqs__item-answer">Deberás hacer uso de la
+              opción “Recuperar contraseña” al ingreso del APP o Banca
+              por Internet Empresas para enviar una nueva contraseña
+              temporal a tu correo.
+              Recuerda que para hacer el cambio de contraseña te pediremos
+              tu clave Token. Si
+              aún no has activado tu Token y has olvidado tu contraseña,
+              comunícate con
+              nuestro equipo de Solución Empresas al 311-9001 (Lima) /
+              0801-00801 (Provincia).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="card__title" data-toggle="collapse" data-target="#content4">
+          <h5 class="mk-faqs--item__question">¿Cómo activo mi Token
+            digital?</h5>
+          <span class="mk-faqs--item__btn">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
+              class="mk-faqs--item__btn_plus">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
+              class="mk-faqs--item__btn_minus">
+          </span>
+        </a>
+        <div id="content4" class="collapse" data-parent=".accordion">
+          <div class="card__content">
+            <div class="mk-faqs__item-answer">Sigue los siguientes pasos
+              para activar tu Token digital:
+              <ol class="mk-list--decimal">
+                <li>Descarga el APP Interbank Empresas.</li>
+                <li>Ingresa con tu DNI y contraseña.</li>
+                <li>Haz clic en el banner “Afíliate aquí a Token digital”
+                  que
+                  se encuentra en la
+                  parte superior.</li>
+                <li>Sigue los pasos que se indiquen y activa tu Token
+                  digital. Deberás tomarte
+                  una foto selfie para validar tu identidad.
+                </li>
+              </ol>
+
+              Recuerda que solo cuando hayas recibido la conformidad por
+              la revisión de
+              poderes y activado tu Token digital podrás hacer operaciones
+              desde tu APP o
+              Banca por Internet Empresas.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="card__title" data-toggle="collapse" data-target="#content5">
+          <h5 class="mk-faqs--item__question">¿Cuáles son los costos
+            asociados a mi cuenta?</h5>
+          <span class="mk-faqs--item__btn">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
+              class="mk-faqs--item__btn_plus">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
+              class="mk-faqs--item__btn_minus">
+          </span>
+        </a>
+
+        <div id="content5" class="collapse" data-parent=".accordion">
+          <div class="card__content">
+            <div class="mk-faqs__item-answer">Te contamos sobre los
+              principales costos asociados a la Cuenta Negocios:
+              <ul class="mk-list--disc">
+                <li>La revisión de poderes por la apertura de cuenta tiene
+                  un
+                  costo de S/ 75. Este
+                  cobro es único y se debitará de tu cuenta una vez hayan
+                  ingresado fondos a la
+                  misma.</li>
+                <li>Te exoneramos el cobro de mantenimiento si realizas
+                  por lo
+                  menos una operación
+                  con alguna de tus Cuentas Negocios durante el mes (hasta
+                  el
+                  último día hábil) y
+                  por cualquier canal (físico o digital). El costo si no
+                  realizas operaciones es
+                  de S/50 o $15 por mes.</li>
+                <li>Tienes acceso gratuito a la Banca por Internet
+                  Empresas en
+                  nivel Negocios, solo
+                  por ser cliente Cuenta Negocios. El costo regular es de
+                  S/50
+                  por mes.</li>
+                <li>Tienes depósitos libres de costo ilimitados en Cajeros
+                  Global Net y Agentes
+                  Interbank, y 10 depósitos libres en Tiendas Interbank.
+                  Además, tienes 6
+                  operaciones distintas de depósitos libres de costo en
+                  Cajeros Global Net, e
+                  ilimitadas en Agentes Interbank. El costo por
+                  operaciones
+                  adicionales es de S/12
+                  o $4 en Tiendas Interbank y S/2 o $1 en Cajeros Global
+                  Net.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    setTimeout(() => {
+      (function Accordion() {
+        const triggers = document.querySelectorAll('[data-toggle="collapse"]');
+        let activeToggle;
+
+        if (!triggers) return;
+
+        triggers.forEach((trigger) => {
+          trigger.collapseTarget = document.querySelector(
+            trigger.hash || trigger.dataset.target
+          );
+
+          trigger.collapseTarget.dataset.parent &&
+            trigger.collapseTarget.classList.contains("is-active") &&
+            (activeToggle = trigger);
+
+          trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            toggle(trigger);
+          });
+
+          // Remove height when end open transition
+          trigger.collapseTarget.addEventListener("transitionend", ({ target }) => {
+            if (!target.classList.contains("is-active")) return;
+
+            target.style.height = null;
+          });
+        });
+
+        function toggle(trigger) {
+          if (trigger.collapseTarget.classList.contains("is-active")) {
+            close(trigger);
+            activeToggle = null;
+          } else {
+            activeToggle &&
+              activeToggle.collapseTarget.dataset.parent &&
+              close(activeToggle);
+
+            trigger.collapseTarget.dataset.parent && (activeToggle = trigger);
+
+            open(trigger);
+          }
+        }
+
+        function close(trigger) {
+          setHeight(trigger.collapseTarget);
+
+          trigger.parentElement.classList.remove("is-active");
+          trigger.classList.remove("is-active");
+          trigger.collapseTarget.classList.remove("is-active");
+
+          setTimeout(() => {
+            trigger.collapseTarget.style.height = null;
+          }, 0);
+        }
+
+        function open(trigger) {
+          trigger.classList.add("is-active");
+          trigger.parentElement.classList.add("is-active");
+
+          setTimeout(() => {
+            setHeight(trigger.collapseTarget);
+            trigger.collapseTarget.classList.add("is-active");
+          }, 0);
+        }
+
+        function setHeight(target) {
+          target.style.height = target.scrollHeight + "px";
+        }
+      })();
+    }, 500);
+
+  </script>
+</body>
+
+</html>
