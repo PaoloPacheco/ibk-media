@@ -12,6 +12,7 @@
   --skydark: #6688ca;
   --dark: #0f191e;
   --darkrgb: rgb(15, 25, 30);
+  --blackrgb: rgb(15, 25, 30);
 }
 
 @mixin screen-max($max) {
@@ -69,27 +70,33 @@
     }
   }
 
-  &v2 {
+  &v3 {
     &--overlay {
+      background-color: rgba(0, 0, 0, 0.4);
       position: fixed;
+      top: 0;
       bottom: 0;
       left: 0;
-      width: auto;
-      height: auto;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: 99;
     }
 
     &--popup {
       position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
       bottom: 0;
       left: 0;
-      width: 480px;
-      max-width: 100%;
-      padding: 0 16px 14px;
+      right: 0;
+      padding: 16px;
 
       @include screen-min(767px) {
-        max-width: 360px;
-        padding: 0 0 9px 16px;
       }
 
       * {
@@ -100,6 +107,8 @@
       }
 
       &__wrapper {
+        width: 100%;
+        max-width: 720px;
         border-radius: 8px;
         background: #fff;
         box-shadow: 0 4px 10px 0 #9b9b9b;

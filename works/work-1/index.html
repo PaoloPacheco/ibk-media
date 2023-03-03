@@ -4470,8 +4470,7 @@
 </head>
 
 <body>
-  <section id="main"
-    style="background-color: #00BB31; height: 100vh; width: 100%;">
+  <section id="main">
     <div class="mk-overlay" id="mkOverlay">
       <div class="mk-popup">
         <div class="mk-popup--content">
@@ -4587,8 +4586,8 @@
 
           <div class="mk-popup--footer">
             <div class="mk-btn--row">
-              <a href="#" target="_self" id="mkToContinue"
-                class="mk-btn mk-btn--base mk-btn--primary">Continuar</a>
+              <button type="button" id="mkToContinue"
+                class="mk-btn mk-btn--base mk-btn--primary">Continuar</but>
             </div>
             <div class="mk-legal">
               <p class="mk-legal--paragraph">
@@ -4612,8 +4611,8 @@
     const mkToContinue = document.getElementById('mkToContinue');
     const mkOverlay = document.getElementById('mkOverlay');
     mkToContinue.addEventListener('click', (e) => {
-      mkOverlay.style.display = 'none';
-      // mkOverlay.parentNode.removeChild(mkOverlay)
+      // mkOverlay.style.display = 'none';
+      mkOverlay.parentNode.removeChild(mkOverlay)
     })
   </script>
 </body>
