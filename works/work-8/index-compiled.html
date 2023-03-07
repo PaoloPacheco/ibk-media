@@ -1,4 +1,4 @@
-<div id="action_insert_16553066210341232">
+<div id="action_insert_16553066210341401">
   <style>
     @charset "UTF-8";
 
@@ -73,12 +73,11 @@
       position: fixed;
       bottom: 0;
       left: 0;
-      width: 480px;
-      max-width: 100%;
+      width: 100%;
       padding: 0 16px 14px
     }
 
-    @media (min-width:767px) {
+    @media (min-width:360px) {
       .mkv2--popup {
         max-width: 360px;
         padding: 0 0 9px 16px
@@ -162,7 +161,7 @@
       align-items: center
     }
 
-    @media (min-width:767px) {
+    @media (min-width:360px) {
       .mkv2--popup__body {
         padding: 24px 60px 24px
       }
@@ -179,7 +178,7 @@
       margin-bottom: 12px
     }
 
-    @media (min-width:767px) {
+    @media (min-width:360px) {
       .mkv2--popup__title {
         margin-bottom: 16px;
         font-size: 20px
@@ -199,7 +198,7 @@
       margin-bottom: 16px
     }
 
-    @media (min-width:767px) {
+    @media (min-width:360px) {
       .mkv2--popup__content {
         font-size: 14px
       }
@@ -224,7 +223,7 @@
       padding: 0 24px
     }
 
-    @media (min-width:767px) {
+    @media (min-width:360px) {
       .mkv2--popup__btn {
         padding: 0 20px;
         line-height: 40px;
@@ -239,7 +238,9 @@
 
     .mkv2--popup__profile_content {
       width: 100%;
-      position: relative
+      position: absolute;
+      top: 0;
+      bottom: 0
     }
 
     .mkv2--popup__image_background {
@@ -251,24 +252,22 @@
       position: absolute;
       -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
-      width: 64px;
+      width: 76px;
       left: 50%;
       bottom: 0
     }
 
-    @media (min-width:767px) {
+    @media (min-width:400px) {
       .mkv2--popup__image_profile {
         width: 90px
       }
     }
 
-    @media (min-width:600px) {
+    @media (min-width:360px) {
       .mkv2--popup__content {
         width: 80%
       }
     }
-
-    /*# sourceMappingURL=styles.css.map */
   </style>
   <script>
     var popupJS = /** @class */ (function () {

@@ -59,7 +59,7 @@
         &:before {
           display: flex;
           position: absolute;
-          content: "·";
+          content: '·';
           font-size: 30px;
           line-height: 20px;
           left: 6px;
@@ -83,11 +83,10 @@
       position: fixed;
       bottom: 0;
       left: 0;
-      width: 480px;
-      max-width: 100%;
+      width: 100%;
       padding: 0 16px 14px;
 
-      @include screen-min(767px) {
+      @include screen-min(360px) {
         max-width: 360px;
         padding: 0 0 9px 16px;
       }
@@ -122,7 +121,7 @@
 
         &::before,
         &::after {
-          content: "";
+          content: '';
           display: block;
           background: var(--gray);
           margin-bottom: 4px;
@@ -151,7 +150,7 @@
         flex-direction: column;
         align-items: center;
 
-        @include screen-min(767px) {
+        @include screen-min(360px) {
           padding: 24px 60px 24px;
         }
       }
@@ -159,14 +158,14 @@
       &__title {
         color: var(--blue);
         width: 100%;
-        font-family: "Geometria";
+        font-family: 'Geometria';
         font-size: 16px;
         line-height: 1.15;
         letter-spacing: -1px;
         text-align: center;
         margin-bottom: 12px;
 
-        @include screen-min(767px) {
+        @include screen-min(360px) {
           margin-bottom: 16px;
           font-size: 20px;
         }
@@ -175,7 +174,7 @@
       &__content {
         color: #333;
         font-size: 12px;
-        font-family: "Geometria";
+        font-family: 'Geometria';
         letter-spacing: -0.1px;
         line-height: 1.15;
         text-align: center;
@@ -183,7 +182,7 @@
         align-content: center;
         margin-bottom: 16px;
 
-        @include screen-min(767px) {
+        @include screen-min(360px) {
           font-size: 14px;
         }
 
@@ -194,7 +193,7 @@
 
       &__btn {
         color: var(--white);
-        font-family: "Geometria";
+        font-family: 'Geometria';
         font-size: 14px;
         font-weight: 500;
         letter-spacing: normal;
@@ -206,7 +205,7 @@
         display: block;
         padding: 0 24px;
 
-        @include screen-min(767px) {
+        @include screen-min(360px) {
           padding: 0 20px;
           line-height: 40px;
           font-size: 16px;
@@ -223,7 +222,9 @@
       &__profile {
         &_content {
           width: 100%;
-          position: relative;
+          position: absolute;
+          top: 0;
+          bottom: 0;
         }
       }
 
@@ -236,17 +237,17 @@
         &_profile {
           position: absolute;
           transform: translateX(-50%);
-          width: 64px;
+          width: 76px;
           left: 50%;
           bottom: 0;
 
-          @include screen-min(767px) {
+          @include screen-min(400px) {
             width: 90px;
           }
         }
       }
 
-      @media (min-width: 600px) {
+      @media (min-width: 360px) {
         &__content {
           width: 80%;
         }
