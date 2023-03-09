@@ -1,4 +1,4 @@
-<div id="action_insert_16553469210341232">
+<div id="action_insert_16551287210341232">
   <style>
     @charset "UTF-8";
 
@@ -88,6 +88,109 @@
       top: 2px
     }
 
+    .mk-radio--material {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      position: relative;
+      font-size: 15px;
+      margin-bottom: 12px
+    }
+
+    .mk-radio--material input[type=radio] {
+      font-size: 1.25em;
+      margin: 0;
+      z-index: -1;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      width: 1em;
+      height: 1em;
+      left: 0;
+      top: 0;
+      border: solid 2px transparent;
+      -webkit-transform: scale(2);
+      transform: scale(2);
+      -webkit-transform-origin: center center;
+      transform-origin: center center;
+      opacity: 0;
+      transition: opacity 0.5s, -webkit-transform 0.5s;
+      -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+      transition: opacity 0.5s, transform 0.5s;
+      transition: opacity 0.5s, transform 0.5s, -webkit-transform 0.5s
+    }
+
+    .mk-radio--material input[type=radio]:focus {
+      outline: none
+    }
+
+    .mk-radio--material input[type=radio]:checked {
+      background-color: var(--primary)
+    }
+
+    .mk-radio--material input[type=radio]:checked+label:before {
+      border-color: var(--primary)
+    }
+
+    .mk-radio--material input[type=radio]:checked+label:after {
+      background-color: var(--primary);
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5)
+    }
+
+    .mk-radio--material input[type=radio]:active {
+      opacity: 1;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      transition: opacity 0s, -webkit-transform 0s;
+      -webkit-transition: opacity 0s, -webkit-transform 0s;
+      transition: opacity 0s, transform 0s;
+      transition: opacity 0s, transform 0s, -webkit-transform 0s
+    }
+
+    .mk-radio--material input[type=radio]:active+label:before {
+      border-color: var(--primary)
+    }
+
+    .mk-radio--material label {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      cursor: pointer
+    }
+
+    .mk-radio--material label:before {
+      content: "";
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      margin-right: 8px;
+      border: solid 1px var(--dark);
+      border-radius: 50%;
+      vertical-align: -4px;
+      -webkit-transition: border-color 0.5s, background-color 0.5s;
+      transition: border-color 0.5s, background-color 0.5s
+    }
+
+    .mk-radio--material label:after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 1em;
+      height: 1em;
+      top: 0;
+      left: 0;
+      border: solid 2px transparent;
+      border-radius: 100%;
+      -webkit-transition: -webkit-transform 0.12s;
+      transition: -webkit-transform 0.12s;
+      transition: transform 0.12s;
+      transition: transform 0.12s, -webkit-transform 0.12s
+    }
+
     .mkv5--overlay {
       background-color: rgba(0, 0, 0, 0.4);
       position: fixed;
@@ -118,14 +221,6 @@
       left: 0;
       right: 0;
       padding: 16px
-    }
-
-    .mkv5--popup * {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      border: none
     }
 
     .mkv5--popup__wrapper {
@@ -322,6 +417,7 @@
     }
 
     .mkv5--popup__btn {
+      border: 0;
       color: var(--white);
       font-family: "Geometria";
       font-size: 16px;
@@ -765,7 +861,7 @@
         var overlay = this.elementOverlay;
         var popup = document.createElement('div');
         popup.classList.add('mkv5--popup');
-        popup.innerHTML = "\n    <div class=\"mkv5--popup__wrapper\">\n   <div class=\"mkv5--popup__grid\">\n   <div class=\"mkv5--popup__header\">\n      <div class=\"mkv5--popup__close\" id=\"mkv5--popup__cerrar\"></div>\n   <div class=\"mkv5--popup__picture_content\">\n   <picture class=\"mkv5--popup__picture\">\n        <source srcset=\"".concat(options.imgDesktop1x, ", ").concat(options.imgDesktop2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv5--popup__image_background\" srcset=\"").concat(options.imgMobile1x, ", ").concat(options.imgMobile2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    <div class=\"mkv5--popup__body\">\n      <div class=\"mkv5--popup__title\">").concat(options.title, "</div>\n      <div class=\"mkv5--popup__content\">").concat(options.content, "</div>\n    <div class=\"mkv5--form__content\">    <form class=\"mkv5--form\" id=\"mkv5Form\">    <div class=\"mkv5--form__row mkv5--form__row_px\">    <label class=\"mk-sronly\" for=\"updatedEmail\">Ingresa tu correo actualizado</label>\n <input type=\"email\" class=\"mk-input--linebottom\" name=\"updatedEmail\" id=\"updatedEmail\" placeholder=\"Ingresa tu correo actualizado\" />    <p class=\"mk-input--error\" id=\"updatedEmailError\"></p>    </div>\n    <div class=\"mkv5--form__row mk-coloured\">\n    <div class=\"mk-checkbox\"><label class=\"mk-checkbox--label\"><input type=\"checkbox\" id=\"termsConditions\" > <span class=\"mk-checkbox-material\"><span class=\"check\"></span></span> <span>He leído y acepto los <a target=\"_blank\" href=\"#\" title=\"Términos y Condiciones\">Términos y Condiciones,</a> y la <a target=\"_blank\" href=\"#\" title=\"Política de Privacidad\">Política de Privacidad.</a></span></label></div>\n    <p class=\"mk-input--error\" id=\"termsConditionsError\"></p>    </div>\n    <button type=\"submit\" class=\"mkv5--popup__btn\" id=\"formSubmit\">").concat(options.link.text, "</button>\n     </form>\n     </div>\n     </div>\n    </div>\n    </div>");
+        popup.innerHTML = "\n    <div class=\"mkv5--popup__wrapper\">\n   <div class=\"mkv5--popup__grid\">\n   <div class=\"mkv5--popup__header\">\n      <div class=\"mkv5--popup__close\" id=\"mkv5--popup__cerrar\"></div>\n   <div class=\"mkv5--popup__picture_content\">\n   <picture class=\"mkv5--popup__picture\">\n        <source srcset=\"".concat(options.imgDesktop1x, ", ").concat(options.imgDesktop2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv5--popup__image_background\" srcset=\"").concat(options.imgMobile1x, ", ").concat(options.imgMobile2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    <div class=\"mkv5--popup__body\">\n      <div class=\"mkv5--popup__title\">").concat(options.title, "</div>\n      <div class=\"mkv5--popup__content\">").concat(options.content, "</div>\n    <div class=\"mkv5--form__content\">    <form class=\"mkv5--form\" id=\"mkv5Form\">    <div class=\"mkv5--form__row\">\n    <div class=\"mk-radio--material\">\n    <input type=\"radio\" name=\"").concat(options.radioOptions.name, "\" id=\"").concat(options.radioOptions.radioOptions1.id, "\"/>\n <label for=\"").concat(options.radioOptions.radioOptions1.id, "\"> ").concat(options.radioOptions.radioOptions1.label, "</label>\n   </div>\n    <div class=\"mk-radio--material\">\n    <input type=\"radio\" name=\"").concat(options.radioOptions.name, "\" id=\"").concat(options.radioOptions.radioOptions2.id, "\"/>\n <label for=\"").concat(options.radioOptions.radioOptions2.id, "\"> ").concat(options.radioOptions.radioOptions2.label, "</label>\n   </div>\n    <div class=\"mk-radio--material\">\n    <input type=\"radio\" name=\"").concat(options.radioOptions.name, "\" id=\"").concat(options.radioOptions.radioOptions3.id, "\"/>\n <label for=\"").concat(options.radioOptions.radioOptions3.id, "\"> ").concat(options.radioOptions.radioOptions3.label, "</label>\n   </div>\n    <p class=\"mk-input--error\" id=\"termsConditionsError\"></p>    </div>\n    <button type=\"submit\" class=\"mkv5--popup__btn\" id=\"formSubmit\">").concat(options.link.text, "</button>\n     </form>\n     </div>\n     </div>\n    </div>\n    </div>");
 
         var close = popup.querySelector('.mkv5--popup__close');
         this.events(close);
@@ -774,10 +870,10 @@
 
         this.validator();
 
-        // var close2 = popup.querySelector('.mkv5--popup__btn');
-        // this.events(close2);
-        // overlay.appendChild(popup);
-        // document.body.appendChild(overlay);
+        var close2 = popup.querySelector('.mkv5--popup__btn');
+        this.events(close2);
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
       };
 
       const emailVálido = email => {
@@ -827,12 +923,30 @@
       return popupJS;
     }());
     var options = {
-      title: '<span class="mk-bold">Actualiza tu correo</span> y participa por una de las 100 tablets',
-      content: 'Tener actualizado tu correo te da más seguridad en tus operaciones.',
+      title: 'Tenemos nuevo módulo de <span class="mk-bold">pago de créditos</span>',
+      content: '¿Utilizas nuestro módulo de pago de créditos pequeña empresa?',
       link: {
         url: '#',
         text: 'Enviar',
         target: '_blank',
+      },
+      radioOptions: {
+        name: 'opciones',
+        radioOptions1: {
+          id: 'option1',
+          label: 'Todos los meses.',
+          value: 'value 1',
+        },
+        radioOptions2: {
+          id: 'option2',
+          label: 'Hago mis pagos en tiendas Interbank.',
+          value: 'value 2',
+        },
+        radioOptions3: {
+          id: 'option3',
+          label: 'No tengo créditos pequeña empresa.',
+          value: 'value 3',
+        },
       },
       imgDesktop1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
       imgDesktop2x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
