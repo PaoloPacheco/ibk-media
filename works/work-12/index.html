@@ -4495,7 +4495,10 @@
         };
         popupJS.prototype.showResult = function () {
           var popup = document.getElementById('mkv5Popup');
-          popup.innerHTML = "\n    <div class=\"mkv5--popup_result__wrapper\" id=\"mkv5PopupWrapperResult\">\n <div class=\"mkv5--popup_result__header\">\n    <div class=\"mkv5--popup_result__close\" id=\"mkv5--popup_result__cerrar\"></div>\n    </div>\n    <div class=\"mkv5--popup_result__content\">\n  <div class=\"mkv5--popup_result__row\">\n  <div class=\"mkv5--popup_result__icon\">\n    <h5 class=\"mkv5--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv5--popup_result__paragraph\">Recibimos tus datos correctamente.</p>\n    </div>    <div class=\"mkv5--popup_result__text\">\n  text   </div>\n    </div>\n    </div>\n    </div>\n    </div>";
+          popup.innerHTML = "\n    <div class=\"mkv5--popup_result__wrapper\" id=\"mkv5PopupWrapperResult\">\n <div class=\"mkv5--popup_result__header\">\n    <div class=\"mkv5--popup_result__close\" id=\"mkv5PopupResultClose\"></div>\n    </div>\n    <div class=\"mkv5--popup_result__content\">\n  <div class=\"mkv5--popup_result__row\">\n  <div class=\"mkv5--popup_result__text\">\n    <h5 class=\"mkv5--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv5--popup_result__paragraph\">Recibimos tus datos <br class=\"mkv5--popup_result__br\" />correctamente.</p>\n    </div>    <div class=\"mkv5--popup_result__icon\">\n    <picture class=\"mkv5--popup__picture\">\n        <source srcset=\"".concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv5--popupresult__image\" srcset=\"").concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    </div>\n    </div>\n    </div>");
+
+          var close = popup.querySelector('.mkv5--popup_result__close');
+          this.events(close);
         }
         popupJS.prototype.show = function () {
           var overlay = this.elementOverlay;
@@ -4510,11 +4513,6 @@
           document.body.appendChild(overlay);
 
           this.validator();
-
-          var close2 = popup.querySelector('.mkv5--popup__btn');
-          // this.events(close2);
-          overlay.appendChild(popup);
-          document.body.appendChild(overlay);
         };
 
         const emailVálido = email => {
@@ -4529,29 +4527,17 @@
           const validate = (e) => {
             e.preventDefault();
 
-            // const terminosPoliticas = document.getElementById('termsConditions');
-            // const emailActualizado = document.getElementById('updatedEmail');
+            var option = document.getElementsByName('opciones');
 
-            // if (emailActualizado.value === "") {
-            //   updatedEmailError.innerHTML = "Por favor, escribe tu correo electrónico";
-            //   emailActualizado.focus();
-            //   return false;
-            // }
+            var options = document.querySelectorAll('[name="opciones"]');
+            console.log(`options`, options);
 
-            // if (!emailVálido(emailActualizado.value)) {
-            //   updatedEmailError.innerHTML = "Por favor, escribe un correo electrónico válido";
-            //   emailActualizado.focus();
-            //   return false;
-            // }
+            if (!(option[0].checked || option[1].checked || option[2].checked)) {
+              termsConditionsError.innerHTML = "Por favor, selecciones una opción";
+              return false;
+            }
 
-            // if (!terminosPoliticas.checked) {
-            //   termsConditionsError.innerHTML = "Este campo es requerido";
-            //   return false;
-            // }
-
-            // return true;
-            // document.getElementById("mkv5Form").submit();
-            alert('Formluario válido.')
+            popup.showResult();
           }
 
           btnEnviar.addEventListener('click', validate);
@@ -4562,10 +4548,6 @@
           overlay.classList.add('mkv5--overlay');
           return overlay;
         };
-
-        popupJS.prototype.result = function name(target) {
-          target.remove();
-        }
 
         return popupJS;
       }());
@@ -4603,8 +4585,8 @@
         imgResult2x: 'https://paolopacheco.github.io/ibk-media/images/ilustracion-check.svg',
       };
       var popup = new popupJS(options);
+
       popup.show();
-      popup.showResult();
 
       //Boton Entendido
       // document.getElementById("mkv5--popup__entendido").onclick = function () {
