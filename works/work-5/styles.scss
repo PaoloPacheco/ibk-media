@@ -30,10 +30,12 @@
    *
    */
   &-bold {
-    font-weight: 700;
+    font-family: 'Geometria-Bold';
+    font-weight: bold;
   }
 
   &-semibold {
+    font-family: 'Geometria-Medium';
     font-weight: 500;
   }
 
@@ -83,11 +85,6 @@
     &--content {
       width: 100%;
       max-width: 965px;
-      margin-bottom: 24px;
-
-      @include screen-min(767px) {
-        margin-bottom: 52px;
-      }
     }
 
     &--header {
@@ -101,6 +98,7 @@
     &--title {
       color: var(--dark);
       text-align: center;
+      font-family: 'Geometria-Medium';
       font-weight: 500;
       letter-spacing: -1px;
       font-size: 24px;
@@ -189,6 +187,7 @@
             position: absolute;
             z-index: 10;
             transform: translateY(-50%);
+            font-family: 'Geometria-Bold';
             font-weight: bold;
             display: inline-block;
             background-color: var(--white);
@@ -263,7 +262,7 @@
 
           &_points {
             position: absolute;
-            top: 0;
+            top: -14px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -271,6 +270,7 @@
             border-width: 0 0 2px 2px;
 
             @include screen-min(767px) {
+              top: 0;
               border-width: 0 2px 0 0;
               border-right-width: 2px;
               left: auto;
@@ -284,7 +284,7 @@
           &::before {
             position: absolute;
             display: block;
-            content: "";
+            content: '';
             background-color: var(--silver);
             width: 4px;
             height: 100%;
@@ -316,7 +316,8 @@
           }
         }
 
-        .mk-steps--item__title {
+        .mk-steps--item__title,
+        .mk-steps--item__paragraph {
           color: var(--secondary);
         }
 
@@ -458,14 +459,14 @@
 
   &-legal {
     width: 100%;
-    max-width: 860px;
+    border-top: 1px solid var(--silver);
+    border-bottom: 1px solid var(--silver);
+    display: flex;
+    justify-content: center;
+    padding: 36px 0;
 
     &--content {
-      display: flex;
-      justify-content: center;
-      padding: 36px 0;
-      border-top: 1px solid var(--silver);
-      border-bottom: 1px solid var(--silver);
+      max-width: 860px;
     }
 
     &--paragraph {
@@ -485,7 +486,7 @@
     margin-bottom: 36px;
 
     &--content {
-      background-color: var(--light);
+      background-color: rgba(#ccd7ed, 0.2);
       width: 100%;
       border-radius: 5px;
       padding: 16px;
@@ -568,6 +569,14 @@
         flex: 1;
         font-size: 16px;
         color: var(--secondary);
+      }
+
+      &__content {
+        margin-bottom: 24px;
+
+        @include screen-min(767px) {
+          margin-bottom: 52px;
+        }
       }
     }
   }

@@ -4611,6 +4611,45 @@
       </div>
 
       <div class="card">
+        <a class="card__title" data-toggle="collapse" data-target="#content6">
+          <h5 class="mk-faqs--item__question">¿Cómo saber el estado de la
+            revisión de mis poderes?</h5>
+          <span class="mk-faqs--item__btn">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
+              class="mk-faqs--item__btn_plus">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
+              class="mk-faqs--item__btn_minus">
+          </span>
+        </a>
+
+        <div id="content6" class="collapse" data-parent=".accordion">
+          <div class="card__content">
+            <div class="mk-faqs__item-answer">La revisión de poderes toma máximo
+              dos días hábiles desde que abriste tu Cuenta
+              Negocios. Ten en cuenta que:
+              <ul class="mk-list--disc">
+                <li>Recibirás un correo con la confirmación de que tus poderes
+                  han sido validados
+                  correctamente.</li>
+                <li>En caso los poderes tengan alguna observación o se requiera
+                  alguna
+                  documentación, también te enviaremos un correo con el detalle
+                  de la observación
+                  y cómo subsanarla.</li>
+                <li>Recuerda que solo cuando hayas recibido la conformidad por
+                  la revisión de
+                  poderes y activado tu Token digital podrás hacer operaciones
+                  desde tu APP o
+                  Banca por Internet Empresas.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
         <a class="card__title" data-toggle="collapse" data-target="#content5">
           <h5 class="mk-faqs--item__question">¿Cuáles son los costos
             asociados a mi cuenta?</h5>
@@ -4691,7 +4730,6 @@
             toggle(trigger);
           });
 
-          // Remove height when end open transition
           trigger.collapseTarget.addEventListener("transitionend", ({ target }) => {
             if (!target.classList.contains("is-active")) return;
 

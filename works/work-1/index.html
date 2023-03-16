@@ -4443,6 +4443,16 @@
   <style id="fonts">
     @font-face {
       font-family: 'Geometria';
+      src: url('../fonts/Geometria.woff2') format('woff2'),
+        url('../fonts/Geometria.woff') format('woff'),
+        url('../fonts/Geometria.svg#Geometria') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Geometria-Medium';
       src: url('../fonts/Geometria-Medium.woff2') format('woff2'),
         url('../fonts/Geometria-Medium.woff') format('woff'),
         url('../fonts/Geometria-Medium.svg#Geometria-Medium') format('svg');
@@ -4452,11 +4462,10 @@
     }
 
     @font-face {
-      font-family: 'Geometria';
-      src: url('../fonts/Geometria.woff2') format('woff2'),
-        url('../fonts/Geometria.woff') format('woff'),
-        url('../fonts/Geometria.svg#Geometria') format('svg');
-      font-weight: normal;
+      font-family: 'Geometria-Bold';
+      src: url('../fonts/Geometria-Bold.woff2') format('woff2'),
+        url('../fonts/Geometria-Bold.woff') format('woff');
+      font-weight: bold;
       font-style: normal;
       font-display: swap;
     }
@@ -4486,7 +4495,7 @@
           </div>
           <div class="mk-popup--body">
             <div class="mk-steps--row">
-              <div class="mk-steps--item mkt-checked">
+              <div class="mk-steps--item mkt-active">
                 <div class="mk-steps--item__grid">
                   <div class="mk-steps--item__number_header">
                     <div class="mk-steps--item__number">
@@ -4503,7 +4512,7 @@
                   </div>
                 </div>
               </div>
-              <div class="mk-steps--item mkt-active">
+              <div class="mk-steps--item">
                 <div class="mk-steps--item__grid">
                   <div class="mk-steps--item__number_header">
                     <div class="mk-steps--item__number">

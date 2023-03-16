@@ -25,10 +25,12 @@
 
 .mk {
   &-bold {
-    font-weight: 700;
+    font-family: 'Geometria-Bold', sans-serif;
+    font-weight: bold;
   }
 
   &-semibold {
+    font-family: 'Geometria-Medium', sans-serif;
     font-weight: 500;
   }
 
@@ -67,6 +69,7 @@
     }
 
     &--title {
+      font-family: 'Geometria-Medium';
       color: var(--secondary);
       text-align: center;
       font-weight: 500;
@@ -139,6 +142,7 @@
       margin-bottom: 24px;
 
       @include screen-min(767px) {
+        gap: 24px;
         margin-bottom: 52px;
         grid-template-columns: repeat(4, 1fr);
       }
@@ -152,7 +156,7 @@
           &::before {
             position: absolute;
             display: block;
-            content: "";
+            content: '';
             background-color: var(--silver);
             width: 4px;
             height: 100%;
@@ -161,7 +165,7 @@
 
             @include screen-min(767px) {
               left: 0;
-              width: 100%;
+              width: 110%;
               height: 4px;
               top: 50%;
             }
@@ -173,7 +177,7 @@
         color: var(--secondary);
 
         .mk-steps--item__number {
-          background-color: rgba($color: #0039a6, $alpha: 0.5);
+          background-color: rgba($color: #ccd7ed, $alpha: 0.5);
 
           &_span {
             background-color: var(--secondary);
@@ -226,7 +230,6 @@
 
       &__text {
         @include screen-min(767px) {
-          padding: 0 16px;
         }
       }
 
@@ -299,7 +302,7 @@
     }
 
     &--content {
-      background-color: var(--light);
+      background-color: rgba($color: #ccd7ed, $alpha: 0.2);
       width: 100%;
       max-width: 634px;
       border-radius: 5px;
@@ -339,6 +342,7 @@
       &__paragraph {
         color: var(--secondary);
         font-size: 14px;
+        line-height: 22px;
       }
     }
   }

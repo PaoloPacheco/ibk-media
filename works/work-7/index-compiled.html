@@ -1,225 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
-  <style id="normalize">
-    /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      outline: none;
-      margin: 0;
-      padding: 0
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer
-    }
-
-    button,
-    [type="button"],
-    [type="reset"],
-    [type="submit"] {
-      background-color: transparent;
-      color: inherit;
-      border-width: 0;
-      padding: 0;
-      cursor: pointer
-    }
-
-    img {
-      max-width: 100%
-    }
-
-    input::-moz-focus-inner {
-      border: 0;
-      padding: 0;
-      margin: 0
-    }
-
-    ul,
-    ol,
-    dd {
-      list-style: none
-    }
-
-    html {
-      line-height: 1.15;
-      -webkit-text-size-adjust: 100%
-    }
-
-    main {
-      display: block
-    }
-
-    h1 {
-      font-size: 2em
-    }
-
-    hr {
-      box-sizing: content-box;
-      height: 0;
-      overflow: visible
-    }
-
-    pre {
-      font-family: monospace, monospace;
-      font-size: 1em
-    }
-
-    a {
-      background-color: transparent
-    }
-
-    abbr[title] {
-      border-bottom: none;
-      text-decoration: underline;
-      text-decoration: underline dotted
-    }
-
-    b,
-    strong {
-      font-weight: bolder
-    }
-
-    code,
-    kbd,
-    samp {
-      font-family: monospace, monospace;
-      font-size: 1em
-    }
-
-    small {
-      font-size: 80%
-    }
-
-    sub,
-    sup {
-      font-size: 75%;
-      line-height: 0;
-      position: relative;
-      vertical-align: baseline
-    }
-
-    sub {
-      bottom: -0.25em
-    }
-
-    sup {
-      top: -0.5em
-    }
-
-    img {
-      border-style: none
-    }
-
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-      font-family: inherit;
-      font-size: 100%;
-      line-height: 1.15;
-      margin: 0
-    }
-
-    button,
-    input {
-      overflow: visible
-    }
-
-    button,
-    select {
-      text-transform: none
-    }
-
-    button,
-    [type="button"],
-    [type="reset"],
-    [type="submit"] {
-      -webkit-appearance: button
-    }
-
-    button::-moz-focus-inner,
-    [type="button"]::-moz-focus-inner,
-    [type="reset"]::-moz-focus-inner,
-    [type="submit"]::-moz-focus-inner {
-      border-style: none;
-      padding: 0
-    }
-
-    fieldset {
-      padding: 0.35em 0.75em 0.625em
-    }
-
-    legend {
-      box-sizing: border-box;
-      color: inherit;
-      display: table;
-      max-width: 100%;
-      padding: 0;
-      white-space: normal
-    }
-
-    progress {
-      vertical-align: baseline
-    }
-
-    textarea {
-      overflow: auto
-    }
-
-    [type="checkbox"],
-    [type="radio"] {
-      box-sizing: border-box;
-      padding: 0
-    }
-
-    [type="number"]::-webkit-inner-spin-button,
-    [type="number"]::-webkit-outer-spin-button {
-      height: auto
-    }
-
-    [type="search"] {
-      -webkit-appearance: textfield;
-      outline-offset: -2px
-    }
-
-    [type="search"]::-webkit-search-decoration {
-      -webkit-appearance: none
-    }
-
-    ::-webkit-file-upload-button {
-      -webkit-appearance: button;
-      font: inherit
-    }
-
-    details {
-      display: block
-    }
-
-    summary {
-      display: list-item
-    }
-
-    template {
-      display: none
-    }
-
-    [hidden] {
-      display: none
-    }
-  </style>
-
+<div>
   <style>
     @charset "UTF-8";
 
@@ -417,6 +196,9 @@
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
       -webkit-box-pack: justify;
       -ms-flex-pack: justify;
       justify-content: space-between;
@@ -443,9 +225,6 @@
       padding: 0 32px 12px
     }
   </style>
-</head>
-
-<body>
   <section class="section_accordion">
     <div class="mk-faqs--header">
       <h3 class="mk-faqs--title">También puedes consultar nuestras
@@ -587,6 +366,45 @@
       </div>
 
       <div class="card">
+        <a class="card__title" data-toggle="collapse" data-target="#content6">
+          <h5 class="mk-faqs--item__question">¿Cómo saber el estado de la
+            revisión de mis poderes?</h5>
+          <span class="mk-faqs--item__btn">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/plus-o.svg"
+              class="mk-faqs--item__btn_plus">
+            <img
+              src="https://paolopacheco.github.io/ibk-media/images/minus-o.svg"
+              class="mk-faqs--item__btn_minus">
+          </span>
+        </a>
+
+        <div id="content6" class="collapse" data-parent=".accordion">
+          <div class="card__content">
+            <div class="mk-faqs__item-answer">La revisión de poderes toma máximo
+              dos días hábiles desde que abriste tu Cuenta
+              Negocios. Ten en cuenta que:
+              <ul class="mk-list--disc">
+                <li>Recibirás un correo con la confirmación de que tus poderes
+                  han sido validados
+                  correctamente.</li>
+                <li>En caso los poderes tengan alguna observación o se requiera
+                  alguna
+                  documentación, también te enviaremos un correo con el detalle
+                  de la observación
+                  y cómo subsanarla.</li>
+                <li>Recuerda que solo cuando hayas recibido la conformidad por
+                  la revisión de
+                  poderes y activado tu Token digital podrás hacer operaciones
+                  desde tu APP o
+                  Banca por Internet Empresas.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
         <a class="card__title" data-toggle="collapse" data-target="#content5">
           <h5 class="mk-faqs--item__question">¿Cuáles son los costos
             asociados a mi cuenta?</h5>
@@ -667,7 +485,6 @@
             toggle(trigger);
           });
 
-          // Remove height when end open transition
           trigger.collapseTarget.addEventListener("transitionend", ({ target }) => {
             if (!target.classList.contains("is-active")) return;
 
@@ -717,8 +534,5 @@
         }
       })();
     }, 500);
-
   </script>
-</body>
-
-</html>
+</div>

@@ -30,10 +30,12 @@
    *
    */
   &-bold {
-    font-weight: 700;
+    font-family: 'Geometria-Bold', sans-serif;
+    font-weight: bold;
   }
 
   &-semibold {
+    font-family: 'Geometria-Medium', sans-serif;
     font-weight: 500;
   }
 
@@ -97,6 +99,7 @@
     &--title {
       color: var(--dark);
       text-align: center;
+      font-family: 'Geometria-Medium';
       font-weight: 500;
       letter-spacing: -1px;
       font-size: 28px;
@@ -166,6 +169,7 @@
       margin-bottom: 24px;
 
       @include screen-min(767px) {
+        gap: 24px;
         margin-bottom: 52px;
         grid-template-columns: repeat(4, 1fr);
       }
@@ -183,7 +187,7 @@
           &::before {
             position: absolute;
             display: block;
-            content: "";
+            content: '';
             background-color: var(--silver);
             width: 4px;
             height: 100%;
@@ -200,7 +204,7 @@
 
             @include screen-min(767px) {
               left: 0;
-              width: 100%;
+              width: 110%;
               height: 4px;
               top: 50%;
             }
@@ -261,13 +265,14 @@
 
       &__title {
         font-size: 16px;
-        font-weight: 700;
+        font-family: 'Geometria-Bold';
+        font-weight: bold;
         margin-bottom: 7px;
       }
 
       &__text {
         @include screen-min(767px) {
-          padding: 0 16px;
+          // padding: 0 16px;
         }
       }
 

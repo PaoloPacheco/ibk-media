@@ -4443,6 +4443,16 @@
   <style id="fonts">
     @font-face {
       font-family: 'Geometria';
+      src: url('../fonts/Geometria.woff2') format('woff2'),
+        url('../fonts/Geometria.woff') format('woff'),
+        url('../fonts/Geometria.svg#Geometria') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Geometria-Medium';
       src: url('../fonts/Geometria-Medium.woff2') format('woff2'),
         url('../fonts/Geometria-Medium.woff') format('woff'),
         url('../fonts/Geometria-Medium.svg#Geometria-Medium') format('svg');
@@ -4452,11 +4462,10 @@
     }
 
     @font-face {
-      font-family: 'Geometria';
-      src: url('../fonts/Geometria.woff2') format('woff2'),
-        url('../fonts/Geometria.woff') format('woff'),
-        url('../fonts/Geometria.svg#Geometria') format('svg');
-      font-weight: normal;
+      font-family: 'Geometria-Bold';
+      src: url('../fonts/Geometria-Bold.woff2') format('woff2'),
+        url('../fonts/Geometria-Bold.woff') format('woff');
+      font-weight: bold;
       font-style: normal;
       font-display: swap;
     }
@@ -4555,6 +4564,11 @@
                     operaciones
                     bancarias
                   </h5>
+                  <p class="mk-steps--item__paragraph mk-steps--item__min">Una
+                    vez validados tus poderes, recibirás un correo de
+                    confirmación para que
+                    empieces a operar con tu Token digital activo.
+                  </p>
                 </div>
               </div>
             </div>
@@ -4602,21 +4616,22 @@
             </li>
           </ul>
         </div>
-      </div>
 
-      <div class="mk-legal--content">
         <div class="mk-legal">
-          <p class="mk-legal--paragraph">
-            Este proceso solo aplica para clientes nuevos que abran su primera
-            Cuenta
-            Negocios. Para clientes Interbank que ya cuente con accesos a la
-            Banca por
-            Internet Empresas, verá su cuenta asociada una vez se confirme la
-            revisión de
-            poderes, en un plazo máximo de 48 horas hábiles.
-          </p>
+          <div class="mk-legal--content">
+            <p class="mk-legal--paragraph">
+              Este proceso solo aplica para clientes nuevos que abran su primera
+              Cuenta
+              Negocios. Para clientes Interbank que ya cuente con accesos a la
+              Banca por
+              Internet Empresas, verá su cuenta asociada una vez se confirme la
+              revisión de
+              poderes, en un plazo máximo de 48 horas hábiles.
+            </p>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 </body>

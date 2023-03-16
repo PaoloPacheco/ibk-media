@@ -160,7 +160,7 @@
         &:before {
           display: flex;
           position: absolute;
-          content: "·";
+          content: '·';
           font-size: 30px;
           line-height: 20px;
           left: 6px;
@@ -210,6 +210,7 @@
 
     &__title {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       padding: 12px 32px;
       user-select: none;
