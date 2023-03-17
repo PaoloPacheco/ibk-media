@@ -195,7 +195,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
     }
   }
 
-  &v7 {
+  &v8 {
     &--overlay {
       background-color: rgba(0, 0, 0, 0.4);
       position: fixed;
@@ -502,12 +502,22 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         letter-spacing: normal;
         text-align: center;
         text-decoration: none;
-        line-height: 40px;
-        border-radius: 20px;
+        line-height: 48px;
+        border-radius: 24px;
         background-color: #05be50;
         display: block;
         padding: 0 30px;
         min-width: 140px;
+
+        &_border {
+          color: #05be50;
+        }
+
+        &_text {
+          background-color: transparent;
+          color: #05be50;
+          padding: 0;
+        }
 
         @include screen-min(7670px) {
           padding: 0 36px;
@@ -517,10 +527,20 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
         &_content {
           display: flex;
+          flex-direction: column;
           justify-content: center;
 
+          @include screen-max(479px) {
+            button {
+              &:not(:last-of-type) {
+                margin-bottom: 24px;
+              }
+            }
+          }
+
           @include screen-min(480px) {
-            justify-content: flex-end;
+            flex-direction: row-reverse;
+            justify-content: space-between;
           }
         }
       }
