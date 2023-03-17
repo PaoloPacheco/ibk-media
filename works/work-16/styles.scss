@@ -28,10 +28,12 @@
 
 .mk {
   &-bold {
-    font-weight: 700;
+    font-family: 'Geometria-Bold';
+    font-weight: bold;
   }
 
   &-semibold {
+    font-family: 'Geometria-Medium';
     font-weight: 500;
   }
 
@@ -178,9 +180,8 @@
         letter-spacing: -0.1px;
         line-height: 1.15;
         text-align: center;
-        width: 90%;
         align-content: center;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
 
         @include screen-min(360px) {
           font-size: 14px;
@@ -193,7 +194,7 @@
 
       &__btn {
         color: var(--white);
-        font-family: 'Geometria';
+        font-family: 'Geometria-Medium';
         font-size: 14px;
         font-weight: 500;
         letter-spacing: normal;
@@ -249,7 +250,6 @@
 
       @media (min-width: 360px) {
         &__content {
-          width: 80%;
         }
       }
     }
