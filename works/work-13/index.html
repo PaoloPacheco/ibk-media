@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -4443,6 +4443,16 @@
   <style id="fonts">
     @font-face {
       font-family: 'Geometria';
+      src: url('../fonts/Geometria.woff2') format('woff2'),
+        url('../fonts/Geometria.woff') format('woff'),
+        url('../fonts/Geometria.svg#Geometria') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Geometria-Medium';
       src: url('../fonts/Geometria-Medium.woff2') format('woff2'),
         url('../fonts/Geometria-Medium.woff') format('woff'),
         url('../fonts/Geometria-Medium.svg#Geometria-Medium') format('svg');
@@ -4452,11 +4462,10 @@
     }
 
     @font-face {
-      font-family: 'Geometria';
-      src: url('../fonts/Geometria.woff2') format('woff2'),
-        url('../fonts/Geometria.woff') format('woff'),
-        url('../fonts/Geometria.svg#Geometria') format('svg');
-      font-weight: normal;
+      font-family: 'Geometria-Bold';
+      src: url('../fonts/Geometria-Bold.woff2') format('woff2'),
+        url('../fonts/Geometria-Bold.woff') format('woff');
+      font-weight: bold;
       font-style: normal;
       font-display: swap;
     }
@@ -4505,12 +4514,70 @@
           var popup = document.createElement('div');
           popup.setAttribute('id', 'mkv6Popup');
           popup.classList.add('mkv6--popup');
-          popup.innerHTML = "\n    <div class=\"mkv6--popup__wrapper\" id=\"mkv6PopupWrapper1\">\n   <div class=\"mkv6--popup__grid\">\n   <div class=\"mkv6--popup__header\">\n      <div class=\"mkv6--popup__close\" id=\"mkv6--popup__cerrar\"></div>\n   <div class=\"mkv6--popup__picture_content\">\n    <div class=\"mkv6--carousel_content_image\">\n    <div class=\"mkv6--carousel_content_image_item\">\n    <picture class=\"mkv6--popup__picture\">\n    <source srcset=\"".concat(options.imgDesktop1x, ", ").concat(options.imgDesktop2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv6--popup__image_background\" srcset=\"").concat(options.imgMobile1x, ", ").concat(options.imgMobile2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n     </div>\n    </div>\n    </div>\n    </div>\n    <div class=\"mkv6--popup__body\">\n      <div class=\"mkv6--popup__title\">").concat(options.title, "</div>\n      <div class=\"mkv6--popup__content\">").concat(options.content, "</div>\n    <div class=\"mkv6--form__content\">\n     </div>\n     </div>\n    </div>\n    </div>");
+          // popup.innerHTML = "\n    <div class=\"mkv6--popup__wrapper\" id=\"mkv6PopupWrapper1\">\n   <div class=\"mkv6--popup__grid\">\n   <div class=\"mkv6--popup__header\">\n      <div class=\"mkv6--popup__close\" id=\"mkv6--popup__cerrar\"></div>\n   <div class=\"mkv6--popup__picture_content\">\n    <div class=\"mkv6--carousel_content_image\">\n    <div class=\"mkv6--carousel_content_image_item\">\n    <picture class=\"mkv6--popup__picture\">\n    <source srcset=\"".concat(options.imgDesktop1x, ", ").concat(options.imgDesktop2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv6--popup__image_background\" srcset=\"").concat(options.imgMobile1x, ", ").concat(options.imgMobile2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n     </div>\n    </div>\n    </div>\n    </div>\n    <div class=\"mkv6--popup__body\">\n      <div class=\"mkv6--popup__title\">").concat(options.title, "</div>\n      <div class=\"mkv6--popup__content\">").concat(options.content, "</div>\n    <div class=\"mkv6--form__content\">\n     </div>\n     </div>\n    </div>\n    </div>");
+
+          popup.innerHTML = `<div class='mkv6--carousel' data-carousel><div class=\"mkv6--popup__wrapper\" id=\"mkv6PopupWrapper1\">\n
+                    <div class=\"mkv6--popup__close\" id=\"mkv6--popup__cerrar\"></div>\n
+                    <button class='mkv6--carousel-btn prev' data-carousel-btn='prev'>&#8592</button>
+                    <button class='mkv6--carousel-btn next' data-carousel-btn='next'>&#8594</button>
+                    <ul data-slides>
+                      <li class='mkv6--slide' data-active>
+                        <div class='mkv6--slide__header'>
+                          <img src='https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60' alt=''>
+                        </div>
+                        <div class="mkv6--slide__body">
+                          <h4 class="mkv6--slide__title">` + options.title + `</h4>
+                          <p class="mkv6--slide__content">` + options.content + `</p>
+                          <div class="mkv6--slide__btn_row">
+                            <button class="mkv6--slide__btn_back">Saltar</button>
+                            <button class="mkv6--slide__btn_next">Siguiente </button>
+                          </div>
+                        </div>
+                      </li>
+                      <li class='mkv6--slide'>
+                         <div class='mkv6--slide__header'>
+                          <img src='https://images.unsplash.com/photo-1548291621-46f8449c64cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60' alt=''>
+                        </div>
+                        <div class="mkv6--slide__body">
+                          ` + options.content + `
+                        </div>
+                      </li>
+                      <li class='mkv6--slide'>
+                         <div class='mkv6--slide__header'>
+                          <img src='https://images.unsplash.com/photo-1580046154419-2ab638e3be8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60' alt=''>
+                        </div>
+                        <div class="mkv6--slide__body">
+                          ` + options.content + `
+                        </div>
+                      </li>
+                    </ul>
+                  </div></div>`;
 
           var close = popup.querySelector('.mkv6--popup__close');
           this.events(close);
           overlay.appendChild(popup);
           document.body.appendChild(overlay);
+
+          const buttons = document.querySelectorAll('[data-carousel-btn]');
+
+          buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const offset = btn.dataset.carouselBtn === 'next' ? 1 : -1;
+              const slides = btn.closest('[data-carousel]').querySelector('[data-slides]');
+              const activeSlide = slides.querySelector('[data-active]');
+              let newIndex = [...slides.children].indexOf(activeSlide) + offset;
+
+              if (newIndex < 0) {
+                newIndex = slides.children.length - 1;
+              }
+              if (newIndex >= slides.children.length) {
+                newIndex = 0;
+              }
+
+              slides.children[newIndex].dataset.active = true;
+              delete activeSlide.dataset.active;
+            });
+          });
 
           this.validator();
         };
@@ -4540,7 +4607,7 @@
             popup.showResult();
           }
 
-          btnEnviar.addEventListener('click', validate);
+          // btnEnviar.addEventListener('click', validate);
         }
 
         popupJS.prototype.overlay = function () {
@@ -4552,7 +4619,7 @@
         return popupJS;
       }());
       var options = {
-        title: 'Tenemos nuevo módulo de <span class="mk-bold">pago de créditos</span>',
+        title: 'Conoce el nuevo módulo de<br /> <span class="mk-bold">Pago de Créditos</span>',
         content: '¿Utilizas nuestro módulo de pago de créditos pequeña empresa?',
         link: {
           url: '#',
@@ -4579,22 +4646,22 @@
         },
         images: {
           img1: {
-            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
+            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg,
           },
           img2: {
-            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
+            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
           },
           img3: {
-            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
-            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
+            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
           },
         },
         imgDesktop1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
