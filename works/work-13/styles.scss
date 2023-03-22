@@ -230,10 +230,10 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         box-shadow: 0 4px 10px 0 #9b9b9b;
         width: 100%;
         max-width: 600px;
-        height: 440px;
+        height: 370px;
 
         @include screen-min(550px) {
-          height: 550px;
+          height: 510px;
         }
       }
 
@@ -574,6 +574,8 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
       &__body {
         padding: 16px 24px 32px;
+        background-color: var(--white);
+        border-radius: 0 0 8px 8px;
 
         @include screen-min(600px) {
           padding: 46px 64px 40px;
@@ -610,10 +612,6 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         align-content: center;
         margin-bottom: 24px;
 
-        @include screen-min(480px) {
-          margin-bottom: 12px;
-        }
-
         @include screen-min(560px) {
           margin-bottom: 24px;
           font-size: 16px;
@@ -626,6 +624,26 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
         strong {
           font-weight: 600;
+        }
+      }
+
+      &__btn {
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        font-family: 'Geometria-Medium', sans-serif;
+
+        &_back {
+          color: #9b9b9b;
+        }
+
+        &_next {
+          color: #00a94f;
+        }
+
+        &_row {
+          display: flex;
+          justify-content: space-between;
         }
       }
     }

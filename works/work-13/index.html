@@ -4518,36 +4518,44 @@
 
           popup.innerHTML = `<div class='mkv6--carousel' data-carousel><div class=\"mkv6--popup__wrapper\" id=\"mkv6PopupWrapper1\">\n
                     <div class=\"mkv6--popup__close\" id=\"mkv6--popup__cerrar\"></div>\n
-                    <button class='mkv6--carousel-btn prev' data-carousel-btn='prev'>&#8592</button>
-                    <button class='mkv6--carousel-btn next' data-carousel-btn='next'>&#8594</button>
                     <ul data-slides>
                       <li class='mkv6--slide' data-active>
                         <div class='mkv6--slide__header'>
-                          <img src='https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60' alt=''>
+                          <img src='` + options.images.img1.desktop1x + `' alt=''>
                         </div>
                         <div class="mkv6--slide__body">
                           <h4 class="mkv6--slide__title">` + options.title + `</h4>
                           <p class="mkv6--slide__content">` + options.content + `</p>
                           <div class="mkv6--slide__btn_row">
-                            <button class="mkv6--slide__btn_back">Saltar</button>
-                            <button class="mkv6--slide__btn_next">Siguiente </button>
+                            <button class="mkv6--slide__btn_back mkv6--slide__btn">Saltar</button>
+                            <button type="button" class="mkv6--slide__btn_next mkv6--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
                           </div>
                         </div>
                       </li>
-                      <li class='mkv6--slide'>
-                         <div class='mkv6--slide__header'>
-                          <img src='https://images.unsplash.com/photo-1548291621-46f8449c64cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60' alt=''>
+                      <li class='mkv6--slide' data-active>
+                        <div class='mkv6--slide__header'>
+                          <img src='` + options.images.img1.desktop1x + `' alt=''>
                         </div>
                         <div class="mkv6--slide__body">
-                          ` + options.content + `
+                          <h4 class="mkv6--slide__title">` + options.title + `</h4>
+                          <p class="mkv6--slide__content">` + options.content + `</p>
+                          <div class="mkv6--slide__btn_row">
+                            <button class="mkv6--slide__btn_back mkv6--slide__btn" data-carousel-btn="prev">Atrás</button>
+                            <button class="mkv6--slide__btn_next mkv6--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
+                          </div>
                         </div>
                       </li>
-                      <li class='mkv6--slide'>
-                         <div class='mkv6--slide__header'>
-                          <img src='https://images.unsplash.com/photo-1580046154419-2ab638e3be8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60' alt=''>
+                      <li class='mkv6--slide' data-active>
+                        <div class='mkv6--slide__header'>
+                          <img src='` + options.images.img1.desktop1x + `' alt=''>
                         </div>
                         <div class="mkv6--slide__body">
-                          ` + options.content + `
+                          <h4 class="mkv6--slide__title">` + options.title + `</h4>
+                          <p class="mkv6--slide__content">` + options.content + `</p>
+                          <div class="mkv6--slide__btn_row">
+                            <button class="mkv6--slide__btn_back mkv6--slide__btn" data-carousel-btn="prev">Atrás</button>
+                            <button class="mkv6--slide__btn_next mkv6--slide__btn">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
+                          </div>
                         </div>
                       </li>
                     </ul>
@@ -4562,6 +4570,7 @@
 
           buttons.forEach(btn => {
             btn.addEventListener('click', () => {
+              console.log(`btn.dataset.carouselBtn`, btn);
               const offset = btn.dataset.carouselBtn === 'next' ? 1 : -1;
               const slides = btn.closest('[data-carousel]').querySelector('[data-slides]');
               const activeSlide = slides.querySelector('[data-active]');
@@ -4620,48 +4629,30 @@
       }());
       var options = {
         title: 'Conoce el nuevo módulo de<br /> <span class="mk-bold">Pago de Créditos</span>',
-        content: '¿Utilizas nuestro módulo de pago de créditos pequeña empresa?',
+        content: 'Ingresa al módulo Pagos de tu Banca por Internet Empresas y ubica la sección “Créditos pequeña empresa”.',
         link: {
           url: '#',
           text: 'Enviar',
           target: '_blank',
         },
-        radioOptions: {
-          name: 'opciones',
-          radioOptions1: {
-            id: 'option1',
-            label: 'Todos los meses.',
-            value: 'value 1',
-          },
-          radioOptions2: {
-            id: 'option2',
-            label: 'Hago mis pagos en tiendas Interbank.',
-            value: 'value 2',
-          },
-          radioOptions3: {
-            id: 'option3',
-            label: 'No tengo créditos pequeña empresa.',
-            value: 'value 3',
-          },
-        },
         images: {
           img1: {
-            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg,
+            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-1.jpg',
+            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-1_2x.jpg',
+            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-1.jpg',
+            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-1_2x.jpg',
           },
           img2: {
-            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-2.jpg',
+            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-2_2x.jpg',
+            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-2.jpg',
+            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-2_2x.jpg',
           },
           img3: {
-            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
-            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250.jpg',
+            desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-3.jpg',
+            desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-3_2x.jpg',
+            mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-3.jpg',
+            mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-3_2x.jpg',
           },
         },
         imgDesktop1x: 'https://paolopacheco.github.io/ibk-media/images/14_58_31-Window.jpg',
