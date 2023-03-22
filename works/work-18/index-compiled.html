@@ -1,4 +1,4 @@
-<div id="action_insert_16523066212441232">
+<div id="action_insert_16553066212042232">
   <style>
     @charset "UTF-8";
 
@@ -194,7 +194,7 @@
       transition: transform 0.12s, -webkit-transform 0.12s
     }
 
-    .mkv6--overlay {
+    .mkv11--overlay {
       background-color: rgba(0, 0, 0, 0.4);
       position: fixed;
       top: 0;
@@ -206,7 +206,7 @@
       z-index: 99
     }
 
-    .mkv6--btn {
+    .mkv11--btn {
       border: 0;
       color: var(--white);
       font-family: "Geometria";
@@ -223,14 +223,14 @@
     }
 
     @media (min-width:767px) {
-      .mkv6--btn {
+      .mkv11--btn {
         padding: 0 36px;
         border-radius: 24px;
         line-height: 48px
       }
     }
 
-    .mkv6--popup {
+    .mkv11--popup {
       position: fixed;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -250,7 +250,7 @@
       padding: 16px
     }
 
-    .mkv6--popup__wrapper {
+    .mkv11--popup__wrapper {
       overflow: hidden;
       background: #fff;
       border-radius: 8px;
@@ -262,12 +262,12 @@
     }
 
     @media (min-width:550px) {
-      .mkv6--popup__wrapper {
-        height: 510px
+      .mkv11--popup__wrapper {
+        height: 414px
       }
     }
 
-    .mkv6--popup_result__wrapper {
+    .mkv11--popup_result__wrapper {
       position: relative;
       padding: 40px 18px;
       overflow: hidden;
@@ -280,13 +280,13 @@
     }
 
     @media (min-width:480px) {
-      .mkv6--popup_result__wrapper {
+      .mkv11--popup_result__wrapper {
         padding: 64px 18px;
         border-radius: 10px
       }
     }
 
-    .mkv6--popup_result__header {
+    .mkv11--popup_result__header {
       top: 18px;
       right: 18px;
       position: absolute;
@@ -299,19 +299,19 @@
     }
 
     @media (min-width:480px) {
-      .mkv6--popup_result__header {
+      .mkv11--popup_result__header {
         top: 32px;
         right: 32px
       }
     }
 
-    .mkv6--popup_result__close {
+    .mkv11--popup_result__close {
       height: 16px;
       width: 16px
     }
 
-    .mkv6--popup_result__close:after,
-    .mkv6--popup_result__close:before {
+    .mkv11--popup_result__close:after,
+    .mkv11--popup_result__close:before {
       content: "";
       display: block;
       background: var(--gray);
@@ -325,17 +325,17 @@
       cursor: pointer
     }
 
-    .mkv6--popup_result__close:before {
+    .mkv11--popup_result__close:before {
       -webkit-transform: rotate(45deg) translate(-1px, 10px);
       transform: rotate(45deg) translate(-1px, 10px)
     }
 
-    .mkv6--popup_result__close:after {
+    .mkv11--popup_result__close:after {
       -webkit-transform: rotate(-45deg) translate(-10px, -1px);
       transform: rotate(-45deg) translate(-10px, -1px)
     }
 
-    .mkv6--popup_result__row {
+    .mkv11--popup_result__row {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -343,25 +343,25 @@
       flex-wrap: wrap
     }
 
-    .mkv6--popup_result__text {
+    .mkv11--popup_result__text {
       width: 100%;
       min-width: 100%
     }
 
     @media (max-width:479px) {
-      .mkv6--popup_result__text {
+      .mkv11--popup_result__text {
         margin-bottom: 24px
       }
     }
 
     @media (min-width:480px) {
-      .mkv6--popup_result__text {
+      .mkv11--popup_result__text {
         width: 75%;
         min-width: 75%
       }
     }
 
-    .mkv6--popup_result__title {
+    .mkv11--popup_result__title {
       font-size: 20px;
       font-weight: 700;
       text-align: center;
@@ -370,46 +370,46 @@
     }
 
     @media (min-width:480px) {
-      .mkv6--popup_result__title {
+      .mkv11--popup_result__title {
         margin-bottom: 16px;
         font-size: 32px
       }
     }
 
     @media (min-width:480px) {
-      .mkv6--popup_result__br {
+      .mkv11--popup_result__br {
         display: none
       }
     }
 
-    .mkv6--popup_result__icon {
+    .mkv11--popup_result__icon {
       text-align: center;
       min-width: 100%
     }
 
     @media (min-width:480px) {
-      .mkv6--popup_result__icon {
+      .mkv11--popup_result__icon {
         width: 25%;
         min-width: 25%
       }
     }
 
-    .mkv6--popup_result__paragraph {
+    .mkv11--popup_result__paragraph {
       text-align: center;
       font-size: 14px
     }
 
     @media (min-width:480px) {
-      .mkv6--popup_result__paragraph {
+      .mkv11--popup_result__paragraph {
         font-size: 16px
       }
     }
 
-    .mkv6--popup_result__image {
+    .mkv11--popup_result__image {
       width: 100%
     }
 
-    .mkv6--popup__close {
+    .mkv11--popup__close {
       position: absolute;
       top: 16px;
       right: 16px;
@@ -418,11 +418,11 @@
       z-index: 10
     }
 
-    .mkv6--popup__close:after,
-    .mkv6--popup__close:before {
+    .mkv11--popup__close:after,
+    .mkv11--popup__close:before {
       content: "";
       display: block;
-      background: var(--white);
+      background: var(--gray);
       margin-bottom: 4px;
       border-radius: 2px;
       width: 20px;
@@ -433,24 +433,24 @@
       cursor: pointer
     }
 
-    .mkv6--popup__close:before {
+    .mkv11--popup__close:before {
       -webkit-transform: rotate(45deg) translate(-1px, 10px);
       transform: rotate(45deg) translate(-1px, 10px)
     }
 
-    .mkv6--popup__close:after {
+    .mkv11--popup__close:after {
       -webkit-transform: rotate(-45deg) translate(-10px, -1px);
       transform: rotate(-45deg) translate(-10px, -1px)
     }
 
     @media (min-width:480px) {
-      .mkv6--popup__close {
+      .mkv11--popup__close {
         top: 32px;
         right: 32px
       }
     }
 
-    .mkv6--popup__title {
+    .mkv11--popup__title {
       color: var(--blue);
       width: 100%;
       font-family: "Geometria";
@@ -461,20 +461,20 @@
     }
 
     @media (min-width:560px) {
-      .mkv6--popup__title {
+      .mkv11--popup__title {
         margin-bottom: 16px;
         font-size: 22px
       }
     }
 
     @media (min-width:767px) {
-      .mkv6--popup__title {
+      .mkv11--popup__title {
         margin-bottom: 24px;
         font-size: 26px
       }
     }
 
-    .mkv6--popup__content {
+    .mkv11--popup__content {
       color: #333;
       font-size: 14px;
       font-family: "Geometria";
@@ -487,30 +487,30 @@
     }
 
     @media (min-width:480px) {
-      .mkv6--popup__content {
+      .mkv11--popup__content {
         margin-bottom: 12px
       }
     }
 
     @media (min-width:560px) {
-      .mkv6--popup__content {
+      .mkv11--popup__content {
         margin-bottom: 24px;
         font-size: 16px
       }
     }
 
     @media (min-width:767px) {
-      .mkv6--popup__content {
+      .mkv11--popup__content {
         margin-bottom: 24px;
         font-size: 16px
       }
     }
 
-    .mkv6--popup__content strong {
+    .mkv11--popup__content strong {
       font-weight: 600
     }
 
-    .mkv6--popup__btn {
+    .mkv11--popup__btn {
       border: 0;
       color: var(--white);
       font-family: "Geometria";
@@ -528,7 +528,7 @@
     }
 
     @media (min-width:767px) {
-      .mkv6--popup__btn {
+      .mkv11--popup__btn {
         padding: 0 36px;
         border-radius: 24px;
         line-height: 48px
@@ -536,7 +536,7 @@
     }
 
     @media (min-width:480px) {
-      .mkv6--popup__picture {
+      .mkv11--popup__picture {
         height: 100%;
         width: 100%;
         display: -webkit-box;
@@ -545,13 +545,13 @@
       }
     }
 
-    .mkv6--popup__picture_content {
+    .mkv11--popup__picture_content {
       width: 100%;
       position: relative
     }
 
     @media (min-width:480px) {
-      .mkv6--popup__picture_content {
+      .mkv11--popup__picture_content {
         height: 100%;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -559,24 +559,24 @@
       }
     }
 
-    .mkv6--popup__profile_content {
+    .mkv11--popup__profile_content {
       width: 100%;
       position: relative
     }
 
-    .mkv6--popup__image_background {
+    .mkv11--popup__image_background {
       width: 100%;
       display: block
     }
 
     @media (min-width:480px) {
-      .mkv6--popup__image_background {
+      .mkv11--popup__image_background {
         -o-object-fit: cover;
         object-fit: cover
       }
     }
 
-    .mkv6--popup__image_profile {
+    .mkv11--popup__image_profile {
       position: absolute;
       -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
@@ -586,46 +586,46 @@
     }
 
     @media (min-width:480px) {
-      .mkv6--popup__image_profile {
+      .mkv11--popup__image_profile {
         width: 90px
       }
     }
 
-    .mkv6--form__content {
+    .mkv11--form__content {
       width: 100%
     }
 
-    .mkv6--form__row {
+    .mkv11--form__row {
       position: relative;
       margin-bottom: 24px
     }
 
     @media (min-width:480px) {
-      .mkv6--form__row {
+      .mkv11--form__row {
         margin-bottom: 24px
       }
     }
 
     @media (min-width:767px) {
-      .mkv6--form__row {
+      .mkv11--form__row {
         margin-bottom: 40px
       }
     }
 
     @media (min-width:767px) {
-      .mkv6--form__row_px {
+      .mkv11--form__row_px {
         margin-bottom: 40px;
         padding: 0 8px
       }
     }
 
-    .mkv6--carousel {
+    .mkv11--carousel {
       position: relative;
       width: 100%;
       max-width: 600px
     }
 
-    .mkv6--slide {
+    .mkv11--slide {
       position: absolute;
       inset: 0;
       opacity: 0;
@@ -635,91 +635,122 @@
       transition-delay: 0.3s
     }
 
-    .mkv6--slide__header {
-      height: 160px;
-      overflow: hidden;
-      border-radius: 8px 8px 0 0
-    }
-
-    .mkv6--slide__header img {
-      width: 100%;
-      -o-object-fit: cover;
-      object-fit: cover
-    }
-
-    @media (min-width:600px) {
-      .mkv6--slide__header {
-        height: 250px
-      }
-    }
-
-    .mkv6--slide__body {
+    .mkv11--slide__body {
       padding: 16px 24px 32px;
       background-color: var(--white);
-      border-radius: 0 0 8px 8px
+      border-radius: 8px
     }
 
     @media (min-width:600px) {
-      .mkv6--slide__body {
+      .mkv11--slide__body {
         padding: 46px 64px 40px
       }
     }
 
-    .mkv6--slide__title {
+    .mkv11--slide__row {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+      gap: 24px
+    }
+
+    @media (min-width:480px) {
+      .mkv11--slide__row {
+        -ms-grid-columns: 1fr 32px 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px
+      }
+    }
+
+    @media (min-width:480px) {
+      .mkv11--slide__row_title {
+        -ms-grid-column: 1;
+        grid-column-start: 1;
+        -ms-grid-column-span: 2;
+        grid-column-end: 3
+      }
+    }
+
+    .mkv11--slide__row_image {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center
+    }
+
+    .mkv11--slide__row_image_sm {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+    }
+
+    @media (min-width:480px) {
+      .mkv11--slide__row_image_sm {
+        display: none
+      }
+    }
+
+    .mkv11--slide__row_image_lg {
+      display: none
+    }
+
+    @media (min-width:480px) {
+      .mkv11--slide__row_image_lg {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+      }
+    }
+
+    .mkv11--slide__title {
       color: var(--blue);
       width: 100%;
       font-family: "Geometria";
       line-height: 1.15;
-      text-align: center;
-      font-size: 18px;
-      margin-bottom: 16px
+      font-size: 18px
     }
 
     @media (min-width:560px) {
-      .mkv6--slide__title {
-        margin-bottom: 16px;
+      .mkv11--slide__title {
         font-size: 22px
       }
     }
 
     @media (min-width:767px) {
-      .mkv6--slide__title {
-        margin-bottom: 24px;
+      .mkv11--slide__title {
         font-size: 26px
       }
     }
 
-    .mkv6--slide__content {
+    .mkv11--slide__content {
       color: #333;
       font-size: 14px;
       font-family: "Geometria";
       letter-spacing: -0.1px;
-      line-height: 1.35;
-      text-align: center;
+      line-height: 1.21;
       -ms-flex-line-pack: center;
-      align-content: center;
-      margin-bottom: 24px
+      align-content: center
     }
 
     @media (min-width:560px) {
-      .mkv6--slide__content {
-        margin-bottom: 24px;
+      .mkv11--slide__content {
+        line-height: 1.5;
         font-size: 16px
       }
     }
 
     @media (min-width:767px) {
-      .mkv6--slide__content {
+      .mkv11--slide__content {
         margin-bottom: 24px;
         font-size: 16px
       }
     }
 
-    .mkv6--slide__content strong {
+    .mkv11--slide__content strong {
       font-weight: 600
     }
 
-    .mkv6--slide__btn {
+    .mkv11--slide__btn {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -732,20 +763,20 @@
     }
 
     @media (min-width:767px) {
-      .mkv6--slide__btn {
+      .mkv11--slide__btn {
         line-height: 48px
       }
     }
 
-    .mkv6--slide__btn_back {
+    .mkv11--slide__btn_back {
       color: #9b9b9b
     }
 
-    .mkv6--slide__btn_next {
+    .mkv11--slide__btn_next {
       color: #00a94f
     }
 
-    .mkv6--slide__btn_row {
+    .mkv11--slide__btn_row {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -754,14 +785,14 @@
       justify-content: space-between
     }
 
-    .mkv6--slide[data-active] {
+    .mkv11--slide[data-active] {
       opacity: 1;
       z-index: 2;
       -webkit-transition-delay: 0ms;
       transition-delay: 0ms
     }
 
-    .mkv6--slide>img {
+    .mkv11--slide>img {
       display: block;
       width: 100%;
       height: 100%;
@@ -769,7 +800,7 @@
       object-fit: cover
     }
 
-    .mkv6--carousel-btn {
+    .mkv11--carousel-btn {
       position: absolute;
       border: none;
       border-radius: 50%;
@@ -786,16 +817,16 @@
       z-index: 10
     }
 
-    .mkv6--carousel-btn:focus,
-    .mkv6--carousel-btn:hover {
+    .mkv11--carousel-btn:focus,
+    .mkv11--carousel-btn:hover {
       background: rgba(0, 0, 0, 0.7)
     }
 
-    .mkv6--carousel-btn.prev {
+    .mkv11--carousel-btn.prev {
       left: 10px
     }
 
-    .mkv6--carousel-btn.next {
+    .mkv11--carousel-btn.next {
       right: 10px
     }
 
@@ -1131,75 +1162,118 @@
         });
       };
       popupJS.prototype.showResult = function () {
-        var popup = document.getElementById('mkv6Popup');
-        popup.innerHTML = "\n    <div class=\"mkv6--popup_result__wrapper\" id=\"mkv6PopupWrapperResult\">\n <div class=\"mkv6--popup_result__header\">\n    <div class=\"mkv6--popup_result__close\" id=\"mkv6PopupResultClose\"></div>\n    </div>\n    <div class=\"mkv6--popup_result__content\">\n  <div class=\"mkv6--popup_result__row\">\n  <div class=\"mkv6--popup_result__text\">\n    <h5 class=\"mkv6--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv6--popup_result__paragraph\">Recibimos tus datos <br class=\"mkv6--popup_result__br\" />correctamente.</p>\n    </div>    <div class=\"mkv6--popup_result__icon\">\n    <picture class=\"mkv6--popup__picture\">\n        <source srcset=\"".concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv6--popupresult__image\" srcset=\"").concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    </div>\n    </div>\n    </div>");
+        var popup = document.getElementById('mkv11Popup');
+        popup.innerHTML = "\n    <div class=\"mkv11--popup_result__wrapper\" id=\"mkv11PopupWrapperResult\">\n <div class=\"mkv11--popup_result__header\">\n    <div class=\"mkv11--popup_result__close\" id=\"mkv11PopupResultClose\"></div>\n    </div>\n    <div class=\"mkv11--popup_result__content\">\n  <div class=\"mkv11--popup_result__row\">\n  <div class=\"mkv11--popup_result__text\">\n    <h5 class=\"mkv11--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv11--popup_result__paragraph\">Recibimos tus datos <br class=\"mkv11--popup_result__br\" />correctamente.</p>\n    </div>    <div class=\"mkv11--popup_result__icon\">\n    <picture class=\"mkv11--popup__picture\">\n        <source srcset=\"".concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv11--popupresult__image\" srcset=\"").concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    </div>\n    </div>\n    </div>");
 
-        var close = popup.querySelector('.mkv6--popup_result__close');
+        var close = popup.querySelector('.mkv11--popup_result__close');
         this.events(close);
       }
       popupJS.prototype.show = function () {
         var overlay = this.elementOverlay;
         var popup = document.createElement('div');
-        popup.setAttribute('id', 'mkv6Popup');
-        popup.classList.add('mkv6--popup');
-        // popup.innerHTML = "\n    <div class=\"mkv6--popup__wrapper\" id=\"mkv6PopupWrapper1\">\n   <div class=\"mkv6--popup__grid\">\n   <div class=\"mkv6--popup__header\">\n      <div class=\"mkv6--popup__close\" id=\"mkv6--popup__cerrar\"></div>\n   <div class=\"mkv6--popup__picture_content\">\n    <div class=\"mkv6--carousel_content_image\">\n    <div class=\"mkv6--carousel_content_image_item\">\n    <picture class=\"mkv6--popup__picture\">\n    <source srcset=\"".concat(options.imgDesktop1x, ", ").concat(options.imgDesktop2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv6--popup__image_background\" srcset=\"").concat(options.imgMobile1x, ", ").concat(options.imgMobile2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n     </div>\n    </div>\n    </div>\n    </div>\n    <div class=\"mkv6--popup__body\">\n      <div class=\"mkv6--popup__title\">").concat(options.title, "</div>\n      <div class=\"mkv6--popup__content\">").concat(options.content, "</div>\n    <div class=\"mkv6--form__content\">\n     </div>\n     </div>\n    </div>\n    </div>");
+        popup.setAttribute('id', 'mkv11Popup');
+        popup.classList.add('mkv11--popup');
+        popup.innerHTML = `<div class='mkv11--carousel' data-carousel><div class=\"mkv11--popup__wrapper\" id=\"mkv11PopupWrapper1\">\n
+                    <div class=\"mkv11--popup__close\" id=\"mkv11--popup__cerrar\"></div>\n
+                    <ul data-slides>
+                      <li class='mkv11--slide' data-active>
+                        <div class=\"mkv11--slide__body\">
+                          <div class='mkv11--slide__header'>
+                            <!-- A -->
+                          </div>
+                          <div class="mkv11--slide__row">
+                            <div class="mkv11--slide__row_title">
+                              <h4 class="mkv11--slide__title">` + options.images.img1.title + `</h4>
+                            </div>
+                            <div class="mkv11--slide__row_image mkv11--slide__row_image_lg">
+                              <picture>
+                                <source srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                <img srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img1.title) + `'>
+                              </picture>
+                            </div>
+                            <div class="mkv11--slide__row_text">
+                              <p class="mkv11--slide__content">` + options.images.img1.content + `</p>
+                            </div>
+                            <div class="mkv11--slide__row_image mkv11--slide__row_image_sm">
+                              <picture>
+                                <source srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                <img srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img1.title) + `'>
+                              </picture>
+                            </div>
+                          </div>
+                          <div class=\"mkv11--slide__btn_row\">
+                            <button class=\"mkv11--slide__btn_back mkv11--slide__btn mkv11--slide__saltar\">Saltar</button>
+                            <button type="button" class="mkv11--slide__btn_next mkv11--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
+                          </div>
+                        </div>
+                      </li>
+                      <li class='mkv11--slide'>
+                        <div class="mkv11--slide__body">
+                          <div class='mkv11--slide__header'>
+                            <!-- B -->
+                          </div>
+                          <div class="mkv11--slide__row">
+                            <div class="mkv11--slide__row_title">
+                              <h4 class="mkv11--slide__title">` + options.images.img2.title + `</h4>
+                            </div>
+                            <div class="mkv11--slide__row_image mkv11--slide__row_image_lg">
+                              <picture>
+                                <source srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img2.title) + `'>
+                              </picture>
+                            </div>
+                            <div class="mkv11--slide__row_text">
+                              <p class="mkv11--slide__content">` + options.images.img2.content + `</p>
+                            </div>
+                            <div class="mkv11--slide__row_image mkv11--slide__row_image_sm">
+                              <picture>
+                                <source srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img2.title) + `'>
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="mkv11--slide__btn_row">
+                            <button class="mkv11--slide__btn_back mkv11--slide__btn" data-carousel-btn="prev">Atrás</button>
+                            <button class="mkv11--slide__btn_next mkv11--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
+                          </div>
+                        </div>
+                      </li>
+                      <li class='mkv11--slide'>
+                        <div class="mkv11--slide__body">
+                          <div class='mkv11--slide__header'>
+                            <!-- C -->
+                          </div>
+                          <div class="mkv11--slide__row">
+                            <div class="mkv11--slide__row_title">
+                              <h4 class="mkv11--slide__title">` + options.images.img3.title + `</h4>
+                            </div>
+                            <div class="mkv11--slide__row_image mkv11--slide__row_image_lg">
+                              <picture>
+                                <source srcset="` + options.images.img3.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img3.title) + `'>
+                              </picture>
+                            </div>
+                            <div class="mkv11--slide__row_text">
+                              <p class="mkv11--slide__content">` + options.images.img3.content + `</p>
+                            </div>
+                            <div class="mkv11--slide__row_image mkv11--slide__row_image_sm">
+                              <picture>
+                                <source srcset="` + options.images.img3.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img3.title) + `'>
+                              </picture>
+                            </div>
+                          </div>
+                          <div class="mkv11--slide__btn_row">
+                            <button class="mkv11--slide__btn_back mkv11--slide__btn" data-carousel-btn="prev">Atrás</button>
+                            <button class="mkv11--btn">Entendido</button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div></div>`;
 
-        popup.innerHTML = `<div class='mkv6--carousel' data-carousel><div class=\"mkv6--popup__wrapper\" id=\"mkv6PopupWrapper1\">\n
-                  <div class=\"mkv6--popup__close\" id=\"mkv6--popup__cerrar\"></div>\n
-                  <ul data-slides>
-                    <li class='mkv6--slide' data-active>
-                      <div class='mkv6--slide__header'>
-                        <picture>
-                          <source srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" media="(min-width: 600px)" />
-                          <img srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img1.title) + `'>
-                        </picture>
-                      </div>
-                      <div class=\"mkv6--slide__body\">
-                        <h4 class=\"mkv6--slide__title\">` + options.images.img1.title + `</h4>
-                        <p class=\"mkv6--slide__content\">` + options.images.img1.content + `</p>
-                        <div class=\"mkv6--slide__btn_row\">
-                          <button class=\"mkv6--slide__btn_back mkv6--slide__btn mkv6--slide__saltar\">Saltar</button>
-                          <button type="button" class="mkv6--slide__btn_next mkv6--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
-                        </div>
-                      </div>
-                    </li>
-                    <li class='mkv6--slide'>
-                      <div class='mkv6--slide__header'>
-                        <picture>
-                          <source srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" media="(min-width: 600px)" />
-                          <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img2.title) + `'>
-                        </picture>
-                      </div>
-                      <div class="mkv6--slide__body">
-                        <h4 class="mkv6--slide__title">` + options.images.img2.title + `</h4>
-                        <p class="mkv6--slide__content">` + options.images.img2.content + `</p>
-                        <div class="mkv6--slide__btn_row">
-                          <button class="mkv6--slide__btn_back mkv6--slide__btn" data-carousel-btn="prev">Atrás</button>
-                          <button class="mkv6--slide__btn_next mkv6--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
-                        </div>
-                      </div>
-                    </li>
-                    <li class='mkv6--slide'>
-                      <div class='mkv6--slide__header'>
-                        <picture>
-                          <source srcset="` + options.images.img3.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" media="(min-width: 600px)" />
-                          <img srcset="` + options.images.img3.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img3.title) + `'>
-                        </picture>
-                      </div>
-                      <div class="mkv6--slide__body">
-                        <h4 class="mkv6--slide__title">` + options.images.img3.title + `</h4>
-                        <p class="mkv6--slide__content">` + options.images.img3.content + `</p>
-                        <div class="mkv6--slide__btn_row">
-                          <button class="mkv6--slide__btn_back mkv6--slide__btn" data-carousel-btn="prev">Atrás</button>
-                          <button class="mkv6--btn">Entendido</button>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div></div>`;
-
-        var close = popup.querySelector('.mkv6--popup__close');
-        var saltar = popup.querySelector('.mkv6--slide__saltar');
+        var close = popup.querySelector('.mkv11--popup__close');
+        var saltar = popup.querySelector('.mkv11--slide__saltar');
         this.events(close);
         this.events(saltar);
         overlay.appendChild(popup);
@@ -1256,7 +1330,7 @@
 
       popupJS.prototype.overlay = function () {
         var overlay = document.createElement('div');
-        overlay.classList.add('mkv6--overlay');
+        overlay.classList.add('mkv11--overlay');
         return overlay;
       };
 
@@ -1265,31 +1339,31 @@
     var options = {
       link: {
         url: '#',
-        text: 'Enviar',
+        text: 'Entendido',
         target: '_blank',
       },
       images: {
         img1: {
-          desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-1.jpg',
-          desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-1_2x.jpg',
-          mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-1.jpg',
-          mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-1_2x.jpg',
+          desktop1x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1.png',
+          desktop2x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1@2x.png',
+          mobile1x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1.png',
+          mobile2x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1@2x.png',
           title: 'Conoce el nuevo módulo de<br /> <span class="mk-bold">Pago de Créditos</span>',
           content: 'Ingresa al módulo Pagos de tu Banca por Internet Empresas y ubica la sección “Créditos pequeña empresa”.',
         },
         img2: {
-          desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-2.jpg',
-          desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-2_2x.jpg',
-          mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-2.jpg',
-          mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-2_2x.jpg',
+          desktop1x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1.png',
+          desktop2x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1@2x.png',
+          mobile1x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1.png',
+          mobile2x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1@2x.png',
           title: 'Conoce el nuevo módulo de<br /> <span class="mk-bold">Pago de Créditos</span>',
           content: 'Ingresa al módulo Pagos de tu Banca por Internet Empresas y ubica la sección “Créditos pequeña empresa”.',
         },
         img3: {
-          desktop1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-3.jpg',
-          desktop2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_lg-3_2x.jpg',
-          mobile1x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-3.jpg',
-          mobile2x: 'https://paolopacheco.github.io/ibk-media/images/banner-600_250_sm-3_2x.jpg',
+          desktop1x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1.png',
+          desktop2x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1@2x.png',
+          mobile1x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1.png',
+          mobile2x: 'https://paolopacheco.github.io/ibk-media/images/ilustraci-n-250-x-200-1@2x.png',
           title: 'Conoce el nuevo módulo de<br /> <span class="mk-bold">Pago de Créditos</span>',
           content: 'Ingresa al módulo Pagos de tu Banca por Internet Empresas y ubica la sección “Créditos pequeña empresa”.',
         },
@@ -1302,7 +1376,7 @@
     popup.show();
 
     //Boton Entendido
-    // document.getElementById("mkv6--popup__entendido").onclick = function () {
+    // document.getElementById("mkv11--popup__entendido").onclick = function () {
     //   popUpBte();
     //   popUpBtn();
     // };
@@ -1325,7 +1399,7 @@
     }
 
     //Boton Cerrar
-    document.getElementById("mkv6--popup__cerrar").onclick = function () {
+    document.getElementById("mkv11--popup__cerrar").onclick = function () {
       popUpClose();
     };
 
