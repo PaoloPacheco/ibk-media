@@ -4514,102 +4514,125 @@
           popup.setAttribute('id', 'mkv12Popup');
           popup.classList.add('mkv12--popup');
           popup.innerHTML = `<div class='mkv12--carousel' data-carousel><div class=\"mkv12--popup__wrapper\" id=\"mkv12PopupWrapper1\">\n
-                    <div class=\"mkv12--popup__close\" id=\"mkv12--popup__cerrar\"></div>\n
-                    <ul data-slides>
-                      <li class='mkv12--slide' data-active>
-                        <div class=\"mkv12--slide__body\">
-                          <div class='mkv12--slide__header'>
-                            <!-- A -->
-                          </div>
-                          <div class="mkv12--slide__row">
-                            <div class="mkv12--slide__row_title">
-                              <h4 class="mkv12--slide__title">` + options.images.img1.title + `</h4>
+            <div class=\"mkv12--popup__close\" id=\"mkv12--popup__cerrar\"></div>\n
+                  <div class="mkv12--popup__grid">
+                    <div className="mkv12--popup__left">
+                      <div className="mkv12--popup__left_content">
+                        <figure className="mkv12--popup__left_figure">
+                          <img src="" alt="" />
+                        </figure>
+                        <h3 className="mkv12--popup__left_title"></h3>
+                        <p className="mkv12--popup__left_text"></p>
+                      </div>
+                    </div>
+                    <div className="mkv12--popup__right">
+                      <div className="mkv12--popup__right_header">
+                        <ul className="mk-bullets">
+                          <li class="active"><a data-slide="0"></a></li>
+                          <li><a data-slide="1"></a></li>
+                          <li><a data-slide="2"></a></li>
+                        </ul>
+                      </div>
+                      <div className="mkv12--popup__right_body">
+                        <ul data-slides>
+                          <li class='mkv12--slide' data-active>
+                            <div class=\"mkv12--slide__body\">
+                              <div class='mkv12--slide__header'>
+                                <!-- A -->
+                              </div>
+                              <div class="mkv12--slide__row">
+                                <div class="mkv12--slide__row_title">
+                                  <h4 class="mkv12--slide__title">` + options.images.img1.title + `</h4>
+                                </div>
+                                <div class="mkv12--slide__row_image mkv12--slide__row_image_lg">
+                                  <picture>
+                                    <source srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                    <img srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img1.title) + `'>
+                                  </picture>
+                                </div>
+                                <div class="mkv12--slide__row_text">
+                                  <p class="mkv12--slide__content">` + options.images.img1.content + `</p>
+                                </div>
+                                <div class="mkv12--slide__row_image mkv12--slide__row_image_sm">
+                                  <picture>
+                                    <source srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                    <img srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img1.title) + `'>
+                                  </picture>
+                                </div>
+                              </div>
+                              <div class=\"mkv12--slide__btn_row\">
+                                <button class=\"mkv12--slide__btn_back mkv12--slide__btn mkv12--slide__saltar\">Saltar</button>
+                                <button type="button" class="mkv12--slide__btn_next mkv12--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
+                              </div>
                             </div>
-                            <div class="mkv12--slide__row_image mkv12--slide__row_image_lg">
-                              <picture>
-                                <source srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" media="(min-width: 600px)" />
-                                <img srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img1.title) + `'>
-                              </picture>
+                          </li>
+                          <li class='mkv12--slide'>
+                            <div class="mkv12--slide__body">
+                              <div class='mkv12--slide__header'>
+                                <!-- B -->
+                              </div>
+                              <div class="mkv12--slide__row">
+                                <div class="mkv12--slide__row_title">
+                                  <h4 class="mkv12--slide__title">` + options.images.img2.title + `</h4>
+                                </div>
+                                <div class="mkv12--slide__row_image mkv12--slide__row_image_lg">
+                                  <picture>
+                                    <source srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                    <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img2.title) + `'>
+                                  </picture>
+                                </div>
+                                <div class="mkv12--slide__row_text">
+                                  <p class="mkv12--slide__content">` + options.images.img2.content + `</p>
+                                </div>
+                                <div class="mkv12--slide__row_image mkv12--slide__row_image_sm">
+                                  <picture>
+                                    <source srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                    <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img2.title) + `'>
+                                  </picture>
+                                </div>
+                              </div>
+                              <div class="mkv12--slide__btn_row">
+                                <button class="mkv12--slide__btn_back mkv12--slide__btn" data-carousel-btn="prev">Atrás</button>
+                                <button class="mkv12--slide__btn_next mkv12--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
+                              </div>
                             </div>
-                            <div class="mkv12--slide__row_text">
-                              <p class="mkv12--slide__content">` + options.images.img1.content + `</p>
+                          </li>
+                          <li class='mkv12--slide'>
+                            <div class="mkv12--slide__body">
+                              <div class='mkv12--slide__header'>
+                                <!-- C -->
+                              </div>
+                              <div class="mkv12--slide__row">
+                                <div class="mkv12--slide__row_title">
+                                  <h4 class="mkv12--slide__title">` + options.images.img3.title + `</h4>
+                                </div>
+                                <div class="mkv12--slide__row_image mkv12--slide__row_image_lg">
+                                  <picture>
+                                    <source srcset="` + options.images.img3.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                    <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img3.title) + `'>
+                                  </picture>
+                                </div>
+                                <div class="mkv12--slide__row_text">
+                                  <p class="mkv12--slide__content">` + options.images.img3.content + `</p>
+                                </div>
+                                <div class="mkv12--slide__row_image mkv12--slide__row_image_sm">
+                                  <picture>
+                                    <source srcset="` + options.images.img3.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" media="(min-width: 600px)" />
+                                    <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img3.title) + `'>
+                                  </picture>
+                                </div>
+                              </div>
+                              <div class="mkv12--slide__btn_row">
+                                <button class="mkv12--slide__btn_back mkv12--slide__btn" data-carousel-btn="prev">Atrás</button>
+                                <button class="mkv12--btn">Entendido</button>
+                              </div>
                             </div>
-                            <div class="mkv12--slide__row_image mkv12--slide__row_image_sm">
-                              <picture>
-                                <source srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" media="(min-width: 600px)" />
-                                <img srcset="` + options.images.img1.desktop1x + `, ` + options.images.img1.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img1.title) + `'>
-                              </picture>
-                            </div>
-                          </div>
-                          <div class=\"mkv12--slide__btn_row\">
-                            <button class=\"mkv12--slide__btn_back mkv12--slide__btn mkv12--slide__saltar\">Saltar</button>
-                            <button type="button" class="mkv12--slide__btn_next mkv12--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
-                          </div>
-                        </div>
-                      </li>
-                      <li class='mkv12--slide'>
-                        <div class="mkv12--slide__body">
-                          <div class='mkv12--slide__header'>
-                            <!-- B -->
-                          </div>
-                          <div class="mkv12--slide__row">
-                            <div class="mkv12--slide__row_title">
-                              <h4 class="mkv12--slide__title">` + options.images.img2.title + `</h4>
-                            </div>
-                            <div class="mkv12--slide__row_image mkv12--slide__row_image_lg">
-                              <picture>
-                                <source srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" media="(min-width: 600px)" />
-                                <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img2.title) + `'>
-                              </picture>
-                            </div>
-                            <div class="mkv12--slide__row_text">
-                              <p class="mkv12--slide__content">` + options.images.img2.content + `</p>
-                            </div>
-                            <div class="mkv12--slide__row_image mkv12--slide__row_image_sm">
-                              <picture>
-                                <source srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" media="(min-width: 600px)" />
-                                <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img2.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img2.title) + `'>
-                              </picture>
-                            </div>
-                          </div>
-                          <div class="mkv12--slide__btn_row">
-                            <button class="mkv12--slide__btn_back mkv12--slide__btn" data-carousel-btn="prev">Atrás</button>
-                            <button class="mkv12--slide__btn_next mkv12--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
-                          </div>
-                        </div>
-                      </li>
-                      <li class='mkv12--slide'>
-                        <div class="mkv12--slide__body">
-                          <div class='mkv12--slide__header'>
-                            <!-- C -->
-                          </div>
-                          <div class="mkv12--slide__row">
-                            <div class="mkv12--slide__row_title">
-                              <h4 class="mkv12--slide__title">` + options.images.img3.title + `</h4>
-                            </div>
-                            <div class="mkv12--slide__row_image mkv12--slide__row_image_lg">
-                              <picture>
-                                <source srcset="` + options.images.img3.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" media="(min-width: 600px)" />
-                                <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img3.title) + `'>
-                              </picture>
-                            </div>
-                            <div class="mkv12--slide__row_text">
-                              <p class="mkv12--slide__content">` + options.images.img3.content + `</p>
-                            </div>
-                            <div class="mkv12--slide__row_image mkv12--slide__row_image_sm">
-                              <picture>
-                                <source srcset="` + options.images.img3.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" media="(min-width: 600px)" />
-                                <img srcset="` + options.images.img2.desktop1x + `, ` + options.images.img3.desktop2x + ` 2x" alt='` + clearHTMLTags(options.images.img3.title) + `'>
-                              </picture>
-                            </div>
-                          </div>
-                          <div class="mkv12--slide__btn_row">
-                            <button class="mkv12--slide__btn_back mkv12--slide__btn" data-carousel-btn="prev">Atrás</button>
-                            <button class="mkv12--btn">Entendido</button>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                    
                   </div></div>`;
 
           var close = popup.querySelector('.mkv12--popup__close');
