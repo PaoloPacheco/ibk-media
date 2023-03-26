@@ -209,7 +209,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
         & ~ {
           span {
-            text-align: center;
+            justify-content: center;
             cursor: pointer;
             display: inline-flex;
             padding: 0 16px;
@@ -301,7 +301,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         height: 370px;
 
         @include screen-min(550px) {
-          height: 414px;
+          height: 486px;
         }
       }
 
