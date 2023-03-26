@@ -4619,19 +4619,13 @@
           var matches = document.querySelectorAll('.mkv12--questions__radio');
           var loading = document.querySelector('.mkv12--questions__loading');
 
-          console.log(`loading`, loading);
-
           matches.forEach(match => {
             match.onchange = function () {
-              console.log(this.value)
               const slides = match.closest('[data-carousel]').querySelector('[data-slides]');
               const activeSlide = slides.querySelector('[data-active]');
               let newIndex = [...slides.children].indexOf(activeSlide) + 1;
 
               loading.style.display = "block";
-              setTimeout(() => {
-                loading.style.display = "none";
-              }, 500);
 
               if (newIndex < 0) {
                 newIndex = slides.children.length - 1;
@@ -4642,6 +4636,10 @@
 
               slides.children[newIndex].dataset.active = true;
               delete activeSlide.dataset.active;
+
+              setTimeout(() => {
+                loading.style.display = "none";
+              }, 500);
             }
           })
 
