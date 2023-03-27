@@ -1,4 +1,4 @@
-<div id="action_insert_26553366210341242">
+<div id="action_insert_16553066210341232">
   <style>
     @charset "UTF-8";
 
@@ -22,14 +22,14 @@
       --blackrgb: rgb(15, 25, 30)
     }
 
-    .mk-bold {
-      font-family: "Geometria-Bold", sans-serif;
-      font-weight: bold
+    .mk-medium {
+      font-family: "Omnes", sans-serif;
+      font-weight: 500
     }
 
     .mk-semibold {
-      font-family: "Geometria-Medium", sans-serif;
-      font-weight: 500
+      font-family: "Omnes", sans-serif;
+      font-weight: 600
     }
 
     .mk-container {
@@ -197,7 +197,8 @@
     }
 
     .mk-radio--btn {
-      position: relative
+      position: relative;
+      margin-bottom: 0
     }
 
     .mk-radio--btn input[type=radio] {
@@ -255,7 +256,7 @@
     .mkv12--btn {
       border: 0;
       color: var(--white);
-      font-family: "Geometria";
+      font-family: "Omnes";
       font-size: 16px;
       letter-spacing: normal;
       text-align: center;
@@ -368,7 +369,7 @@
     .mkv12--popup__left_title {
       color: var(--blue);
       font-size: 22px;
-      font-family: "Geometria-Bold", sans-serif;
+      font-family: "Omnes", sans-serif;
       font-weight: bold;
       margin-bottom: 8px
     }
@@ -609,7 +610,7 @@
     .mkv12--popup__title {
       color: var(--blue);
       width: 100%;
-      font-family: "Geometria";
+      font-family: "Omnes", sans-serif;
       line-height: 1.15;
       text-align: center;
       font-size: 18px;
@@ -633,7 +634,7 @@
     .mkv12--popup__content {
       color: #333;
       font-size: 14px;
-      font-family: "Geometria";
+      font-family: "Omnes", sans-serif;
       letter-spacing: -0.1px;
       line-height: 1.35;
       text-align: center;
@@ -682,7 +683,7 @@
     .mkv12--popup__btn {
       border: 0;
       color: var(--white);
-      font-family: "Geometria";
+      font-family: "Omnes", sans-serif;
       font-size: 16px;
       letter-spacing: normal;
       text-align: center;
@@ -710,7 +711,7 @@
       padding: 0 30px;
       min-width: 140px;
       font-size: 14px;
-      font-family: "Geometria-Medium", sans-serif;
+      font-family: "Omnes", sans-serif;
       font-weight: 500;
       color: var(--gray);
       text-align: center
@@ -896,7 +897,8 @@
     .mkv12--slide__title {
       color: var(--blue);
       width: 100%;
-      font-family: "Geometria-Medium";
+      font-family: "Omnes", sans-serif;
+      font-weight: 500;
       font-size: 15px;
       line-height: 17px;
       font-weight: 500;
@@ -915,7 +917,7 @@
     .mkv12--slide__content {
       color: #333;
       font-size: 14px;
-      font-family: "Geometria";
+      font-family: "Omnes", sans-serif;
       letter-spacing: -0.1px;
       line-height: 1.21;
       -ms-flex-line-pack: center;
@@ -948,7 +950,7 @@
       -ms-flex-align: center;
       align-items: center;
       line-height: 1;
-      font-family: "Geometria-Medium", sans-serif;
+      font-family: "Omnes", sans-serif;
       line-height: 40px
     }
 
@@ -1639,12 +1641,16 @@
 
         var close = popup.querySelector('.mkv12--popup__close');
         var saltar = popup.querySelector('.mkv12--slide__saltar');
+        var btnEnviar = popup.querySelector('#mkv12--popup__enviar');
         var result = popup.querySelector('#mkv12--result');
         var resultBack = popup.querySelector('#mkv12--result__atras');
-        this.events(close);
-        // this.events(saltar);
+        var bullets = popup.querySelectorAll('ul.mk-bullets li');
+
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
+
+        this.events(btnEnviar);
+        this.events(close);
 
         const buttons = document.querySelectorAll('[data-carousel-btn]');
         var matches = document.querySelectorAll('.mkv12--questions__radio');
@@ -1667,6 +1673,7 @@
             if (slides.children[newIndex] != undefined) {
               slides.children[newIndex].dataset.active = true;
               delete activeSlide.dataset.active;
+              upadteBullets(newIndex);
             } else {
               result.style.display = "flex";
             }
@@ -1691,10 +1698,28 @@
               newIndex = 0;
             }
 
-            slides.children[newIndex].dataset.active = true;
-            delete activeSlide.dataset.active;
+            if (slides.children[newIndex] != undefined) {
+              slides.children[newIndex].dataset.active = true;
+              delete activeSlide.dataset.active;
+              upadteBullets(newIndex);
+            } else {
+              result.style.display = "flex";
+            }
+
+            // slides.children[newIndex].dataset.active = true;
+            // delete activeSlide.dataset.active;
           });
         });
+
+        function upadteBullets(cur) {
+          let bullets = popup.querySelectorAll('ul.mk-bullets li');
+
+          bullets.forEach(bullet => {
+            bullet.classList.remove('active')
+          });
+
+          bullets[cur].classList.add('active');
+        }
 
         this.validator();
       };
@@ -1795,7 +1820,6 @@
     };
 
     function popUpBte() {
-      console.log("-> popUpBte");
       cordova.InAppBrowser.open("https://interbank.pe/100-digital?mcid=app-empresas:referral:2022-12_app_digitalizacion_conversion:bbdd:popup:1", "_system", "location=yes");
     }
 
