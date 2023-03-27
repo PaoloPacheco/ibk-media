@@ -4442,36 +4442,31 @@
 
   <style id="fonts">
     @font-face {
-      font-family: 'Geometria';
-      src: url('../fonts/Geometria.woff2') format('woff2'),
-        url('../fonts/Geometria.woff') format('woff'),
-        url('../fonts/Geometria.svg#Geometria') format('svg');
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-regular-webfont.woff2') format('woff2');
       font-weight: normal;
       font-style: normal;
       font-display: swap;
     }
 
     @font-face {
-      font-family: 'Geometria-Medium';
-      src: url('../fonts/Geometria-Medium.woff2') format('woff2'),
-        url('../fonts/Geometria-Medium.woff') format('woff'),
-        url('../fonts/Geometria-Medium.svg#Geometria-Medium') format('svg');
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-medium-webfont.woff2') format('woff2');
       font-weight: 500;
       font-style: normal;
       font-display: swap;
     }
 
     @font-face {
-      font-family: 'Geometria-Bold';
-      src: url('../fonts/Geometria-Bold.woff2') format('woff2'),
-        url('../fonts/Geometria-Bold.woff') format('woff');
-      font-weight: bold;
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-semibold-webfont.woff2') format('woff2');
+      font-weight: 600;
       font-style: normal;
       font-display: swap;
     }
 
     body {
-      font-family: 'Geometria';
+      font-family: 'Omnes';
     }
   </style>
 
@@ -4548,56 +4543,125 @@
                           <div class="mkv12--questions__content">
                             <ul class="mkv12--questions__list">
                               <li class="mkv12--questions__list_li">
-                                <label for="name_1" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="name_1" value="name1-value_1" name="pregunta_1" />
-                                  <span>Totalmente satisfecho</span>
+                                <label for="p1_options_1" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_1" value="` + options.questions.question1.options[0] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[0] + `</span>
                                 </label>
                               </li>
                               <li class="mkv12--questions__list_li">
-                                <label for="name_2" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="name_2" value="name1-value_2" name="pregunta_1" />
-                                  <span>Totalmente satisfecho</span>
+                                <label for="p1_options_2" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_2" value="` + options.questions.question1.options[1] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[1] + `</span>
                                 </label>
                               </li>
                               <li class="mkv12--questions__list_li">
-                                <label for="name_3" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="name_3" value="name1-value_3" name="pregunta_1" />
-                                  <span>Totalmente satisfecho</span>
+                                <label for="p1_options_3" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_3" value="` + options.questions.question1.options[2] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[2] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p1_options_4" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_4" value="` + options.questions.question1.options[3] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[3] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p1_options_5" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_5" value="` + options.questions.question1.options[4] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[4] + `</span>
                                 </label>
                               </li>
                             </ul>
                           </div>
-                          <div class=\"mkv12--slide__btn_row\">
-                            <button class=\"mkv12--slide__btn_back mkv12--slide__btn mkv12--slide__saltar\">Saltar</button>
-                            <button type="button" class="mkv12--slide__btn_next mkv12--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
-                          </div>
+                          <div class=\"mkv12--slide__btn_row\"><!--/// --></div>
                         </div>
                       </li>
                       <li class='mkv12--slide'>
                         <div class="mkv12--slide__body">
-                          <div>
+                          <div class="mkv12--questions__header">
                             <h4 class="mkv12--slide__title">` + options.questions.question2.title + `</h4>
                           </div>
-                          <div>
-                            Preguntas
+                          <div class="mkv12--questions__content">
+                            <ul class="mkv12--questions__list">
+                              <li class="mkv12--questions__list_li">
+                                <label for="p2_options_1" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_1" value="` + options.questions.question2.options[0] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[0] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p2_options_2" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_2" value="` + options.questions.question2.options[1] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[1] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p2_options_3" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_3" value="` + options.questions.question2.options[2] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[2] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p2_options_4" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_4" value="` + options.questions.question2.options[3] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[3] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p2_options_5" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_5" value="` + options.questions.question2.options[4] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[4] + `</span>
+                                </label>
+                              </li>
+                            </ul>
                           </div>
                           <div class="mkv12--slide__btn_row">
                             <button class="mkv12--slide__btn_back mkv12--slide__btn" data-carousel-btn="prev">Atrás</button>
-                            <button class="mkv12--slide__btn_next mkv12--slide__btn" data-carousel-btn="next">Siguiente <img src="https://paolopacheco.github.io/ibk-media/images/angle-right.svg" alt="" /></button>
                           </div>
                         </div>
                       </li>
                       <li class='mkv12--slide'>
                         <div class="mkv12--slide__body">
-                          <div>
+                          <div class="mkv12--questions__header">
                             <h4 class="mkv12--slide__title">` + options.questions.question3.title + `</h4>
                           </div>
-                          <div>
-                            Preguntas
+                          <div class="mkv12--questions__content">
+                            <ul class="mkv12--questions__list">
+                              <li class="mkv12--questions__list_li">
+                                <label for="p3_options_1" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_1" value="` + options.questions.question3.options[0] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[0] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p3_options_2" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_2" value="` + options.questions.question3.options[1] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[1] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p3_options_3" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_3" value="` + options.questions.question3.options[2] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[2] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p3_options_4" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_4" value="` + options.questions.question3.options[3] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[3] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv12--questions__list_li">
+                                <label for="p3_options_5" class="mk-radio--btn">
+                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_5" value="` + options.questions.question3.options[4] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[4] + `</span>
+                                </label>
+                              </li>
+                            </ul>
                           </div>
                           <div class="mkv12--slide__btn_row">
                             <button class="mkv12--slide__btn_back mkv12--slide__btn" data-carousel-btn="prev">Atrás</button>
-                            <button class="mkv12--btn">Entendido</button>
                           </div>
                         </div>
                       </li>
@@ -4605,19 +4669,43 @@
                   </div>
                   <div class="mkv12--questions__loading"></div>
                 </div>
+                <div class="mkv12--result" id="mkv12--result"><div class="mkv12--result__row">
+                  <div class="mkv12--result__content">
+                    <figure class="mkv12--result__figure">
+                      <picture>
+                        <source srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" media="(min-width: 600px)" />
+                        <img srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
+                      </picture>
+                    </figure>
+                    <div class="mkv12--result__text">
+                      <h5 class="mkv12--popup__left_title mkv12--result__title">` + options.titleResult + `</h5>
+                      <div>
+                        <div class="mkv12--popup__btnsinline">
+                          <a class="mkv12--popup__btn  mkv12--result__btn" id="mkv12--popup__enviar" target="_blank" title="` + options.textBtnResult + `">` + options.textBtnResult + `</a>
+                          <a class="mkv12--popup__link" id="mkv12--result__atras" target="_blank" title="No, gracias.">Atrás</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div></div>
               </div>
               </div></div>`;
 
           var close = popup.querySelector('.mkv12--popup__close');
           var saltar = popup.querySelector('.mkv12--slide__saltar');
-          this.events(close);
-          this.events(saltar);
+          var btnEnviar = popup.querySelector('#mkv12--popup__enviar');
+          var result = popup.querySelector('#mkv12--result');
+          var resultBack = popup.querySelector('#mkv12--result__atras');
+          var bullets = popup.querySelectorAll('ul.mk-bullets li');
+
           overlay.appendChild(popup);
           document.body.appendChild(overlay);
 
+          this.events(btnEnviar);
+          this.events(close);
+
           const buttons = document.querySelectorAll('[data-carousel-btn]');
           var matches = document.querySelectorAll('.mkv12--questions__radio');
-          var loading = document.querySelector('.mkv12--questions__loading');
 
           matches.forEach(match => {
             match.onchange = function () {
@@ -4625,21 +4713,26 @@
               const activeSlide = slides.querySelector('[data-active]');
               let newIndex = [...slides.children].indexOf(activeSlide) + 1;
 
-              loading.style.display = "block";
+              displayLoading();
 
               if (newIndex < 0) {
                 newIndex = slides.children.length - 1;
               }
               if (newIndex >= slides.children.length) {
-                newIndex = 0;
+                // newIndex = 0;
               }
 
-              slides.children[newIndex].dataset.active = true;
-              delete activeSlide.dataset.active;
+              if (slides.children[newIndex] != undefined) {
+                slides.children[newIndex].dataset.active = true;
+                delete activeSlide.dataset.active;
+                upadteBullets(newIndex);
+              } else {
+                result.style.display = "flex";
+              }
 
-              setTimeout(() => {
-                loading.style.display = "none";
-              }, 500);
+              resultBack.addEventListener('click', () => {
+                result.style.display = "none";
+              })
             }
           })
 
@@ -4657,17 +4750,31 @@
                 newIndex = 0;
               }
 
-              slides.children[newIndex].dataset.active = true;
-              delete activeSlide.dataset.active;
+              if (slides.children[newIndex] != undefined) {
+                slides.children[newIndex].dataset.active = true;
+                delete activeSlide.dataset.active;
+                upadteBullets(newIndex);
+              } else {
+                result.style.display = "flex";
+              }
+
+              // slides.children[newIndex].dataset.active = true;
+              // delete activeSlide.dataset.active;
             });
           });
 
+          function upadteBullets(cur) {
+            let bullets = popup.querySelectorAll('ul.mk-bullets li');
+
+            bullets.forEach(bullet => {
+              bullet.classList.remove('active')
+            });
+
+            bullets[cur].classList.add('active');
+          }
+
           this.validator();
         };
-
-        const emailVálido = email => {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
 
         popupJS.prototype.validator = function name(formId) {
           const btnEnviar = document.getElementById('formSubmit');
@@ -4701,6 +4808,7 @@
 
       var options = {
         title: '¡Felicidades!',
+        titleResult: '¡Gracias por tus<br> respuestas !',
         description: 'Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:',
         imgMain1x: 'https://paolopacheco.github.io/ibk-media/images/banner-180_120.jpg',
         imgMain2x: 'https://paolopacheco.github.io/ibk-media/images/banner-180_120_2x.jpg',
@@ -4709,6 +4817,7 @@
           text: 'Entendido',
           target: '_blank',
         },
+        textBtnResult: 'Enviar',
         questions: {
           question1: {
             title: '¿Cómo te sientes hasta hoy usando tu Cuenta Negocio?',
@@ -4754,8 +4863,15 @@
       //   popUpBtn();
       // };
 
+      function displayLoading() {
+        let loading = document.querySelector('.mkv12--questions__loading');
+        loading.style.display = "block";
+        setTimeout(() => {
+          loading.style.display = "none";
+        }, 500);
+      };
+
       function popUpBte() {
-        console.log("-> popUpBte");
         cordova.InAppBrowser.open("https://interbank.pe/100-digital?mcid=app-empresas:referral:2022-12_app_digitalizacion_conversion:bbdd:popup:1", "_system", "location=yes");
       }
 
