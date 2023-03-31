@@ -4498,191 +4498,191 @@
         };
 
         popupJS.prototype.showResult = function () {
-          var popup = document.getElementById('mkv12Popup');
-          popup.innerHTML = "\n    <div class=\"mkv12--popup_result__wrapper\" id=\"mkv12PopupWrapperResult\">\n <div class=\"mkv12--popup_result__header\">\n    <div class=\"mkv12--popup_result__close\" id=\"mkv12PopupResultClose\"></div>\n    </div>\n    <div class=\"mkv12--popup_result__content\">\n  <div class=\"mkv12--popup_result__row\">\n  <div class=\"mkv12--popup_result__text\">\n    <h5 class=\"mkv12--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv12--popup_result__paragraph\">Recibimos tus datos <br class=\"mkv12--popup_result__br\" />correctamente.</p>\n    </div>    <div class=\"mkv12--popup_result__icon\">\n    <picture class=\"mkv12--popup__picture\">\n        <source srcset=\"".concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv12--popupresult__image\" srcset=\"").concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    </div>\n    </div>\n    </div>");
+          var popup = document.getElementById('mkv13Popup');
+          popup.innerHTML = "\n    <div class=\"mkv13--popup_result__wrapper\" id=\"mkv13PopupWrapperResult\">\n <div class=\"mkv13--popup_result__header\">\n    <div class=\"mkv13--popup_result__close\" id=\"mkv13PopupResultClose\"></div>\n    </div>\n    <div class=\"mkv13--popup_result__content\">\n  <div class=\"mkv13--popup_result__row\">\n  <div class=\"mkv13--popup_result__text\">\n    <h5 class=\"mkv13--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv13--popup_result__paragraph\">Recibimos tus datos <br class=\"mkv13--popup_result__br\" />correctamente.</p>\n    </div>    <div class=\"mkv13--popup_result__icon\">\n    <picture class=\"mkv13--popup__picture\">\n        <source srcset=\"".concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv13--popupresult__image\" srcset=\"").concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    </div>\n    </div>\n    </div>");
 
-          var close = popup.querySelector('.mkv12--popup_result__close');
+          var close = popup.querySelector('.mkv13--popup_result__close');
           this.events(close);
         }
 
         popupJS.prototype.show = function () {
           var overlay = this.elementOverlay;
           var popup = document.createElement('div');
-          popup.setAttribute('id', 'mkv12Popup');
-          popup.classList.add('mkv12--popup');
-          popup.innerHTML = `<div class='mkv12--carousel' data-carousel><div class=\"mkv12--popup__wrapper\" id=\"mkv12PopupWrapper1\">\n
-            <div class=\"mkv12--popup__close\" id=\"mkv12--popup__cerrar\"></div>\n
-              <div class="mkv12--popup__grid">
-                <div class="mkv12--popup__left">
-                  <div class="mkv12--popup__left_content">
-                    <figure class="mkv12--popup__left_figure">
+          popup.setAttribute('id', 'mkv13Popup');
+          popup.classList.add('mkv13--popup');
+          popup.innerHTML = `<div class='mkv13--carousel' data-carousel><div class=\"mkv13--popup__wrapper\" id=\"mkv13PopupWrapper1\">\n
+            <div class=\"mkv13--popup__close\" id=\"mkv13--popup__cerrar\"></div>\n
+              <div class="mkv13--popup__grid">
+                <div class="mkv13--popup__left">
+                  <div class="mkv13--popup__left_content">
+                    <figure class="mkv13--popup__left_figure">
                       <picture>
                         <source srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" media="(min-width: 600px)" />
-                        <img srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
+                        <img class="mkv13--popup__image" srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
                       </picture>
                     </figure>
-                    <h3 class="mkv12--popup__left_title">` + options.title + `</h3>
-                    <p class="mkv12--popup__left_text">` + options.description + `</p>
+                    <h3 class="mkv13--popup__left_title">` + options.title + `</h3>
+                    <p class="mkv13--popup__left_text">` + options.description + `</p>
                   </div>
                 </div>
-                <div class="mkv12--popup__right">
-                  <div class="mkv12--popup__right_header">
+                <div class="mkv13--popup__right">
+                  <div class="mkv13--popup__right_header">
                     <ul class="mk-bullets">
                       <li class="active"><a data-slide="0"></a></li>
                       <li><a data-slide="1"></a></li>
                       <li><a data-slide="2"></a></li>
                     </ul>
                   </div>
-                  <div class="mkv12--popup__right_body">
+                  <div class="mkv13--popup__right_body">
                     <ul data-slides>
-                      <li class='mkv12--slide' data-active>
-                        <div class=\"mkv12--slide__body\">
-                          <div class="mkv12--questions__header">
-                            <h4 class="mkv12--slide__title">` + options.questions.question1.title + `</h4>
+                      <li class='mkv13--slide' data-active>
+                        <div class=\"mkv13--slide__body\">
+                          <div class="mkv13--questions__header">
+                            <h4 class="mkv13--slide__title">` + options.questions.question1.title + `</h4>
                           </div>
-                          <div class="mkv12--questions__content">
-                            <ul class="mkv12--questions__list">
-                              <li class="mkv12--questions__list_li">
+                          <div class="mkv13--questions__content">
+                            <ul class="mkv13--questions__list">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p1_options_1" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_1" value="` + options.questions.question1.options[0] + `" name="pregunta_1" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p1_options_1" value="` + options.questions.question1.options[0] + `" name="pregunta_1" />
                                   <span>` + options.questions.question1.options[0] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p1_options_2" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_2" value="` + options.questions.question1.options[1] + `" name="pregunta_1" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p1_options_2" value="` + options.questions.question1.options[1] + `" name="pregunta_1" />
                                   <span>` + options.questions.question1.options[1] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p1_options_3" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_3" value="` + options.questions.question1.options[2] + `" name="pregunta_1" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p1_options_3" value="` + options.questions.question1.options[2] + `" name="pregunta_1" />
                                   <span>` + options.questions.question1.options[2] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p1_options_4" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_4" value="` + options.questions.question1.options[3] + `" name="pregunta_1" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p1_options_4" value="` + options.questions.question1.options[3] + `" name="pregunta_1" />
                                   <span>` + options.questions.question1.options[3] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p1_options_5" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p1_options_5" value="` + options.questions.question1.options[4] + `" name="pregunta_1" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p1_options_5" value="` + options.questions.question1.options[4] + `" name="pregunta_1" />
                                   <span>` + options.questions.question1.options[4] + `</span>
                                 </label>
                               </li>
                             </ul>
                           </div>
-                          <div class=\"mkv12--slide__btn_row\"><!--/// --></div>
+                          <div class=\"mkv13--slide__btn_row\"><!--/// --></div>
                         </div>
                       </li>
-                      <li class='mkv12--slide'>
-                        <div class="mkv12--slide__body">
-                          <div class="mkv12--questions__header">
-                            <h4 class="mkv12--slide__title">` + options.questions.question2.title + `</h4>
+                      <li class='mkv13--slide'>
+                        <div class="mkv13--slide__body">
+                          <div class="mkv13--questions__header">
+                            <h4 class="mkv13--slide__title">` + options.questions.question2.title + `</h4>
                           </div>
-                          <div class="mkv12--questions__content">
-                            <ul class="mkv12--questions__list">
-                              <li class="mkv12--questions__list_li">
+                          <div class="mkv13--questions__content">
+                            <ul class="mkv13--questions__list">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p2_options_1" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_1" value="` + options.questions.question2.options[0] + `" name="pregunta_2" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p2_options_1" value="` + options.questions.question2.options[0] + `" name="pregunta_2" />
                                   <span>` + options.questions.question2.options[0] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p2_options_2" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_2" value="` + options.questions.question2.options[1] + `" name="pregunta_2" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p2_options_2" value="` + options.questions.question2.options[1] + `" name="pregunta_2" />
                                   <span>` + options.questions.question2.options[1] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p2_options_3" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_3" value="` + options.questions.question2.options[2] + `" name="pregunta_2" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p2_options_3" value="` + options.questions.question2.options[2] + `" name="pregunta_2" />
                                   <span>` + options.questions.question2.options[2] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p2_options_4" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_4" value="` + options.questions.question2.options[3] + `" name="pregunta_2" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p2_options_4" value="` + options.questions.question2.options[3] + `" name="pregunta_2" />
                                   <span>` + options.questions.question2.options[3] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p2_options_5" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p2_options_5" value="` + options.questions.question2.options[4] + `" name="pregunta_2" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p2_options_5" value="` + options.questions.question2.options[4] + `" name="pregunta_2" />
                                   <span>` + options.questions.question2.options[4] + `</span>
                                 </label>
                               </li>
                             </ul>
                           </div>
-                          <div class="mkv12--slide__btn_row">
-                            <button class="mkv12--slide__btn_back mkv12--slide__btn" data-carousel-btn="prev">Atrás</button>
+                          <div class="mkv13--slide__btn_row">
+                            <button class="mkv13--slide__btn_back mkv13--slide__btn" data-carousel-btn="prev">Atrás</button>
                           </div>
                         </div>
                       </li>
-                      <li class='mkv12--slide'>
-                        <div class="mkv12--slide__body">
-                          <div class="mkv12--questions__header">
-                            <h4 class="mkv12--slide__title">` + options.questions.question3.title + `</h4>
+                      <li class='mkv13--slide'>
+                        <div class="mkv13--slide__body">
+                          <div class="mkv13--questions__header">
+                            <h4 class="mkv13--slide__title">` + options.questions.question3.title + `</h4>
                           </div>
-                          <div class="mkv12--questions__content">
-                            <ul class="mkv12--questions__list">
-                              <li class="mkv12--questions__list_li">
+                          <div class="mkv13--questions__content">
+                            <ul class="mkv13--questions__list">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p3_options_1" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_1" value="` + options.questions.question3.options[0] + `" name="pregunta_3" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p3_options_1" value="` + options.questions.question3.options[0] + `" name="pregunta_3" />
                                   <span>` + options.questions.question3.options[0] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p3_options_2" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_2" value="` + options.questions.question3.options[1] + `" name="pregunta_3" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p3_options_2" value="` + options.questions.question3.options[1] + `" name="pregunta_3" />
                                   <span>` + options.questions.question3.options[1] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p3_options_3" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_3" value="` + options.questions.question3.options[2] + `" name="pregunta_3" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p3_options_3" value="` + options.questions.question3.options[2] + `" name="pregunta_3" />
                                   <span>` + options.questions.question3.options[2] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p3_options_4" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_4" value="` + options.questions.question3.options[3] + `" name="pregunta_3" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p3_options_4" value="` + options.questions.question3.options[3] + `" name="pregunta_3" />
                                   <span>` + options.questions.question3.options[3] + `</span>
                                 </label>
                               </li>
-                              <li class="mkv12--questions__list_li">
+                              <li class="mkv13--questions__list_li">
                                 <label for="p3_options_5" class="mk-radio--btn">
-                                  <input type="radio" class="mkv12--questions__radio" id="p3_options_5" value="` + options.questions.question3.options[4] + `" name="pregunta_3" />
+                                  <input type="radio" class="mkv13--questions__radio" id="p3_options_5" value="` + options.questions.question3.options[4] + `" name="pregunta_3" />
                                   <span>` + options.questions.question3.options[4] + `</span>
                                 </label>
                               </li>
                             </ul>
                           </div>
-                          <div class="mkv12--slide__btn_row">
-                            <button class="mkv12--slide__btn_back mkv12--slide__btn" data-carousel-btn="prev">Atrás</button>
+                          <div class="mkv13--slide__btn_row">
+                            <button class="mkv13--slide__btn_back mkv13--slide__btn" data-carousel-btn="prev">Atrás</button>
                           </div>
                         </div>
                       </li>
                     </ul>
                   </div>
-                  <div class="mkv12--questions__loading"></div>
+                  <div class="mkv13--questions__loading"></div>
                 </div>
-                <div class="mkv12--result" id="mkv12--result"><div class="mkv12--result__row">
-                  <div class="mkv12--result__content">
-                    <figure class="mkv12--result__figure">
+                <div class="mkv13--result" id="mkv13--result"><div class="mkv13--result__row">
+                  <div class="mkv13--result__content">
+                    <figure class="mkv13--result__figure">
                       <picture>
                         <source srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" media="(min-width: 600px)" />
-                        <img srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
+                        <img class="mkv13--popup__image" srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
                       </picture>
                     </figure>
-                    <div class="mkv12--result__text">
-                      <h5 class="mkv12--popup__left_title mkv12--result__title">` + options.titleResult + `</h5>
+                    <div class="mkv13--result__text">
+                      <h5 class="mkv13--popup__left_title mkv13--result__title">` + options.titleResult + `</h5>
                       <div>
-                        <div class="mkv12--popup__btnsinline">
-                          <a class="mkv12--popup__btn  mkv12--result__btn" id="mkv12--popup__enviar" target="_blank" title="` + options.textBtnResult + `">` + options.textBtnResult + `</a>
-                          <a class="mkv12--popup__link" id="mkv12--result__atras" target="_blank" title="No, gracias.">Atrás</a>
+                        <div class="mkv13--popup__btnsinline">
+                          <a class="mkv13--popup__btn  mkv13--result__btn" id="mkv13--popup__enviar" target="_blank" title="` + options.textBtnResult + `">` + options.textBtnResult + `</a>
+                          <a class="mkv13--popup__link" id="mkv13--result__atras" target="_blank" title="No, gracias.">Atrás</a>
                         </div>
                       </div>
                     </div>
@@ -4691,11 +4691,11 @@
               </div>
               </div></div>`;
 
-          var close = popup.querySelector('.mkv12--popup__close');
-          var saltar = popup.querySelector('.mkv12--slide__saltar');
-          var btnEnviar = popup.querySelector('#mkv12--popup__enviar');
-          var result = popup.querySelector('#mkv12--result');
-          var resultBack = popup.querySelector('#mkv12--result__atras');
+          var close = popup.querySelector('.mkv13--popup__close');
+          var saltar = popup.querySelector('.mkv13--slide__saltar');
+          var btnEnviar = popup.querySelector('#mkv13--popup__enviar');
+          var result = popup.querySelector('#mkv13--result');
+          var resultBack = popup.querySelector('#mkv13--result__atras');
           var bullets = popup.querySelectorAll('ul.mk-bullets li');
 
           overlay.appendChild(popup);
@@ -4705,7 +4705,7 @@
           this.events(close);
 
           const buttons = document.querySelectorAll('[data-carousel-btn]');
-          var matches = document.querySelectorAll('.mkv12--questions__radio');
+          var matches = document.querySelectorAll('.mkv13--questions__radio');
 
           matches.forEach(match => {
             match.onchange = function () {
@@ -4714,6 +4714,10 @@
               let newIndex = [...slides.children].indexOf(activeSlide) + 1;
 
               displayLoading();
+
+              let idRadio = match.getAttribute('id');
+              let valueRadio = match.getAttribute('value');
+              let nameRadio = match.getAttribute('name');
 
               if (newIndex < 0) {
                 newIndex = slides.children.length - 1;
@@ -4799,7 +4803,7 @@
 
         popupJS.prototype.overlay = function () {
           var overlay = document.createElement('div');
-          overlay.classList.add('mkv12--overlay');
+          overlay.classList.add('mkv13--overlay');
           return overlay;
         };
 
@@ -4858,13 +4862,13 @@
       popup.show();
 
       //Boton Entendido
-      // document.getElementById("mkv12--popup__entendido").onclick = function () {
+      // document.getElementById("mkv13--popup__entendido").onclick = function () {
       //   popUpBte();
       //   popUpBtn();
       // };
 
       function displayLoading() {
-        let loading = document.querySelector('.mkv12--questions__loading');
+        let loading = document.querySelector('.mkv13--questions__loading');
         loading.style.display = "block";
         setTimeout(() => {
           loading.style.display = "none";
@@ -4888,7 +4892,7 @@
       }
 
       //Boton Cerrar
-      document.getElementById("mkv12--popup__cerrar").onclick = function () {
+      document.getElementById("mkv13--popup__cerrar").onclick = function () {
         popUpClose();
       };
 

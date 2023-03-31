@@ -1,4 +1,4 @@
-<div id="action_insert_16553066210341232">
+<div id="action_insert_165530662103492034">
   <style>
     @charset "UTF-8";
 
@@ -595,7 +595,7 @@
       right: 16px;
       width: 16px;
       height: 16px;
-      z-index: 10
+      z-index: 30
     }
 
     .mkv13--popup__close:after,
@@ -1593,9 +1593,6 @@
                               </li>
                             </ul>
                           </div>
-                          <div class="mkv13--slide__btn_row">
-                            <button class="mkv13--slide__btn_back mkv13--slide__btn" data-carousel-btn="prev">Atrás</button>
-                          </div>
                         </div>
                       </li>
                       <li class='mkv13--slide'>
@@ -1637,9 +1634,6 @@
                               </li>
                             </ul>
                           </div>
-                          <div class="mkv13--slide__btn_row">
-                            <button class="mkv13--slide__btn_back mkv13--slide__btn" data-carousel-btn="prev">Atrás</button>
-                          </div>
                         </div>
                       </li>
                     </ul>
@@ -1659,7 +1653,6 @@
                       <div>
                         <div class="mkv13--popup__btnsinline">
                           <a class="mkv13--popup__btn  mkv13--result__btn" id="mkv13--popup__enviar" target="_blank" title="` + options.textBtnResult + `">` + options.textBtnResult + `</a>
-                          <a class="mkv13--popup__link" id="mkv13--result__atras" target="_blank" title="No, gracias.">Atrás</a>
                         </div>
                       </div>
                     </div>
@@ -1691,6 +1684,10 @@
             let newIndex = [...slides.children].indexOf(activeSlide) + 1;
 
             displayLoading();
+
+            let idRadio = match.getAttribute('id');
+            let valueRadio = match.getAttribute('value');
+            let nameRadio = match.getAttribute('name');
 
             if (newIndex < 0) {
               newIndex = slides.children.length - 1;
