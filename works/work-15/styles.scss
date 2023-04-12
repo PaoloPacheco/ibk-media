@@ -34,6 +34,17 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
   }
 }
 
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  background-color: transparent;
+  color: inherit;
+  border-width: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
 .mk {
   &-bold {
     font-weight: 700;

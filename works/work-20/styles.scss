@@ -216,13 +216,13 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
             padding: 0 16px;
             line-height: 32px;
             border-radius: 16px;
-            background-color: var(--white);
+            background-color: #ffffff;
             font-size: 16px;
             min-width: 206px;
 
             &:hover {
               background-color: var(--primary);
-              color: var(--white);
+              color: #ffffff;
             }
 
             @include screen-min(680px) {
@@ -236,7 +236,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
           & ~ {
             span {
               background-color: var(--primary);
-              color: var(--white);
+              color: #ffffff;
             }
           }
         }
@@ -263,7 +263,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
     &--btn {
       border: 0;
-      color: var(--white);
+      color: #ffffff;
       font-family: 'Omnes';
       font-size: 16px;
       letter-spacing: normal;
@@ -341,7 +341,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
       &__left {
         &_content {
-          background-color: var(--white);
+          background-color: #ffffff;
           padding: 48px 24px 24px;
 
           @include screen-min(680px) {
@@ -625,7 +625,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
       &__btn {
         border: 0;
-        color: var(--white);
+        color: #ffffff;
         font-family: 'Omnes', sans-serif;
         font-size: 16px;
         letter-spacing: normal;
@@ -892,7 +892,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
       left: 0;
       right: 0;
       z-index: 20;
-      background-color: var(--white);
+      background-color: #ffffff;
 
       &__row {
         width: 100%;
