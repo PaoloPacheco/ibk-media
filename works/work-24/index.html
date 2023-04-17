@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -4442,27 +4442,31 @@
 
   <style id="fonts">
     @font-face {
-      font-family: 'Geometria';
-      src: url('../fonts/Geometria-Medium.woff2') format('woff2'),
-        url('../fonts/Geometria-Medium.woff') format('woff'),
-        url('../fonts/Geometria-Medium.svg#Geometria-Medium') format('svg');
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-regular-webfont.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-medium-webfont.woff2') format('woff2');
       font-weight: 500;
       font-style: normal;
       font-display: swap;
     }
 
     @font-face {
-      font-family: 'Geometria';
-      src: url('../fonts/Geometria.woff2') format('woff2'),
-        url('../fonts/Geometria.woff') format('woff'),
-        url('../fonts/Geometria.svg#Geometria') format('svg');
-      font-weight: normal;
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-semibold-webfont.woff2') format('woff2');
+      font-weight: 600;
       font-style: normal;
       font-display: swap;
     }
 
     body {
-      font-family: 'Geometria';
+      font-family: 'Omnes';
     }
   </style>
 
@@ -4471,16 +4475,7 @@
 
 <body>
   <div id="action_insert_16553066210341232">
-    <div class="mkv17--demo">
-      <div class="mkv17--demo__list">
-        <div class="mkv17--demo__item"></div>
-        <div class="mkv17--demo__item"></div>
-        <div class="mkv17--demo__item"></div>
-        <div class="mkv17--demo__item"></div>
-        <div class="mkv17--demo__item"></div>
-        <div class="mkv17--demo__item"></div>
-      </div>
-    </div>
+
     <script>
       var popupJS = /** @class */ (function () {
         function popupJS(options) {
@@ -4491,32 +4486,6 @@
           let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
           return stringClear;
         }
-        function createProgressbar(id, duration, callback) {
-          var progressbar = document.getElementById(id);
-          progressbar.className = 'progressbar';
-
-          var progressbarinner = document.createElement('div');
-          progressbarinner.className = 'inner';
-
-          progressbarinner.style.animationDuration = duration;
-
-          if (typeof (callback) === 'function') {
-            progressbarinner.addEventListener('animationend', callback);
-          }
-
-          progressbar.appendChild(progressbarinner);
-
-          progressbarinner.style.animationPlayState = 'running';
-        }
-        function minimize(status) {
-          const mkv17Overlay = document.querySelector('.mkv17--overlay');
-
-          if (status === 1) {
-            mkv17Overlay.classList.add('static');
-          } else if (status === 0) {
-            mkv17Overlay.classList.remove('static');
-          }
-        };
         popupJS.prototype.events = function (close) {
           var body = document.querySelector('body') || document.body;
           body.classList.add('tg');
@@ -4525,63 +4494,110 @@
             e.preventDefault();
             overlay.classList.add('animate__fadeOut');
             overlay.remove();
-            console.log('close test');
           });
         };
+
         popupJS.prototype.show = function () {
           var overlay = this.elementOverlay;
           var popup = document.createElement('div');
-          popup.classList.add('mkv17--popup');
-          popup.innerHTML = "\n    <div class=\"mkv17--popup__wrapper\">\n     <div class=\"mkv17--popup__actions\">\n    <div class=\"mkv17--popup__close\" id=\"mkv17--popup__cerrar\"></div>\n    </div>\n    <div class=\"mkv17--popup__section\">\n    <div class=\"mkv17--popup__body\">\n    <div class=\"mkv17--popup__title\">".concat(options.title, "</div>\n      <div class=\"mkv17--popup__content\">").concat(options.content, "</div>\n    </div>\n    <div class=\"mkv17--popup__header\">\n    <div class=\"mkv17--popup__picture_content\">\n    <div class=\"mkv17--popup__profile_content\">    <picture>\n  <source srcset=\"").concat(options.profilrDesktop1x, ", ").concat(options.profilrDesktop2x, " 2x\" media=\"(min-width: 600px)\">\n        <img class=\"mkv17--popup__image_profile\" srcset=\"").concat(options.profilrDesktop1x, ", ").concat(options.profilrDesktop2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n  </picture>\n  </div>\n  </div>\n    </div>\n    </div>\n    <div id='progressbar1'></div>\n    </div>");
+          popup.setAttribute('id', 'mkv18Popup');
+          popup.classList.add('mkv18--account');
+          popup.innerHTML = `<div class='mkv18--account__container'>
+              <div class="mkv18--account__content">
+                <div class="mkv18--account__col">
+                  <div class="mkv18--account__item">
+                    <div class="mkv18--account__row">
+                      <div class="mkv18--account__header">
+                        <span class="mkv18--account__number">1</span>
+                      </div>
+                      <div class="mkv18--account__body">
+                        <h3 class="mkv18--account__title mk-semibold">`+ options.items.item1.title + `</h3>
+                        <p class="mkv18--account__description">`+ options.items.item1.description + `</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mkv18--account__item">
+                    <div class="mkv18--account__row">
+                      <div class="mkv18--account__header">
+                        <span class="mkv18--account__number">2</span>
+                      </div>
+                      <div class="mkv18--account__body">
+                        <h3 class="mkv18--account__title">`+ options.items.item2.title + `</h3>
+                        <p class="mkv18--account__description">`+ options.items.item2.description + `</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>`;
 
-          var close = popup.querySelector('.mkv17--popup__close');
-          this.events(close);
+          var close = popup.querySelector('.mkv18--popup__close');
+          var saltar = popup.querySelector('.mkv18--slide__saltar');
+          var btnEnviar = popup.querySelector('#mkv18--popup__enviar');
+          var result = popup.querySelector('#mkv18--result');
+          var resultBack = popup.querySelector('#mkv18--result__atras');
+          var bullets = popup.querySelectorAll('ul.mk-bullets li');
+
           overlay.appendChild(popup);
           document.body.appendChild(overlay);
 
-          // var close2 = popup.querySelector('.mkv17--popup__btn');
-          // this.events(close2);
-          overlay.appendChild(popup);
-          document.body.appendChild(overlay);
-
-
-
-          var tiempo = '10s';
-          const progressbar = document.querySelector('#progressbar1');
-          createProgressbar('progressbar1', tiempo, function () {
-            // console.log('10s progressbar is finished!');
-            // progressbar.remove();
-            minimize(1);
-          });
+          // this.events(btnEnviar);
+          // this.events(close);
         };
+
         popupJS.prototype.overlay = function () {
           var overlay = document.createElement('div');
-          overlay.classList.add('mkv17--overlay');
+          overlay.classList.add('mkv18--overlay');
           return overlay;
         };
 
         return popupJS;
       }());
+
       var options = {
-        title: '<span class="mk-semibold">Cuenta Súper Tasa</span>',
-        content: '¡Aprovecha! Ten toda la disponibilidad de tu dinero mientras crece un 5.5%.',
+        title: '¡Felicidades!',
+        titleResult: '¡Gracias por tus<br> respuestas !',
+        description: 'Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:',
+        imgMain1x: 'https://paolopacheco.github.io/ibk-media/images/message.png',
+        imgMain2x: 'https://paolopacheco.github.io/ibk-media/images/message.png',
         link: {
           url: '#',
-          text: 'Regístrala aquí',
+          text: 'Entendido',
           target: '_blank',
         },
-        imgDesktop1x: 'https://paolopacheco.github.io/ibk-media/images/fondo_modal_small.svg',
-        imgDesktop2x: 'https://paolopacheco.github.io/ibk-media/images/fondo_modal_small.svg',
-        imgMobile1x: 'https://paolopacheco.github.io/ibk-media/images/fondo_modal_small.svg',
-        imgMobile2x: 'https://paolopacheco.github.io/ibk-media/images/fondo_modal_small.svg',
-        profilrDesktop1x: 'https://paolopacheco.github.io/ibk-media/images/cuenta-super-tasa.png',
-        profilrDesktop2x: 'https://paolopacheco.github.io/ibk-media/images/cuenta-super-tasa.png',
+        textBtnResult: 'Enviar',
+        items: {
+          item1: {
+            title: 'Actualizarás tus datos',
+            description: 'Validarás tu DOC de Identidad (este será tu nuevo usuario), tu nombre completo, celular y correo vigente.',
+          },
+          item2: {
+            title: 'Crearás tu nueva contraseña',
+            description: 'Esta reemplazará tu actual clave web de 4 dígitos para iniciar sesión',
+          },
+        },
+        imgResult1x: 'https://paolopacheco.github.io/ibk-media/images/ilustracion-check.svg',
+        imgResult2x: 'https://paolopacheco.github.io/ibk-media/images/ilustracion-check.svg',
       };
       var popup = new popupJS(options);
+
       popup.show();
 
+      //Boton Entendido
+      // document.getElementById("mkv18--popup__entendido").onclick = function () {
+      //   popUpBte();
+      //   popUpBtn();
+      // };
+
+      function displayLoading() {
+        let loading = document.querySelector('.mkv18--questions__loading');
+        loading.style.display = "block";
+        setTimeout(() => {
+          loading.style.display = "none";
+        }, 500);
+      };
+
       function popUpBte() {
-        console.log("-> popUpBte");
         cordova.InAppBrowser.open("https://interbank.pe/100-digital?mcid=app-empresas:referral:2022-12_app_digitalizacion_conversion:bbdd:popup:1", "_system", "location=yes");
       }
 
@@ -4591,16 +4607,16 @@
             action: {
               action: "click",
               category: "campañaDigitalDiciembre - app - yaParticipa",
-              label: "Regístrala aquí"
+              label: "Enviar"
             }
           }
         });
       }
 
       //Boton Cerrar
-      document.getElementById("mkv17--popup__cerrar").onclick = function () {
-        popUpClose();
-      };
+      // document.getElementById("mkv18--popup__cerrar").onclick = function () {
+      //   popUpClose();
+      // };
 
       function popUpClose() {
         _satellite.track("trackAction", {
