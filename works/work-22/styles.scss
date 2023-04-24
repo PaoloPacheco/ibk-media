@@ -99,6 +99,7 @@
       }
 
       &__wrapper {
+        position: relative;
         border-radius: 8px;
         background: #fff;
         box-shadow: 0 4px 10px 0 #9b9b9b;
@@ -114,11 +115,23 @@
       &__actions {
         position: absolute;
         display: flex;
-        justify-content: end;
-        top: 8px;
-        right: 8px;
-        left: 8px;
+        justify-content: space-between;
         z-index: 10;
+        padding: 8px 8px 4px;
+        width: 100%;
+
+        &_btns {
+          display: flex;
+        }
+      }
+
+      &__excerpt {
+        &_text {
+          color: var(--secondary);
+          font-size: 14px;
+          font-weight: 500;
+          display: none;
+        }
       }
 
       &__min,
@@ -336,6 +349,14 @@
 
         .mkv16--popup__max {
           display: inline-block;
+        }
+
+        .mkv16--popup__actions {
+          background-color: #fff;
+        }
+
+        .mkv16--popup__excerpt_text {
+          display: inline;
         }
       }
     }
