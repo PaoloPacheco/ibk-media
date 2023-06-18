@@ -10,7 +10,7 @@
   --sky: #ccd7ed;
   --semiwhite: #f3f6fb;
   --skydark: #6688ca;
-  --dark: #0f191e;
+  --dark: #404040;
   --darkrgb: rgb(15, 25, 30);
   --blackrgb: rgb(15, 25, 30);
 }
@@ -60,7 +60,7 @@
         &:before {
           display: flex;
           position: absolute;
-          content: "·";
+          content: '·';
           font-size: 30px;
           line-height: 20px;
           left: 6px;
@@ -70,7 +70,7 @@
     }
   }
 
-  &v4 {
+  &v27 {
     &--overlay {
       background-color: rgba(0, 0, 0, 0.4);
       position: fixed;
@@ -95,249 +95,256 @@
       left: 0;
       right: 0;
       padding: 16px;
+    }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        border: none;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    &--wrapper {
+      overflow: hidden;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 4px 10px 0 #9b9b9b;
+
+      &__content {
+        padding: 24px;
+
+        @include screen-min(480px) {
+          padding: 32px;
+        }
+      }
+    }
+
+    &--grid {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    &--header {
+      position: relative;
+      width: 100%;
+
+      &__title {
+        @include screen-min(560px) {
+          padding-left: 52px;
+          padding-right: 52px;
+        }
+      }
+    }
+
+    &--close {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      z-index: 10;
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        background: var(--white);
+        margin-bottom: 4px;
+        border-radius: 2px;
+        width: 28px;
+        height: 2px;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        cursor: pointer;
+
+        @include screen-min(480px) {
+          background: var(--dark);
+        }
       }
 
-      &__wrapper {
-        overflow: hidden;
-        width: 100%;
-        max-width: 720px;
-        border-radius: 8px;
-        background: #fff;
-        box-shadow: 0 4px 10px 0 #9b9b9b;
+      &::before {
+        transform: rotate(45deg) translate(-1px, 18px);
+      }
+
+      &::after {
+        transform: rotate(-45deg) translate(-18px, -1px);
+      }
+
+      &__row {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    &--body {
+      width: 100%;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @include screen-min(560px) {
+        padding: 40px 32px;
       }
 
       &__grid {
-        display: flex;
-        flex-direction: column;
-        position: relative;
+        display: grid;
+        grid-template-columns: 2fr 5fr;
+      }
+    }
 
-        @include screen-min(480px) {
-          flex-direction: row;
-        }
+    &--title {
+      color: #0f191e;
+      width: 100%;
+      font-family: 'Geometria';
+      text-align: center;
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 12px;
+      font-weight: 500;
+
+      &__magenta {
+        color: #eb0045;
       }
 
-      &__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-
-        @include screen-min(480px) {
-          flex: 0 0 1;
-          width: 50%;
-          max-width: 50%;
-          min-width: 50%;
-        }
+      @include screen-min(560px) {
+        font-size: 28px;
+        line-height: 32px;
       }
 
-      &__close {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        width: 16px;
-        height: 16px;
-        z-index: 10;
-
-        &::before,
-        &::after {
-          content: "";
-          display: block;
-          background: var(--white);
-          margin-bottom: 4px;
-          border-radius: 2px;
-          width: 20px;
-          height: 2px;
-          position: absolute;
-          left: 50%;
-          top: 0;
-          cursor: pointer;
-
-          @include screen-min(480px) {
-            background: var(--gray);
-          }
-        }
-
-        &::before {
-          transform: rotate(45deg) translate(-1px, 10px);
-        }
-
-        &::after {
-          transform: rotate(-45deg) translate(-10px, -1px);
-        }
-
-        @include screen-min(480px) {
-          top: 32px;
-          right: 32px;
-        }
+      @include screen-min(767px) {
+        margin-bottom: 24px;
       }
+    }
 
-      &__body {
-        width: 100%;
-        padding: 32px 24px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    &--content {
+      color: #333;
+      font-size: 14px;
+      font-family: 'Geometria';
+      letter-spacing: -0.1px;
+      line-height: 1.35;
+      margin-bottom: 32px;
 
-        @include screen-min(560px) {
-          padding: 40px 32px;
-        }
-      }
-
-      &__title {
-        color: var(--blue);
-        width: 100%;
-        font-family: "Geometria";
-        line-height: 1.15;
-        text-align: center;
-        font-size: 18px;
-        margin-bottom: 12px;
-
-        @include screen-min(560px) {
-          margin-bottom: 16px;
-          font-size: 22px;
-        }
-
-        @include screen-min(767px) {
-          margin-bottom: 24px;
-          font-size: 26px;
-        }
-      }
-
-      &__content {
-        color: #333;
-        font-size: 14px;
-        font-family: "Geometria";
-        letter-spacing: -0.1px;
-        line-height: 1.35;
-        text-align: center;
-        align-content: center;
-        margin-bottom: 32px;
-
-        @include screen-min(560px) {
-          margin-bottom: 40px;
-          font-size: 16px;
-        }
-
-        @include screen-min(767px) {
-          margin-bottom: 48px;
-          font-size: 16px;
-        }
-
-        strong {
-          font-weight: 600;
-        }
-      }
-
-      &__btnsinline {
-        display: flex;
-        flex-direction: column;
-
-        @include screen-min(767px) {
-          align-items: center;
-          flex-direction: row-reverse;
-        }
-      }
-
-      &__btn {
-        color: var(--white);
-        font-family: "Geometria";
+      @include screen-min(560px) {
+        margin-bottom: 40px;
         font-size: 16px;
+      }
+
+      @include screen-min(767px) {
+        margin-bottom: 48px;
+        font-size: 16px;
+      }
+
+      strong {
+        font-weight: 600;
+      }
+    }
+
+    &--btnsinline {
+      display: flex;
+      flex-direction: column;
+
+      @include screen-min(767px) {
+        align-items: center;
+        flex-direction: row-reverse;
+      }
+    }
+
+    &--btn {
+      color: var(--white);
+      font-family: 'Geometria';
+      font-size: 16px;
+      letter-spacing: normal;
+      text-align: center;
+      text-decoration: none;
+      line-height: 40px;
+      border-radius: 20px;
+      background-color: var(--primary);
+      display: inline-flex;
+      white-space: nowrap;
+      padding: 0 28px;
+      font-weight: 500;
+
+      @include screen-min(767px) {
+        padding: 0 28px;
+        border-radius: 24px;
+        line-height: 48px;
+      }
+
+      @include screen-max(766px) {
+        margin-bottom: 12px;
+      }
+
+      &_white {
+        color: var(--primary);
+        font-family: 'Geometria';
+        font-size: 16px;
+        white-space: nowrap;
         letter-spacing: normal;
         text-align: center;
         text-decoration: none;
         line-height: 40px;
         border-radius: 20px;
-        background-color: var(--primary);
+        background-color: transparent;
         display: inline-flex;
-        white-space: nowrap;
-        padding: 0 28px;
+        padding: 0 24px;
         font-weight: 500;
 
-        @include screen-min(767px) {
-          padding: 0 28px;
+        @include screen-min(480px) {
+          padding: 0 24px;
           border-radius: 24px;
           line-height: 48px;
         }
+      }
+    }
 
-        @include screen-max(766px) {
-          margin-bottom: 12px;
-        }
-
-        &_white {
-          color: var(--primary);
-          font-family: "Geometria";
-          font-size: 16px;
-          white-space: nowrap;
-          letter-spacing: normal;
-          text-align: center;
-          text-decoration: none;
-          line-height: 40px;
-          border-radius: 20px;
-          background-color: transparent;
-          display: inline-flex;
-          padding: 0 24px;
-          font-weight: 500;
-
-          @include screen-min(480px) {
-            padding: 0 24px;
-            border-radius: 24px;
-            line-height: 48px;
-          }
-        }
+    &--picture {
+      @include screen-min(480px) {
+        height: 100%;
+        width: 100%;
+        display: flex;
       }
 
-      &__picture {
+      &_content {
+        width: 100%;
+        position: relative;
+
         @include screen-min(480px) {
           height: 100%;
-          width: 100%;
           display: flex;
         }
+      }
+    }
 
-        &_content {
-          width: 100%;
-          position: relative;
+    &--profile {
+      &_content {
+        width: 100%;
+        position: relative;
+      }
+    }
 
-          @include screen-min(480px) {
-            height: 100%;
-            display: flex;
-          }
+    &--image {
+      &_background {
+        width: 100%;
+        display: block;
+
+        @include screen-min(480px) {
+          object-fit: cover;
         }
       }
 
-      &__profile {
-        &_content {
-          width: 100%;
-          position: relative;
-        }
-      }
+      &_profile {
+        position: absolute;
+        transform: translateX(-50%);
+        width: 64px;
+        left: 50%;
+        bottom: 0;
 
-      &__image {
-        &_background {
-          width: 100%;
-          display: block;
-
-          @include screen-min(480px) {
-            object-fit: cover;
-          }
-        }
-
-        &_profile {
-          position: absolute;
-          transform: translateX(-50%);
-          width: 64px;
-          left: 50%;
-          bottom: 0;
-
-          @include screen-min(480px) {
-            width: 90px;
-          }
+        @include screen-min(480px) {
+          width: 90px;
         }
       }
     }
