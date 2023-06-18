@@ -4512,21 +4512,23 @@
           '<div class="mkv27--body__left">' +
           '<div class="mkv27--picture__content">' +
           '<picture class="mkv27--picture">' +
-          '<source srcset="' + options.img1x + ', ' + options.img2x + ' 2x" media="(min-width: 480px)">' +
-          '<img class="mkv27--image__background" srcset="' + options.img1x + ', ' + options.img2x + ' 2x" alt="' + clearHTMLTags(options.title) + '">' +
+          '<source srcset="' + options.img1x + '" media="(max-width: 480px)">' +
+          '<img class="mkv27--image__background" src="' + options.img2x + '" alt="' + clearHTMLTags(options.title) + '">' +
           '</picture>' +
           '</div>' +
           '</div>' +
           '<div class="mkv27--body__right">' +
           '<div class="mkv27--body__text">' +
-
           '<div class="mkv27--content">' + options.content + '</div>' +
           '<div class="mkv27--btnsinline">' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '<div class="mkv27--footer">' +
+          '<div class="mkv27--footer__row">' +
           '<a class="mkv27--btn" id="mkv27--entendido" href="' + options.link.url + '" target="' + options.link.target + '" title="' + options.link.text + '">' + options.link.text + '</a>' +
-          '<a class="mkv27--btn__white" id="mkv27--no" href="' + options.link.url + '" target="' + options.link.target + '" title="' + options.link.text + '">' + options.link.text + '</a>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
           '</div>' +
           '</div>' +
           '</div>' +
@@ -4565,7 +4567,7 @@
       copy: '*Haz clic en el botón “Entiendo” para continuar.',
       link: {
         url: '#',
-        text: 'Ábrela aquí',
+        text: 'Entendido',
         target: '_blank',
       },
       img1x: 'https://paolopacheco.github.io/ibk-media/images/derivacion-clientes-Izipay-1x.png',
