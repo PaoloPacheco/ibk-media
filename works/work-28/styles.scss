@@ -46,33 +46,7 @@
     }
   }
 
-  &v27 {
-    &--overlay {
-      background-color: rgba(0, 0, 0, 0.4);
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 99;
-    }
-
-    &--popup {
-      position: fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 16px;
-    }
-
+  &v28 {
     * {
       box-sizing: border-box;
       margin: 0;
@@ -83,13 +57,10 @@
     &--wrapper {
       overflow: hidden;
       width: 100%;
-      max-width: 310px;
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: 0 4px 10px 0 rgba($color: #000000, $alpha: 0.15);
+      border-radius: 5px;
+      background: #fbfbfb;
 
       @include screen-min(480px) {
-        max-width: 600px;
       }
 
       &__content {
@@ -251,7 +222,7 @@
     }
 
     &--btn {
-      background-color: var(--primary);
+      background-color: #ff4242;
       color: var(--white);
       font-family: 'Geometria';
       font-size: 14px;
