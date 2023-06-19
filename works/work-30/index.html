@@ -4442,6 +4442,7 @@
 
       popupJS.prototype.show = function () {
         var overlay = this.elementOverlay;
+        var button = this.elementButton;
         var popup = document.createElement('div');
         var list = '';
 
@@ -4500,6 +4501,10 @@
           </div>
         </div>`;
 
+        button.innerHTML = `<div class="mkv30--button">
+            <div class="mkv30--button__content"></div>
+          </div>`;
+
         var close = popup.querySelector('.mkv30--close');
         this.events(close);
 
@@ -4508,6 +4513,7 @@
 
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
+        document.body.appendChild(button);
       };
 
       popupJS.prototype.overlay = function () {
@@ -4525,6 +4531,7 @@
       function popupJS(options) {
         options.link.target = options.link.target || '_self';
         this.elementOverlay = this.overlay();
+        this.elementButton = this.button();
       }
 
       function clearHTMLTags(string) {
