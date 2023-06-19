@@ -1,0 +1,356 @@
+:root {
+  --primary: #05be50;
+  --secondary: #0039a6;
+  --blue: #2f4a9f;
+  --secondaryrgb: rgb(0, 57, 166);
+  --light: #fbfbfb;
+  --white: #fff;
+  --silver: #d9dadb;
+  --gray: #9b9b9b;
+  --sky: #ccd7ed;
+  --semiwhite: #f3f6fb;
+  --skydark: #6688ca;
+  --dark: #404040;
+  --darkrgb: rgb(15, 25, 30);
+  --blackrgb: rgb(15, 25, 30);
+}
+
+@mixin screen-max($max) {
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-min($min) {
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+.mk {
+  &-bold {
+    font-weight: 700;
+  }
+
+  &-semibold {
+    font-weight: 500;
+  }
+
+  &-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1066px;
+
+    @include screen-max(1023px) {
+      padding: 0 24px;
+    }
+  }
+
+  &v29 {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    &--wrapper {
+      overflow: hidden;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+
+      @include screen-min(480px) {
+        border-radius: 5px;
+      }
+
+      &__content {
+        padding: 24px 12px;
+
+        @include screen-min(481px) {
+          padding: 40px 64px;
+        }
+      }
+    }
+
+    &--header {
+      text-align: center;
+      margin-bottom: 24px;
+
+      @include screen-min(481px) {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+    }
+
+    &--title {
+      font-family: 'Geometria', sans-serif;
+      color: #2f4a9f;
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: -0.4px;
+      font-weight: 500;
+      margin-bottom: 20px;
+
+      @include screen-min(481px) {
+        margin-bottom: 12px;
+        font-size: 28px;
+        line-height: 32px;
+      }
+    }
+
+    &--text {
+      font-family: 'Geometria', sans-serif;
+      color: #2f4a9f;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 500;
+
+      &__semibold {
+        font-weight: 600;
+      }
+    }
+
+    &--body {
+    }
+
+    &--form {
+      &__row {
+        display: grid;
+        gap: 12px;
+
+        @include screen-min(481px) {
+          gap: 20px;
+          grid-template-columns: repeat(5, 1fr);
+        }
+      }
+    }
+
+    &--input {
+      display: grid;
+      gap: 6px;
+      grid-template-columns: 28px auto;
+
+      @include screen-min(481px) {
+        grid-template-columns: 100%;
+      }
+
+      &__bar {
+      }
+
+      &__label {
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+
+      &__radio {
+        position: absolute;
+        visibility: hidden;
+        left: 0;
+        top: 0;
+        z-index: -1;
+
+        &:checked {
+          & + .mkv29--input__span {
+            background-color: #cdf2dc;
+            color: #05be50;
+          }
+        }
+      }
+
+      &__span {
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 40px;
+        border-radius: 20px;
+        width: 100%;
+        background-color: #eceded;
+        font-family: 'Montserrat', sans-serif;
+        padding: 12px;
+        color: #3c3c3c;
+        font-size: 14px;
+        line-height: 20px;
+        transition: all 150ms ease-in-out;
+
+        @include screen-min(481px) {
+          font-weight: 600;
+          border-radius: 39px;
+          height: 58px;
+          line-height: 20px;
+        }
+      }
+    }
+
+    &--bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      @include screen-min(481px) {
+        flex-direction: column;
+        height: 28px;
+      }
+
+      &__line {
+        position: relative;
+        height: 100%;
+        width: 6px;
+
+        @include screen-min(481px) {
+          height: 6px;
+          width: 100%;
+        }
+      }
+
+      &__sign {
+        width: 28px;
+        height: 28px;
+        border-radius: 14px;
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include screen-min(481px) {
+          left: auto;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        &::after,
+        &::before {
+          position: absolute;
+          content: '';
+          background-color: var(--white);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 2px;
+        }
+
+        &::after {
+          width: 12px;
+          height: 4px;
+        }
+
+        &::before {
+          height: 12px;
+          width: 4px;
+        }
+      }
+    }
+
+    &--col {
+      &:nth-child(1) {
+        .mkv29--bar__line {
+          background-color: #05be50;
+        }
+
+        .mkv29--bar__sign {
+          background-color: #05be50;
+        }
+      }
+
+      &:nth-child(2) {
+        .mkv29--bar__line {
+          /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#05be50+0,37cb73+100 */
+          background: #05be50;
+          background: -moz-linear-gradient(
+            top,
+            #05be50 0%,
+            #37cb73 100%
+          ); /* FF3.6-15 */
+          background: -webkit-linear-gradient(top, #05be50 0%, #37cb73 100%);
+          background: linear-gradient(to bottom, #05be50 0%, #37cb73 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05be50', endColorstr='#37cb73',GradientType=0 );
+
+          @include screen-min(481px) {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#05be50+0,37cb73+100 */
+            background: #05be50;
+            background: -moz-linear-gradient(left, #05be50 0%, #37cb73 100%);
+            background: -webkit-linear-gradient(left, #05be50 0%, #37cb73 100%);
+            background: linear-gradient(to right, #05be50 0%, #37cb73 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05be50', endColorstr='#37cb73',GradientType=1 );
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        .mkv29--bar__line {
+          /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#37cb73+0,ffcd00+100 */
+          background: #37cb73;
+          background: -moz-linear-gradient(top, #37cb73 0%, #ffcd00 100%);
+          background: -webkit-linear-gradient(top, #37cb73 0%, #ffcd00 100%);
+          background: linear-gradient(to bottom, #37cb73 0%, #ffcd00 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#37cb73', endColorstr='#ffcd00',GradientType=0 );
+
+          @include screen-min(481px) {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#37cb73+0,ffcd00+100 */
+            background: #37cb73;
+            background: -moz-linear-gradient(left, #37cb73 0%, #ffcd00 100%);
+            background: -webkit-linear-gradient(left, #37cb73 0%, #ffcd00 100%);
+            background: linear-gradient(to right, #37cb73 0%, #ffcd00 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#37cb73', endColorstr='#ffcd00',GradientType=1 );
+          }
+        }
+      }
+
+      &:nth-child(4) {
+        .mkv29--bar__line {
+          /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffcd00+0,f99100+100 */
+          background: #ffcd00;
+          background: -moz-linear-gradient(top, #ffcd00 0%, #f99100 100%);
+          background: -webkit-linear-gradient(top, #ffcd00 0%, #f99100 100%);
+          background: linear-gradient(to bottom, #ffcd00 0%, #f99100 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcd00', endColorstr='#f99100',GradientType=0 );
+
+          @include screen-min(481px) {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffcd00+0,f99100+100 */
+            background: #ffcd00;
+            background: -moz-linear-gradient(left, #ffcd00 0%, #f99100 100%);
+            background: -webkit-linear-gradient(left, #ffcd00 0%, #f99100 100%);
+            background: linear-gradient(to right, #ffcd00 0%, #f99100 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcd00', endColorstr='#f99100',GradientType=1 );
+          }
+        }
+      }
+
+      &:nth-child(5) {
+        .mkv29--bar__line {
+          /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f99100+0,eb0045+100 */
+          background: #f99100;
+          background: -moz-linear-gradient(top, #f99100 0%, #eb0045 100%);
+          background: -webkit-linear-gradient(top, #f99100 0%, #eb0045 100%);
+          background: linear-gradient(to bottom, #f99100 0%, #eb0045 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99100', endColorstr='#eb0045',GradientType=0 );
+
+          @include screen-min(481px) {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f99100+0,eb0045+100 */
+            background: #f99100;
+            background: -moz-linear-gradient(left, #f99100 0%, #eb0045 100%);
+            background: -webkit-linear-gradient(left, #f99100 0%, #eb0045 100%);
+            background: linear-gradient(to right, #f99100 0%, #eb0045 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99100', endColorstr='#eb0045',GradientType=1 );
+          }
+        }
+
+        .mkv29--bar__sign {
+          background-color: #eb0245;
+          right: 0;
+
+          &::before {
+            display: none;
+          }
+
+          @include screen-max(480px) {
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

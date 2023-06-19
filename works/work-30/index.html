@@ -4377,6 +4377,12 @@
     }
   </style>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet">
+
   <style id="fonts">
     @font-face {
       font-family: 'Geometria';
@@ -4407,9 +4413,21 @@
 </head>
 
 <body>
-  <div id="action_insert_2355306621034132"></div>
+  <div id="action_insert_2355306621029209">
+    <div class="mk-container">
+
+    </div>
+  </div>
 
   <script>
+    var mkv30radios = document.querySelectorAll('.mkv30--input__radio');
+
+    mkv30radios.forEach(mkv30radio => {
+      mkv30radio.onchange = function () {
+        console.log(mkv30radio.value);
+      }
+    });
+
     var popupJS = /** @class */ (function () {
       popupJS.prototype.events = function (close) {
         var body = document.querySelector('body') || document.body;
@@ -4421,72 +4439,87 @@
           overlay.remove();
         });
       };
+
       popupJS.prototype.show = function () {
+        var overlay = this.elementOverlay;
+        var popup = document.createElement('div');
         var list = '';
 
         if (options.content.length) {
+          options.content.forEach((element, index) => {
+            let sign;
 
-          list = '<ul class="mkv27--list__decimal">';
+            if (index == 0 || index == 4) {
+              sign = '<div class="mkv30--bar__sign"></div>';
+            } else {
+              sign = '';
+            }
 
-          options.content.forEach(element => {
-            list += '<li>' + element + '</li>';
+            list += `<div class="mkv30--col">
+                      <div class="mkv30--input">
+                        <div class="mkv30--bar">
+                          <div class="mkv30--bar__line">` + sign + `</div>
+                        </div>
+                        <div class="mkv30--label">
+                          <label for="experiencia-` + index + `" class="mkv30--input__label">
+                            <input type="radio" class="mkv30--input__radio"
+                              name="experiencia" id="experiencia-` + index + `"
+                              value="` + element + `">
+                              <span class="mkv30--input__span">` + element + `</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>`;
           });
-
-          list += '</ul>';
         }
 
-        var overlay = this.elementOverlay;
-        var popup = document.createElement('div');
-        popup.classList.add('mkv27--popup');
-        popup.innerHTML = '<div class="mkv27--wrapper">' +
-          '<div class="mkv27--wrapper__content">' +
-          '<div class="mkv27--header">' +
-          '<div class="mkv27--close__row">' +
-          '<div class="mkv27--close" id="mkv27--cerrar"></div>' +
-          '</div>' +
-          '<div class="mkv27--header__title">' +
-          '<div class="mkv27--title">' + options.title + '</div>' +
-          '</div>' +
-          '</div>' +
-          '<div class="mkv27--body">' +
-          '<div class="mkv27--body__grid">' +
-          '<div class="mkv27--body__left">' +
-          '<div class="mkv27--picture__content">' +
-          '<picture class="mkv27--picture">' +
-          '<source srcset="' + options.img1x + '" media="(max-width: 480px)">' +
-          '<img class="mkv27--image__background" src="' + options.img2x + '" alt="' + clearHTMLTags(options.title) + '">' +
-          '</picture>' +
-          '</div>' +
-          '</div>' +
-          '<div class="mkv27--body__right">' +
-          '<div class="mkv27--body__text">' +
-          '<div class="mkv27--content">' + list + "" + options.copy + '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '<div class="mkv27--footer">' +
-          '<div class="mkv27--footer__row">' +
-          '<a class="mkv27--btn" id="mkv27--entendido" href="' + options.link.url + '" target="' + options.link.target + '" title="' + options.link.text + '">' + options.link.text + '</a>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>';
+        popup.classList.add('mkv30--popup');
+        popup.innerHTML = `<div class="mkv30--tooltip">
+          <div class="mkv30--tooltip__content">
+            <div class="mkv30--wrapper">
+              <div class="mkv30--wrapper__content">
+                <div class="mkv30--header">
+                  <div class="mkv30--close__row">
+                    <div class="mkv30--close" id="mkv30--cerrar"></div>
+                  </div>
+                  <h4 class="mkv30--title">` + options.title + `</h4>
+                  <p class="mkv30--text">` + options.excerpt + `</p>
+                </div>
+                <div class="mkv30--body">
+                  <form id="formCalificanos" action="#">
+                    <div class="mkv30--form__row">` + list + `</div>
+                  </form>
+                </div>
+                <div class="mkv30--footer">
+                  <div class="mkv30--footer__row">
+                    <button type="button" class="mkv30--btn" id="mkv30--enviar" href="` + options.link.url + `" target="` + options.link.target + `" title="` + options.link.text + `">` + options.link.text + `</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
 
-        var close = popup.querySelector('.mkv27--close');
+        var close = popup.querySelector('.mkv30--close');
         this.events(close);
-        overlay.appendChild(popup);
-        document.body.appendChild(overlay);
 
-        var close2 = popup.querySelector('.mkv27--btn');
+        var close2 = popup.querySelector('.mkv30--btn');
         this.events(close2);
+
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
       };
+
       popupJS.prototype.overlay = function () {
         var overlay = document.createElement('div');
-        overlay.classList.add('mkv27--overlay');
+        overlay.classList.add('mkv30--overlay');
         return overlay;
+      };
+
+      popupJS.prototype.button = function () {
+        var button = document.createElement('div');
+        button.classList.add('mkv30--button');
+        return button;
       };
 
       function popupJS(options) {
@@ -4503,12 +4536,15 @@
     }());
 
     var options = {
-      title: '¡Ya tienes tu Cuenta Negocios! Ahora, sigue estos pasos para afiliarte a <span class="mkv27--title__magenta">izipay</span>',
+      title: '¡Califícanos!',
+      excerpt: '¿Qué tan satisfecho te sentiste con la experiencia de abrir Cuenta Negocios Interbank?',
       content: [
-        'Copia el número de tu Cuenta Negocios.',
-        'Afíliate a izipay haciendo clic en “Ir a afiliarme”.'
+        'Totalmente satisfecho',
+        'Muy satisfecho',
+        'Satisfecho',
+        'Poco satisfecho',
+        'Nada satisfecho',
       ],
-      copy: '<p class="mkv27--small">*Haz clic en el botón “Entiendo” para continuar.</p>',
       link: {
         url: '#',
         text: 'Entendido',
@@ -4521,42 +4557,13 @@
     var popup = new popupJS(options);
     document.addEventListener("DOMContentLoaded", popup.show());
 
-    document.getElementById("mkv27--entendido").onclick = function () {
-      popUpBte();
-      popUpBtn();
-    };
-
     function popUpBte() {
       cordova.InAppBrowser.open("https://interbank.pe/100-digital?mcid=app-empresas:referral:2022-12_app_digitalizacion_conversion:bbdd:popup:1", "_system", "location=yes");
     }
 
-    function popUpBtn() {
-      _satellite.track("trackAction", {
-        eventProperties: {
-          action: {
-            action: "click",
-            category: "campañaDigitalDiciembre - app - yaParticipa",
-            label: "Ábrela aquí"
-          }
-        }
-      });
-    }
+    document.getElementById("mkv30--cerrar").onclick = function () {
 
-    document.getElementById("mkv27--cerrar").onclick = function () {
-      popUpClose();
     };
-
-    function popUpClose() {
-      _satellite.track("trackAction", {
-        eventProperties: {
-          action: {
-            action: "click",
-            category: "campañaDigitalDiciembre - app - yaParticipa",
-            label: "cerrar"
-          }
-        }
-      });
-    }
   </script>
 </body>
 
