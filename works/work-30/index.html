@@ -4431,18 +4431,27 @@
     var popupJS = /** @class */ (function () {
       popupJS.prototype.events = function (close) {
         var body = document.querySelector('body') || document.body;
-        body.classList.add('tg');
         var overlay = this.elementOverlay;
+
+        body.classList.add('tg');
+
         close.addEventListener('click', function (e) {
           e.preventDefault();
+
+          const button = popup.button();
+          const btnClose = document.getElementById('btnCerrar');
+          const floatingContent = document.getElementById('floatingContent');
+
           overlay.classList.add('animate__fadeOut');
           overlay.remove();
+
+          document.body.appendChild(button);
+          btnClose.remove();
         });
       };
 
       popupJS.prototype.show = function () {
         var overlay = this.elementOverlay;
-        var button = this.elementButton;
         var popup = document.createElement('div');
         var list = '';
 
@@ -4474,14 +4483,12 @@
           });
         }
 
-        popup.classList.add('mkv30--popup');
-        popup.innerHTML = `<div class="mkv30--tooltip">
-          <div class="mkv30--tooltip__content">
+        var tooltipContent = `<div class="mkv30--tooltip__content">
             <div class="mkv30--wrapper">
               <div class="mkv30--wrapper__content">
                 <div class="mkv30--header">
                   <div class="mkv30--close__row">
-                    <div class="mkv30--close" id="mkv30--cerrar"></div>
+                    <div class="mkv30--close" id="btnCerrar"></div>
                   </div>
                   <h4 class="mkv30--title">` + options.title + `</h4>
                   <p class="mkv30--text">` + options.excerpt + `</p>
@@ -4498,12 +4505,10 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>`;
-
-        button.innerHTML = `<div class="mkv30--button">
-            <div class="mkv30--button__content"></div>
           </div>`;
+
+        popup.classList.add('mkv30--popup');
+        popup.innerHTML = `<div class="mkv30--tooltip">` + tooltipContent + `</div>`;
 
         var close = popup.querySelector('.mkv30--close');
         this.events(close);
@@ -4513,7 +4518,6 @@
 
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
-        document.body.appendChild(button);
       };
 
       popupJS.prototype.overlay = function () {
@@ -4525,6 +4529,15 @@
       popupJS.prototype.button = function () {
         var button = document.createElement('div');
         button.classList.add('mkv30--button');
+        button.innerHTML = `<div class="mkv30--button__content">
+            <div class="mkv30--floating">
+              <div class="mkv30--floating__content" id="floatingContent"></div>
+            </div>
+            <button id="btnCalificanos" class="mkv30--button__btn">
+              <img src="` + options.icon + `" alt="Califícanos" width="21" height="21" />
+              <span>Califícanos</span>
+            </button>
+          </div>`;
         return button;
       };
 
@@ -4554,23 +4567,21 @@
       ],
       link: {
         url: '#',
-        text: 'Entendido',
+        text: 'Enviar',
         target: '_blank',
       },
-      img1x: 'https://paolopacheco.github.io/ibk-media/images/derivacion-clientes-Izipay-1x.png',
-      img2x: 'https://paolopacheco.github.io/ibk-media/images/derivacion-clientes-Izipay-2x.png',
+      icon: 'https://paolopacheco.github.io/ibk-media/images/icon-button.svg',
     };
-
     var popup = new popupJS(options);
+
     document.addEventListener("DOMContentLoaded", popup.show());
 
-    function popUpBte() {
-      cordova.InAppBrowser.open("https://interbank.pe/100-digital?mcid=app-empresas:referral:2022-12_app_digitalizacion_conversion:bbdd:popup:1", "_system", "location=yes");
-    }
-
-    document.getElementById("mkv30--cerrar").onclick = function () {
-
-    };
+    // document.getElementById("btnCerrar").onclick = function () {
+    //   const button = popup.button();
+    //   const btnClose = document.getElementById('btnCerrar');
+    //   document.body.appendChild(button);
+    //   btnClose.remove;
+    // };
   </script>
 </body>
 

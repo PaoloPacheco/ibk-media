@@ -368,5 +368,43 @@
         justify-content: center;
       }
     }
+
+    &--button {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+
+      @include screen-min(481px) {
+        bottom: 60px;
+        right: 86px;
+      }
+
+      &__content {
+        position: relative;
+      }
+
+      &__btn {
+        font-family: 'Geometria';
+        display: inline-flex;
+        align-items: center;
+        background-color: #0039a6;
+        color: var(--white);
+        line-height: 40px;
+        font-size: 14px;
+        gap: 6px;
+        padding: 0 24px;
+        border-radius: 20px;
+        font-weight: 500;
+        cursor: pointer;
+
+        @include screen-min(481px) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    &--floating {
+      position: absolute;
+    }
   }
 }
