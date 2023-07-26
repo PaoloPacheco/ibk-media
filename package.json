@@ -1,0 +1,26 @@
+{
+  "name": "ibk-media",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaoloPacheco/ibk-media.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaoloPacheco/ibk-media/issues"
+  },
+  "homepage": "https://github.com/PaoloPacheco/ibk-media#readme",
+  "devDependencies": {
+    "laravel-mix": "^6.0.49",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.64.1",
+    "sass-loader": "^12.1.0"
+  }
+}
