@@ -41,3 +41,73 @@
   width: 100%;
   max-width: 965px;
 }
+.mkv31-container {
+  background-color: #0039a6;
+  color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 0 12px;
+}
+.mkv31-title {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 12px;
+  font-family: "Montserrat", sans-serif;
+}
+.mkv31-excerpt {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+.mkv31-button {
+  width: 100%;
+  padding: 12px 0;
+}
+@media (min-width: 481px) {
+  .mkv31-button {
+    width: 204px;
+    min-width: 204px;
+    padding-right: 20px;
+  }
+}
+.mkv31-btn {
+  font-family: "Geometria";
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  width: 100%;
+  height: 48px;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #001e5f;
+}
+.mkv31-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 481px) {
+  .mkv31-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.mkv31-image {
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+  width: 100%;
+}
+@media (min-width: 481px) {
+  .mkv31-image {
+    width: 170px;
+    min-width: 170px;
+  }
+}
+.mkv31-img {
+  width: 170px;
+}

@@ -66,5 +66,81 @@
         }
       }
     }
+
+    &-container {
+      background-color: #0039a6;
+      color: white;
+      border-radius: 5px;
+      overflow: hidden;
+      padding: 0 12px;
+    }
+
+    &-title {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 12px;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    &-excerpt {
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    &-button {
+      width: 100%;
+      padding: 12px 0;
+
+      @include screen-min(481px) {
+        width: 204px;
+        min-width: 204px;
+        padding-right: 20px;
+      }
+    }
+
+    &-btn {
+      font-family: "Geometria";
+      font-weight: 500;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1;
+      width: 100%;
+      height: 48px;
+      background-color: white;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #001e5f;
+    }
+
+    &-row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include screen-min(481px) {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &-image {
+      display: flex;
+      justify-content: center;
+      padding-top: 12px;
+      width: 100%;
+
+      @include screen-min(481px) {
+        width: 170px;
+        min-width: 170px;
+      }
+    }
+
+    &-img {
+      width: 170px;
+    }
   }
 }
