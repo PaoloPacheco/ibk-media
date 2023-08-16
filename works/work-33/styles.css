@@ -31,7 +31,7 @@
     padding: 0 24px;
   }
 }
-.mkv32--overlay {
+.mkv33--overlay {
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
@@ -42,7 +42,7 @@
   height: 100vh;
   z-index: 99;
 }
-.mkv32--popup {
+.mkv33--popup {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -55,13 +55,13 @@
   right: 0;
   padding: 16px;
 }
-.mkv32 * {
+.mkv33 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: none;
 }
-.mkv32--wrapper {
+.mkv33--wrapper {
   overflow: hidden;
   width: 100%;
   max-width: 320px;
@@ -69,17 +69,17 @@
   background: #fff;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
 }
-.mkv32--header {
+.mkv33--header {
   position: relative;
   width: 100%;
 }
-.mkv32--close {
+.mkv33--close {
   position: relative;
   width: 16px;
   height: 16px;
   z-index: 10;
 }
-.mkv32--close::before, .mkv32--close::after {
+.mkv33--close::before, .mkv33--close::after {
   content: "";
   display: block;
   background: var(--white);
@@ -91,29 +91,29 @@
   left: 50%;
   top: 0;
 }
-.mkv32--close::before {
+.mkv33--close::before {
   transform: rotate(45deg) translate(-2px, 12px);
 }
-.mkv32--close::after {
+.mkv33--close::after {
   transform: rotate(-45deg) translate(-12px, -2px);
 }
-.mkv32--close__row {
+.mkv33--close__row {
   cursor: pointer;
   padding: 6px;
   position: absolute;
   right: 12px;
   top: 9px;
 }
-.mkv32--body {
+.mkv33--body {
   width: 100%;
   padding: 24px;
 }
-.mkv32--body__footer {
+.mkv33--body__footer {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.mkv32--title {
+.mkv33--title {
   color: var(--secondary);
   width: 100%;
   font-family: "Geometria";
@@ -123,10 +123,10 @@
   font-weight: normal;
   margin-bottom: 18px;
 }
-.mkv32--title__medium {
+.mkv33--title__medium {
   font-weight: 500;
 }
-.mkv32--excerpt {
+.mkv33--excerpt {
   margin-bottom: 32px;
   text-align: center;
   font-size: 14px;
@@ -134,7 +134,7 @@
   font-family: "Geometria";
   color: #0f191e;
 }
-.mkv32--btn {
+.mkv33--btn {
   font-family: "Geometria";
   font-size: 14px;
   letter-spacing: normal;
@@ -148,51 +148,51 @@
   border-radius: 4px;
   padding: 0 28px;
 }
-.mkv32--btn__primary {
+.mkv33--btn__primary {
   background-color: var(--primary);
   color: var(--white);
 }
-.mkv32--btn__white {
+.mkv33--btn__white {
   color: var(--primary);
   font-family: "Geometria";
 }
-.mkv32--picture {
+.mkv33--picture {
   background-color: var(--secondary);
 }
 @media (min-width: 480px) {
-  .mkv32--picture {
+  .mkv33--picture {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
   }
 }
-.mkv32--picture__content {
+.mkv33--picture__content {
   width: 100%;
   position: relative;
   border-end-end-radius: 8px;
   overflow: hidden;
 }
 @media (min-width: 480px) {
-  .mkv32--picture__content {
+  .mkv33--picture__content {
     height: 100%;
   }
 }
-.mkv32--profile_content {
+.mkv33--profile_content {
   width: 100%;
   position: relative;
 }
-.mkv32--image_background {
+.mkv33--image_background {
   width: 100%;
   display: block;
 }
 @media (min-width: 480px) {
-  .mkv32--image_background {
+  .mkv33--image_background {
     -o-object-fit: cover;
        object-fit: cover;
   }
 }
-.mkv32--image_profile {
+.mkv33--image_profile {
   position: absolute;
   transform: translateX(-50%);
   width: 64px;
@@ -200,11 +200,11 @@
   bottom: 0;
 }
 @media (min-width: 480px) {
-  .mkv32--image_profile {
+  .mkv33--image_profile {
     width: 90px;
   }
 }
-.mkv32--small {
+.mkv33--small {
   font-size: 12px;
   line-height: 18px;
 }

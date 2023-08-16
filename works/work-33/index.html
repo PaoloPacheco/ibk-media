@@ -4457,49 +4457,49 @@
         var popup = document.createElement("div");
         var btn2Html = '';
 
-        popup.classList.add("mkv33--popup");
+        popup.classList.add("mkv32--popup");
 
         if (options.enableBtn2) {
-          btn2Html = `<a class="mkv33--btn mkv33--btn__white" id="mkv33Dont" href="` + options.link2.url + `" target="` + options.link2.target + `" title="` + options.link2.text + `">` + options.link2.text + `</a>`;
+          btn2Html = `<a class="mkv32--btn mkv32--btn__white" id="mkv32Dont" href="` + options.link2.url + `" target="` + options.link2.target + `" title="` + options.link2.text + `">` + options.link2.text + `</a>`;
         }
 
-        popup.innerHTML = `<div class="mkv33--wrapper">
-            <div class="mkv33--wrapper__content">
-              <div class="mkv33--header">
-                <div class="mkv33--close__row"  id="mkv33Close">
-                  <div class="mkv33--close"></div>
+        popup.innerHTML = `<div class="mkv32--wrapper">
+            <div class="mkv32--wrapper__content">
+              <div class="mkv32--header">
+                <div class="mkv32--close__row"  id="mkv32Close">
+                  <div class="mkv32--close"></div>
                 </div>
-                <div class="mkv33--picture__content">
-                  <picture class="mkv33--picture">
+                <div class="mkv32--picture__content">
+                  <picture class="mkv32--picture">
                     <source srcset="` + options.img1x + `" media="(max-width: 480px)">
-                    <img class="mkv33--image__background" src="` + options.img2x + `" alt="` + clearHTMLTags(options.title) + `" width="148" height="140">
+                    <img class="mkv32--image__background" src="` + options.img2x + `" alt="` + clearHTMLTags(options.title) + `" width="148" height="140">
                   </picture>
                 </div>
               </div>
-              <div class="mkv33--body">
-                <div class="mkv33--body__content">
-                  <div class="mkv33--body__left">
-                    <div class="mkv33--header__title">
-                      <h4 class="mkv33--title">` + options.title + `</h4>
-                      <div class="mkv33--excerpt">` + options.excerpt + `</div>
+              <div class="mkv32--body">
+                <div class="mkv32--body__content">
+                  <div class="mkv32--body__left">
+                    <div class="mkv32--header__title">
+                      <h4 class="mkv32--title">` + options.title + `</h4>
+                      <div class="mkv32--excerpt">` + options.excerpt + `</div>
                     </div>
                   </div>
                 </div>
-                <div class="mkv33--body__footer">
-                  <a class="mkv33--btn mkv33--btn__primary" id="mkv33OpenHere" href="` + options.link.url + `" target="` + options.link.target + `" title="` + options.link.text + `">` + options.link.text + `</a>` + btn2Html + `
+                <div class="mkv32--body__footer">
+                  <a class="mkv32--btn mkv32--btn__primary" id="mkv32OpenHere" href="` + options.link.url + `" target="` + options.link.target + `" title="` + options.link.text + `">` + options.link.text + `</a>` + btn2Html + `
                 </div>
               </div>
             </div>
           </div>`;
 
-        var close = popup.querySelector(".mkv33--close");
+        var close = popup.querySelector(".mkv32--close");
         this.events(close);
 
-        var close2 = popup.querySelector("#mkv33OpenHere");
+        var close2 = popup.querySelector("#mkv32OpenHere");
         this.events(close2);
 
         if (options.enableBtn2) {
-          var dont = popup.querySelector("#mkv33Dont");
+          var dont = popup.querySelector("#mkv32Dont");
           this.events(dont);
         }
 
@@ -4512,7 +4512,7 @@
 
       popupJS.prototype.overlay = function () {
         var overlay = document.createElement("div");
-        overlay.classList.add("mkv33--overlay");
+        overlay.classList.add("mkv32--overlay");
         return overlay;
       };
 
@@ -4531,7 +4531,7 @@
 
     var options = {
       title:
-        '¡Abre tu <span class="mkv33--title__medium">Cuenta Negocios online</span> y sin ningún documento!',
+        '¡Abre tu <span class="mkv32--title__medium">Cuenta Negocios online</span> y sin ningún documento!',
       excerpt:
         'Una cuenta para tu negocio en crecimiento. Ábrela 100% online en simples pasos y empieza a recibir depósitos hoy mismo.',
       link: {
@@ -4557,17 +4557,17 @@
       popup.show();
 
       // TODO: Evento botón Abrir aqui.
-      document.getElementById("mkv33OpenHere").onclick = function () {
+      document.getElementById("mkv32OpenHere").onclick = function () {
         console.log(`Evento botón Abrir aqui`);
       };
 
       // TODO: Evento botón Cerrar modal.
-      document.getElementById("mkv33Close").onclick = function () {
+      document.getElementById("mkv32Close").onclick = function () {
         console.log(`Evento botón Cerrar modal`);
       };
 
       // TODO: Evento botón No, gracias.
-      document.getElementById("mkv33Dont").onclick = function () {
+      document.getElementById("mkv32Dont").onclick = function () {
         console.log(`Evento botón No, gracias`);
       };
     });
