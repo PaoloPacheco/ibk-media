@@ -3,11 +3,11 @@
   --secondary: #0039a6;
   --blue: #2f4a9f;
   --secondaryrgb: rgb(0, 57, 166);
-  --light: #fbfbfb;
+  --light: #eceded;
   --white: #fff;
-  --silver: #d9dadb;
+  --silver: #b7babc;
   --gray: #9b9b9b;
-  --sky: #ccd7ed;
+  --sky: #83c3eb;
   --semiwhite: #f3f6fb;
   --skydark: #6688ca;
   --dark: #404040;
@@ -89,7 +89,13 @@
       box-shadow: 0 4px 10px 0 rgba($color: #000000, $alpha: 0.15);
 
       &__content {
+        position: relative;
       }
+    }
+
+    &--global {
+      position: relative;
+      z-index: 9;
     }
 
     &--header {
@@ -170,12 +176,70 @@
     }
 
     &--excerpt {
-      margin-bottom: 32px;
+      margin-bottom: 20px;
       text-align: center;
       font-size: 14px;
       line-height: 16px;
       font-family: 'Geometria';
       color: #0f191e;
+    }
+
+    &--questions {
+      margin-bottom: 26px;
+
+      &__item {
+        &:not(:last-of-type) {
+          margin-bottom: 9px;
+        }
+      }
+    }
+
+    &--input {
+      gap: 6px;
+
+      &__bar {
+      }
+
+      &__label {
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+
+      &__radio {
+        position: absolute;
+        visibility: hidden;
+        left: 0;
+        top: 0;
+        z-index: -1;
+
+        &:checked {
+          & + .mkv33--input__span {
+            background-color: var(--secondary);
+            color: var(--white);
+          }
+        }
+      }
+
+      &__span {
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 32px;
+        border-radius: 16px;
+        width: 100%;
+        border: 1px solid var(--secondary);
+        font-family: 'Montserrat', sans-serif;
+        padding: 12px;
+        color: #3c3c3c;
+        font-size: 12px;
+        color: var(--secondary);
+        line-height: 20px;
+        transition: all 150ms ease-in-out;
+        letter-spacing: -0.1px;
+      }
     }
 
     &--btn {
@@ -201,10 +265,16 @@
         color: var(--primary);
         font-family: 'Geometria';
       }
+
+      &:disabled {
+        cursor: default;
+        color: var(--silver);
+        background-color: var(--light);
+      }
     }
 
     &--picture {
-      background-color: var(--secondary);
+      background-color: var(--sky);
 
       @include screen-min(480px) {
         height: 100%;

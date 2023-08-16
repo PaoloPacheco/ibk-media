@@ -3,11 +3,11 @@
   --secondary: #0039a6;
   --blue: #2f4a9f;
   --secondaryrgb: rgb(0, 57, 166);
-  --light: #fbfbfb;
+  --light: #eceded;
   --white: #fff;
-  --silver: #d9dadb;
+  --silver: #b7babc;
   --gray: #9b9b9b;
-  --sky: #ccd7ed;
+  --sky: #83c3eb;
   --semiwhite: #f3f6fb;
   --skydark: #6688ca;
   --dark: #404040;
@@ -69,6 +69,13 @@
   background: #fff;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
 }
+.mkv33--wrapper__content {
+  position: relative;
+}
+.mkv33--global {
+  position: relative;
+  z-index: 9;
+}
 .mkv33--header {
   position: relative;
   width: 100%;
@@ -127,12 +134,56 @@
   font-weight: 500;
 }
 .mkv33--excerpt {
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   text-align: center;
   font-size: 14px;
   line-height: 16px;
   font-family: "Geometria";
   color: #0f191e;
+}
+.mkv33--questions {
+  margin-bottom: 26px;
+}
+.mkv33--questions__item:not(:last-of-type) {
+  margin-bottom: 9px;
+}
+.mkv33--input {
+  gap: 6px;
+}
+.mkv33--input__label {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.mkv33--input__radio {
+  position: absolute;
+  visibility: hidden;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.mkv33--input__radio:checked + .mkv33--input__span {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+.mkv33--input__span {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 32px;
+  border-radius: 16px;
+  width: 100%;
+  border: 1px solid var(--secondary);
+  font-family: "Montserrat", sans-serif;
+  padding: 12px;
+  color: #3c3c3c;
+  font-size: 12px;
+  color: var(--secondary);
+  line-height: 20px;
+  transition: all 150ms ease-in-out;
+  letter-spacing: -0.1px;
 }
 .mkv33--btn {
   font-family: "Geometria";
@@ -156,8 +207,13 @@
   color: var(--primary);
   font-family: "Geometria";
 }
+.mkv33--btn:disabled {
+  cursor: default;
+  color: var(--silver);
+  background-color: var(--light);
+}
 .mkv33--picture {
-  background-color: var(--secondary);
+  background-color: var(--sky);
 }
 @media (min-width: 480px) {
   .mkv33--picture {
