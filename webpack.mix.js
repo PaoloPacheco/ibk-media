@@ -17,7 +17,10 @@ mix.options({
         'bb >= 10',
       ],
     }),
+    require('cssnano')({
+      preset: 'default',
+    }),
   ],
 });
 
-mix.sass('works/work-32/styles.scss', 'works/work-32');
+mix.sass('works/work-34/styles.scss', 'works/work-34');
