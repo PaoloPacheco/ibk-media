@@ -4437,7 +4437,7 @@
 </head>
 
 <body>
-  <div id="action_insert_20001"></div>
+  <div id="action_insert_20002"></div>
 
   <script>
     var popupJS = (function () {
@@ -4463,12 +4463,13 @@
           questions += `<div class="mkv33--questions">`;
 
           options.questions.forEach((element, index) => {
+            var curnumber = Math.floor(Math.random() * 100);
             questions += `<div class="mkv33--questions__item">
                 <div class="mkv33--input">
                   <div class="mkv33--label">
-                    <label for="experiencia-` + index + `" class="mkv33--input__label">
+                    <label for="option-` + curnumber + index + `" class="mkv33--input__label">
                       <input type="radio" class="mkv33--input__radio"
-                      name="experiencia" id="experiencia-` + index + `"
+                      name="option" id="option-` + curnumber + index + `"
                       value="` + element + `">
                       <span class="mkv33--input__span">` + element + `</span>
                     </label>
@@ -4514,15 +4515,10 @@
         var close = popup.querySelector(".mkv33--close");
         this.events(close);
 
-        var close2 = popup.querySelector("#mkv33Send");
-        this.events(close2);
-
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
 
         enableSend();
-
-        sendValues();
 
         // TODO: Evento visualización del modal.
         console.log(`Evento visualización del modal`);
@@ -4561,24 +4557,23 @@
         })
       }
 
-      function sendValues(container) {
-        const cont = document.getElementById(container);
-        const thankHtml = `<div class="mkv33--thank">
-          </div>`;
-      }
-
       return popupJS;
     })();
 
     var options = {
       title:
         'Tenemos nuevo módulo de <span class="mkv33--title__medium">pago de créditos</span>',
+      titleThank:
+        '<span class="mkv33--title__medium">¡Gracias por tus<br> respuestas!</span>',
       excerpt:
         '¿Utilizas nuestro módulo de pagos de créditos pequeña empresa?',
       link: {
         url: "#",
         text: "Enviar",
         target: "_blank",
+      },
+      link2: {
+        text: "Entendido",
       },
       img1x:
         "https://paolopacheco.github.io/ibk-media/images/pago-de-creditos.png",
@@ -4593,15 +4588,26 @@
         'Hago mis pagos en tiendas Interbank',
         'No tengo créditos pequeña empresa',
       ],
+      enableThank: true, // Habilita la pantalla de agradecimiento.
     };
 
     var popup = new popupJS(options);
 
-    document.addEventListener("DOMContentLoaded", function () {
+    (function () {
       popup.show();
 
       // TODO: Evento botón Abrir aqui.
-      document.getElementById("mkv33Send").onclick = function () {
+      document.getElementById("mkv33Send").onclick = function (e) {
+        e.preventDefault();
+
+        if (options.enableThank) {
+          const content = document.getElementById('mkv33Global');
+          const wrapper = document.querySelector('.mkv33--wrapper__content');
+          sendValues(content, wrapper);
+        } else {
+          closePopup();
+        }
+
         console.log(`Evento botón Abrir aqui`);
       };
 
@@ -4609,7 +4615,43 @@
       document.getElementById("mkv33Close").onclick = function () {
         console.log(`Evento botón Cerrar modal`);
       };
-    });
+
+      function sendValues(container, wrapper) {
+        const thankHtml = `<div class="mkv33--thank">
+          <div class="mkv33--thank__content">
+            <div class="mkv33--thank__header">
+              <picture class="mkv33--thank__picture">
+                <source srcset="` + options.imgThank1x + `" media="(max-width: 480px)">
+                <img class="mkv33--image__background" src="` + options.imgThank1x + `" alt="" width="203" height="143">
+              </picture>
+            </div>
+            <div class="mkv33--thank__body">
+              <div class="mkv33--header__title">
+                <h4 class="mkv33--title mkv33--thank__title">` + options.titleThank + `</h4>
+                <div class="mkv33--thank__excerpt"></div>
+              </div>
+            </div>
+            <div class="mkv33--thank__footer">
+              <button type="button" class="mkv33--btn mkv33--btn__primary" id="mkv33Finish" title="` + options.link2.text + `">` + options.link2.text + `</button>
+            </div>
+          </div>
+        </div>`;
+
+        wrapper.classList.add('thank');
+        container.innerHTML = thankHtml;
+
+        document.getElementById('mkv33Finish').onclick = function (e) {
+          // TODO: Evento botón Entendido.
+          closePopup();
+        }
+      }
+
+      function closePopup() {
+        let overlay = document.querySelector('.mkv33--overlay');
+        overlay.classList.add("animate__fadeOut");
+        overlay.remove();
+      }
+    })();
   </script>
 </body>
 

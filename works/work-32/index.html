@@ -4455,38 +4455,60 @@
       popupJS.prototype.show = function () {
         var overlay = this.elementOverlay;
         var popup = document.createElement("div");
-        var btn2Html = '';
+        var btn2Html = "";
+        var checkTerms = "";
+        var disabledAttr = "";
 
         popup.classList.add("mkv32--popup");
 
         if (options.enableBtn2) {
-          btn2Html = `<a class="mkv32--btn mkv32--btn__white" id="mkv32Dont" href="` + options.link2.url + `" target="` + options.link2.target + `" title="` + options.link2.text + `">` + options.link2.text + `</a>`;
+          btn2Html =
+            `<a class="mkv32--btn mkv32--btn__white" id="mkv32Dont" href="` +
+            options.link2.url +
+            `" target="` +
+            options.link2.target +
+            `" title="` +
+            options.link2.text +
+            `">` +
+            options.link2.text +
+            `</a>`;
         }
 
-        popup.innerHTML = `<div class="mkv32--wrapper">
+        if (options.terms.enable) {
+          disabledAttr = 'disabled';
+          checkTerms =
+            `<div class="mkv32--terms__row"><label class="mk-checkbox mkv32--terms__label" for="termsAcceptance"><input type="checkbox" id="termsAcceptance"> <span></span></label> <p class="mkv32--terms">He leído y acepto los  y la <a class="mk-primary mk-semibold" href="` +
+            options.terms.linkTerms + `" target="` + options.terms.target + `" title="` + options.terms.text + `">Términos y Condiciones</a> y la ` +
+            `<a class="mk-primary mk-semibold" href="` + options.terms.linkPolicy + `" target="` + options.terms.target + `" title="` + options.terms.text + `">Política de privacidad</a>.</p></div>`;
+        }
+
+        popup.innerHTML =
+          `<div class="mkv32--wrapper">
             <div class="mkv32--wrapper__content">
-              <div class="mkv32--header">
-                <div class="mkv32--close__row"  id="mkv32Close">
-                  <div class="mkv32--close"></div>
-                </div>
-                <div class="mkv32--picture__content">
-                  <picture class="mkv32--picture">
-                    <source srcset="` + options.img1x + `" media="(max-width: 480px)">
-                    <img class="mkv32--image__background" src="` + options.img2x + `" alt="` + clearHTMLTags(options.title) + `" width="148" height="140">
-                  </picture>
-                </div>
+              <div class="mkv32--close__row"  id="mkv32Close">
+                <div class="mkv32--close"></div>
               </div>
-              <div class="mkv32--body">
-                <div class="mkv32--body__content">
-                  <div class="mkv32--body__left">
-                    <div class="mkv32--header__title">
-                      <h4 class="mkv32--title">` + options.title + `</h4>
-                      <div class="mkv32--excerpt">` + options.excerpt + `</div>
-                    </div>
+              <div class="mkv32--global" id="mkv32Global">
+                <div class="mkv32--header">
+                  <div class="mkv32--picture__content">
+                    <picture class="mkv32--picture">
+                      <source srcset="` + options.img1x + `" media="(max-width: 480px)">
+                      <img class="mkv32--image__background" src="` + options.img2x + `" alt="` + clearHTMLTags(options.title) + `" width="148" height="140">
+                    </picture>
                   </div>
                 </div>
-                <div class="mkv32--body__footer">
-                  <a class="mkv32--btn mkv32--btn__primary" id="mkv32OpenHere" href="` + options.link.url + `" target="` + options.link.target + `" title="` + options.link.text + `">` + options.link.text + `</a>` + btn2Html + `
+                <div class="mkv32--body">
+                  <div class="mkv32--body__content">
+                    <div class="mkv32--body__left">
+                      <div class="mkv32--header__title">
+                        <h4 class="mkv32--title">` + options.title + `</h4>
+                          <div class="mkv32--excerpt">` + options.excerpt + `</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mkv32--body__footer">
+                    <button type="button" class="mkv32--btn mkv32--btn__primary" id="mkv32OpenHere" ` + disabledAttr + `>` + options.link.text + `</button>` + btn2Html + checkTerms + `
+                  </div>
                 </div>
               </div>
             </div>
@@ -4494,9 +4516,6 @@
 
         var close = popup.querySelector(".mkv32--close");
         this.events(close);
-
-        var close2 = popup.querySelector("#mkv32OpenHere");
-        this.events(close2);
 
         if (options.enableBtn2) {
           var dont = popup.querySelector("#mkv32Dont");
@@ -4532,8 +4551,10 @@
     var options = {
       title:
         '¡Abre tu <span class="mkv32--title__medium">Cuenta Negocios online</span> y sin ningún documento!',
+      titleThank:
+        '<span class="mkv32--title__medium">¡Gracias por tus<br> respuestas!</span>',
       excerpt:
-        'Una cuenta para tu negocio en crecimiento. Ábrela 100% online en simples pasos y empieza a recibir depósitos hoy mismo.',
+        "Una cuenta para tu negocio en crecimiento. Ábrela 100% online en simples pasos y empieza a recibir depósitos hoy mismo.",
       link: {
         url: "#",
         text: "Ábrela aquí",
@@ -4548,16 +4569,32 @@
         "https://paolopacheco.github.io/ibk-media/images/cuenta-negocios.png",
       img2x:
         "https://paolopacheco.github.io/ibk-media/images/cuenta-negocios.png",
-      enableBtn2: true
+      imgThank1x: "https://paolopacheco.github.io/ibk-media/images/thank.png",
+      imgThank2x: "https://paolopacheco.github.io/ibk-media/images/thank.png",
+      enableBtn2: true, // Habilita el botón "No, gracias".
+      enableThank: true, // Habilita la pantalla de agradecimiento.
+      terms: {
+        enable: true,
+        linkPolicy: '#',
+        linkTerms: '#',
+        target: '_blank'
+      }
     };
 
     var popup = new popupJS(options);
 
-    document.addEventListener("DOMContentLoaded", function () {
+    (function () {
       popup.show();
 
       // TODO: Evento botón Abrir aqui.
       document.getElementById("mkv32OpenHere").onclick = function () {
+        if (options.enableThank) {
+          const content = document.getElementById("mkv32Global");
+          const wrapper = document.querySelector(".mkv32--wrapper__content");
+          sendValues(content, wrapper);
+        } else {
+          closePopup();
+        }
         console.log(`Evento botón Abrir aqui`);
       };
 
@@ -4570,7 +4607,55 @@
       document.getElementById("mkv32Dont").onclick = function () {
         console.log(`Evento botón No, gracias`);
       };
-    });
+    })();
+
+    function sendValues(container, wrapper) {
+      const thankHtml =
+        `<div class="mkv32--thank">
+          <div class="mkv32--thank__content">
+            <div class="mkv32--thank__header">
+              <picture class="mkv32--thank__picture">
+                <source srcset="` + options.imgThank1x + `" media="(max-width: 480px)">
+                <img class="mkv32--image__background" src="` + options.imgThank1x + `" alt="" width="203" height="143">
+              </picture>
+            </div>
+            <div class="mkv32--thank__body">
+              <div class="mkv32--header__title">
+                <h4 class="mkv32--title mkv32--thank__title">` + options.titleThank + `</h4>
+                <div class="mkv32--thank__excerpt"></div>
+              </div>
+            </div>
+            <div class="mkv32--thank__footer">
+              <button type="button" class="mkv32--btn mkv32--btn__primary" id="mkv32Finish" title="` + options.link2.text + `">` + options.link2.text + `</button>
+            </div>
+          </div>
+        </div>`;
+
+      wrapper.classList.add("thank");
+      container.innerHTML = thankHtml;
+
+      document.getElementById("mkv32Finish").onclick = function (e) {
+        // TODO: Evento botón Entendido.
+        closePopup();
+      };
+    }
+
+    function closePopup() {
+      let overlay = document.querySelector(".mkv32--overlay");
+      overlay.classList.add("animate__fadeOut");
+      overlay.remove();
+    }
+
+    if (options.terms.enable) {
+      var mkv32OpenHere = document.getElementById('mkv32OpenHere');
+      document.querySelector('#termsAcceptance').onclick = function () {
+        if (this.checked) {
+          mkv32OpenHere.removeAttribute('disabled');
+        } else {
+          mkv32OpenHere.setAttribute('disabled', true);
+        }
+      }
+    }
   </script>
 </body>
 
