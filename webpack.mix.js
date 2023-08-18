@@ -23,4 +23,4 @@ mix.options({
   ],
 });
 
-mix.sass('works/work-34/styles.scss', 'works/work-34');
+mix.sass('works/work-35/styles.scss', 'works/work-35');
