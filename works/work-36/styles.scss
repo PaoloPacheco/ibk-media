@@ -46,7 +46,7 @@
     }
   }
 
-  &v30 {
+  &v36 {
     * {
       box-sizing: border-box;
       margin: 0;
@@ -103,11 +103,11 @@
 
     &--header,
     &--body {
-      margin-bottom: 24px;
       position: relative;
     }
 
     &--header {
+      margin-bottom: 24px;
       text-align: center;
     }
 
@@ -206,7 +206,7 @@
         z-index: -1;
 
         &:checked {
-          & + .mkv30--input__span {
+          & + .mkv36--input__span {
             background-color: #cdf2dc;
             color: #05be50;
           }
@@ -295,17 +295,17 @@
 
     &--col {
       &:nth-child(1) {
-        .mkv30--bar__line {
+        .mkv36--bar__line {
           background-color: #05be50;
         }
 
-        .mkv30--bar__sign {
+        .mkv36--bar__sign {
           background-color: #05be50;
         }
       }
 
       &:nth-child(2) {
-        .mkv30--bar__line {
+        .mkv36--bar__line {
           /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#05be50+0,37cb73+100 */
           background: #05be50;
           background: -moz-linear-gradient(
@@ -320,7 +320,7 @@
       }
 
       &:nth-child(3) {
-        .mkv30--bar__line {
+        .mkv36--bar__line {
           /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#37cb73+0,ffcd00+100 */
           background: #37cb73;
           background: -moz-linear-gradient(top, #37cb73 0%, #ffcd00 100%);
@@ -331,7 +331,7 @@
       }
 
       &:nth-child(4) {
-        .mkv30--bar__line {
+        .mkv36--bar__line {
           /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffcd00+0,f99100+100 */
           background: #ffcd00;
           background: -moz-linear-gradient(top, #ffcd00 0%, #f99100 100%);
@@ -342,7 +342,7 @@
       }
 
       &:nth-child(5) {
-        .mkv30--bar__line {
+        .mkv36--bar__line {
           /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f99100+0,eb0045+100 */
           background: #f99100;
           background: -moz-linear-gradient(top, #f99100 0%, #eb0045 100%);
@@ -351,7 +351,7 @@
           filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99100', endColorstr='#eb0045',GradientType=0 );
         }
 
-        .mkv30--bar__sign {
+        .mkv36--bar__sign {
           background-color: #eb0245;
           right: 0;
           bottom: 0;
@@ -372,14 +372,15 @@
 
     &--button {
       position: fixed;
+      z-index: 100;
       bottom: 0;
       right: 0;
       left: 0;
       width: 100%;
 
       @include screen-min(481px) {
-        bottom: 60px;
-        right: 86px;
+        bottom: 40px;
+        right: 48px;
         left: auto;
         width: auto;
       }
@@ -413,7 +414,6 @@
     &--floating {
       position: absolute;
       bottom: 100%;
-      right: -12px;
       width: 100vw;
       padding: 12px 12px 20px;
       display: none;
@@ -423,7 +423,8 @@
       }
 
       @include screen-min(481px) {
-        max-width: 360px;
+        right: -12px;
+        max-width: 368px;
       }
 
       &__content {
@@ -459,6 +460,33 @@
 
     &--loading {
       color: #2f4a9f;
+    }
+
+    &--response {
+      background-color: #fff;
+
+      &__container {
+        bottom: 100%;
+        width: 100vw;
+        padding: 12px 12px 20px;
+
+        @include screen-min(481px) {
+          right: -12px;
+          max-width: 368px;
+        }
+      }
+
+      &__content {
+        background-color: var(--white);
+        padding: 24px 32px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      &__title {
+        text-align: center;
+      }
     }
   }
 }

@@ -256,24 +256,35 @@ template {
     }
   }
 
-  &v34 {
+  &v35 {
     &--row {
-      display: grid;
-      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
 
       @include screen-min(480px) {
         grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+        gap: 16px;
       }
     }
 
     &--col {
-      &__header {
-        margin-bottom: 12px;
+      &__content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 16px;
 
         @include screen-min(480px) {
-          margin-bottom: 20px;
+          grid-template-columns: 1fr 4fr;
         }
+      }
+
+      &__header {
+      }
+
+      &__body {
+        display: flex;
+        align-items: center;
       }
 
       &__hidden {
@@ -286,7 +297,7 @@ template {
     &--content {
       margin: 0 auto;
       width: 100%;
-      max-width: 600px;
+      max-width: 496px;
     }
 
     &--picture {
@@ -295,10 +306,15 @@ template {
       justify-content: center;
     }
 
+    &-image {
+      height: auto;
+    }
+
     &--paragrah {
-      text-align: center;
       font-size: 12px;
       line-height: 18px;
+      margin-bottom: 0;
+      color: #333333;
 
       @include screen-min(480px) {
         font-size: 14px;

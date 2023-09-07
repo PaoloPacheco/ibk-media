@@ -4413,50 +4413,13 @@
 </head>
 
 <body>
-  <div id="action_insert_2355306621029209">
-  </div>
+  <div id="action_insert_2355306621029209"></div>
 
   <script>
-    var mkv30radios = document.querySelectorAll('.mkv30--input__radio');
 
-    mkv30radios.forEach(mkv30radio => {
-      mkv30radio.onchange = function () {
-        console.log(mkv30radio.value);
-      }
-    });
 
-    var popupJS = /** @class */ (function () {
-      popupJS.prototype.events = function (close) {
-        var body = document.querySelector('body') || document.body;
-        var overlay = this.elementOverlay;
-
-        body.classList.add('tg');
-
-        close.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          const button = popup.button();
-
-          overlay.classList.add('animate__fadeOut');
-          overlay.remove();
-
-          document.body.appendChild(button);
-
-          setTimeout(() => {
-            const floating = document.querySelector('.mkv30--floating');
-            const closeFloating = document.querySelector('.mkv30--floating #btnCerrar');
-            const btnCalificanos = document.getElementById("btnCalificanos");
-            btnCalificanos.onclick = function () {
-              floating.classList.add('active');
-            }
-
-            closeFloating.onclick = function () {
-              floating.classList.remove('active');
-            }
-          }, 500);
-        });
-
-      };
+    var popupJS = (function () {
+      function popupJS(options) { }
 
       popupJS.prototype.content = function () {
         var list = '';
@@ -4466,22 +4429,22 @@
             let sign;
 
             if (index == 0 || index == 4) {
-              sign = '<div class="mkv30--bar__sign"></div>';
+              sign = '<div class="mkv36--bar__sign"></div>';
             } else {
               sign = '';
             }
 
-            list += `<div class="mkv30--col">
-                      <div class="mkv30--input">
-                        <div class="mkv30--bar">
-                          <div class="mkv30--bar__line">` + sign + `</div>
+            list += `<div class="mkv36--col">
+                      <div class="mkv36--input">
+                        <div class="mkv36--bar">
+                          <div class="mkv36--bar__line">` + sign + `</div>
                         </div>
-                        <div class="mkv30--label">
-                          <label for="experiencia-` + index + `" class="mkv30--input__label">
-                            <input type="radio" class="mkv30--input__radio"
+                        <div class="mkv36--label">
+                          <label for="experiencia-` + index + `" class="mkv36--input__label">
+                            <input type="radio" class="mkv36--input__radio"
                               name="experiencia" id="experiencia-` + index + `"
                               value="` + element + `">
-                              <span class="mkv30--input__span">` + element + `</span>
+                              <span class="mkv36--input__span">` + element + `</span>
                           </label>
                         </div>
                       </div>
@@ -4489,25 +4452,20 @@
           });
         }
 
-        var tooltipContent = `<div class="mkv30--tooltip__content">
-            <div class="mkv30--wrapper">
-              <div class="mkv30--wrapper__content">
-                <div class="mkv30--header">
-                  <div class="mkv30--close__row">
-                    <div class="mkv30--close" id="btnCerrar"></div>
+        var tooltipContent = `<div class="mkv36--tooltip__content">
+            <div class="mkv36--wrapper">
+              <div class="mkv36--wrapper__content">
+                <div class="mkv36--header">
+                  <div class="mkv36--close__row">
+                    <div class="mkv36--close" id="btnClose"></div>
                   </div>
-                  <h4 class="mkv30--title">` + options.title + `</h4>
-                  <p class="mkv30--text">` + options.excerpt + `</p>
+                  <h4 class="mkv36--title">` + options.title + `</h4>
+                  <p class="mkv36--text">` + options.excerpt + `</p>
                 </div>
-                <div class="mkv30--body">
+                <div class="mkv36--body">
                   <form id="formCalificanos" action="#">
-                    <div class="mkv30--form__row">` + list + `</div>
+                    <div class="mkv36--form__row">` + list + `</div>
                   </form>
-                </div>
-                <div class="mkv30--footer">
-                  <div class="mkv30--footer__row">
-                    <button type="button" class="mkv30--btn" id="mkv30--enviar" href="` + options.link.url + `" target="` + options.link.target + `" title="` + options.link.text + `">` + options.link.text + `</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -4516,56 +4474,81 @@
         return tooltipContent;
       }
 
-      popupJS.prototype.show = function () {
-        var overlay = this.elementOverlay;
-        var popup = document.createElement('div');
-        var content = this.content();
-
-        popup.classList.add('mkv30--popup');
-        popup.innerHTML = `<div class="mkv30--tooltip">` + content + `</div>`;
-
-        var close2 = popup.querySelector('.mkv30--btn');
-        this.events(close2);
-
-        overlay.appendChild(popup);
-        document.body.appendChild(overlay);
-
-        const close = document.querySelectorAll('.mkv30--popup #btnCerrar');
-        this.events(close[0]);
-      };
-
-      popupJS.prototype.overlay = function () {
-        var overlay = document.createElement('div');
-        overlay.classList.add('mkv30--overlay');
-        return overlay;
-      };
-
       popupJS.prototype.button = function () {
         const content = this.content();
         const button = document.createElement('div');
+        const overlayDiv = document.createElement('div');
 
-        button.classList.add('mkv30--button');
+        overlayDiv.classList.add('mkv36--overlay');
+        button.classList.add('mkv36--button');
+        button.setAttribute('id', 'mkv36Button');
 
-        button.innerHTML = `<div class="mkv30--button__content">
-            <div class="mkv30--floating">
-              <div class="mkv30--floating__content" id="floatingContent">` + content + `</div>
+        document.body.appendChild(overlayDiv);
+
+        button.innerHTML = `<div class="mkv36--button__content">
+            <div class="mkv36--floating active">
+              <div class="mkv36--floating__content" id="floatingContent">` + content + `</div>
             </div>
-            <button id="btnCalificanos" class="mkv30--button__btn">
+            <button id="btnCalificanos" class="mkv36--button__btn">
               <img src="` + options.icon + `" alt="Califícanos" width="21" height="21" />
               <span>Califícanos</span>
             </button>
           </div>`;
 
-        // document.getElementById("btnCalificanos").onclick = function () {
-        //   console.log(`yoo`);
-        // }
+        document.body.appendChild(button);
 
-        return button;
+        this.eventSelectSend();
+        this.togglePopup();
       };
 
-      function popupJS(options) {
-        options.link.target = options.link.target || '_self';
-        this.elementOverlay = this.overlay();
+      popupJS.prototype.eventSelectSend = function () {
+        var mkv36radios = document.querySelectorAll('.mkv36--input__radio');
+
+        mkv36radios.forEach(mkv36radio => {
+          mkv36radio.onchange = function () {
+            // Valor de la opción seleccionada.
+            console.log(mkv36radio.value);
+
+            // Muestra la respuesta:
+            showResponse();
+          }
+        });
+
+        function showResponse() {
+          const content = document.getElementById('mkv36Button');
+          const btnResponseClose = document.createElement('div');
+          const htmlResponse = `<div class="mkv36--response__container">
+            <div class="mkv36--response__content">
+              <div class="mkv36--header">
+                <div class="mkv36--close__row">
+                  <div class="mkv36--close" id="btnResponseClose"></div>
+                </div>
+              </div>
+              <div class="mkv36--body">
+                <h4 class="mkv36--title mkv36--response__title">` + options.response.title + `</h4>
+              </div>
+            </div>
+          </div>`;
+
+          content.innerHTML = htmlResponse;
+          console.log('Respuesta');
+        }
+      }
+
+      popupJS.prototype.togglePopup = function () {
+        const closeBtn = document.getElementById('btnClose');
+        const floating = document.querySelector('.mkv36--floating');
+        const btnCalificanos = document.getElementById("btnCalificanos");
+
+        closeBtn.onclick = function (e) {
+          e.preventDefault();
+          floating.classList.remove('active');
+          this.remove();
+        }
+
+        btnCalificanos.onclick = function () {
+          floating.classList.add('active');
+        }
       }
 
       return popupJS;
@@ -4581,28 +4564,18 @@
         'Poco satisfecho',
         'Nada satisfecho',
       ],
-      link: {
-        url: '#',
-        text: 'Enviar',
-        target: '_blank',
-      },
       icon: 'https://paolopacheco.github.io/ibk-media/images/icon-button.svg',
+      response: {
+        title: '¡Muchas gracias por tu calificación!',
+        icon: 'https://paolopacheco.github.io/ibk-media/images/paper-plane.svg',
+      }
     };
+
     var popup = new popupJS(options);
 
-    // document.addEventListener("DOMContentLoaded", );
-
     (function () {
-      popup.show()
+      popup.button();
     })();
-
-    function name() {
-      document.getElementById("btnCalificanos").onclick = function () {
-        console.log(`yoo`);
-      }
-    }
-
-
   </script>
 </body>
 

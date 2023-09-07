@@ -1,0 +1,644 @@
+<div id="action_insert_2355306621029209">
+  <style>
+    :root {
+      --primary: #05be50;
+      --secondary: #0039a6;
+      --blue: #2f4a9f;
+      --secondaryrgb: rgb(0, 57, 166);
+      --light: #fbfbfb;
+      --white: #fff;
+      --silver: #d9dadb;
+      --gray: #9b9b9b;
+      --sky: #ccd7ed;
+      --semiwhite: #f3f6fb;
+      --skydark: #6688ca;
+      --dark: #404040;
+      --darkrgb: rgb(15, 25, 30);
+      --blackrgb: rgb(15, 25, 30);
+    }
+    .mk-bold {
+      font-weight: 700;
+    }
+    .mk-semibold {
+      font-weight: 500;
+    }
+    .mk-container {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1066px;
+    }
+    @media (max-width: 1023px) {
+      .mk-container {
+        padding: 0 24px;
+      }
+    }
+    .mkv30 * {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    .mkv30--overlay {
+      background-color: rgba(0, 0, 0, 0.4);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 99;
+    }
+    .mkv30--popup {
+      position: fixed;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px;
+    }
+    .mkv30--tooltip {
+      width: 100%;
+      max-width: 344px;
+    }
+    .mkv30--wrapper {
+      background-color: var(--white);
+      overflow: hidden;
+      width: 100%;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    }
+    .mkv30--wrapper__content {
+      padding: 24px;
+    }
+    @media (min-width: 481px) {
+      .mkv30--wrapper__content {
+        padding: 32px;
+      }
+    }
+    .mkv30--body,
+    .mkv30--header {
+      margin-bottom: 24px;
+    }
+    .mkv30--header {
+      text-align: center;
+    }
+    .mkv30--close {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      z-index: 10;
+      cursor: pointer;
+    }
+    .mkv30--close:after,
+    .mkv30--close:before {
+      content: "";
+      display: block;
+      background: var(--dark);
+      margin-bottom: 4px;
+      border-radius: 2px;
+      width: 28px;
+      height: 2px;
+      position: absolute;
+      left: 50%;
+      top: 0;
+    }
+    .mkv30--close:before {
+      -webkit-transform: rotate(45deg) translate(-1px, 18px);
+      transform: rotate(45deg) translate(-1px, 18px);
+    }
+    .mkv30--close:after {
+      -webkit-transform: rotate(-45deg) translate(-18px, -1px);
+      transform: rotate(-45deg) translate(-18px, -1px);
+    }
+    .mkv30--close__row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+    }
+    .mkv30--title {
+      font-family: "Geometria", sans-serif;
+      color: #2f4a9f;
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: -0.4px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    @media (min-width: 481px) {
+      .mkv30--title {
+        font-size: 28px;
+        line-height: 32px;
+      }
+    }
+    .mkv30--text {
+      font-family: "Geometria", sans-serif;
+      color: #2f4a9f;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 500;
+    }
+    .mkv30--text__semibold {
+      font-weight: 600;
+    }
+    .mkv30--form__row {
+      display: -ms-grid;
+      display: grid;
+      gap: 12px;
+      padding: 0 32px;
+    }
+    .mkv30--input {
+      display: -ms-grid;
+      display: grid;
+      gap: 6px;
+      -ms-grid-columns: 28px 6px auto;
+      grid-template-columns: 28px auto;
+    }
+    .mkv30--input__label {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+    .mkv30--input__radio {
+      position: absolute;
+      visibility: hidden;
+      left: 0;
+      top: 0;
+      z-index: -1;
+    }
+    .mkv30--input__radio:checked + .mkv30--input__span {
+      background-color: #cdf2dc;
+      color: #05be50;
+    }
+    .mkv30--input__span {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      cursor: pointer;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      text-align: center;
+      height: 40px;
+      border-radius: 20px;
+      width: 100%;
+      background-color: #eceded;
+      font-family: "Montserrat", sans-serif;
+      padding: 12px;
+      color: #3c3c3c;
+      font-size: 14px;
+      line-height: 20px;
+      -webkit-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
+      letter-spacing: -0.1px;
+    }
+    .mkv30--btn {
+      background-color: var(--primary);
+      color: var(--white);
+      font-family: "Geometria";
+      font-size: 14px;
+      line-height: 40px;
+      letter-spacing: normal;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 100%;
+      border-radius: 4px;
+      padding: 0 28px;
+    }
+    .mkv30--bar {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    .mkv30--bar__line {
+      position: relative;
+      height: 100%;
+      width: 6px;
+    }
+    .mkv30--bar__sign {
+      width: 28px;
+      height: 28px;
+      border-radius: 14px;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+    .mkv30--bar__sign:after,
+    .mkv30--bar__sign:before {
+      position: absolute;
+      content: "";
+      background-color: var(--white);
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      border-radius: 2px;
+    }
+    .mkv30--bar__sign:after {
+      width: 12px;
+      height: 4px;
+    }
+    .mkv30--bar__sign:before {
+      height: 12px;
+      width: 4px;
+    }
+    .mkv30--col:first-child .mkv30--bar__line {
+      background-color: #05be50;
+    }
+    .mkv30--col:first-child .mkv30--bar__sign {
+      background-color: #05be50;
+    }
+    .mkv30--col:nth-child(2) .mkv30--bar__line {
+      background: #05be50;
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#05be50),
+        to(#37cb73)
+      );
+      background: linear-gradient(to bottom, #05be50 0%, #37cb73 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#05be50",endColorstr="#37cb73",GradientType=0);
+    }
+    .mkv30--col:nth-child(3) .mkv30--bar__line {
+      background: #37cb73;
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#37cb73),
+        to(#ffcd00)
+      );
+      background: linear-gradient(to bottom, #37cb73 0%, #ffcd00 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#37cb73",endColorstr="#ffcd00",GradientType=0);
+    }
+    .mkv30--col:nth-child(4) .mkv30--bar__line {
+      background: #ffcd00;
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#ffcd00),
+        to(#f99100)
+      );
+      background: linear-gradient(to bottom, #ffcd00 0%, #f99100 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffcd00",endColorstr="#f99100",GradientType=0);
+    }
+    .mkv30--col:nth-child(5) .mkv30--bar__line {
+      background: #f99100;
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#f99100),
+        to(#eb0045)
+      );
+      background: linear-gradient(to bottom, #f99100 0%, #eb0045 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f99100",endColorstr="#eb0045",GradientType=0);
+    }
+    .mkv30--col:nth-child(5) .mkv30--bar__sign {
+      background-color: #eb0245;
+      right: 0;
+      bottom: 0;
+    }
+    .mkv30--col:nth-child(5) .mkv30--bar__sign:before {
+      display: none;
+    }
+    .mkv30--footer__row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    .mkv30--button {
+      position: fixed;
+      bottom: 24px;
+      right: 12px;
+    }
+    @media (min-width: 481px) {
+      .mkv30--button {
+        bottom: 60px;
+        right: 86px;
+      }
+    }
+    .mkv30--button__content {
+      position: relative;
+    }
+    .mkv30--button__btn {
+      font-family: "Geometria";
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      background-color: #0039a6;
+      color: var(--white);
+      line-height: 40px;
+      font-size: 14px;
+      gap: 6px;
+      padding: 0 24px;
+      border-radius: 20px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    @media (min-width: 481px) {
+      .mkv30--button__btn {
+        font-size: 16px;
+      }
+    }
+    .mkv30--floating {
+      position: absolute;
+      bottom: 100%;
+      right: -12px;
+      width: 100vw;
+      padding: 12px 12px 20px;
+      display: none;
+    }
+    .mkv30--floating.active {
+      display: block;
+    }
+    @media (min-width: 481px) {
+      .mkv30--floating {
+        max-width: 360px;
+      }
+    }
+    .mkv30--floating__content {
+      position: relative;
+    }
+    .mkv30--floating__content:after,
+    .mkv30--floating__content:before {
+      display: block;
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      top: 100%;
+    }
+    .mkv30--floating__content:after {
+      z-index: 2;
+      right: 46px;
+      border-style: solid;
+      border-width: 12px 8px 0 8px;
+      border-color: #ffffff transparent transparent transparent;
+    }
+    .mkv30--floating__content:before {
+      z-index: 1;
+      right: 43px;
+      border-style: solid;
+      border-width: 18px 11px 0 11px;
+      border-color: rgba(0, 0, 0, 0.05) transparent transparent transparent;
+    }
+  </style>
+
+  <div id="action_insert_2355306621029209"></div>
+
+  <script>
+    var mkv30radios = document.querySelectorAll(".mkv30--input__radio");
+
+    mkv30radios.forEach((mkv30radio) => {
+      mkv30radio.onchange = function () {
+        console.log(mkv30radio.value);
+      };
+    });
+
+    var popupJS = /** @class */ (function () {
+      popupJS.prototype.events = function (close) {
+        var body = document.querySelector("body") || document.body;
+        var overlay = this.elementOverlay;
+
+        body.classList.add("tg");
+
+        close.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const button = popup.button();
+
+          overlay.classList.add("animate__fadeOut");
+          overlay.remove();
+
+          document.body.appendChild(button);
+
+          setTimeout(() => {
+            const floating = document.querySelector(".mkv30--floating");
+            const closeFloating = document.querySelector(
+              ".mkv30--floating #btnCerrar"
+            );
+            const btnCalificanos = document.getElementById("btnCalificanos");
+            btnCalificanos.onclick = function () {
+              floating.classList.add("active");
+            };
+
+            closeFloating.onclick = function () {
+              floating.classList.remove("active");
+            };
+          }, 500);
+        });
+      };
+
+      popupJS.prototype.content = function () {
+        var list = "";
+
+        if (options.content.length) {
+          options.content.forEach((element, index) => {
+            let sign;
+
+            if (index == 0 || index == 4) {
+              sign = '<div class="mkv30--bar__sign"></div>';
+            } else {
+              sign = "";
+            }
+
+            list +=
+              `<div class="mkv30--col">
+                        <div class="mkv30--input">
+                          <div class="mkv30--bar">
+                            <div class="mkv30--bar__line">` +
+              sign +
+              `</div>
+                          </div>
+                          <div class="mkv30--label">
+                            <label for="experiencia-` +
+              index +
+              `" class="mkv30--input__label">
+                              <input type="radio" class="mkv30--input__radio"
+                                name="experiencia" id="experiencia-` +
+              index +
+              `"
+                                value="` +
+              element +
+              `">
+                                <span class="mkv30--input__span">` +
+              element +
+              `</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>`;
+          });
+        }
+
+        var tooltipContent =
+          `<div class="mkv30--tooltip__content">
+              <div class="mkv30--wrapper">
+                <div class="mkv30--wrapper__content">
+                  <div class="mkv30--header">
+                    <div class="mkv30--close__row">
+                      <div class="mkv30--close" id="btnCerrar"></div>
+                    </div>
+                    <h4 class="mkv30--title">` +
+          options.title +
+          `</h4>
+                    <p class="mkv30--text">` +
+          options.excerpt +
+          `</p>
+                  </div>
+                  <div class="mkv30--body">
+                    <form id="formCalificanos" action="#">
+                      <div class="mkv30--form__row">` +
+          list +
+          `</div>
+                    </form>
+                  </div>
+                  <div class="mkv30--footer">
+                    <div class="mkv30--footer__row">
+                      <button type="button" class="mkv30--btn" id="mkv30--enviar" href="` +
+          options.link.url +
+          `" target="` +
+          options.link.target +
+          `" title="` +
+          options.link.text +
+          `">` +
+          options.link.text +
+          `</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+
+        return tooltipContent;
+      };
+
+      popupJS.prototype.show = function () {
+        var overlay = this.elementOverlay;
+        var popup = document.createElement("div");
+        var content = this.content();
+
+        popup.classList.add("mkv30--popup");
+        popup.innerHTML = `<div class="mkv30--tooltip">` + content + `</div>`;
+
+        var close2 = popup.querySelector(".mkv30--btn");
+        this.events(close2);
+
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
+
+        const close = document.querySelectorAll(".mkv30--popup #btnCerrar");
+        this.events(close[0]);
+      };
+
+      popupJS.prototype.overlay = function () {
+        var overlay = document.createElement("div");
+        overlay.classList.add("mkv30--overlay");
+        return overlay;
+      };
+
+      popupJS.prototype.button = function () {
+        const content = this.content();
+        const button = document.createElement("div");
+
+        button.classList.add("mkv30--button");
+
+        button.innerHTML =
+          `<div class="mkv30--button__content">
+              <div class="mkv30--floating">
+                <div class="mkv30--floating__content" id="floatingContent">` +
+          content +
+          `</div>
+              </div>
+              <button id="btnCalificanos" class="mkv30--button__btn">
+                <img src="` +
+          options.icon +
+          `" alt="Califícanos" width="21" height="21" />
+                <span>Califícanos</span>
+              </button>
+            </div>`;
+
+        return button;
+      };
+
+      function popupJS(options) {
+        options.link.target = options.link.target || "_self";
+        this.elementOverlay = this.overlay();
+      }
+
+      return popupJS;
+    })();
+
+    var options = {
+      title: "¡Califícanos!",
+      excerpt:
+        "¿Qué tan satisfecho te sentiste con la experiencia de abrir Cuenta Negocios Interbank?",
+      content: [
+        "Totalmente satisfecho",
+        "Muy satisfecho",
+        "Satisfecho",
+        "Poco satisfecho",
+        "Nada satisfecho",
+      ],
+      link: {
+        url: "#",
+        text: "Enviar",
+        target: "_blank",
+      },
+      icon: "https://paolopacheco.github.io/ibk-media/images/icon-button.svg",
+    };
+    var popup = new popupJS(options);
+
+    document.addEventListener("DOMContentLoaded", popup.show());
+
+    function name() {
+      document.getElementById("btnCalificanos").onclick = function () {
+        console.log(`yoo`);
+      };
+    }
+  </script>
+</div>
