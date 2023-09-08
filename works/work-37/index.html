@@ -4420,49 +4420,19 @@
       function popupJS(options) { }
 
       popupJS.prototype.content = function () {
-        var list = '';
-
-        if (options.content.length) {
-          options.content.forEach((element, index) => {
-            let sign;
-
-            if (index == 0 || index == 4) {
-              sign = '<div class="mkv36--bar__sign"></div>';
-            } else {
-              sign = '';
-            }
-
-            list += `<div class="mkv36--col">
-                      <div class="mkv36--input">
-                        <div class="mkv36--bar">
-                          <div class="mkv36--bar__line">` + sign + `</div>
-                        </div>
-                        <div class="mkv36--label">
-                          <label for="experiencia-` + index + `" class="mkv36--input__label">
-                            <input type="radio" class="mkv36--input__radio"
-                              name="experiencia" id="experiencia-` + index + `"
-                              value="` + element + `">
-                              <span class="mkv36--input__span">` + element + `</span>
-                          </label>
-                        </div>
-                      </div>
-                    </div>`;
-          });
-        }
-
-        var tooltipContent = `<div class="mkv36--tooltip__content">
-            <div class="mkv36--wrapper">
-              <div class="mkv36--wrapper__content">
-                <div class="mkv36--header">
-                  <div class="mkv36--close__row">
-                    <div class="mkv36--close" id="btnClose"></div>
+        var tooltipContent = `<div class="mkv37--tooltip__content">
+            <div class="mkv37--wrapper">
+              <div class="mkv37--wrapper__content">
+                <div class="mkv37--header">
+                  <div class="mkv37--close__row">
+                    <div class="mkv37--close" id="btnClose"></div>
                   </div>
-                  <h4 class="mkv36--title">` + options.title + `</h4>
-                  <p class="mkv36--text">` + options.excerpt + `</p>
+                  <h4 class="mkv37--title">` + options.title + `</h4>
+                  <p class="mkv37--text">` + options.excerpt + `</p>
                 </div>
-                <div class="mkv36--body">
+                <div class="mkv37--body">
                   <form id="formCalificanos" action="#">
-                    <div class="mkv36--form__row">` + list + `</div>
+                    <div class="mkv37--form__row"></div>
                   </form>
                 </div>
               </div>
@@ -4477,17 +4447,17 @@
         const button = document.createElement('div');
         const overlayDiv = document.createElement('div');
 
-        overlayDiv.classList.add('mkv36--overlay');
-        button.classList.add('mkv36--button');
-        button.setAttribute('id', 'mkv36Button');
+        overlayDiv.classList.add('mkv37--overlay');
+        button.classList.add('mkv37--content');
+        button.setAttribute('id', 'mkv37Button');
 
         document.body.appendChild(overlayDiv);
 
-        button.innerHTML = `<div class="mkv36--button__content">
-            <div class="mkv36--floating active">
-              <div class="mkv36--floating__content" id="floatingContent">` + content + `</div>
+        button.innerHTML = `<div class="mkv37--content__content">
+            <div class="mkv37--floating active">
+              <div class="mkv37--floating__content" id="floatingContent">` + content + `</div>
             </div>
-            <button id="btnCalificanos" class="mkv36--button__btn">
+            <button id="btnCalificanos" class="mkv37--content__btn">
               <img src="` + options.icon + `" alt="Califícanos" width="21" height="21" />
               <span>Califícanos</span>
             </button>
@@ -4500,12 +4470,12 @@
       };
 
       popupJS.prototype.eventSelectSend = function () {
-        var mkv36radios = document.querySelectorAll('.mkv36--input__radio');
+        var mkv37radios = document.querySelectorAll('.mkv37--input__radio');
 
-        mkv36radios.forEach(mkv36radio => {
-          mkv36radio.onchange = function () {
+        mkv37radios.forEach(mkv37radio => {
+          mkv37radio.onchange = function () {
             // Valor de la opción seleccionada.
-            console.log(mkv36radio.value);
+            console.log(mkv37radio.value);
 
             // Muestra la respuesta:
             showResponse();
@@ -4513,21 +4483,21 @@
         });
 
         function showResponse() {
-          const content = document.getElementById('mkv36Button');
-          const overResponse = document.querySelector('.mkv36--overlay');
+          const content = document.getElementById('mkv37Button');
+          const overResponse = document.querySelector('.mkv37--overlay');
           const btnResponseClose = document.createElement('div');
-          const htmlResponse = `<div class="mkv36--response__container">
-            <div class="mkv36--response__content">
-              <div class="mkv36--response__header">
-                <div class="mkv36--close__row">
-                  <div id="btnResponseClose" class="mkv36--close"></div>
+          const htmlResponse = `<div class="mkv37--response__container">
+            <div class="mkv37--response__content">
+              <div class="mkv37--response__header">
+                <div class="mkv37--close__row">
+                  <div id="btnResponseClose" class="mkv37--close"></div>
                 </div>
               </div>
-              <div class="mkv36--body">
-                <div class="mkv36--response__figure">
+              <div class="mkv37--body">
+                <div class="mkv37--response__figure">
                   <img src="` + options.response.icon + `" alt="` + options.response.title + `" width="96" height="96" />
                 </div>
-                <h4 class="mkv36--response__title">` + options.response.title + `</h4>
+                <h4 class="mkv37--response__title">` + options.response.title + `</h4>
               </div>
             </div>
           </div>`;
@@ -4543,7 +4513,7 @@
 
       popupJS.prototype.togglePopup = function () {
         const closeBtn = document.getElementById('btnClose');
-        const floating = document.querySelector('.mkv36--floating');
+        const floating = document.querySelector('.mkv37--floating');
         const btnCalificanos = document.getElementById("btnCalificanos");
 
         closeBtn.onclick = function (e) {
@@ -4561,20 +4531,9 @@
     }());
 
     var options = {
-      title: '¡Califícanos!',
-      excerpt: '¿Qué tan satisfecho te sentiste con la experiencia de abrir Cuenta Negocios Interbank?',
-      content: [
-        'Totalmente satisfecho',
-        'Muy satisfecho',
-        'Satisfecho',
-        'Poco satisfecho',
-        'Nada satisfecho',
-      ],
-      icon: 'https://paolopacheco.github.io/ibk-media/images/icon-button.svg',
-      response: {
-        title: '¡Muchas gracias por tu<br> calificación!',
-        icon: 'https://paolopacheco.github.io/ibk-media/images/paper-plane.svg',
-      }
+      title: 'Visualiza el <span class="mk-semibold">detalle de tus créditos</span>',
+      excerpt: 'Consulta al instante tu cronograma de pagos desde la App.',
+      icon: 'https://paolopacheco.github.io/ibk-media/images/visualiza-el-detalle-de-tus-créditos.png'
     };
 
     var popup = new popupJS(options);

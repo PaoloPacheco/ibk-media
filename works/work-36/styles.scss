@@ -486,6 +486,23 @@
 
       &__title {
         text-align: center;
+        color: #2f4a9f;
+        font-family: Geometria, sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        letter-spacing: -0.1px;
+
+        @include screen-min(481px) {
+          font-size: 20px;
+          line-height: 24px;
+        }
+      }
+
+      &__figure {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 24px;
       }
     }
   }
