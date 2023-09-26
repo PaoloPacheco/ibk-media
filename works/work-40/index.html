@@ -4413,61 +4413,33 @@
 </head>
 
 <body>
-  <div id="action_insert_23553066222334"></div>
+  <div id="action_insert_21029"></div>
 
   <script>
     var popupJS = (function () {
       function popupJS(options) { }
 
       popupJS.prototype.content = function () {
-        var list = '';
-
-        if (options.content.length) {
-          options.content.forEach((element, index) => {
-            let sign;
-
-            if (index == 0 || index == 4) {
-              sign = '<div class="mkv36--bar__sign"></div>';
-            } else {
-              sign = '';
-            }
-
-            list += `<div class="mkv36--col">
-                      <div class="mkv36--input">
-                        <div class="mkv36--bar">
-                          <div class="mkv36--bar__line">` + sign + `</div>
-                        </div>
-                        <div class="mkv36--label">
-                          <label for="experiencia-` + index + `" class="mkv36--input__label">
-                            <input type="radio" class="mkv36--input__radio"
-                              name="experiencia" id="experiencia-` + index + `"
-                              value="` + element + `">
-                              <span class="mkv36--input__span">` + element + `</span>
-                          </label>
-                        </div>
-                      </div>
-                    </div>`;
-          });
-        }
-
-        var tooltipContent = `<div class="mkv36--tooltip__content">
-            <div class="mkv36--wrapper">
-              <div class="mkv36--wrapper__content">
-                <div class="mkv36--header">
-                  <div class="mkv36--close__row">
-                    <h4 class="mkv36--title">` + options.title + `</h4>
-                    <div class="mkv36--close" id="mkv36BtnClose"></div>
-                  </div>
-                  <p class="mkv36--text">` + options.excerpt + `</p>
-                </div>
-                <div class="mkv36--body">
-                  <form id="formCalificanos" action="#">
-                    <div class="mkv36--form__row">` + list + `</div>
-                  </form>
-                </div>
+        const tooltipContent = `<div class="mkv40--wrapper">
+          <div class="mkv40--section">
+            <div class="mkv40--section__content">
+              <div class="mkv40--section__header">
+                <h4 class="mkv40--title">` + options.title + `</h4>
+                <p class="mkv40--excerpt">` + options.excerpt + `</p>
+              </div>
+              <div class="mkv40--section__body">
+                <picture class="mkv40--picture">
+                  <source
+                    srcset="` + options.image + `"
+                    media="(max-width: 480px)">
+                  <img class="mkv40--image"
+                    src="` + options.image2x + `"
+                    alt="Tenemos nuevo módulo de pago de créditos" width="303">
+                </picture>
               </div>
             </div>
-          </div>`;
+          </div>
+        </div>`;
 
         return tooltipContent;
       }
@@ -4476,135 +4448,72 @@
         const content = this.content();
         const button = document.createElement('div');
         const overlayDiv = document.createElement('div');
+        const self = this;
 
-        overlayDiv.classList.add('mkv36--overlay');
-        overlayDiv.classList.add('mkv36--overlay__active');
-        button.classList.add('mkv36--button');
-        button.setAttribute('id', 'mkv36Button');
+        overlayDiv.classList.add('mkv40--overlay');
+        overlayDiv.setAttribute('id', 'mkv40Overlay');
+        button.classList.add('mkv40--content');
+        button.setAttribute('id', 'mkv40Button');
 
         document.body.appendChild(overlayDiv);
 
-        button.innerHTML = `<div class="mkv36--button__content">
-            <div class="mkv36--floating active">
-              <div class="mkv36--floating__content" id="floatingContent">` + content + `</div>
-            </div>
-            <button id="mkv36BtnCalificanos" class="mkv36--button__btn">
-              <img src="` + options.icon + `" alt="Califícanos" width="21" height="21" />
-              <span>Califícanos</span>
-            </button>
-          </div>`;
+        button.innerHTML = content;
 
         document.body.appendChild(button);
+        this.eventDisplayPopup();
 
-        this.eventSelectSend();
-        this.togglePopup();
+        const progressbar = document.querySelector('#progressbar1');
+
+        if (options.timer.enable) {
+          this.createProgressbar('progressbar1', options.timer.time, function () {
+            self.togglePopup();
+            self.eventClosePopup();
+          });
+        }
+
+        mkv40Btn.onclick = function () {
+          self.togglePopup();
+          self.eventClickButton();
+          window.open(options.button.url, '_blank').focus();
+        }
       };
 
-      popupJS.prototype.eventSelectSend = function () {
-        var mkv36radios = document.querySelectorAll('.mkv36--input__radio');
-
-        mkv36radios.forEach(mkv36radio => {
-          mkv36radio.onchange = function () {
-            // Valor de la opción seleccionada.
-            console.log(mkv36radio.value);
-
-            // Muestra la respuesta:
-            showResponse();
-          }
-        });
-
-        function showResponse() {
-          const content = document.getElementById('mkv36Button');
-          const overResponse = document.querySelector('.mkv36--overlay');
-          const mkv36BtnResponseClose = document.createElement('div');
-          const time = '3.5s';
-          const htmlResponse = `<div class="mkv36--response__container">
-            <div class="mkv36--response__content">
-              <div class="mkv36--response__header">
-                <div class="mkv36--close__row">
-                  <div id="mkv36BtnResponseClose" class="mkv36--close"></div>
-                </div>
-              </div>
-              <div class="mkv36--body">
-                <div class="mkv36--response__figure">
-                  <img src="` + options.response.icon + `" alt="` + options.response.title + `" width="96" height="96" />
-                </div>
-                <h4 class="mkv36--response__title">` + options.response.title + `</h4>
-              </div>
-              <div id='progressbar1'></div>
-            </div>
-          </div>`;
-
-          content.innerHTML = htmlResponse;
-          const progressbar = document.querySelector('#progressbar1');
-
-          createProgressbar('progressbar1', time, function () {
-            console.log('10s progressbar is finished!');
-            overResponse.remove();
-            content.remove();
-          });
-
-          document.getElementById('mkv36BtnResponseClose').onclick = function () {
-            overResponse.remove();
-            content.remove();
-          }
-        }
-
-        function createProgressbar(id, duration, callback) {
-          var progressbar = document.getElementById(id);
-          progressbar.className = 'progressbar';
-
-          var progressbarinner = document.createElement('div');
-          progressbarinner.className = 'inner';
-
-          progressbarinner.style.animationDuration = duration;
-
-          if (typeof (callback) === 'function') {
-            progressbarinner.addEventListener('animationend', callback);
-          }
-
-          progressbar.appendChild(progressbarinner);
-
-          progressbarinner.style.animationPlayState = 'running';
-        }
+      popupJS.prototype.togglePopup = function () {
+        const popup = document.getElementById('mkv40Button');
+        const overlay = document.getElementById('mkv40Overlay');
+        overlay.remove();
+        popup.remove();
       }
 
-      popupJS.prototype.togglePopup = function () {
-        const closeBtn = document.getElementById('mkv36BtnClose');
-        const floating = document.querySelector('.mkv36--floating');
-        const mkv36BtnCalificanos = document.getElementById("mkv36BtnCalificanos");
-        const overResponse = document.querySelector('.mkv36--overlay');
+      popupJS.prototype.eventDisplayPopup = function () {
+        console.log(`Evento despliegue del popup`);
+      }
 
-        closeBtn.onclick = function (e) {
-          e.preventDefault();
-          overResponse.classList.remove('mkv36--overlay__active');
-          floating.classList.remove('active');
-          this.remove();
-        }
+      popupJS.prototype.eventClosePopup = function () {
+        console.log(`Evento cierre del popup`);
+      }
 
-        mkv36BtnCalificanos.onclick = function () {
-          overResponse.classList.add('mkv36--overlay__active');
-          floating.classList.add('active');
-        }
+      popupJS.prototype.eventClickButton = function () {
+        console.log(`Evento click en el botón`);
       }
 
       return popupJS;
     }());
 
     var options = {
-      title: '¡Califícanos!',
-      excerpt: '¿Qué tan satisfecho te sentiste con la experiencia de abrir Cuenta Negocios Interbank?',
-      content: [
-        'Totalmente satisfecho',
-        'Muy satisfecho',
-        'Satisfecho',
-        'Poco satisfecho',
-        'Nada satisfecho',
-      ],
-      icon: 'https://paolopacheco.github.io/ibk-media/images/icon-button.svg',
-      response: {
-        title: '¡Muchas gracias por tu<br> calificación!',
-        icon: 'https://paolopacheco.github.io/ibk-media/images/paper-plane.svg',
+      title: 'Visualiza el <span class="mk-bold">detalle de tus créditos</span>',
+      excerpt: 'Consulta al instante tu cronograma de pagos desde la App.',
+      image: 'https://paolopacheco.github.io/ibk-media/images/visualiza-el-detalle-de-tus-creditos.png',
+      image2x: 'https://paolopacheco.github.io/ibk-media/images/visualiza-el-detalle-de-tus-creditos.png',
+      button: {
+        active: true, // Habilitación del botón.
+        text: 'Empezar',
+        url: 'https://google.com'
+      },
+      timer: {
+        enable: false,
+        time: '5s', // Duración del la barra de progreso.
+        url: '#',
       }
     };
 

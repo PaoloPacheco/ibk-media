@@ -1,0 +1,140 @@
+<div id="action_insert_2355306621029209">
+  <style>
+    :root{--primary:#05be50;--secondary:#0039a6;--blue:#2f4a9f;--secondaryrgb:#0039a6;--light:#fbfbfb;--white:#fff;--silver:#d9dadb;--gray:#9b9b9b;--sky:#ccd7ed;--semiwhite:#f3f6fb;--skydark:#6688ca;--dark:#404040;--darkrgb:#0f191e;--blackrgb:#0f191e}.mk-bold{font-weight:700}.mk-semibold{font-weight:500}.mk-container{margin:0 auto;max-width:1066px;width:100%}@media (max-width:1023px){.mk-container{padding:0 24px}}.mkv37 *{border:none;box-sizing:border-box;margin:0;padding:0}.mkv37--overlay{background-color:var(--white);bottom:0;height:100vh;left:0;position:fixed;right:0;top:0;width:100vw;z-index:99}.mkv37--popup{height:100vh;padding:16px;position:fixed;width:100vw}.mkv37--content,.mkv37--popup{-webkit-box-pack:center;-ms-flex-pack:center;align-items:center;bottom:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;justify-content:center;left:0;right:0;top:0}.mkv37--content{padding:20px 24px;position:absolute;z-index:101}.mkv37--wrapper{flex-direction:column;gap:24px;height:100%;max-width:960px}.mkv37--section,.mkv37--wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%}.mkv37--section{flex:1 1 auto}.mkv37--section__header{text-align:center}.mkv37--section__content{-webkit-box-pack:center;-ms-flex-pack:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;flex-direction:column;gap:40px;justify-content:center;width:100%}.mkv37--footer{flex:0 0 auto}.mkv37--title{color:#2f4a9f;font-family:Geometria,sans-serif;font-size:30px;font-weight:400;letter-spacing:-.4px;line-height:32px;margin-bottom:20px}@media (min-width:481px){.mkv37--title{font-size:28px;line-height:32px}}.mkv37--btn{-webkit-box-pack:center;-ms-flex-pack:center;background-color:var(--primary);border-radius:4px;color:var(--white);display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;font-family:Geometria;font-size:14px;font-weight:500;justify-content:center;letter-spacing:normal;line-height:40px;padding:0 28px;text-decoration:none;white-space:nowrap;width:100%}.progressbar{background-color:#fff;border-radius:2px;bottom:0;left:0;margin:0 auto;position:absolute;right:0;width:100%}.progressbar .inner{animation:progressbar-countdown;animation-duration:40s;animation-fill-mode:forwards;animation-iteration-count:1;animation-play-state:paused;animation-timing-function:linear;border-radius:2px;height:4px}@keyframes progressbar-countdown{0%{background:var(--primary);width:100%}to{background:var(--primary);width:0}}
+  </style>
+
+  <div id="action_insert_489335466473264"></div>
+
+  <script>
+    var popupJS = (function () {
+      function popupJS(options) { }
+
+      popupJS.prototype.content = function () {
+        const btnNode = `<div class="mkv37--footer">
+            <button type="button" class="mkv37--btn" id="mkv37Btn">` + options.button.text + `</button>
+          </div>`;
+        const btn = options.button.active ? btnNode : '';
+        const tooltipContent = `<div class="mkv37--wrapper">
+          <div class="mkv37--section">
+            <div class="mkv37--section__content">
+              <div class="mkv37--section__header">
+                <h4 class="mkv37--title">` + options.title + `</h4>
+                <p class="mkv37--excerpt">` + options.excerpt + `</p>
+              </div>
+              <div class="mkv37--section__body">
+                <picture class="mkv37--picture">
+                  <source
+                    srcset="` + options.image + `"
+                    media="(max-width: 480px)">
+                  <img class="mkv37--image"
+                    src="` + options.image2x + `"
+                    alt="Tenemos nuevo módulo de pago de créditos" width="303">
+                </picture>
+              </div>
+
+              <div id='progressbar1'></div>
+            </div>
+          </div>`
+          + btn + `
+        </div>`;
+
+        return tooltipContent;
+      }
+
+      popupJS.prototype.button = function () {
+        const content = this.content();
+        const button = document.createElement('div');
+        const overlayDiv = document.createElement('div');
+        const self = this;
+
+        overlayDiv.classList.add('mkv37--overlay');
+        overlayDiv.setAttribute('id', 'mkv37Overlay');
+        button.classList.add('mkv37--content');
+        button.setAttribute('id', 'mkv37Button');
+
+        document.body.appendChild(overlayDiv);
+
+        button.innerHTML = content;
+
+        document.body.appendChild(button);
+        this.eventDisplayPopup();
+
+        const progressbar = document.querySelector('#progressbar1');
+        const mkv37Btn = document.querySelector('#mkv37Btn');
+
+        if (options.timer.enable) {
+          this.createProgressbar('progressbar1', options.timer.time, function () {
+            self.togglePopup();
+            self.eventClosePopup();
+          });
+        }
+
+        mkv37Btn.onclick = function () {
+          self.togglePopup();
+          self.eventClickButton();
+          window.open(options.button.url, '_blank').focus();
+        }
+      };
+
+      popupJS.prototype.togglePopup = function () {
+        const popup = document.getElementById('mkv37Button');
+        const overlay = document.getElementById('mkv37Overlay');
+        overlay.remove();
+        popup.remove();
+      }
+
+      popupJS.prototype.createProgressbar = function (id, duration, callback) {
+        var progressbar = document.getElementById(id);
+        progressbar.className = 'progressbar';
+
+        var progressbarinner = document.createElement('div');
+        progressbarinner.className = 'inner';
+        progressbarinner.style.animationDuration = duration;
+
+        if (typeof (callback) === 'function') {
+          progressbarinner.addEventListener('animationend', callback);
+        }
+
+        progressbar.appendChild(progressbarinner);
+        progressbarinner.style.animationPlayState = 'running';
+      }
+
+      popupJS.prototype.eventDisplayPopup = function () {
+        console.log(`Evento despliegue del popup`);
+      }
+
+      popupJS.prototype.eventClosePopup = function () {
+        console.log(`Evento cierre del popup`);
+      }
+
+      popupJS.prototype.eventClickButton = function () {
+        console.log(`Evento click en el botón`);
+      }
+
+      return popupJS;
+    }());
+
+    var options = {
+      title: 'Visualiza el <span class="mk-bold">detalle de tus créditos</span>',
+      excerpt: 'Consulta al instante tu cronograma de pagos desde la App.',
+      image: 'https://paolopacheco.github.io/ibk-media/images/visualiza-el-detalle-de-tus-creditos.png',
+      image2x: 'https://paolopacheco.github.io/ibk-media/images/visualiza-el-detalle-de-tus-creditos.png',
+      button: {
+        active: true, // Habilitación del botón.
+        text: 'Empezar',
+        url: 'https://google.com'
+      },
+      timer: {
+        enable: false,
+        time: '5s', // Duración de la barra de progreso.
+        url: '#',
+      }
+    };
+
+    var popup = new popupJS(options);
+
+    (function () {
+      popup.button();
+    })();
+  </script>
+</div>

@@ -46,6 +46,10 @@
     }
   }
 
+  &-hide {
+    display: none;
+  }
+
   &v36 {
     * {
       box-sizing: border-box;
@@ -64,6 +68,11 @@
       width: 100vw;
       height: 100vh;
       z-index: 99;
+      display: none;
+
+      &__active {
+        display: block;
+      }
     }
 
     &--popup {
@@ -143,6 +152,10 @@
       &__row {
         display: flex;
         justify-content: flex-end;
+
+        .mkv36--title {
+          flex: 1 0 auto;
+        }
       }
     }
 
@@ -150,14 +163,14 @@
       font-family: 'Geometria', sans-serif;
       color: #2f4a9f;
       font-size: 24px;
-      line-height: 28px;
+      line-height: 1;
       letter-spacing: -0.4px;
       font-weight: 500;
       margin-bottom: 20px;
 
       @include screen-min(481px) {
         font-size: 28px;
-        line-height: 32px;
+        line-height: 1;
       }
     }
 
