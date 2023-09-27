@@ -4420,22 +4420,58 @@
       function popupJS(options) { }
 
       popupJS.prototype.content = function () {
+        let questions = '';
+        let index = 0;
+
+        if (options.questions.items.length) {
+          questions = `<ul class="mkv40--question__list">`;
+          options.questions.items.forEach((element, index) => {
+            questions += `<li class="mkv40--question__item"><label for="p1_options_` + index + `" class="mk-radio--btn">
+                                <input type="radio" class="mkv40--questions__radio mkv40--questions__option" id="p1_options_` + index + `" value="` + element + `" name="pregunta_1" />
+                                <span>` + element + `</span>
+                              </label></li>`;
+          });
+
+          if (options.questions.other) {
+            questions += `<li class="mkv40--question__item"><label for="p1_options_other" class="mk-radio--btn">
+                                <input type="radio" class="mkv40--questions__radio mkv40--questions__option" id="p1_options_other" value="` + options.questions.other.text + `" name="pregunta_1" />
+                                <span>` + options.questions.other.text + `</span>
+                              </label></li>`;
+          }
+
+          questions += `</ul>`;
+        }
+
         const tooltipContent = `<div class="mkv40--wrapper">
-          <div class="mkv40--section">
-            <div class="mkv40--section__content">
-              <div class="mkv40--section__header">
-                <h4 class="mkv40--title">` + options.title + `</h4>
-                <p class="mkv40--excerpt">` + options.excerpt + `</p>
-              </div>
-              <div class="mkv40--section__body">
-                <picture class="mkv40--picture">
-                  <source
+          <div class="mkv40--section" id="mkv40Section">
+            <div class="mkv40--grid">
+              <div class="mkv40--header">
+                <div class="mkv40--header__content">
+                  <picture class="mkv40--picture">
+                    <source
                     srcset="` + options.image + `"
                     media="(max-width: 480px)">
-                  <img class="mkv40--image"
-                    src="` + options.image2x + `"
-                    alt="Tenemos nuevo módulo de pago de créditos" width="303">
-                </picture>
+                    <img class="mkv40--image"
+                      src="` + options.image2x + `"
+                      alt="Tenemos nuevo módulo de pago de créditos" width="303">
+                  </picture>
+                  <h2 class="mkv40--title">` + options.title + `</h2>
+                  <p class="mkv40--excerpt">` + options.excerpt + `</p>
+                </div>
+              </div>
+              <div class="mkv40--body">
+                <div class="mkv40--body__content">
+                  <div class="mkv40--body__header">
+                    <h4 class="mkv40--question__title">` + options.questions.question + `</h4>
+                  </div>
+                  <div class="mkv40--body__body">
+                    <div class="mkv40--body__section">` + questions + `</div>
+                    <div class="mkv40--other__content" id="otherContent"></div>
+                  </div>
+                  <div class="mkv40--body__footer">
+                    <button class="mkv40--btn" id="mkv40Btn" type="button" disabled>` + options.questions.btnText + `</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -4448,7 +4484,6 @@
         const content = this.content();
         const button = document.createElement('div');
         const overlayDiv = document.createElement('div');
-        const self = this;
 
         overlayDiv.classList.add('mkv40--overlay');
         overlayDiv.setAttribute('id', 'mkv40Overlay');
@@ -4460,29 +4495,90 @@
         button.innerHTML = content;
 
         document.body.appendChild(button);
+        this.eventSelectOptions();
         this.eventDisplayPopup();
-
-        const progressbar = document.querySelector('#progressbar1');
-
-        if (options.timer.enable) {
-          this.createProgressbar('progressbar1', options.timer.time, function () {
-            self.togglePopup();
-            self.eventClosePopup();
-          });
-        }
-
-        mkv40Btn.onclick = function () {
-          self.togglePopup();
-          self.eventClickButton();
-          window.open(options.button.url, '_blank').focus();
-        }
       };
 
-      popupJS.prototype.togglePopup = function () {
+      popupJS.prototype.inputText = function () {
+        otherIpt = `<input type="text" class="mk-ipt__text" name="mkv40--description" id="mkv40--other__text" placeholder="Ingresa el motivo " />`;
+
+        return otherIpt;
+      }
+
+      popupJS.prototype.response = function () {
+        response = `<div class="mkv40--response">
+          <div class="mkv40--response__content">
+            <div class="mkv40--response__section">
+              <picture class="mkv40--picture">
+                <source
+                srcset="` + options.response.imageResponse + `"
+                media="(max-width: 480px)">
+                <img class="mkv40--image"
+                  src="` + options.response.imageResponse2x + `"
+                  alt="Tenemos nuevo módulo de pago de créditos" width="184">
+              </picture>
+              <h4 class="mkv40--response__title">` + options.response.title + `</h4>
+            </div>
+          </div>
+        </div>`;
+
+        return response;
+      }
+
+      popupJS.prototype.eventSelectOptions = function () {
+        const matches = document.querySelectorAll('.mkv40--questions__option');
+        const iptContent = document.getElementById('otherContent');
+        const inputText = this.inputText();
+        const self = this;
+
+        matches.forEach(match => {
+          match.onchange = function (el) { // Evento de selección de una opción.
+            let elValue = el.target.value; // Valor de la opción.
+
+            console.log('Opción elegida: ', elValue);
+
+            if (elValue == 'Otro motivo') {
+              iptContent.innerHTML = inputText;
+              self.toggleButton(false);
+            } else {
+              self.toggleButton(true);
+              iptContent.innerHTML = '';
+            }
+          }
+        });
+      }
+
+      popupJS.prototype.closePopup = function () {
         const popup = document.getElementById('mkv40Button');
         const overlay = document.getElementById('mkv40Overlay');
         overlay.remove();
         popup.remove();
+      }
+
+      popupJS.prototype.toggleButton = function (status) {
+        const mkv40Section = document.getElementById('mkv40Section');
+        const button = document.getElementById('mkv40Btn');
+        const inputOtherText = document.getElementById('mkv40--other__text');
+        const self = this;
+
+        if (status === true) {
+          button.removeAttribute("disabled")
+        } else {
+          button.setAttribute('disabled', true);
+
+          inputOtherText.addEventListener("keyup", (el) => {
+            if (el.target.value.length > 0) {
+              button.removeAttribute("disabled");
+            } else {
+              button.setAttribute('disabled', true);
+            }
+          });
+        }
+
+        button.onclick = function () {
+          console.log(`click`);
+          mkv40Section.innerHTML = self.response();
+        }
       }
 
       popupJS.prototype.eventDisplayPopup = function () {
@@ -4501,19 +4597,36 @@
     }());
 
     var options = {
-      title: 'Visualiza el <span class="mk-bold">detalle de tus créditos</span>',
-      excerpt: 'Consulta al instante tu cronograma de pagos desde la App.',
-      image: 'https://paolopacheco.github.io/ibk-media/images/visualiza-el-detalle-de-tus-creditos.png',
-      image2x: 'https://paolopacheco.github.io/ibk-media/images/visualiza-el-detalle-de-tus-creditos.png',
+      title: '¿Qué pasó?',
+      excerpt: 'Notamos que saliste del módulo de cambio y nos gustaría conocer la razón:',
+      image: 'https://paolopacheco.github.io/ibk-media/images/que-paso.png',
+      image2x: 'https://paolopacheco.github.io/ibk-media/images/que-paso.png',
       button: {
         active: true, // Habilitación del botón.
         text: 'Empezar',
         url: 'https://google.com'
       },
+      response: {
+        title: '¡Gracias por tu<br> respuesta!',
+        imageResponse: 'https://paolopacheco.github.io/ibk-media/images/gracias-por-tu-respuesta.png',
+        imageResponse2x: 'https://paolopacheco.github.io/ibk-media/images/gracias-por-tu-respuesta.png',
+      },
       timer: {
         enable: false,
         time: '5s', // Duración del la barra de progreso.
         url: '#',
+      },
+      questions: {
+        question: '¿Por qué no continuaste la operación de cambio de moneda?', // Pregunta
+        other: {
+          enable: true,
+          text: 'Otro motivo',
+        },
+        items: [ // Opciones de respuestas.
+          'Solo estaba simulando',
+          'Tengo un mejor tipo de cambio',
+        ],
+        btnText: 'Enviar',
       }
     };
 
