@@ -4443,6 +4443,7 @@
         }
 
         const tooltipContent = `<div class="mkv40--wrapper">
+          <div class="mkv40--popup__close" id="mkv40Close"></div>
           <div class="mkv40--section" id="mkv40Section">
             <div class="mkv40--grid">
               <div class="mkv40--header">
@@ -4497,6 +4498,7 @@
         document.body.appendChild(button);
         this.eventSelectOptions();
         this.eventDisplayPopup();
+        this.closePopup();
       };
 
       popupJS.prototype.inputText = function () {
@@ -4509,7 +4511,7 @@
         response = `<div class="mkv40--response">
           <div class="mkv40--response__content">
             <div class="mkv40--response__section">
-              <picture class="mkv40--picture">
+              <picture>
                 <source
                 srcset="` + options.response.imageResponse + `"
                 media="(max-width: 480px)">
@@ -4539,9 +4541,9 @@
 
             if (elValue == 'Otro motivo') {
               iptContent.innerHTML = inputText;
-              self.toggleButton(false);
+              self.toggleButton(false, elValue);
             } else {
-              self.toggleButton(true);
+              self.toggleButton(true, elValue);
               iptContent.innerHTML = '';
             }
           }
@@ -4549,16 +4551,23 @@
       }
 
       popupJS.prototype.closePopup = function () {
+        const mkv40Close = document.getElementById('mkv40Close');
         const popup = document.getElementById('mkv40Button');
         const overlay = document.getElementById('mkv40Overlay');
-        overlay.remove();
-        popup.remove();
+        const self = this;
+
+        mkv40Close.onclick = function () {
+          overlay.remove();
+          popup.remove();
+          self.eventClosePopup();
+        }
       }
 
-      popupJS.prototype.toggleButton = function (status) {
+      popupJS.prototype.toggleButton = function (status, value) {
         const mkv40Section = document.getElementById('mkv40Section');
         const button = document.getElementById('mkv40Btn');
         const inputOtherText = document.getElementById('mkv40--other__text');
+        let reason = '';
         const self = this;
 
         if (status === true) {
@@ -4569,6 +4578,7 @@
           inputOtherText.addEventListener("keyup", (el) => {
             if (el.target.value.length > 0) {
               button.removeAttribute("disabled");
+              reason = el.target.value;
             } else {
               button.setAttribute('disabled', true);
             }
@@ -4576,8 +4586,12 @@
         }
 
         button.onclick = function () {
-          console.log(`click`);
           mkv40Section.innerHTML = self.response();
+          console.log(`Valor elegido: `, value);
+
+          if (reason !== '') {
+            console.log(`Valor si es "Otro motivo": `, reason);
+          }
         }
       }
 
