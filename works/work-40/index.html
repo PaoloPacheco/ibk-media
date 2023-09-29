@@ -4423,7 +4423,7 @@
         let questions = '';
         let index = 0;
 
-        if (options.questions.items.length) {
+        if (options.questions.items.length || options.questions.other) {
           questions = `<ul class="mkv40--question__list">`;
           options.questions.items.forEach((element, index) => {
             questions += `<li class="mkv40--question__item"><label for="p1_options_` + index + `" class="mk-radio--btn">
@@ -4432,7 +4432,7 @@
                               </label></li>`;
           });
 
-          if (options.questions.other) {
+          if (options.questions.other.enable) {
             questions += `<li class="mkv40--question__item"><label for="p1_options_other" class="mk-radio--btn">
                                 <input type="radio" class="mkv40--questions__radio mkv40--questions__option" id="p1_options_other" value="` + options.questions.other.text + `" name="pregunta_1" />
                                 <span>` + options.questions.other.text + `</span>
@@ -4469,9 +4469,6 @@
                     <div class="mkv40--body__section">` + questions + `</div>
                     <div class="mkv40--other__content" id="otherContent"></div>
                   </div>
-                  <div class="mkv40--body__footer">
-                    <button class="mkv40--btn" id="mkv40Btn" type="button" disabled>` + options.questions.btnText + `</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -4502,7 +4499,7 @@
       };
 
       popupJS.prototype.inputText = function () {
-        otherIpt = `<input type="text" class="mk-ipt__text" name="mkv40--description" id="mkv40--other__text" placeholder="Ingresa el motivo " />`;
+        otherIpt = `<div class="mkv40--question__item"><input type="text" class="mk-ipt__text" name="mkv40--description" id="mkv40--other__text" placeholder="Ingresa el motivo" maxlength="` + options.questions.other.maxlength + `" /></div><div class="mkv40--body__footer"><button class="mkv40--btn" id="mkv40Btn" type="button" disabled>` + options.questions.btnText + `</button></div>`;
 
         return otherIpt;
       }
@@ -4537,13 +4534,11 @@
           match.onchange = function (el) { // Evento de selección de una opción.
             let elValue = el.target.value; // Valor de la opción.
 
-            console.log('Opción elegida: ', elValue);
-
-            if (elValue == 'Otro motivo') {
+            if (elValue == options.questions.other.text) {
               iptContent.innerHTML = inputText;
               self.toggleButton(false, elValue);
             } else {
-              self.toggleButton(true, elValue);
+              self.sendForm(elValue);
               iptContent.innerHTML = '';
             }
           }
@@ -4564,11 +4559,10 @@
       }
 
       popupJS.prototype.toggleButton = function (status, value) {
-        const mkv40Section = document.getElementById('mkv40Section');
         const button = document.getElementById('mkv40Btn');
         const inputOtherText = document.getElementById('mkv40--other__text');
-        let reason = '';
         const self = this;
+        let reason = '';
 
         if (status === true) {
           button.removeAttribute("disabled")
@@ -4586,12 +4580,7 @@
         }
 
         button.onclick = function () {
-          mkv40Section.innerHTML = self.response();
-          console.log(`Valor elegido: `, value);
-
-          if (reason !== '') {
-            console.log(`Valor si es "Otro motivo": `, reason);
-          }
+          self.sendForm(options.questions.other.text + ': ' + reason);
         }
       }
 
@@ -4605,6 +4594,22 @@
 
       popupJS.prototype.eventClickButton = function () {
         console.log(`Evento click en el botón`);
+      }
+
+      popupJS.prototype.sendForm = function (data) {
+        const mkv40Section = document.getElementById('mkv40Section');
+        mkv40Section.innerHTML = this.response();
+        const text = this.cleanText(data);
+        console.log(`Datos a enviar: `, text);
+        console.log(`Evento envío de formulario`);
+      }
+
+      popupJS.prototype.cleanText = function (rawStr) {
+        var encodedStr = rawStr.replace(/[\u00A0-\u9999<>\&]/g, function (i) {
+          return '&#' + i.charCodeAt(0) + ';';
+        });
+
+        return encodedStr;
       }
 
       return popupJS;
@@ -4633,8 +4638,9 @@
       questions: {
         question: '¿Por qué no continuaste la operación de cambio de moneda?', // Pregunta
         other: {
-          enable: true,
+          enable: false,
           text: 'Otro motivo',
+          maxlength: 30
         },
         items: [ // Opciones de respuestas.
           'Solo estaba simulando',
