@@ -4576,6 +4576,8 @@
             } else {
               button.setAttribute('disabled', true);
             }
+
+            el.target.value = el.target.value.replace(/[^0-9a-zA-ZñÑáéíoúÁÉÍÓÚ]+/g, '');
           });
         }
 
@@ -4599,8 +4601,8 @@
       popupJS.prototype.sendForm = function (data) {
         const mkv40Section = document.getElementById('mkv40Section');
         mkv40Section.innerHTML = this.response();
-        const text = this.cleanText(data);
-        console.log(`Datos a enviar: `, text);
+        // const text = this.cleanText(data);
+        console.log(`Datos a enviar: `, data);
         console.log(`Evento envío de formulario`);
       }
 
@@ -4608,7 +4610,6 @@
         var encodedStr = rawStr.replace(/[\u00A0-\u9999<>\&]/g, function (i) {
           return '&#' + i.charCodeAt(0) + ';';
         });
-
         return encodedStr;
       }
 
@@ -4638,7 +4639,7 @@
       questions: {
         question: '¿Por qué no continuaste la operación de cambio de moneda?', // Pregunta
         other: {
-          enable: false,
+          enable: true,
           text: 'Otro motivo',
           maxlength: 30
         },
