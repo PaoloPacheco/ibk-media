@@ -4432,13 +4432,44 @@
                 </div>
               </div>
               <div class="mkv42--body">
-                <div class="mkv42--body__content">
+                <div class="mkv42--body__content" id="mkv42BodyContent">
                   <div class="mkv42--body__header">
                     <h4 class="mkv42--question__title" id="mkv42QuestionTitle">` + options.question + `</h4>
                   </div>
                   <div class="mkv42--body__body">
                     <div class="mkv42--body__section" id="mkv42QuestionSection">
-                      <ul class="mkv42--stars__list"></ul>
+                      <ul class="mkv42--stars__list" id="mkv42StarsList">
+                        <li class="mkv42--stars__item">
+                          <label class="mkv42--stars__label" for="value-1">
+                            <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="1" id="value-1" />
+                            <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                          </label>
+                        </li>
+                        <li class="mkv42--stars__item">
+                          <label class="mkv42--stars__label" for="value-2">
+                            <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="2" id="value-2" />
+                            <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                          </label>
+                        </li>
+                        <li class="mkv42--stars__item">
+                          <label class="mkv42--stars__label" for="value-3">
+                            <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="3" id="value-3" />
+                            <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                          </label>
+                        </li>
+                        <li class="mkv42--stars__item">
+                          <label class="mkv42--stars__label" for="value-4">
+                            <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="4" id="value-4" />
+                            <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                          </label>
+                        </li>
+                          <li class="mkv42--stars__item">
+                            <label class="mkv42--stars__label" for="value-5">
+                              <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="5" id="value-5" />
+                              <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                            </label>
+                          </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -4471,13 +4502,14 @@
       };
 
       popupJS.prototype.inputText = function () {
-        otherIpt = `<div class="mkv42--description__content"><textarea type="text" class="mk-ipt__text" name="mkv42--description" id="mkv42--other__text" placeholder="Ingresa el motivo" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv42--body__footer"><button class="mkv42--btn" id="mkv42Btn" type="button" disabled>` + options.questions.btnText + `</button></div>`;
+        otherTextarea = `<div class="mkv42--description__content"><textarea type="text" class="mk-ipt__text" name="mkv42--description" id="mkv42--other__text" placeholder="Ingresa el motivo" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv42--body__footer"><button class="mkv42--btn" id="mkv42Btn" type="button" disabled>` + options.questions.btnText + `</button></div>`;
 
-        return otherIpt;
+        return otherTextarea;
       }
 
       popupJS.prototype.response = function () {
-        response = `<div class="mkv42--response">
+        const mkv42Section = document.getElementById('mkv42Section');
+        const response = `<div class="mkv42--response">
           <div class="mkv42--response__content">
             <div class="mkv42--response__section">
               <picture class="mkv42--response__picture">
@@ -4496,22 +4528,51 @@
           </div>
         </div>`;
 
-        return response;
+        mkv42Section.innerHTML = response;
       }
 
       popupJS.prototype.eventSelectOptions = function () {
-        const matches = document.querySelectorAll('.mkv42--questions__option');
-        const iptContent = document.getElementById('otherContent');
-        const inputText = this.inputText();
+        const matches = document.querySelectorAll('[name="mkv42-rating"]');
+        const mkv42StarsList = document.getElementById('mkv42StarsList');
         const self = this;
 
         matches.forEach(match => {
           match.onchange = function (el) { // Evento de selección de una opción.
             let elValue = el.target.value; // Valor de la opción.
 
+            if (options.question2.enable) {
+              self.displayQuestion2(elValue);
+            } else {
+              self.response();
+            }
 
+            matches.forEach((item, index) => {
+              item.classList.remove('active');
+
+              if (index <= elValue - 1) {
+                item.classList.add('active');
+              }
+            });
           }
         });
+      }
+
+      popupJS.prototype.displayQuestion2 = function (rating) {
+        const mkv42BodyContent = document.getElementById('mkv42BodyContent');
+        const question2Html = `<div>
+          <div class="mkv42--body__header">
+            <h4 class="mkv42--question__title" id="mkv42QuestionTitle">` + options.question2.text + `</h4>
+          </div>
+          <div class="mkv42--body__body">
+            <div class="mkv42--body__section" id="mkv42QuestionSection">
+              <div class="mkv42--description__content"><textarea type="text" class="mk-ipt__text" name="mkv42--description" id="mkv42--other__text" placeholder="` + options.question2.placeholder + `" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv42--body__footer"><button class="mkv42--btn" id="mkv42Btn" type="button" disabled>` + options.questions.btnText + `</button></div>
+            </div>
+          </div>
+        </div>`;
+
+        mkv42BodyContent.innerHTML = question2Html;
+        this.toggleButton(false, rating, options.questions.other.text);
+        console.log('Muestro pregunta dos.');
       }
 
       popupJS.prototype.closePopup = function () {
@@ -4527,7 +4588,7 @@
         }
       }
 
-      popupJS.prototype.toggleButton = function (status, value) {
+      popupJS.prototype.toggleButton = function (status, rating, value) {
         const button = document.getElementById('mkv42Btn');
         const inputOtherText = document.getElementById('mkv42--other__text');
         const self = this;
@@ -4551,7 +4612,7 @@
         }
 
         button.onclick = function () {
-          self.sendForm(options.questions.other.text + ': ' + reason);
+          self.sendForm(rating, options.questions.other.text + ': ' + reason);
         }
       }
 
@@ -4567,12 +4628,14 @@
         console.log(`Evento click en el botón`);
       }
 
-      popupJS.prototype.sendForm = function (data) {
+      popupJS.prototype.sendForm = function (rating, data) {
         const mkv42Section = document.getElementById('mkv42Section');
         mkv42Section.innerHTML = this.response();
+        this.response();
         this.entendido();
         // const text = this.cleanText(data);
-        console.log(`Datos a enviar: `, data);
+        console.log('Puntaje estrellas: ', rating);
+        console.log(data);
         console.log(`Evento envío de formulario`);
       }
 
@@ -4609,7 +4672,7 @@
         url: 'https://google.com'
       },
       response: {
-        title: '¡Gracias por tu<br> respuesta!',
+        title: '¡Gracias por tu respuesta!',
         btnText: 'Entendido',
         imageResponse: 'https://paolopacheco.github.io/ibk-media/images/gracias-por-tu-respuesta-app.png',
         imageResponse2x: 'https://paolopacheco.github.io/ibk-media/images/gracias-por-tu-respuesta-app.png',
@@ -4620,10 +4683,15 @@
         url: '#',
       },
       question: '¿Cómo calificarías tu experiencia de bienvenida en la App?', // Pregunta
+      question2: {
+        enable: true,
+        text: '¿Qué consideras podría mejorarse?',
+        placeholder: 'Ingresa comentario'
+      },
       questions: {
         other: {
           enable: true,
-          text: 'Otro motivo',
+          text: 'Comentario',
           maxlength: 30
         },
         btnText: 'Enviar',

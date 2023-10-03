@@ -241,7 +241,7 @@
         padding: 24px;
 
         @include screen-min(481px) {
-          padding: 80px 64px 48px;
+          padding: 24px 64px 40px;
         }
       }
     }
@@ -253,7 +253,6 @@
       line-height: 24px;
       font-weight: 500;
       letter-spacing: -0.4px;
-      margin-bottom: 20px;
     }
 
     &--question {
@@ -272,6 +271,41 @@
 
     &--stars {
       &__list {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__label {
+        position: relative;
+      }
+
+      &__radio {
+        position: absolute;
+        z-index: -1;
+        visibility: hidden;
+        top: 0;
+        left: 0;
+
+        &:checked,
+        &.active {
+          & + .mkv42--stars__span {
+            background-position-y: bottom;
+          }
+        }
+      }
+
+      &__span {
+        display: block;
+        cursor: pointer;
+        width: 35px;
+        height: 34px;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: top;
+
+        &:hover {
+          background-position-y: bottom;
+        }
       }
     }
 
@@ -321,11 +355,11 @@
 
       &__content {
         display: flex;
-        padding: 48px;
+        padding: 32px 24px 16px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 32px;
+        gap: 20px;
       }
 
       &__section {
