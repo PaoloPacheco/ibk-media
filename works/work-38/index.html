@@ -4420,23 +4420,23 @@
       function popupJS(options) { }
 
       popupJS.prototype.content = function () {
-        const btnNode = `<div class="mkv37--footer">
-            <button type="button" class="mkv37--btn" id="mkv37Btn">` + options.button.text + `</button>
+        const btnNode = `<div class="mkv38--footer">
+            <button type="button" class="mkv38--btn" id="mkv38Btn">` + options.button.text + `</button>
           </div>`;
         const btn = options.button.active ? btnNode : '';
-        const tooltipContent = `<div class="mkv37--wrapper">
-          <div class="mkv37--section">
-            <div class="mkv37--section__content">
-              <div class="mkv37--section__header">
-                <h4 class="mkv37--title">` + options.title + `</h4>
-                <p class="mkv37--excerpt">` + options.excerpt + `</p>
+        const tooltipContent = `<div class="mkv38--wrapper">
+          <div class="mkv38--section">
+            <div class="mkv38--section__content">
+              <div class="mkv38--section__header">
+                <h4 class="mkv38--title">` + options.title + `</h4>
+                <p class="mkv38--excerpt">` + options.excerpt + `</p>
               </div>
-              <div class="mkv37--section__body">
-                <picture class="mkv37--picture">
+              <div class="mkv38--section__body">
+                <picture class="mkv38--picture">
                   <source
                     srcset="` + options.image + `"
                     media="(max-width: 480px)">
-                  <img class="mkv37--image"
+                  <img class="mkv38--image"
                     src="` + options.image2x + `"
                     alt="Tenemos nuevo módulo de pago de créditos" width="303">
                 </picture>
@@ -4457,10 +4457,10 @@
         const overlayDiv = document.createElement('div');
         const self = this;
 
-        overlayDiv.classList.add('mkv37--overlay');
-        overlayDiv.setAttribute('id', 'mkv37Overlay');
-        button.classList.add('mkv37--content');
-        button.setAttribute('id', 'mkv37Button');
+        overlayDiv.classList.add('mkv38--overlay');
+        overlayDiv.setAttribute('id', 'mkv38Overlay');
+        button.classList.add('mkv38--content');
+        button.setAttribute('id', 'mkv38Button');
 
         document.body.appendChild(overlayDiv);
 
@@ -4470,7 +4470,7 @@
         this.eventDisplayPopup();
 
         const progressbar = document.querySelector('#progressbar1');
-        const mkv37Btn = document.querySelector('#mkv37Btn');
+        const mkv38Btn = document.querySelector('#mkv38Btn');
 
         if (options.timer.enable) {
           this.createProgressbar('progressbar1', options.timer.time, function () {
@@ -4479,7 +4479,7 @@
           });
         }
 
-        mkv37Btn.onclick = function () {
+        mkv38Btn.onclick = function () {
           self.togglePopup();
           self.eventClickButton();
           window.open(options.button.url, '_blank').focus();
@@ -4487,8 +4487,8 @@
       };
 
       popupJS.prototype.togglePopup = function () {
-        const popup = document.getElementById('mkv37Button');
-        const overlay = document.getElementById('mkv37Overlay');
+        const popup = document.getElementById('mkv38Button');
+        const overlay = document.getElementById('mkv38Overlay');
         overlay.remove();
         popup.remove();
       }

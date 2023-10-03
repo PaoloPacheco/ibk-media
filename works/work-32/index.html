@@ -4457,11 +4457,12 @@
         var popup = document.createElement("div");
         var btn2Html = "";
         var checkTerms = "";
+        var checked = "";
         var disabledAttr = "";
 
         popup.classList.add("mkv32--popup");
 
-        if (options.enableBtn2) {
+        if (options.link2.enable) {
           btn2Html =
             `<a class="mkv32--btn mkv32--btn__white" id="mkv32Dont" href="` +
             options.link2.url +
@@ -4475,9 +4476,13 @@
         }
 
         if (options.terms.enable) {
-          disabledAttr = 'disabled';
+          if (options.terms.checked) {
+            checked = 'checked="checked"';
+          } else {
+            disabledAttr = 'disabled';
+          }
           checkTerms =
-            `<div class="mkv32--terms__row"><label class="mk-checkbox mkv32--terms__label" for="termsAcceptance"><input type="checkbox" id="termsAcceptance"> <span></span></label> <p class="mkv32--terms">He leído y acepto los  y la <a class="mk-primary mk-semibold" href="` +
+            `<div class="mkv32--terms__row"><label class="mk-checkbox mkv32--terms__label" for="termsAcceptance"><input type="checkbox" id="termsAcceptance" ` + checked + `> <span></span></label> <p class="mkv32--terms">He leído y acepto los  y la <a class="mk-primary mk-semibold" href="` +
             options.terms.linkTerms + `" target="` + options.terms.target + `" title="` + options.terms.text + `">Términos y Condiciones</a> y la ` +
             `<a class="mk-primary mk-semibold" href="` + options.terms.linkPolicy + `" target="` + options.terms.target + `" title="` + options.terms.text + `">Política de privacidad</a>.</p></div>`;
         }
@@ -4517,7 +4522,7 @@
         var close = popup.querySelector(".mkv32--close");
         this.events(close);
 
-        if (options.enableBtn2) {
+        if (options.link2.enable) {
           var dont = popup.querySelector("#mkv32Dont");
           this.events(dont);
         }
@@ -4561,8 +4566,15 @@
         target: "_blank",
       },
       link2: {
+        enable: true,  // Habilita el botón "No, gracias" del primer card.
         url: "#",
         text: "No, gracias",
+        target: "_blank",
+      },
+      link3: {
+        enable: true,
+        url: "#",
+        text: "Entendido",
         target: "_blank",
       },
       img1x:
@@ -4571,10 +4583,10 @@
         "https://paolopacheco.github.io/ibk-media/images/cuenta-negocios.png",
       imgThank1x: "https://paolopacheco.github.io/ibk-media/images/thank.png",
       imgThank2x: "https://paolopacheco.github.io/ibk-media/images/thank.png",
-      enableBtn2: true, // Habilita el botón "No, gracias".
       enableThank: true, // Habilita la pantalla de agradecimiento.
       terms: {
         enable: true,
+        checked: true,
         linkPolicy: '#',
         linkTerms: '#',
         target: '_blank'
@@ -4604,12 +4616,22 @@
       };
 
       // TODO: Evento botón No, gracias.
-      document.getElementById("mkv32Dont").onclick = function () {
-        console.log(`Evento botón No, gracias`);
-      };
+      if (options.link2.enable) {
+        document.getElementById("mkv32Dont").onclick = function () {
+          console.log(`Evento botón No, gracias`);
+        };
+      }
     })();
 
     function sendValues(container, wrapper) {
+      let btnLink3 = '';
+
+      if (options.link3.enable) {
+        btnLink3 = `<div class="mkv32--thank__footer">
+              <button type="button" class="mkv32--btn mkv32--btn__primary" id="mkv32Finish" title="` + options.link3.text + `">` + options.link3.text + `</button>
+            </div>`;
+      }
+
       const thankHtml =
         `<div class="mkv32--thank">
           <div class="mkv32--thank__content">
@@ -4622,12 +4644,9 @@
             <div class="mkv32--thank__body">
               <div class="mkv32--header__title">
                 <h4 class="mkv32--title mkv32--thank__title">` + options.titleThank + `</h4>
-                <div class="mkv32--thank__excerpt"></div>
               </div>
             </div>
-            <div class="mkv32--thank__footer">
-              <button type="button" class="mkv32--btn mkv32--btn__primary" id="mkv32Finish" title="` + options.link2.text + `">` + options.link2.text + `</button>
-            </div>
+            ` + btnLink3 + `
           </div>
         </div>`;
 
@@ -4636,6 +4655,7 @@
 
       document.getElementById("mkv32Finish").onclick = function (e) {
         // TODO: Evento botón Entendido.
+        console.log('Evento botón Entendido');
         closePopup();
       };
     }

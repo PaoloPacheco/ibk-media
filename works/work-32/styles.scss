@@ -467,7 +467,7 @@ template {
       display: inline-flex;
       justify-content: center;
       width: 100%;
-      line-height: 44px;
+      line-height: 36px;
       border-radius: 4px;
       padding: 0 28px;
 
@@ -561,10 +561,11 @@ template {
       &__title {
         font-size: 20px;
         line-height: 22px;
+        margin-bottom: 32px;
       }
 
       &__content {
-        padding: 88px 24px 40px;
+        padding: 64px 24px 40px;
       }
 
       &__excerpt {

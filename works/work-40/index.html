@@ -4423,24 +4423,25 @@
         let questions = '';
         let index = 0;
 
-        if (options.questions.items.length || options.questions.other) {
-          questions = `<ul class="mkv40--question__list">`;
+        questions = `<ul class="mkv40--question__list">`;
+
+        if (options.questions.items.length) {
           options.questions.items.forEach((element, index) => {
             questions += `<li class="mkv40--question__item"><label for="p1_options_` + index + `" class="mk-radio--btn">
                                 <input type="radio" class="mkv40--questions__radio mkv40--questions__option" id="p1_options_` + index + `" value="` + element + `" name="pregunta_1" />
                                 <span>` + element + `</span>
                               </label></li>`;
           });
+        }
 
-          if (options.questions.other.enable) {
-            questions += `<li class="mkv40--question__item"><label for="p1_options_other" class="mk-radio--btn">
+        if (options.questions.other.enable && options.questions.items.length) {
+          questions += `<li class="mkv40--question__item"><label for="p1_options_other" class="mk-radio--btn">
                                 <input type="radio" class="mkv40--questions__radio mkv40--questions__option" id="p1_options_other" value="` + options.questions.other.text + `" name="pregunta_1" />
                                 <span>` + options.questions.other.text + `</span>
                               </label></li>`;
-          }
-
-          questions += `</ul>`;
         }
+
+        questions += `</ul>`;
 
         const tooltipContent = `<div class="mkv40--wrapper">
           <div class="mkv40--popup__close" id="mkv40Close"></div>
@@ -4499,7 +4500,7 @@
       };
 
       popupJS.prototype.inputText = function () {
-        otherIpt = `<div class="mkv40--question__item"><input type="text" class="mk-ipt__text" name="mkv40--description" id="mkv40--other__text" placeholder="Ingresa el motivo" maxlength="` + options.questions.other.maxlength + `" /></div><div class="mkv40--body__footer"><button class="mkv40--btn" id="mkv40Btn" type="button" disabled>` + options.questions.btnText + `</button></div>`;
+        otherIpt = `<div class="mkv40--question__item"><textarea type="text" class="mk-ipt__text" name="mkv40--description" id="mkv40--other__text" placeholder="Ingresa el motivo" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv40--body__footer"><button class="mkv40--btn" id="mkv40Btn" type="button" disabled>` + options.questions.btnText + `</button></div>`;
 
         return otherIpt;
       }
@@ -4529,6 +4530,11 @@
         const iptContent = document.getElementById('otherContent');
         const inputText = this.inputText();
         const self = this;
+
+        if (options.questions.items.length === 0) {
+          iptContent.innerHTML = inputText;
+          self.toggleButton(false, options.questions.other.text);
+        }
 
         matches.forEach(match => {
           match.onchange = function (el) { // Evento de selección de una opción.

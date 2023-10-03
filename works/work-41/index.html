@@ -4423,24 +4423,26 @@
         let questions = '';
         let index = 0;
 
-        if (options.questions.items.length || options.questions.other) {
-          questions = `<ul class="mkv41--question__list">`;
+        questions = `<ul class="mkv41--question__list">`;
+
+        if (options.questions.items.length) {
           options.questions.items.forEach((element, index) => {
             questions += `<li class="mkv41--question__item"><label for="p1_options_` + index + `" class="mk-radio--btn">
                                 <input type="radio" class="mkv41--questions__radio mkv41--questions__option" id="p1_options_` + index + `" value="` + element + `" name="pregunta_1" />
                                 <span>` + element + `</span>
                               </label></li>`;
           });
+        }
 
-          if (options.questions.other.enable) {
-            questions += `<li class="mkv41--question__item"><label for="p1_options_other" class="mk-radio--btn">
+        if (options.questions.other.enable && options.questions.items.length) {
+          questions += `<li class="mkv41--question__item"><label for="p1_options_other" class="mk-radio--btn">
                                 <input type="radio" class="mkv41--questions__radio mkv41--questions__option" id="p1_options_other" value="` + options.questions.other.text + `" name="pregunta_1" />
                                 <span>` + options.questions.other.text + `</span>
                               </label></li>`;
-          }
-
-          questions += `</ul>`;
         }
+
+
+        questions += `</ul>`;
 
         const tooltipContent = `<div class="mkv41--wrapper">
           <div class="mkv41--popup__close" id="mkv41Close"></div>
@@ -4500,7 +4502,7 @@
         response = `<div class="mkv41--response">
           <div class="mkv41--response__content">
             <div class="mkv41--response__section">
-              <picture>
+              <picture class="mkv41--response__picture">
                 <source
                 srcset="` + options.response.imageResponse + `"
                 media="(max-width: 480px)">
@@ -4509,6 +4511,9 @@
                   alt="Tenemos nuevo módulo de pago de créditos" width="184">
               </picture>
               <h4 class="mkv41--response__title">` + options.response.title + `</h4>
+            </div>
+            <div class="mkv41--response__footer">
+              <button class="mkv41--btn mkv41--response__btn" id="mkv41ResponseBtn" type="button">` + options.response.btnText + `</button>
             </div>
           </div>
         </div>`;
@@ -4521,6 +4526,11 @@
         const iptContent = document.getElementById('otherContent');
         const inputText = this.inputText();
         const self = this;
+
+        if (options.questions.items.length === 0) {
+          iptContent.innerHTML = inputText;
+          self.toggleButton(false, options.questions.other.text);
+        }
 
         matches.forEach(match => {
           match.onchange = function (el) { // Evento de selección de una opción.
@@ -4593,6 +4603,7 @@
       popupJS.prototype.sendForm = function (data) {
         const mkv41Section = document.getElementById('mkv41Section');
         mkv41Section.innerHTML = this.response();
+        this.entendido();
         // const text = this.cleanText(data);
         console.log(`Datos a enviar: `, data);
         console.log(`Evento envío de formulario`);
@@ -4603,6 +4614,20 @@
           return '&#' + i.charCodeAt(0) + ';';
         });
         return encodedStr;
+      }
+
+      popupJS.prototype.entendido = function (rawStr) {
+        const mkv41ResponseBtn = document.getElementById('mkv41ResponseBtn');
+        const popup = document.getElementById('mkv41Button');
+        const overlay = document.getElementById('mkv41Overlay');
+        const self = this;
+
+        mkv41ResponseBtn.onclick = function () {
+          overlay.remove();
+          popup.remove();
+          self.eventClosePopup();
+          console.log(`Evento del botón Entendido`);
+        }
       }
 
       return popupJS;
@@ -4619,6 +4644,7 @@
       },
       response: {
         title: '¡Gracias por tu<br> respuesta!',
+        btnText: 'Entendido',
         imageResponse: 'https://paolopacheco.github.io/ibk-media/images/gracias-por-tu-respuesta-app.png',
         imageResponse2x: 'https://paolopacheco.github.io/ibk-media/images/gracias-por-tu-respuesta-app.png',
       },
