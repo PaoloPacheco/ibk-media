@@ -223,7 +223,6 @@
         background-size: 100% auto;
         text-align: center;
         padding: 40px 20px 16px;
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -239,10 +238,6 @@
         height: 100%;
         text-align: center;
         padding: 24px;
-
-        @include screen-min(481px) {
-          padding: 80px 64px 48px;
-        }
       }
     }
 

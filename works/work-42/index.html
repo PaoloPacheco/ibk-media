@@ -4496,6 +4496,7 @@
         button.innerHTML = content;
 
         document.body.appendChild(button);
+
         this.eventSelectOptions();
         this.eventDisplayPopup();
         this.closePopup();
@@ -4533,6 +4534,7 @@
 
       popupJS.prototype.eventSelectOptions = function () {
         const matches = document.querySelectorAll('[name="mkv42-rating"]');
+        const labels = document.querySelectorAll('.mkv42--stars__label');
         const mkv42StarsList = document.getElementById('mkv42StarsList');
         const self = this;
 
@@ -4543,7 +4545,9 @@
             if (options.question2.enable) {
               self.displayQuestion2(elValue);
             } else {
+              self.sendForm(elValue, options.questions.other.text + ': Ninguno');
               self.response();
+              self.entendido();
             }
 
             matches.forEach((item, index) => {
@@ -4554,6 +4558,24 @@
               }
             });
           }
+        });
+
+        labels.forEach((el, i) => {
+          el.addEventListener("mouseover", function (item, index) {
+            matches.forEach((item, index) => {
+              item.classList.remove('active');
+
+              if (index <= i) {
+                item.classList.add('active');
+              }
+            });
+          });
+
+          el.addEventListener("mouseout", function () {
+            matches.forEach(it => {
+              it.classList.remove('active');
+            });
+          });
         });
       }
 
@@ -4572,7 +4594,6 @@
 
         mkv42BodyContent.innerHTML = question2Html;
         this.toggleButton(false, rating, options.questions.other.text);
-        console.log('Muestro pregunta dos.');
       }
 
       popupJS.prototype.closePopup = function () {
