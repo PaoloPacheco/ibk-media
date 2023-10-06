@@ -4420,29 +4420,29 @@
       function popupJS(options) { }
 
       popupJS.prototype.content = function () {
-        const btnNode = `<div class="mkv39--footer">
-            <button type="button" class="mkv39--btn" id="mkv39Btn">` + options.button.text + `</button>
+        const btnNode = `<div class="mkv43--footer">
+            <button type="button" class="mkv43--btn" id="mkv43Btn">` + options.button.text + `</button>
           </div>`;
-        const btnCloseNode = `<div class="mkv39--popup__close" id="mkv39Close"></div>`;
+        const btnCloseNode = `<div class="mkv43--popup__close" id="mkv43Close"></div>`;
         const btn = options.button.active ? btnNode : '';
         const close = options.enableClose ? btnCloseNode : '';
-        const tooltipContent = `<div class="mkv39--wrapper">
-          <div class="mkv39--section">
+        const tooltipContent = `<div class="mkv43--wrapper">
+          <div class="mkv43--section">
             ` + close + `
-            <div class="mkv39--section__content">
-              <div class="mkv39--section__body">
-                <picture class="mkv39--picture">
+            <div class="mkv43--section__content">
+              <div class="mkv43--section__header">
+                <p class="mkv43--excerpt">` + options.excerpt + `</p>
+                <h4 class="mkv43--title">` + options.title + `</h4>
+              </div>
+              <div class="mkv43--section__body">
+                <picture class="mkv43--picture">
                   <source
                     srcset="` + options.image + `"
                     media="(max-width: 480px)">
-                  <img class="mkv39--image"
+                  <img class="mkv43--image"
                     src="` + options.image2x + `"
                     alt="Tenemos nuevo módulo de pago de créditos" width="230">
                 </picture>
-              </div>
-              <div class="mkv39--section__header">
-                <h4 class="mkv39--title">` + options.title + `</h4>
-                <p class="mkv39--excerpt">` + options.excerpt + `</p>
               </div>
               <div id='progressbar1'></div>
             </div>
@@ -4459,10 +4459,10 @@
         const overlayDiv = document.createElement('div');
         const self = this;
 
-        overlayDiv.classList.add('mkv39--overlay');
-        overlayDiv.setAttribute('id', 'mkv39Overlay');
-        button.classList.add('mkv39--content');
-        button.setAttribute('id', 'mkv39Button');
+        overlayDiv.classList.add('mkv43--overlay');
+        overlayDiv.setAttribute('id', 'mkv43Overlay');
+        button.classList.add('mkv43--content');
+        button.setAttribute('id', 'mkv43Button');
 
         document.body.appendChild(overlayDiv);
 
@@ -4472,7 +4472,7 @@
         this.eventDisplayPopup();
 
         const progressbar = document.querySelector('#progressbar1');
-        const mkv39Btn = document.querySelector('#mkv39Btn');
+        const mkv43Btn = document.querySelector('#mkv43Btn');
 
         if (options.enableClose) {
           this.closePopup();
@@ -4485,7 +4485,7 @@
           });
         }
 
-        mkv39Btn.onclick = function () {
+        mkv43Btn.onclick = function () {
           self.togglePopup();
           self.eventClickButton();
           window.open(options.button.url, '_blank').focus();
@@ -4493,17 +4493,17 @@
       };
 
       popupJS.prototype.closePopup = function () {
-        const mkv39Close = document.getElementById('mkv39Close');
+        const mkv43Close = document.getElementById('mkv43Close');
         const self = this;
 
-        mkv39Close.onclick = function () {
+        mkv43Close.onclick = function () {
           self.togglePopup();
         }
       }
 
       popupJS.prototype.togglePopup = function () {
-        const popup = document.getElementById('mkv39Button');
-        const overlay = document.getElementById('mkv39Overlay');
+        const popup = document.getElementById('mkv43Button');
+        const overlay = document.getElementById('mkv43Overlay');
         overlay.remove();
         popup.remove();
       }
@@ -4540,10 +4540,10 @@
     }());
 
     var options = {
-      title: 'Abre tu <span class="mk-bold">Cuenta Negocios</span> y cobra hoy mismo',
-      excerpt: '¡Evita los trámites y papeleos!<br> Desde tu App al instante.',
-      image: 'https://paolopacheco.github.io/ibk-media/images/full-screen-2.png',
-      image2x: 'https://paolopacheco.github.io/ibk-media/images/full-screen-2.png',
+      title: 'Tienes <span class="mk-bold">S/100,000.00</span> de tu línea revolvente disponible para retirar desde tu app',
+      excerpt: '¿Necesitas liquidez en tu negocio?',
+      image: 'https://paolopacheco.github.io/ibk-media/images/full-screen-3.png',
+      image2x: 'https://paolopacheco.github.io/ibk-media/images/full-screen-3.png',
       button: {
         active: true, // Habilitación del botón.
         text: 'Empezar',
