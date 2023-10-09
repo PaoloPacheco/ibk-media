@@ -89,7 +89,7 @@
 
         &::before,
         &::after {
-          content: '';
+          content: "";
           display: block;
           background: var(--gray);
           margin-bottom: 4px;
@@ -177,7 +177,7 @@
 
       &__content {
         background-color: var(--secondary);
-        background-image: url('../../images/lineas.png');
+        background-image: url("https://paolopacheco.github.io/ibk-media/images/lineas.png");
         width: 100%;
         display: flex;
         gap: 40px;
@@ -196,7 +196,7 @@
     }
 
     &--title {
-      font-family: 'Geometria', sans-serif;
+      font-family: "Geometria", sans-serif;
       color: #2f4a9f;
       font-size: 30px;
       line-height: 32px;
@@ -213,7 +213,7 @@
     &--btn {
       background-color: var(--primary);
       color: var(--white);
-      font-family: 'Geometria';
+      font-family: "Geometria";
       font-size: 14px;
       line-height: 40px;
       letter-spacing: normal;
