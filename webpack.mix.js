@@ -1,26 +1,26 @@
-let mix = require("laravel-mix");
+let mix = require('laravel-mix');
 
 mix.options({
   postCss: [
-    require("autoprefixer")({
+    require('autoprefixer')({
       overrideBrowserslist: [
-        "> 1%",
-        "ie >= 8",
-        "edge >= 15",
-        "ie_mob >= 10",
-        "ff >= 45",
-        "chrome >= 45",
-        "safari >= 7",
-        "opera >= 23",
-        "ios >= 7",
-        "android >= 4",
-        "bb >= 10",
+        '> 1%',
+        'ie >= 8',
+        'edge >= 15',
+        'ie_mob >= 10',
+        'ff >= 45',
+        'chrome >= 45',
+        'safari >= 7',
+        'opera >= 23',
+        'ios >= 7',
+        'android >= 4',
+        'bb >= 10',
       ],
     }),
-    require("cssnano")({
-      preset: "default",
+    require('cssnano')({
+      preset: 'default',
     }),
   ],
 });
 
-mix.sass("works/work-44/styles.scss", "works/work-44");
+mix.sass('works/work-46/styles.scss', 'works/work-46');

@@ -4458,38 +4458,40 @@
         const content = this.content();
         const button = document.createElement('div');
         const overlayDiv = document.createElement('div');
+        const sessionStatus = this.sessionControl();
         const self = this;
 
-        overlayDiv.classList.add('mkv38--overlay');
-        overlayDiv.setAttribute('id', 'mkv38Overlay');
-        button.classList.add('mkv38--content');
-        button.setAttribute('id', 'mkv38Button');
+        if (sessionStatus) {
+          overlayDiv.classList.add('mkv38--overlay');
+          overlayDiv.setAttribute('id', 'mkv38Overlay');
+          button.classList.add('mkv38--content');
+          button.setAttribute('id', 'mkv38Button');
 
-        document.body.appendChild(overlayDiv);
+          document.body.appendChild(overlayDiv);
+          button.innerHTML = content;
+          document.body.appendChild(button);
 
-        button.innerHTML = content;
+          this.eventDisplayPopup();
 
-        document.body.appendChild(button);
-        this.eventDisplayPopup();
+          const progressbar = document.querySelector('#progressbar1');
+          const mkv38Btn = document.querySelector('#mkv38Btn');
 
-        const progressbar = document.querySelector('#progressbar1');
-        const mkv38Btn = document.querySelector('#mkv38Btn');
+          if (options.enableClose) {
+            this.closePopup();
+          }
 
-        if (options.enableClose) {
-          this.closePopup();
-        }
+          if (options.timer.enable) {
+            this.createProgressbar('progressbar1', options.timer.time, function () {
+              self.togglePopup();
+              self.eventClosePopup();
+            });
+          }
 
-        if (options.timer.enable) {
-          this.createProgressbar('progressbar1', options.timer.time, function () {
+          mkv38Btn.onclick = function () {
             self.togglePopup();
-            self.eventClosePopup();
-          });
-        }
-
-        mkv38Btn.onclick = function () {
-          self.togglePopup();
-          self.eventClickButton();
-          window.open(options.button.url, '_blank').focus();
+            self.eventClickButton();
+            window.open(options.button.url, '_blank').focus();
+          }
         }
       };
 
@@ -4537,6 +4539,24 @@
         console.log(`Evento click en el botón`);
       }
 
+      popupJS.prototype.sessionControl = function () {
+        let visited = localStorage.getItem("key");
+        let status;
+
+        if (options.enableSessionControl) {
+          if (!visited) {
+            localStorage.setItem("key", true);
+            status = true;
+          } else {
+            status = false;
+          }
+        } else {
+          status = true;
+        }
+
+        return status;
+      }
+
       return popupJS;
     }());
 
@@ -4555,7 +4575,8 @@
         time: '5s', // Duración del la barra de progreso.
         url: '#',
       },
-      enableClose: false
+      enableClose: false,
+      enableSessionControl: true,
     };
 
     var popup = new popupJS(options);

@@ -4422,51 +4422,51 @@
       popupJS.prototype.content = function () {
         let index = 0;
 
-        const tooltipContent = `<div class="mkv42--wrapper">
-          <div class="mkv42--popup__close" id="mkv42Close"></div>
-          <div class="mkv42--section" id="mkv42Section">
-            <div class="mkv42--grid">
-              <div class="mkv42--header">
-                <div class="mkv42--header__content" style="background-image: url('` + options.image + `')">
-                  <h2 class="mkv42--title">` + options.title + `</h2>
+        const tooltipContent = `<div class="mkv46--wrapper">
+          <div class="mkv46--popup__close" id="mkv46Close"></div>
+          <div class="mkv46--section" id="mkv46Section">
+            <div class="mkv46--grid">
+              <div class="mkv46--header">
+                <div class="mkv46--header__content" style="background-image: url('` + options.image + `')">
+                  Aquí imagen
                 </div>
               </div>
-              <div class="mkv42--body">
-                <div class="mkv42--body__content" id="mkv42BodyContent">
-                  <div class="mkv42--body__header">
-                    <h4 class="mkv42--question__title" id="mkv42QuestionTitle">` + options.question + `</h4>
+              <div class="mkv46--body">
+                <div class="mkv46--body__content" id="mkv46BodyContent">
+                  <div class="mkv46--body__header">
+                    <h4 class="mkv46--question__title" id="mkv46QuestionTitle">` + options.question + `</h4>
                   </div>
-                  <div class="mkv42--body__body">
-                    <div class="mkv42--body__section" id="mkv42QuestionSection">
-                      <ul class="mkv42--stars__list" id="mkv42StarsList">
-                        <li class="mkv42--stars__item">
-                          <label class="mkv42--stars__label" for="value-1">
-                            <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="1" id="value-1" />
-                            <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                  <div class="mkv46--body__body">
+                    <div class="mkv46--body__section" id="mkv46QuestionSection">
+                      <ul class="mkv46--stars__list" id="mkv46StarsList">
+                        <li class="mkv46--stars__item">
+                          <label class="mkv46--stars__label" for="value-1">
+                            <input class="mkv46--stars__radio" type="radio" name="mkv46-rating" value="1" id="value-1" />
+                            <span class="mkv46--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
                           </label>
                         </li>
-                        <li class="mkv42--stars__item">
-                          <label class="mkv42--stars__label" for="value-2">
-                            <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="2" id="value-2" />
-                            <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                        <li class="mkv46--stars__item">
+                          <label class="mkv46--stars__label" for="value-2">
+                            <input class="mkv46--stars__radio" type="radio" name="mkv46-rating" value="2" id="value-2" />
+                            <span class="mkv46--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
                           </label>
                         </li>
-                        <li class="mkv42--stars__item">
-                          <label class="mkv42--stars__label" for="value-3">
-                            <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="3" id="value-3" />
-                            <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                        <li class="mkv46--stars__item">
+                          <label class="mkv46--stars__label" for="value-3">
+                            <input class="mkv46--stars__radio" type="radio" name="mkv46-rating" value="3" id="value-3" />
+                            <span class="mkv46--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
                           </label>
                         </li>
-                        <li class="mkv42--stars__item">
-                          <label class="mkv42--stars__label" for="value-4">
-                            <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="4" id="value-4" />
-                            <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                        <li class="mkv46--stars__item">
+                          <label class="mkv46--stars__label" for="value-4">
+                            <input class="mkv46--stars__radio" type="radio" name="mkv46-rating" value="4" id="value-4" />
+                            <span class="mkv46--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
                           </label>
                         </li>
-                          <li class="mkv42--stars__item">
-                            <label class="mkv42--stars__label" for="value-5">
-                              <input class="mkv42--stars__radio" type="radio" name="mkv42-rating" value="5" id="value-5" />
-                              <span class="mkv42--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
+                          <li class="mkv46--stars__item">
+                            <label class="mkv46--stars__label" for="value-5">
+                              <input class="mkv46--stars__radio" type="radio" name="mkv46-rating" value="5" id="value-5" />
+                              <span class="mkv46--stars__span" style="background-image: url('https://paolopacheco.github.io/ibk-media/images/stars.svg')"></span>
                             </label>
                           </li>
                       </ul>
@@ -4486,10 +4486,10 @@
         const button = document.createElement('div');
         const overlayDiv = document.createElement('div');
 
-        overlayDiv.classList.add('mkv42--overlay');
-        overlayDiv.setAttribute('id', 'mkv42Overlay');
-        button.classList.add('mkv42--content');
-        button.setAttribute('id', 'mkv42Button');
+        overlayDiv.classList.add('mkv46--overlay');
+        overlayDiv.setAttribute('id', 'mkv46Overlay');
+        button.classList.add('mkv46--content');
+        button.setAttribute('id', 'mkv46Button');
 
         document.body.appendChild(overlayDiv);
 
@@ -4503,39 +4503,39 @@
       };
 
       popupJS.prototype.inputText = function () {
-        otherTextarea = `<div class="mkv42--description__content"><textarea type="text" class="mk-ipt__text" name="mkv42--description" id="mkv42--other__text" placeholder="Ingresa el motivo" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv42--body__footer"><button class="mkv42--btn" id="mkv42Btn" type="button" disabled>` + options.questions.btnText + `</button></div>`;
+        otherTextarea = `<div class="mkv46--description__content"><textarea type="text" class="mk-ipt__text" name="mkv46--description" id="mkv46--other__text" placeholder="Ingresa el motivo" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv46--body__footer"><button class="mkv46--btn" id="mkv46Btn" type="button" disabled>` + options.questions.btnText + `</button></div>`;
 
         return otherTextarea;
       }
 
       popupJS.prototype.response = function () {
-        const mkv42Section = document.getElementById('mkv42Section');
-        const response = `<div class="mkv42--response">
-          <div class="mkv42--response__content">
-            <div class="mkv42--response__section">
-              <picture class="mkv42--response__picture">
+        const mkv46Section = document.getElementById('mkv46Section');
+        const response = `<div class="mkv46--response">
+          <div class="mkv46--response__content">
+            <div class="mkv46--response__section">
+              <picture class="mkv46--response__picture">
                 <source
                 srcset="` + options.response.imageResponse + `"
                 media="(max-width: 480px)">
-                <img class="mkv42--image"
+                <img class="mkv46--image"
                   src="` + options.response.imageResponse2x + `"
                   alt="Tenemos nuevo módulo de pago de créditos" width="184">
               </picture>
-              <h4 class="mkv42--response__title">` + options.response.title + `</h4>
+              <h4 class="mkv46--response__title">` + options.response.title + `</h4>
             </div>
-            <div class="mkv42--response__footer">
-              <button class="mkv42--btn mkv42--response__btn" id="mkv42ResponseBtn" type="button">` + options.response.btnText + `</button>
+            <div class="mkv46--response__footer">
+              <button class="mkv46--btn mkv46--response__btn" id="mkv46ResponseBtn" type="button">` + options.response.btnText + `</button>
             </div>
           </div>
         </div>`;
 
-        mkv42Section.innerHTML = response;
+        mkv46Section.innerHTML = response;
       }
 
       popupJS.prototype.eventSelectOptions = function () {
-        const matches = document.querySelectorAll('[name="mkv42-rating"]');
-        const labels = document.querySelectorAll('.mkv42--stars__label');
-        const mkv42StarsList = document.getElementById('mkv42StarsList');
+        const matches = document.querySelectorAll('[name="mkv46-rating"]');
+        const labels = document.querySelectorAll('.mkv46--stars__label');
+        const mkv46StarsList = document.getElementById('mkv46StarsList');
         const self = this;
 
         matches.forEach(match => {
@@ -4544,7 +4544,7 @@
 
             console.log(`Valor se las estrellas: `, elValue);
 
-            if (options.question2.enable) {
+            if (options.question2.enable && elValue < 4) {
               self.displayQuestion2(elValue);
             } else {
               self.sendForm(elValue, options.questions.other.text + ': Ninguno');
@@ -4582,29 +4582,29 @@
       }
 
       popupJS.prototype.displayQuestion2 = function (rating) {
-        const mkv42BodyContent = document.getElementById('mkv42BodyContent');
+        const mkv46BodyContent = document.getElementById('mkv46BodyContent');
         const question2Html = `<div>
-          <div class="mkv42--body__header">
-            <h4 class="mkv42--question__title" id="mkv42QuestionTitle">` + options.question2.text + `</h4>
+          <div class="mkv46--body__header">
+            <h4 class="mkv46--question__title" id="mkv46QuestionTitle">` + options.question2.text + `</h4>
           </div>
-          <div class="mkv42--body__body">
-            <div class="mkv42--body__section" id="mkv42QuestionSection">
-              <div class="mkv42--description__content"><textarea type="text" class="mk-ipt__text" name="mkv42--description" id="mkv42--other__text" placeholder="` + options.question2.placeholder + `" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv42--body__footer"><button class="mkv42--btn" id="mkv42Btn" type="button" disabled>` + options.questions.btnText + `</button></div>
+          <div class="mkv46--body__body">
+            <div class="mkv46--body__section" id="mkv46QuestionSection">
+              <div class="mkv46--description__content"><textarea type="text" class="mk-ipt__text" name="mkv46--description" id="mkv46--other__text" placeholder="` + options.question2.placeholder + `" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv46--body__footer"><button class="mkv46--btn" id="mkv46Btn" type="button" disabled>` + options.questions.btnText + `</button></div>
             </div>
           </div>
         </div>`;
 
-        mkv42BodyContent.innerHTML = question2Html;
+        mkv46BodyContent.innerHTML = question2Html;
         this.toggleButton(false, rating, options.questions.other.text);
       }
 
       popupJS.prototype.closePopup = function () {
-        const mkv42Close = document.getElementById('mkv42Close');
-        const popup = document.getElementById('mkv42Button');
-        const overlay = document.getElementById('mkv42Overlay');
+        const mkv46Close = document.getElementById('mkv46Close');
+        const popup = document.getElementById('mkv46Button');
+        const overlay = document.getElementById('mkv46Overlay');
         const self = this;
 
-        mkv42Close.onclick = function () {
+        mkv46Close.onclick = function () {
           overlay.remove();
           popup.remove();
           self.eventClosePopup();
@@ -4612,8 +4612,8 @@
       }
 
       popupJS.prototype.toggleButton = function (status, rating, value) {
-        const button = document.getElementById('mkv42Btn');
-        const inputOtherText = document.getElementById('mkv42--other__text');
+        const button = document.getElementById('mkv46Btn');
+        const inputOtherText = document.getElementById('mkv46--other__text');
         const self = this;
         let reason = '';
 
@@ -4652,8 +4652,8 @@
       }
 
       popupJS.prototype.sendForm = function (rating, data) {
-        const mkv42Section = document.getElementById('mkv42Section');
-        mkv42Section.innerHTML = this.response();
+        const mkv46Section = document.getElementById('mkv46Section');
+        mkv46Section.innerHTML = this.response();
         this.response();
         this.entendido();
         // const text = this.cleanText(data);
@@ -4670,12 +4670,12 @@
       }
 
       popupJS.prototype.entendido = function (rawStr) {
-        const mkv42ResponseBtn = document.getElementById('mkv42ResponseBtn');
-        const popup = document.getElementById('mkv42Button');
-        const overlay = document.getElementById('mkv42Overlay');
+        const mkv46ResponseBtn = document.getElementById('mkv46ResponseBtn');
+        const popup = document.getElementById('mkv46Button');
+        const overlay = document.getElementById('mkv46Overlay');
         const self = this;
 
-        mkv42ResponseBtn.onclick = function () {
+        mkv46ResponseBtn.onclick = function () {
           overlay.remove();
           popup.remove();
           self.eventClosePopup();
@@ -4687,8 +4687,7 @@
     }());
 
     var options = {
-      title: 'Nos encantaría<br> conocer tu opinión',
-      image: 'https://paolopacheco.github.io/ibk-media/images/confeti.png',
+      image: 'https://paolopacheco.github.io/ibk-media/images/bg-confeti.svg',
       button: {
         active: true, // Habilitación del botón.
         text: 'Empezar',
