@@ -115,12 +115,31 @@
     }
   }
 
-  &v46 {
+  &v47 {
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       border: none;
+    }
+
+    &-demo {
+      &--container {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 760px;
+        padding: 0 20px;
+      }
+
+      &--header {
+        padding: 14px 0;
+      }
+
+      &--specials {
+        background-color: var(--blue);
+        color: var(--white);
+        padding: 6px 0;
+      }
     }
 
     &--overlay {
@@ -133,222 +152,6 @@
       width: 100vw;
       height: 100vh;
       z-index: 99;
-    }
-
-    &--popup {
-      position: fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 16px;
-
-      &__close {
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        width: 16px;
-        height: 16px;
-        z-index: 10;
-
-        &::before,
-        &::after {
-          content: '';
-          display: block;
-          background: var(--gray);
-          margin-bottom: 4px;
-          border-radius: 2px;
-          width: 20px;
-          height: 2px;
-          position: absolute;
-          left: 50%;
-          top: 0;
-          cursor: pointer;
-        }
-
-        &::before {
-          transform: rotate(45deg) translate(-1px, 10px);
-        }
-
-        &::after {
-          transform: rotate(-45deg) translate(-10px, -1px);
-        }
-      }
-    }
-
-    &--content {
-      position: absolute;
-      padding: 16px;
-      z-index: 101;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    &--wrapper {
-      width: 100%;
-      max-width: 320px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      color: var(--dark);
-      position: relative;
-    }
-
-    &--section {
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: var(--white);
-      display: flex;
-      width: 100%;
-    }
-
-    &--grid {
-      width: 100%;
-    }
-
-    &--header {
-      &__content {
-        background-repeat: no-repeat;
-        background-position: top center;
-        background-size: 100% auto;
-        text-align: center;
-        padding: 32px 20px 0;
-        display: flex;
-        justify-content: center;
-      }
-
-      &__image {
-        width: 100px;
-      }
-
-      &__response {
-        margin-bottom: 6px;
-      }
-    }
-
-    &--body {
-      &__content {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        text-align: center;
-        padding: 12px 24px 32px;
-      }
-
-      &__stars {
-        padding: 0 24px;
-      }
-    }
-
-    &--question {
-      &__item {
-        margin-bottom: 12px;
-      }
-
-      &__title {
-        font-weight: 500;
-        line-height: 20px;
-        font-size: 16px;
-        color: var(--black);
-        margin-bottom: 20px;
-      }
-    }
-
-    &--stars {
-      &__list {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      &__label {
-        position: relative;
-      }
-
-      &__radio {
-        position: absolute;
-        z-index: -1;
-        visibility: hidden;
-        top: 0;
-        left: 0;
-
-        &:checked,
-        &.active {
-          & + .mkv46--stars__span {
-            background-position-y: bottom;
-          }
-        }
-      }
-
-      &__span {
-        display: block;
-        cursor: pointer;
-        width: 30px;
-        height: 29px;
-        background-repeat: no-repeat;
-        background-position-x: center;
-        background-position-y: top;
-        background-size: 100% auto;
-
-        &:hover {
-          background-position-y: bottom;
-        }
-      }
-    }
-
-    &--btn {
-      background-color: var(--primary);
-      color: var(--white);
-      font-family: 'Geometria';
-      font-size: 14px;
-      line-height: 40px;
-      letter-spacing: normal;
-      font-weight: 500;
-      text-decoration: none;
-      white-space: nowrap;
-      display: inline-flex;
-      justify-content: center;
-      width: 100%;
-      border-radius: 4px;
-      padding: 0 28px;
-
-      &[disabled='true'],
-      &[disabled],
-      &:disabled {
-        cursor: not-allowed;
-        background-color: var(--gray);
-        pointer-events: none;
-      }
-    }
-
-    &--description {
-      &__content {
-        margin-bottom: 24px;
-      }
-    }
-
-    &--response {
-      width: 100%;
-
-      &__title {
-        color: var(--blue);
-        font-size: 20px;
-        line-height: 22px;
-        font-weight: 500;
-      }
-
-      &__footer {
-        width: 100%;
-      }
     }
   }
 }
