@@ -4428,7 +4428,14 @@
             <div class="mkv46--grid">
               <div class="mkv46--header">
                 <div class="mkv46--header__content" style="background-image: url('` + options.image + `')">
-                  Aquí imagen
+                  <picture class="mkv46--header__picture">
+                    <source
+                    srcset="` + options.response.imageResponse + `"
+                    media="(max-width: 480px)">
+                    <img class="mkv46--image"
+                      src="` + options.response.imageResponse2x + `"
+                      alt="Tenemos nuevo módulo de pago de créditos" width="184">
+                  </picture>
                 </div>
               </div>
               <div class="mkv46--body">
@@ -4688,6 +4695,7 @@
 
     var options = {
       image: 'https://paolopacheco.github.io/ibk-media/images/bg-confeti.svg',
+      imgcabecera: 'https://paolopacheco.github.io/ibk-media/images/af-emoji-emprendedores.png',
       button: {
         active: true, // Habilitación del botón.
         text: 'Empezar',
