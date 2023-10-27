@@ -4849,7 +4849,7 @@
         tooltip.setAttribute('id', 'mkv47Tooltip4');
         tooltip.innerHTML = content;
 
-        self.closeAll(tooltip);
+        self.closeAll(tooltip, target);
 
         setTimeout(() => {
           target.appendChild(tooltip);
@@ -4868,9 +4868,7 @@
       };
 
       floatings.prototype.position = function (element, position = 0, prev = '', extraleft = 0, extratop = 0) {
-        // const top = element.offsetTop;
         const top = element.getBoundingClientRect().top;
-        // const left = element.offsetLeft;
         const left = element.getBoundingClientRect().left;
         const bottom = element.offsetLeft;
 
@@ -4922,14 +4920,16 @@
       };
 
 
-      floatings.prototype.closeAll = function (prev) {
+      floatings.prototype.closeAll = function (prev, target) {
         const self = this;
-        prev.style.removeProperty('display');
-        prev.style.removeProperty('background-color');
-        prev.style.removeProperty('z-index');
-        prev.style.removeProperty('outline');
-        prev.style.removeProperty('border-radius');
+
         document.addEventListener('click', function (event) {
+          target.style.removeProperty('display');
+          target.style.removeProperty('background-color');
+          target.style.removeProperty('z-index');
+          target.style.removeProperty('outline');
+          target.style.removeProperty('border-radius');
+
           self.overlay(false);
           prev.remove();
         });
