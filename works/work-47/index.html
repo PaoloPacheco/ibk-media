@@ -4653,7 +4653,8 @@
         tooltip.innerHTML = content;
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
+          //document.querySelector('body').appendChild(tooltip);
         }, 500);
 
         document.addEventListener('click', function (event) {
@@ -4710,7 +4711,7 @@
         });
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
         }, 500);
       }
 
@@ -4760,7 +4761,7 @@
         });
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
         }, 500);
       }
 
@@ -4810,7 +4811,7 @@
         });
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
         }, 500);
       }
 
@@ -4852,7 +4853,7 @@
         self.closeAll(tooltip, target);
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
         }, 500);
       }
 
@@ -4960,9 +4961,13 @@
 
     var popup = new popupJS(options);
 
-    (function () {
+    window.addEventListener('DOMContentLoaded', function () {
       popup.init();
-    })();
+    }, true);
+
+    // (function () {
+    //   popup.init();
+    // })();
   </script>
 </body>
 

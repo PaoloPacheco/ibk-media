@@ -4503,7 +4503,8 @@
         tooltip.innerHTML = content;
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
+          //document.querySelector('body').appendChild(tooltip);
         }, 500);
 
         document.addEventListener('click', function (event) {
@@ -4560,7 +4561,7 @@
         });
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
         }, 500);
       }
 
@@ -4610,7 +4611,7 @@
         });
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
         }, 500);
       }
 
@@ -4660,7 +4661,7 @@
         });
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
         }, 500);
       }
 
@@ -4702,7 +4703,7 @@
         self.closeAll(tooltip, target);
 
         setTimeout(() => {
-          target.appendChild(tooltip);
+          document.querySelector('body').appendChild(tooltip);
         }, 500);
       }
 
@@ -4791,32 +4792,31 @@
     const options = {
       selectors: [
         {
-          id: document.querySelector("body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-main-header > ion-header > ion-toolbar > ion-img"),
-
+          id: document.getElementById('mkv47Logo'),
         },
         {
-          id: document.querySelector("body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > ion-tab-bar"),
+          id: document.getElementById('mkv47Footer'),
         },
         {
-          id: document.querySelector("body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-home > ion-content > ibk-home-product"),
+          id: document.getElementById('mkv47Products'),
         },
         {
-          id: document.querySelector("body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-home > ion-content > ibk-home-news"),
+          id: document.getElementById('mkv47News'),
         },
         {
-          id: document.querySelector("body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-home > ion-content > ibk-home-news > div.full-container > ion-slides > div > .swiper-slide-active"),
+          id: document.getElementById('mkv47NewsBody'),
         },
       ]
     };
 
     var popup = new popupJS(options);
 
-    (function () {
+    window.addEventListener('DOMContentLoaded', function () {
       popup.init();
-    })();
+    }, true);
+
+    // (function () {
+    //   popup.init();
+    // })();
   </script>
 </div>
-
-body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-main-header > ion-header > ion-toolbar > ion-img
-
-document.querySelector("body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > ion-tab-bar")
