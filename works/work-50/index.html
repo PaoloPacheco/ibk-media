@@ -4442,7 +4442,7 @@
               </div>
               <div class="mkv50--section__header">
                 <h4 class="mkv50--title">` + options.title + `</h4>
-                <p class="mkv50--excerpt">` + options.excerpt + `</p>
+                <div class="mkv50--excerpt">` + options.excerpt + `</div>
               </div>
               <div id='progressbar1'></div>
             </div>
@@ -4456,7 +4456,7 @@
       popupJS.prototype.button = function () {
         const content = this.content();
         const button = document.createElement('div');
-        const sessionStatus = this.sessionControl(5);
+        const sessionStatus = this.sessionControl(15);
         const overlayDiv = document.createElement('div');
         const self = this;
 
@@ -4508,6 +4508,7 @@
       popupJS.prototype.togglePopup = function () {
         const popup = document.getElementById('mkv50Button');
         const overlay = document.getElementById('mkv50Overlay');
+        this.btnTwists();
         overlay.remove();
         popup.remove();
       }
@@ -4540,14 +4541,21 @@
         console.log(`Evento click en el botón`);
       }
 
-      // Controla la sesión verificando el número de veces que el usuario ha visitado la página.
-      // Parámetros:
-      // - $times (number): El número máximo de veces que se permite al usuario visitar la página.
-      //                    Por defecto es 3 si no se proporciona.
-      // Retorna:
-      // - status (boolean): El estado del control de sesión. True si se permite al usuario
-      //                     continuar, false en caso contrario.
-      popupJS.prototype.sessionControl = function ($times = 3) {
+      popupJS.prototype.btnTwists = function () {
+        const twistscontent = document.createElement('div');
+        const twistsbtn = document.createElement('a');
+        const twistsbtncontent = `<img src="${options.btnTwists.image}" alt="${options.btnTwists.text}" /><span>${options.btnTwists.text}</span>`;
+
+        twistscontent.className = 'mkv50--twist__content';
+        twistsbtn.className = 'mkv50--twist__btn';
+
+        twistsbtn.innerHTML = twistsbtncontent;
+        twistscontent.appendChild(twistsbtn);
+
+        document.body.appendChild(twistscontent);
+      }
+
+      popupJS.prototype.sessionControl = function ($times = 3) { // El número máximo de veces que se permite al usuario visitar la página.
         let visited = sessionStorage.getItem("counter");
         let status;
 
@@ -4576,10 +4584,10 @@
     }());
 
     var options = {
-      title: 'Abre tu <span class="mk-bold">Cuenta Negocios</span> y cobra hoy mismo',
-      excerpt: '¡Evita los trámites y papeleos!<br> Desde tu App al instante.',
-      image: 'https://paolopacheco.github.io/ibk-media/images/full-screen-2.png',
-      image2x: 'https://paolopacheco.github.io/ibk-media/images/full-screen-2.png',
+      title: '<span class="mk-bold">¡Giros diarios</span> con tus operaciones digitales!',
+      excerpt: '<p>Acumula más giros al realizar estas operaciones en tu app:</p> <ul><li>Pago SUNAT (1 giro)</li><li>Pago de servicios(1 giro)</li><li>Pago de créditos(5 giros)</li><li>Cambio de moneda(5 giros)</li></ul>',
+      image: 'https://paolopacheco.github.io/ibk-media/images/ruleta.png',
+      image2x: 'https://paolopacheco.github.io/ibk-media/images/ruleta@2x.png',
       button: {
         active: true, // Habilitación del botón.
         text: 'Empezar',
@@ -4592,6 +4600,10 @@
       },
       enableClose: true,
       enableSessionControl: true,
+      btnTwists: {
+        text: '¡Tienes <span>8</span> giros!',
+        image: 'https://paolopacheco.github.io/ibk-media/images/twist.png '
+      }
     };
 
     var popup = new popupJS(options);
