@@ -1,0 +1,94 @@
+:root {
+  --primary: #05be50;
+  --secondary: #0039a6;
+  --red: #eb0046;
+  --white: #fff;
+  --silver: #d9dadb;
+  --gray: #9b9b9b;
+  --sky: #ccd7ed;
+  --semiwhite: #f3f6fb;
+  --skydark: #6688ca;
+  --dark: #404040;
+  --darkrgb: rgb(15, 25, 30);
+  --blackrgb: rgb(15, 25, 30);
+}
+
+@mixin screen-max($max) {
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-min($min) {
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+.mk {
+  &-bold {
+    font-weight: 700;
+  }
+
+  &-semibold {
+    font-weight: 500;
+  }
+
+  &-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1066px;
+
+    @include screen-max(1023px) {
+      padding: 0 24px;
+    }
+  }
+
+  &-text {
+    &_center {
+      text-align: center;
+    }
+  }
+
+  &v50 {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+  }
+}
+
+.progressbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 2px;
+  background-color: #fff;
+
+  .inner {
+    border-radius: 2px;
+    height: 4px;
+    animation: progressbar-countdown;
+    animation-duration: 40s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes progressbar-countdown {
+  0% {
+    width: 100%;
+    background: var(--primary);
+  }
+  100% {
+    width: 0%;
+    background: var(--primary);
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const disclaimer = (function () {
+      function show(options) { }
+
+      show.prototype.init = function () {
+        this.animation();
+      }
+
+      show.prototype.animation = function () {
+        const animationMain = document.createElement('div');
+        const content = this.content();
+        animationMain.classList.add('mkv51--animation');
+        animationMain.setAttribute('id', 'mkv51Animation');
+        animationMain.innerHTML = content;
+        document.body.appendChild(animationMain);
+      }
+
+      show.prototype.content = function () {
+
+      };
+
+      const options = {
+        enableDisclaimer: true,
+        content: {
+          backgroundColor: '#0039A6',
+          image: '',
+          title: '¡Gana con Ruleta Negocio!',
+          excerpt: 'Acumula giros diarios con tus operaciones digitales y obtén premios.',
+        }
+      }
+
+      const disclaimerDeploy = new popupJS(options);
+
+      (function () {
+        disclaimerDeploy.init();
+      })();
+  </script>
+</body>
+
+</html>

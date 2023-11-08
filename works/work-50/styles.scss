@@ -1,7 +1,7 @@
 :root {
   --primary: #05be50;
   --secondary: #0039a6;
-  --light: #fbfbfb;
+  --red: #eb0046;
   --white: #fff;
   --silver: #d9dadb;
   --gray: #9b9b9b;
@@ -41,6 +41,12 @@
 
     @include screen-max(1023px) {
       padding: 0 24px;
+    }
+  }
+
+  &-text {
+    &_center {
+      text-align: center;
     }
   }
 
@@ -115,6 +121,19 @@
       }
     }
 
+    &--number {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--red);
+      color: var(--white);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: inherit;
+      line-height: 24px;
+    }
+
     &--content {
       position: absolute;
       padding: 20px 24px;
@@ -164,8 +183,8 @@
 
     &--title {
       font-family: 'Geometria', sans-serif;
-      font-size: 30px;
-      line-height: 32px;
+      font-size: 24px;
+      line-height: 28px;
       letter-spacing: -0.4px;
       font-weight: normal;
       margin-bottom: 20px;
@@ -206,6 +225,52 @@
       width: 100%;
       border-radius: 4px;
       padding: 0 28px;
+    }
+
+    &--twist {
+      &__content {
+        position: fixed;
+        right: 0;
+        bottom: 40%;
+        transform: rotate(-90deg);
+        transform-origin: 100% 100%;
+      }
+
+      &__figure {
+        position: relative;
+        width: 24px;
+        max-width: 24px;
+      }
+
+      &__image {
+        position: absolute;
+        bottom: 0;
+        top: auto;
+      }
+
+      &__btn {
+        display: flex;
+        align-items: flex-end;
+        background-color: var(--primary);
+        gap: 4px;
+        border-radius: 8px 8px 0 0;
+        color: var(--white);
+        font-size: 12px;
+        line-height: 16px;
+        padding: 4px 6px;
+        font-weight: 500;
+
+        span {
+          display: inline-flex;
+          justify-content: center;
+          height: 16px;
+          line-height: 16px;
+          width: 16px;
+          border-radius: 50%;
+          background-color: var(--red);
+          color: var(--white);
+        }
+      }
     }
   }
 }
