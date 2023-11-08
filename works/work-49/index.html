@@ -4412,216 +4412,283 @@
 </head>
 
 <body>
-  <div id="action_insert_21047"></div>
+  <div class="wrap">
+    <div class="b-carousel js-carousel">
+      <button class="b-carousel__prev js-carousel__prev">Prev</button>
+      <button class="b-carousel__next js-carousel__next">Next</button>
+      <div class="b-carousel__wrap js-carousel__wrap">
+        <div class="b-carousel__item">
+          <img
+            src="https://images.unsplash.com/photo-1472136481627-4914370bca38?w=500"
+            alt="" class="b-carousel__img">
+        </div>
+        <div class="b-carousel__item">
+          <img
+            src="https://images.unsplash.com/photo-1443981257024-40c63080b3ed?w=500"
+            alt="" class="b-carousel__img">
+        </div>
+        <div class="b-carousel__item">
+          <img
+            src="https://images.unsplash.com/photo-1422303497846-57188833cbe1?w=500"
+            alt="" class="b-carousel__img">
+        </div>
+        <div class="b-carousel__item">
+          <img
+            src="https://images.unsplash.com/44/MIbCzcvxQdahamZSNQ26_12082014-IMG_3526.jpg?w=500"
+            alt="" class="b-carousel__img">
+        </div>
+      </div>
+    </div>
 
-
-
+    <div class="js-carousel__bullets"></div>
+  </div>
 
   <script>
-    var popupJS = (function () {
-      function carousel(options) { }
+    (function () {
 
-      carousel.prototype.init = function () {
-        this.show();
-        this.runCarousel();
-      };
+      function Carousel(setting) {
+        if (document.querySelector(setting.wrap) === null) {
+          console.error(`Carousel not fount selector ${setting.wrap}`);
+          return;
+        }
 
-      carousel.prototype.items = function () {
-        const list = options.items;
-        let active = '';
-        let layout = `<div class="mkv48-carrusel">`;
+        let privates = {};
 
-        list.forEach((el, index) => {
-          let active = index === 0 ? "active" : "";
-
-          layout += `<div class="mkv48-carrusel-item ${active}">
-            <div class="mkv48-carrusel-item--header">
-              <picture>
-                <source srcset="${el.image}" media="(min-width: 480px)"><source srcset="${el.image2x}">
-                <img class="mkv27--image__background" src="${el.image}" alt="${this.clearHTMLTags(el.title)}">
-              </picture>
-            </div>
-          </div>`;
-          console.log(index);
-        });
-
-
-
-        layout += `</div>`;
-
-        layout += `<button id="boton-anterior" disabled>Anterior</button>
-              <button id="boton-siguiente">Siguiente</button>`
-
-        layout += `<div class="mkv48-botones-navegacion">
-          <button class="mkv48-boton-navegacion">A</button>
-          <button class="mkv48-boton-navegacion">B</button>
-          <button class="mkv48-boton-navegacion">C</button>
-        </div>`;
-
-        return layout;
-      }
-
-      carousel.prototype.content = function () {
-        const items = this.items();
-        const content = `<div class="mkv48--wrapper">
-          <div class="mkv48--popup__close" id="mkv41Close"></div>
-          <div class="mkv48--section" id="mkv41Section">
-            <div class="mkv48--grid">
-              ${items}
-            </div>
-          </div>
-        </div>`;
-
-        return content;
-      }
-
-      carousel.prototype.show = function () {
-        const overlay = document.createElement('div');
-        const layout = document.createElement('div');
-        const content = this.content();
-
-        overlay.classList.add('mkv48--overlay');
-        overlay.setAttribute('id', 'mkv48Overlay');
-
-        layout.classList.add('mkv48--layout');
-        layout.setAttribute('id', 'mkv48Layout');
-        layout.innerHTML = content;
-
-        document.body.appendChild(overlay);
-        document.body.appendChild(layout);
-      }
-
-      carousel.prototype.clearHTMLTags = function (string) {
-        let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
-        return stringClear;
-      }
-
-      carousel.prototype.runCarousel = function () {
-        const carruselItems = document.getElementsByClassName('mkv48-carrusel-item');
-        const botonesNavegacion = document.getElementsByClassName('mkv48-boton-navegacion');
-        const botonAnterior = document.getElementById('boton-anterior');
-        const botonSiguiente = document.getElementById('boton-siguiente');
-        let currentIndex = 0;
-        let isTransitioning = false; // Flag para evitar transiciones simultáneas
-
-        function mostrarItem(index) {
-          if (isTransitioning) {
+        this.prev_slide = () => {
+          if (!privates.isAnimationEnd) {
             return;
           }
-          isTransitioning = true;
 
-          // Establecer la dirección de la transición (izquierda o derecha)
-          const direction = index > currentIndex ? 'left' : 'right';
+          privates.isAnimationEnd = false;
 
-          // Ajustar la posición del elemento
-          carruselItems[index].style.left = direction === 'left' ? '100%' : '-100%';
-          carruselItems[index].style.display = 'block';
+          --privates.opt.position;
 
-          // Iniciar la transición
-          setTimeout(function () {
-            carruselItems[currentIndex].style.transform = direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)';
-            carruselItems[index].style.transform = 'translateX(0)';
-          }, 0);
-
-          // Esperar a que finalice la transición y restablecer las propiedades
-          setTimeout(function () {
-            carruselItems[currentIndex].style.display = 'none';
-            carruselItems[currentIndex].style.transform = 'translateX(0)';
-            carruselItems[index].style.left = '0';
-            currentIndex = index;
-            isTransitioning = false;
-            actualizarBotonesNavegacion();
-          }, 600);
-
-          // Aplicar la clase "active" al botón de navegación correspondiente
-          for (let i = 0; i < botonesNavegacion.length; i++) {
-            botonesNavegacion[i].classList.remove('active');
+          if (privates.opt.position < 0) {
+            privates.sel.wrap.classList.add("s-notransition");
+            privates.sel.wrap.style[
+              "transform"] =
+              `translateX(-${privates.opt.max_position}00%)`;
+            privates.opt.position = privates.opt.max_position - 1;
           }
-          botonesNavegacion[index].classList.add('active');
+
+          setTimeout(() => {
+            privates.sel.wrap.classList.remove("s-notransition");
+            privates.sel.wrap.style[
+              "transform"] =
+              `translateX(-${privates.opt.position}00%)`;
+          }, 10);
+
+          privates.sel.wrap.addEventListener("transitionend", () => {
+            privates.isAnimationEnd = true;
+          });
+
+          if (privates.setting.autoplay === true) {
+            privates.timer.become();
+          }
+        };
+
+        this.next_slide = () => {
+          if (!privates.isAnimationEnd) {
+            return;
+          }
+
+          privates.isAnimationEnd = false;
+
+          if (privates.opt.position < privates.opt.max_position) {
+            ++privates.opt.position;
+          }
+
+          privates.sel.wrap.classList.remove("s-notransition");
+          privates.sel.wrap.style[
+            "transform"] =
+            `translateX(-${privates.opt.position}00%)`;
+
+          privates.sel.wrap.addEventListener("transitionend", () => {
+            if (privates.opt.position >= privates.opt.max_position) {
+              privates.sel.wrap.style["transform"] = "translateX(0)";
+              privates.sel.wrap.classList.add("s-notransition");
+              privates.opt.position = 0;
+            }
+
+            privates.isAnimationEnd = true;
+          });
+
+          if (privates.setting.autoplay === true) {
+            privates.timer.become();
+          }
+        };
+
+        this.pause = () => {
+          if (privates.setting.autoplay === true) {
+            privates.timer.pause();
+          }
+        };
+
+        this.become = (autoplayDelay = privates.setting.autoplayDelay) => {
+          if (privates.setting.autoplay === true) {
+            privates.setting.autoplayDelay = autoplayDelay;
+            privates.timer.become();
+          }
+        };
+
+        this.goto = index => {
+          privates.opt.position = index - 1;
+          this.next_slide();
+        };
+
+        // Item
+        this.index = () => {
+          return privates.opt.position;
+        };
+
+        privates.default = {
+          touch: true,
+          autoplay: false,
+          autoplayDelay: 3000,
+          pauseOnFocus: true,
+          pauseOnHover: true,
+          bullets: true
+        };
+
+
+        privates.setting = Object.assign(privates.default, setting);
+
+        privates.isAnimationEnd = true;
+
+        privates.sel = {
+          wrap: document.querySelector(privates.setting.wrap),
+          children: document.querySelector(privates.setting.wrap).children,
+          prev: document.querySelector(privates.setting.prev),
+          next: document.querySelector(privates.setting.next)
+        };
+
+        privates.opt = {
+          position: 0,
+          max_position: document.querySelector(privates.setting.wrap).children.
+            length
+        };
+
+        privates.sel.wrap.appendChild(privates.sel.children[0].cloneNode(true));
+
+        // Autoplay
+        if (privates.setting.autoplay === true) {
+          privates.timer = new Timer(
+            this.next_slide,
+            privates.setting.autoplayDelay);
         }
 
-        function siguienteItem() {
-          let nextIndex = currentIndex + 1;
-          if (nextIndex >= carruselItems.length) {
-            nextIndex = 0;
-          }
-          mostrarItem(nextIndex);
-        }
-
-        function anteriorItem() {
-          let prevIndex = currentIndex - 1;
-          if (prevIndex < 0) {
-            prevIndex = carruselItems.length - 1;
-          }
-          mostrarItem(prevIndex);
-        }
-
-        function actualizarBotonesNavegacion() {
-          if (currentIndex === 0) {
-            botonAnterior.disabled = true;
-          } else {
-            botonAnterior.disabled = false;
-          }
-
-          if (currentIndex === carruselItems.length - 1) {
-            botonSiguiente.disabled = true;
-          } else {
-            botonSiguiente.disabled = false;
-          }
-        }
-
-        // Agregar eventos de click a los botones de navegación
-        botonAnterior.addEventListener('click', anteriorItem);
-        botonSiguiente.addEventListener('click', siguienteItem);
-
-        // Agregar eventos de click a los botones de navegación
-        for (let i = 0; i < botonesNavegacion.length; i++) {
-          botonesNavegacion[i].addEventListener('click', function () {
-            mostrarItem(i);
+        // Control
+        if (privates.sel.prev !== null) {
+          privates.sel.prev.addEventListener("click", () => {
+            this.prev_slide();
           });
         }
 
-        // Actualizar el estado inicial de los botones de navegación
-        actualizarBotonesNavegacion;
+        if (privates.sel.next !== null) {
+          privates.sel.next.addEventListener("click", () => {
+            this.next_slide();
+          });
+        }
+
+        // Touch events
+        if (privates.setting.touch === true) {
+          privates.sel.wrap.addEventListener("touchstart", privates.hts, false);
+          privates.sel.wrap.addEventListener("touchmove", privates.htm, false);
+        }
+
+        // Pause on hover
+        if (
+          privates.setting.autoplay === true &&
+          privates.setting.pauseOnHover === true) {
+          privates.sel.wrap.addEventListener("mouseenter", () => {
+            privates.timer.pause();
+          });
+
+          privates.sel.wrap.addEventListener("mouseleave", () => {
+            privates.timer.become();
+          });
+        }
+
+        // Generate bullets
+        if (privates.setting.bullets === true) {
+          const bulletsContainer = document.querySelector(".js-carousel__bullets");
+          if (bulletsContainer === null) {
+            console.error("Bullets container not found");
+          } else {
+            for (let i = 0; i < privates.opt.max_position; i++) {
+              const bullet = document.createElement("span");
+              bullet.classList.add("bullet");
+              // Agregar la clase "active" al bullet correspondiente al slide actual
+              if (i === privates.opt.position) {
+                bullet.classList.add("active");
+              }
+              bullet.addEventListener("click", () => {
+                this.goto(i);
+              });
+              bulletsContainer.appendChild(bullet);
+            };
+          }
+        }
+
+        // Agregar el evento "transitionend" para actualizar la clase "active" del bullet actual
+        privates.sel.wrap.addEventListener("transitionend", () => {
+          const bullets = document.querySelectorAll(".bullet");
+          bullets.forEach((bullet, index) => {
+            if (index === privates.opt.position) {
+              bullet.classList.add("active");
+            } else {
+              bullet.classList.remove("active");
+            }
+          });
+        });
       }
 
-      return carousel;
-    }());
+      function Timer(callback, delay) {
+        let timerId,
+          start,
+          remaining = delay;
+
+        this.resume = () => {
+          start = new Date();
+          timerId = setTimeout(() => {
+            remaining = delay;
+            this.resume();
+            callback();
+          }, remaining);
+        };
+
+        this.pause = () => {
+          clearTimeout(timerId);
+          remaining -= new Date() - start;
+        };
+
+        this.become = () => {
+          clearTimeout(timerId);
+          remaining = delay;
+
+          this.resume();
+        };
+
+        /* Constructor */
+        this.resume();
+      }
 
 
-    const options = {
-      items: [
-        {
-          title: '<span class="mk-semibold">Transferencias inmediatas,</span> rápidas y seguras',
-          text: 'Ingresa al módulo Pagos y Transferencias y realiza transferencias a terceros de manera rápida y segura.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/felicidades-mobil.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/felicidades-mobil.png',
-          btn_text: 'Ir al módulo',
-          btn_link: '#',
-        },
-        {
-          title: '¡Felicidades! Tienes <span class="mk-semibold">un tipo de cambio especial</span>',
-          text: 'Cotiza y cambia soles o dólares de manera fácil, segura y a una tasa especial.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/felicidades.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/felicidades.png',
-          btn_text: 'Ir a cotizar',
-          btn_link: '#',
-        },
-        {
-          title: '¡Felicidades! Tienes <span class="mk-semibold">un tipo de cambio especial</span>',
-          text: 'Cotiza y cambia soles o dólares de manera fácil, segura y a una tasa especial.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/transferencias-inmediatas.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/transferencias-inmediatas.png',
-          btn_text: 'Ir a cotizar',
-          btn_link: '#',
-        },
-      ]
-    };
+      function Layout() {
 
-    var popup = new popupJS(options);
 
-    (function () {
-      popup.init();
+        let a = new Carousel({
+          wrap: ".js-carousel__wrap",
+          prev: ".js-carousel__prev",
+          next: ".js-carousel__next",
+          touch: true,
+          autoplay: false,
+          autoplayDelay: 3000
+        });
+      }
+
+      Layout();
+
     })();
   </script>
 </body>

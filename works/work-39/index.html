@@ -4456,39 +4456,43 @@
       popupJS.prototype.button = function () {
         const content = this.content();
         const button = document.createElement('div');
+        const sessionStatus = this.sessionControl(5);
         const overlayDiv = document.createElement('div');
         const self = this;
 
-        overlayDiv.classList.add('mkv39--overlay');
-        overlayDiv.setAttribute('id', 'mkv39Overlay');
-        button.classList.add('mkv39--content');
-        button.setAttribute('id', 'mkv39Button');
+        console.log(sessionStatus);
 
-        document.body.appendChild(overlayDiv);
+        if (sessionStatus) {
+          overlayDiv.classList.add('mkv39--overlay');
+          overlayDiv.setAttribute('id', 'mkv39Overlay');
+          button.classList.add('mkv39--content');
+          button.setAttribute('id', 'mkv39Button');
 
-        button.innerHTML = content;
+          document.body.appendChild(overlayDiv);
+          button.innerHTML = content;
+          document.body.appendChild(button);
 
-        document.body.appendChild(button);
-        this.eventDisplayPopup();
+          this.eventDisplayPopup();
 
-        const progressbar = document.querySelector('#progressbar1');
-        const mkv39Btn = document.querySelector('#mkv39Btn');
+          const progressbar = document.querySelector('#progressbar1');
+          const mkv39Btn = document.querySelector('#mkv39Btn');
 
-        if (options.enableClose) {
-          this.closePopup();
-        }
+          if (options.enableClose) {
+            this.closePopup();
+          }
 
-        if (options.timer.enable) {
-          this.createProgressbar('progressbar1', options.timer.time, function () {
+          if (options.timer.enable) {
+            this.createProgressbar('progressbar1', options.timer.time, function () {
+              self.togglePopup();
+              self.eventClosePopup();
+            });
+          }
+
+          mkv39Btn.onclick = function () {
             self.togglePopup();
-            self.eventClosePopup();
-          });
-        }
-
-        mkv39Btn.onclick = function () {
-          self.togglePopup();
-          self.eventClickButton();
-          window.open(options.button.url, '_blank').focus();
+            self.eventClickButton();
+            window.open(options.button.url, '_blank').focus();
+          }
         }
       };
 
@@ -4536,6 +4540,31 @@
         console.log(`Evento click en el botón`);
       }
 
+      popupJS.prototype.sessionControl = function ($times = 3) {
+        let visited = sessionStorage.getItem("counter");
+        let status;
+
+        if (options.enableSessionControl) {
+          if (!visited) {
+            sessionStorage.setItem("counter", 1);
+            status = true;
+          } else {
+            let counter = parseInt(visited);
+            if (counter < $times) {
+              counter++;
+              sessionStorage.setItem("counter", counter);
+              status = true;
+            } else {
+              status = false;
+            }
+          }
+        } else {
+          status = true;
+        }
+
+        return status;
+      }
+
       return popupJS;
     }());
 
@@ -4554,7 +4583,8 @@
         time: '5s', // Duración del la barra de progreso.
         url: '#',
       },
-      enableClose: false
+      enableClose: true,
+      enableSessionControl: true,
     };
 
     var popup = new popupJS(options);

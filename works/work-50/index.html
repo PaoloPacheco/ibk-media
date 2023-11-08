@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
@@ -4412,216 +4413,191 @@
 </head>
 
 <body>
-  <div id="action_insert_21047"></div>
-
-
-
+  <div id="action_insert_2355306621029"></div>
 
   <script>
     var popupJS = (function () {
-      function carousel(options) { }
+      function popupJS(options) { }
 
-      carousel.prototype.init = function () {
-        this.show();
-        this.runCarousel();
+      popupJS.prototype.content = function () {
+        const btnNode = `<div class="mkv50--footer">
+            <button type="button" class="mkv50--btn" id="mkv50Btn">` + options.button.text + `</button>
+          </div>`;
+        const btnCloseNode = `<div class="mkv50--popup__close" id="mkv50Close"></div>`;
+        const btn = options.button.active ? btnNode : '';
+        const close = options.enableClose ? btnCloseNode : '';
+        const tooltipContent = `<div class="mkv50--wrapper">
+          <div class="mkv50--section">
+            ` + close + `
+            <div class="mkv50--section__content">
+              <div class="mkv50--section__body">
+                <picture class="mkv50--picture">
+                  <source
+                    srcset="` + options.image + `"
+                    media="(max-width: 480px)">
+                  <img class="mkv50--image"
+                    src="` + options.image2x + `"
+                    alt="Tenemos nuevo módulo de pago de créditos" width="230">
+                </picture>
+              </div>
+              <div class="mkv50--section__header">
+                <h4 class="mkv50--title">` + options.title + `</h4>
+                <p class="mkv50--excerpt">` + options.excerpt + `</p>
+              </div>
+              <div id='progressbar1'></div>
+            </div>
+          </div>`
+          + btn + `
+        </div>`;
+
+        return tooltipContent;
+      }
+
+      popupJS.prototype.button = function () {
+        const content = this.content();
+        const button = document.createElement('div');
+        const sessionStatus = this.sessionControl(5);
+        const overlayDiv = document.createElement('div');
+        const self = this;
+
+        console.log(sessionStatus);
+
+        if (sessionStatus) {
+          overlayDiv.classList.add('mkv50--overlay');
+          overlayDiv.setAttribute('id', 'mkv50Overlay');
+          button.classList.add('mkv50--content');
+          button.setAttribute('id', 'mkv50Button');
+
+          document.body.appendChild(overlayDiv);
+          button.innerHTML = content;
+          document.body.appendChild(button);
+
+          this.eventDisplayPopup();
+
+          const progressbar = document.querySelector('#progressbar1');
+          const mkv50Btn = document.querySelector('#mkv50Btn');
+
+          if (options.enableClose) {
+            this.closePopup();
+          }
+
+          if (options.timer.enable) {
+            this.createProgressbar('progressbar1', options.timer.time, function () {
+              self.togglePopup();
+              self.eventClosePopup();
+            });
+          }
+
+          mkv50Btn.onclick = function () {
+            self.togglePopup();
+            self.eventClickButton();
+            window.open(options.button.url, '_blank').focus();
+          }
+        }
       };
 
-      carousel.prototype.items = function () {
-        const list = options.items;
-        let active = '';
-        let layout = `<div class="mkv48-carrusel">`;
+      popupJS.prototype.closePopup = function () {
+        const mkv50Close = document.getElementById('mkv50Close');
+        const self = this;
 
-        list.forEach((el, index) => {
-          let active = index === 0 ? "active" : "";
-
-          layout += `<div class="mkv48-carrusel-item ${active}">
-            <div class="mkv48-carrusel-item--header">
-              <picture>
-                <source srcset="${el.image}" media="(min-width: 480px)"><source srcset="${el.image2x}">
-                <img class="mkv27--image__background" src="${el.image}" alt="${this.clearHTMLTags(el.title)}">
-              </picture>
-            </div>
-          </div>`;
-          console.log(index);
-        });
-
-
-
-        layout += `</div>`;
-
-        layout += `<button id="boton-anterior" disabled>Anterior</button>
-              <button id="boton-siguiente">Siguiente</button>`
-
-        layout += `<div class="mkv48-botones-navegacion">
-          <button class="mkv48-boton-navegacion">A</button>
-          <button class="mkv48-boton-navegacion">B</button>
-          <button class="mkv48-boton-navegacion">C</button>
-        </div>`;
-
-        return layout;
+        mkv50Close.onclick = function () {
+          self.togglePopup();
+        }
       }
 
-      carousel.prototype.content = function () {
-        const items = this.items();
-        const content = `<div class="mkv48--wrapper">
-          <div class="mkv48--popup__close" id="mkv41Close"></div>
-          <div class="mkv48--section" id="mkv41Section">
-            <div class="mkv48--grid">
-              ${items}
-            </div>
-          </div>
-        </div>`;
-
-        return content;
+      popupJS.prototype.togglePopup = function () {
+        const popup = document.getElementById('mkv50Button');
+        const overlay = document.getElementById('mkv50Overlay');
+        overlay.remove();
+        popup.remove();
       }
 
-      carousel.prototype.show = function () {
-        const overlay = document.createElement('div');
-        const layout = document.createElement('div');
-        const content = this.content();
+      popupJS.prototype.createProgressbar = function (id, duration, callback) {
+        var progressbar = document.getElementById(id);
+        progressbar.className = 'progressbar';
 
-        overlay.classList.add('mkv48--overlay');
-        overlay.setAttribute('id', 'mkv48Overlay');
+        var progressbarinner = document.createElement('div');
+        progressbarinner.className = 'inner';
+        progressbarinner.style.animationDuration = duration;
 
-        layout.classList.add('mkv48--layout');
-        layout.setAttribute('id', 'mkv48Layout');
-        layout.innerHTML = content;
-
-        document.body.appendChild(overlay);
-        document.body.appendChild(layout);
-      }
-
-      carousel.prototype.clearHTMLTags = function (string) {
-        let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
-        return stringClear;
-      }
-
-      carousel.prototype.runCarousel = function () {
-        const carruselItems = document.getElementsByClassName('mkv48-carrusel-item');
-        const botonesNavegacion = document.getElementsByClassName('mkv48-boton-navegacion');
-        const botonAnterior = document.getElementById('boton-anterior');
-        const botonSiguiente = document.getElementById('boton-siguiente');
-        let currentIndex = 0;
-        let isTransitioning = false; // Flag para evitar transiciones simultáneas
-
-        function mostrarItem(index) {
-          if (isTransitioning) {
-            return;
-          }
-          isTransitioning = true;
-
-          // Establecer la dirección de la transición (izquierda o derecha)
-          const direction = index > currentIndex ? 'left' : 'right';
-
-          // Ajustar la posición del elemento
-          carruselItems[index].style.left = direction === 'left' ? '100%' : '-100%';
-          carruselItems[index].style.display = 'block';
-
-          // Iniciar la transición
-          setTimeout(function () {
-            carruselItems[currentIndex].style.transform = direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)';
-            carruselItems[index].style.transform = 'translateX(0)';
-          }, 0);
-
-          // Esperar a que finalice la transición y restablecer las propiedades
-          setTimeout(function () {
-            carruselItems[currentIndex].style.display = 'none';
-            carruselItems[currentIndex].style.transform = 'translateX(0)';
-            carruselItems[index].style.left = '0';
-            currentIndex = index;
-            isTransitioning = false;
-            actualizarBotonesNavegacion();
-          }, 600);
-
-          // Aplicar la clase "active" al botón de navegación correspondiente
-          for (let i = 0; i < botonesNavegacion.length; i++) {
-            botonesNavegacion[i].classList.remove('active');
-          }
-          botonesNavegacion[index].classList.add('active');
+        if (typeof (callback) === 'function') {
+          progressbarinner.addEventListener('animationend', callback);
         }
 
-        function siguienteItem() {
-          let nextIndex = currentIndex + 1;
-          if (nextIndex >= carruselItems.length) {
-            nextIndex = 0;
-          }
-          mostrarItem(nextIndex);
-        }
+        progressbar.appendChild(progressbarinner);
+        progressbarinner.style.animationPlayState = 'running';
+      }
 
-        function anteriorItem() {
-          let prevIndex = currentIndex - 1;
-          if (prevIndex < 0) {
-            prevIndex = carruselItems.length - 1;
-          }
-          mostrarItem(prevIndex);
-        }
+      popupJS.prototype.eventDisplayPopup = function () {
+        console.log(`Evento despliegue del popup`);
+      }
 
-        function actualizarBotonesNavegacion() {
-          if (currentIndex === 0) {
-            botonAnterior.disabled = true;
+      popupJS.prototype.eventClosePopup = function () {
+        console.log(`Evento cierre del popup`);
+      }
+
+      popupJS.prototype.eventClickButton = function () {
+        console.log(`Evento click en el botón`);
+      }
+
+      // Controla la sesión verificando el número de veces que el usuario ha visitado la página.
+      // Parámetros:
+      // - $times (number): El número máximo de veces que se permite al usuario visitar la página.
+      //                    Por defecto es 3 si no se proporciona.
+      // Retorna:
+      // - status (boolean): El estado del control de sesión. True si se permite al usuario
+      //                     continuar, false en caso contrario.
+      popupJS.prototype.sessionControl = function ($times = 3) {
+        let visited = sessionStorage.getItem("counter");
+        let status;
+
+        if (options.enableSessionControl) {
+          if (!visited) {
+            sessionStorage.setItem("counter", 1);
+            status = true;
           } else {
-            botonAnterior.disabled = false;
+            let counter = parseInt(visited);
+            if (counter < $times) {
+              counter++;
+              sessionStorage.setItem("counter", counter);
+              status = true;
+            } else {
+              status = false;
+            }
           }
-
-          if (currentIndex === carruselItems.length - 1) {
-            botonSiguiente.disabled = true;
-          } else {
-            botonSiguiente.disabled = false;
-          }
+        } else {
+          status = true;
         }
 
-        // Agregar eventos de click a los botones de navegación
-        botonAnterior.addEventListener('click', anteriorItem);
-        botonSiguiente.addEventListener('click', siguienteItem);
-
-        // Agregar eventos de click a los botones de navegación
-        for (let i = 0; i < botonesNavegacion.length; i++) {
-          botonesNavegacion[i].addEventListener('click', function () {
-            mostrarItem(i);
-          });
-        }
-
-        // Actualizar el estado inicial de los botones de navegación
-        actualizarBotonesNavegacion;
+        return status;
       }
 
-      return carousel;
+      return popupJS;
     }());
 
-
-    const options = {
-      items: [
-        {
-          title: '<span class="mk-semibold">Transferencias inmediatas,</span> rápidas y seguras',
-          text: 'Ingresa al módulo Pagos y Transferencias y realiza transferencias a terceros de manera rápida y segura.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/felicidades-mobil.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/felicidades-mobil.png',
-          btn_text: 'Ir al módulo',
-          btn_link: '#',
-        },
-        {
-          title: '¡Felicidades! Tienes <span class="mk-semibold">un tipo de cambio especial</span>',
-          text: 'Cotiza y cambia soles o dólares de manera fácil, segura y a una tasa especial.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/felicidades.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/felicidades.png',
-          btn_text: 'Ir a cotizar',
-          btn_link: '#',
-        },
-        {
-          title: '¡Felicidades! Tienes <span class="mk-semibold">un tipo de cambio especial</span>',
-          text: 'Cotiza y cambia soles o dólares de manera fácil, segura y a una tasa especial.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/transferencias-inmediatas.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/transferencias-inmediatas.png',
-          btn_text: 'Ir a cotizar',
-          btn_link: '#',
-        },
-      ]
+    var options = {
+      title: 'Abre tu <span class="mk-bold">Cuenta Negocios</span> y cobra hoy mismo',
+      excerpt: '¡Evita los trámites y papeleos!<br> Desde tu App al instante.',
+      image: 'https://paolopacheco.github.io/ibk-media/images/full-screen-2.png',
+      image2x: 'https://paolopacheco.github.io/ibk-media/images/full-screen-2.png',
+      button: {
+        active: true, // Habilitación del botón.
+        text: 'Empezar',
+        url: 'https://google.com'
+      },
+      timer: {
+        enable: false,
+        time: '5s', // Duración del la barra de progreso.
+        url: '#',
+      },
+      enableClose: true,
+      enableSessionControl: true,
     };
 
     var popup = new popupJS(options);
 
     (function () {
-      popup.init();
+      popup.button();
     })();
   </script>
 </body>

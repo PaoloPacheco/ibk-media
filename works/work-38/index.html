@@ -4539,16 +4539,23 @@
         console.log(`Evento click en el botón`);
       }
 
-      popupJS.prototype.sessionControl = function () {
-        let visited = localStorage.getItem("key");
+      popupJS.prototype.sessionControl = function ($times = 3) {
+        let visited = sessionStorage.getItem("counter");
         let status;
 
         if (options.enableSessionControl) {
           if (!visited) {
-            localStorage.setItem("key", true);
+            sessionStorage.setItem("counter", 1);
             status = true;
           } else {
-            status = false;
+            let counter = parseInt(visited);
+            if (counter < $times) {
+              counter++;
+              sessionStorage.setItem("counter", counter);
+              status = true;
+            } else {
+              status = false;
+            }
           }
         } else {
           status = true;
