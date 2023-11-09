@@ -4460,11 +4460,12 @@
         const overlayDiv = document.createElement('div');
         const self = this;
 
-        this.btnTwists();
+
 
         if (!sessionStatus && sessions === 1) {
           return;
         } else {
+
           overlayDiv.classList.add('mkv50--overlay');
           overlayDiv.setAttribute('id', 'mkv50Overlay');
           button.classList.add('mkv50--content');
@@ -4495,6 +4496,7 @@
             self.eventClickButton();
             window.open(options.button.url, '_blank').focus();
           }
+
         }
       };
 
@@ -4507,46 +4509,11 @@
         }
       }
 
-      popupJS.prototype.togglePopup = function () {
-        const popup = document.getElementById('mkv50Button');
-        const overlay = document.getElementById('mkv50Overlay');
-        overlay.remove();
-        popup.remove();
-      }
-
-      popupJS.prototype.createProgressbar = function (id, duration, callback) {
-        var progressbar = document.getElementById(id);
-        progressbar.className = 'progressbar';
-
-        var progressbarinner = document.createElement('div');
-        progressbarinner.className = 'inner';
-        progressbarinner.style.animationDuration = duration;
-
-        if (typeof (callback) === 'function') {
-          progressbarinner.addEventListener('animationend', callback);
-        }
-
-        progressbar.appendChild(progressbarinner);
-        progressbarinner.style.animationPlayState = 'running';
-      }
-
-      popupJS.prototype.eventDisplayPopup = function () {
-        console.log(`Evento despliegue del popup`);
-      }
-
-      popupJS.prototype.eventClosePopup = function () {
-        console.log(`Evento cierre del popup`);
-      }
-
-      popupJS.prototype.eventClickButton = function () {
-        console.log(`Evento click en el botón`);
-      }
-
       popupJS.prototype.btnTwists = function () {
         const self = this;
         const twistscontent = document.createElement('div');
         const twistsbtn = document.createElement('a');
-        const twistsbtncontent = `<div class="mkv50--twist__figure"><img src="${options.btnTwists.image}" class="mkv50--twist__image" alt="${this.clearHTMLTags(options.btnTwists.text)}" /></div><p>${options.btnTwists.text}</p>`;
+        const twistsbtncontent = `<div class="mkv50--twist__figure"><img src="` + options.btnTwists.image + `" class="mkv50--twist__image" alt="` + this.clearHTMLTags(options.btnTwists.text) + `" /></div><p>` + options.btnTwists.text + `</p>`;
 
         twistscontent.className = 'mkv50--twist__content';
         twistsbtn.className = 'mkv50--twist__btn';
@@ -4586,6 +4553,43 @@
 
         return status;
       }
+
+      popupJS.prototype.togglePopup = function () {
+        const popup = document.getElementById('mkv50Button');
+        const overlay = document.getElementById('mkv50Overlay');
+        overlay.remove();
+        popup.remove();
+      }
+
+      popupJS.prototype.createProgressbar = function (id, duration, callback) {
+        var progressbar = document.getElementById(id);
+        progressbar.className = 'progressbar';
+
+        var progressbarinner = document.createElement('div');
+        progressbarinner.className = 'inner';
+        progressbarinner.style.animationDuration = duration;
+
+        if (typeof (callback) === 'function') {
+          progressbarinner.addEventListener('animationend', callback);
+        }
+
+        progressbar.appendChild(progressbarinner);
+        progressbarinner.style.animationPlayState = 'running';
+      }
+
+      popupJS.prototype.eventDisplayPopup = function () {
+        console.log(`Evento despliegue del popup`);
+      }
+
+      popupJS.prototype.eventClosePopup = function () {
+        console.log(`Evento cierre del popup`);
+      }
+
+      popupJS.prototype.eventClickButton = function () {
+        console.log(`Evento click en el botón`);
+      }
+
+
 
       popupJS.prototype.clearHTMLTags = function (string) {
         let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
@@ -4635,7 +4639,11 @@
     var popup = new popupJS(options);
 
     (function () {
-      popup.button(options.content1);
+      popup.btnTwists();
+
+      if (options.enablePopupDeafault) {
+        popup.button(options.content1);
+      }
     })();
   </script>
 </body>

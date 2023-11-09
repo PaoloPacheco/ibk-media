@@ -4413,127 +4413,235 @@
 </head>
 
 <body>
+  <div id="action_insert_2355306621029"></div>
+
   <script>
-    var disclaimer = (function () {
-      function show(options) { }
+    var popupJS = (function () {
+      function popupJS(options) { }
 
-      show.prototype.init = function () {
-        this.animation();
-      }
-
-      show.prototype.animation = function () {
-        const animationMain = document.createElement('div');
-        const animationContent = document.createElement('div');
-        const content = this.disclaimer();
-        const duration = options.animation.duration;
-
-        animationMain.classList.add('mkv51--animation');
-        animationContent.classList.add('mkv51--animation__content');
-        animationMain.setAttribute('id', 'mkv51Animation');
-        animationMain.style.bottom = options.animation.bottom + 'px';
-
-        animationContent.innerHTML = content;
-        animationMain.appendChild(animationContent);
-
-        document.body.appendChild(animationMain);
-
-        setTimeout(() => {
-          animationMain.classList.add('display');
-        }, 500);
-
-        setTimeout(() => {
-          animationMain.classList.remove('display');
-          animationMain.classList.add('hiden');
-
-        }, duration);
-
-        setTimeout(() => {
-          animationMain.remove();
-        }, duration * 2);
-
-        if (options.enableDisclaimerClose) {
-          this.close();
-        }
-
-        return animationMain;
-      }
-
-      show.prototype.disclaimer = function () {
-        const close = document.createElement('button');
-        // const self = this;
-        let closeBtn = '';
-        close.classList.add('mkv51--disclaimer__close');
-        close.setAttribute('id', 'mkv51Close');
-        close.setAttribute('type', 'button');
-
-        if (options.enableDisclaimerClose) {
-          closeBtn = close.outerHTML;
-        }
-
-        let disclaimerHtml = `<div class="mkv51--disclaimer">
-          <div class="mkv51--disclaimer__content" style="background-color: ` + options.content.backgroundColor + `;">
-            ` + closeBtn + `
-            <div class="mkv51--disclaimer__row">
-              <div class="mkv51--disclaimer__figure">
-                <picture>
+      popupJS.prototype.content = function (data) {
+        const btnNode = `<div class="mkv50--footer">
+            <button type="button" class="mkv50--btn" id="mkv50Btn">` + data.button.text + `</button>
+          </div>`;
+        const btnCloseNode = `<div class="mkv50--popup__close" id="mkv50Close"></div>`;
+        const btn = data.button.active ? btnNode : '';
+        const close = options.enableClose ? btnCloseNode : '';
+        const tooltipContent = `<div class="mkv50--wrapper">
+          <div class="mkv50--section">
+            ` + close + `
+            <div class="mkv50--section__content">
+              <div class="mkv50--section__body">
+                <picture class="mkv50--picture">
                   <source
-                    srcset="` + options.content.image + `"
+                    srcset="` + data.image + `"
                     media="(max-width: 480px)">
-                  <img
-                    src="` + options.content.image2x + `"
-                    alt="` + options.content.title + `"
-                    class="mkv51--disclaimer__image" width="68" height="68">
+                  <img class="mkv50--image"
+                    src="` + data.image2x + `"
+                    alt="Tenemos nuevo módulo de pago de créditos" width="230">
                 </picture>
               </div>
-              <div class="mkv51--disclaimer__text">
-                <h4 class="mkv51--disclaimer__title">` + options.content.title + `</h4>
-                <div class="mkv51--disclaimer__excerpt">` + options.content.excerpt + `</div>
+              <div class="mkv50--section__header">
+                <h4 class="mkv50--title">` + data.title + `</h4>
+                <div class="mkv50--excerpt">` + data.excerpt + `</div>
               </div>
+              <div id='progressbar1'></div>
             </div>
-          </div>
+          </div>`
+          + btn + `
         </div>`;
 
-        return disclaimerHtml;
+        return tooltipContent;
       }
 
-      show.prototype.close = function () {
-        const target = document.getElementById('mkv51Animation');
-        const closeBtn = document.querySelector('#mkv51Close');
-        const duration = options.animation.duration;
+      popupJS.prototype.button = function (data, sessions = 1) {
+        const content = this.content(data);
+        const button = document.createElement('div');
+        const sessionStatus = this.sessionControl(5);
+        const overlayDiv = document.createElement('div');
+        const self = this;
 
-        closeBtn.onclick = function () {
-          target.classList.remove('display');
-          target.classList.add('hiden');
+        if (!sessionStatus && sessions === 1) {
+          return;
+        } else {
 
-          setTimeout(() => {
-            animationMain.remove();
-          }, duration * 2);
+          overlayDiv.classList.add('mkv50--overlay');
+          overlayDiv.setAttribute('id', 'mkv50Overlay');
+          button.classList.add('mkv50--content');
+          button.setAttribute('id', 'mkv50Button');
+
+          document.body.appendChild(overlayDiv);
+          button.innerHTML = content;
+          document.body.appendChild(button);
+
+          this.eventDisplayPopup();
+
+          const progressbar = document.querySelector('#progressbar1');
+          const mkv50Btn = document.querySelector('#mkv50Btn');
+
+          if (options.enableClose) {
+            this.closePopup();
+          }
+
+          if (options.timer.enable) {
+            this.createProgressbar('progressbar1', options.timer.time, function () {
+              self.togglePopup();
+              self.eventClosePopup();
+            });
+          }
+
+          mkv50Btn.onclick = function () {
+            self.togglePopup();
+            self.eventClickButton();
+            window.open(options.button.url, '_blank').focus();
+          }
+
+        }
+      };
+
+      popupJS.prototype.closePopup = function () {
+        const mkv50Close = document.getElementById('mkv50Close');
+        const self = this;
+
+        mkv50Close.onclick = function () {
+          self.togglePopup();
         }
       }
 
-      return show;
-    })();
+      popupJS.prototype.btnTwists = function () {
+        const self = this;
+        const twistscontent = document.createElement('div');
+        const twistsbtn = document.createElement('a');
+        const twistsbtncontent = `<div class="mkv50--twist__figure"><img src="${options.btnTwists.image}" class="mkv50--twist__image" alt="${this.clearHTMLTags(options.btnTwists.text)}" /></div><p>${options.btnTwists.text}</p>`;
+
+        twistscontent.className = 'mkv50--twist__content';
+        twistsbtn.className = 'mkv50--twist__btn';
+
+        twistsbtn.innerHTML = twistsbtncontent;
+        twistscontent.appendChild(twistsbtn);
+
+        twistsbtn.onclick = function () {
+          console.log(`Llego`);
+          self.button(options.content2, 0);
+        }
+
+        document.body.appendChild(twistscontent);
+      }
+
+      popupJS.prototype.sessionControl = function ($times = 3) { // El número máximo de veces que se permite al usuario visitar la página.
+        let visited = sessionStorage.getItem("counter");
+        let status;
+
+        if (options.enableSessionControl) {
+          if (!visited) {
+            sessionStorage.setItem("counter", 1);
+            status = true;
+          } else {
+            let counter = parseInt(visited);
+            if (counter < $times) {
+              counter++;
+              sessionStorage.setItem("counter", counter);
+              status = true;
+            } else {
+              status = false;
+            }
+          }
+        } else {
+          status = true;
+        }
+
+        return status;
+      }
+
+      popupJS.prototype.togglePopup = function () {
+        const popup = document.getElementById('mkv50Button');
+        const overlay = document.getElementById('mkv50Overlay');
+        overlay.remove();
+        popup.remove();
+      }
+
+      popupJS.prototype.createProgressbar = function (id, duration, callback) {
+        var progressbar = document.getElementById(id);
+        progressbar.className = 'progressbar';
+
+        var progressbarinner = document.createElement('div');
+        progressbarinner.className = 'inner';
+        progressbarinner.style.animationDuration = duration;
+
+        if (typeof (callback) === 'function') {
+          progressbarinner.addEventListener('animationend', callback);
+        }
+
+        progressbar.appendChild(progressbarinner);
+        progressbarinner.style.animationPlayState = 'running';
+      }
+
+      popupJS.prototype.eventDisplayPopup = function () {
+        console.log(`Evento despliegue del popup`);
+      }
+
+      popupJS.prototype.eventClosePopup = function () {
+        console.log(`Evento cierre del popup`);
+      }
+
+      popupJS.prototype.eventClickButton = function () {
+        console.log(`Evento click en el botón`);
+      }
+
+
+
+      popupJS.prototype.clearHTMLTags = function (string) {
+        let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
+        return stringClear;
+      }
+
+      return popupJS;
+    }());
 
     var options = {
-      enableDisclaimer: true,
-      enableDisclaimerClose: true,
-      animation: {
-        bottom: 150,
-        duration: 500000,
+      enablePopupDeafault: true,
+      content1: {
+        title: '<span class="mk-bold">¡Giros diarios</span> con tus operaciones digitales!',
+        excerpt: '<p>Acumula más giros al realizar estas operaciones en tu app:</p> <ul><li>Pago SUNAT (1 giro)</li><li>Pago de servicios(1 giro)</li><li>Pago de créditos(5 giros)</li><li>Cambio de moneda(5 giros)</li></ul>',
+        image: 'https://paolopacheco.github.io/ibk-media/images/ruleta.png',
+        image2x: 'https://paolopacheco.github.io/ibk-media/images/ruleta@2x.png',
+        button: {
+          active: true, // Habilitación del botón.
+          text: 'Empezar',
+          url: '#'
+        },
       },
-      content: {
-        backgroundColor: '#0039A6',
-        image: 'https://paolopacheco.github.io/ibk-media/images/ruleta-disclaimer.png',
-        image2x: 'https://paolopacheco.github.io/ibk-media/images/ruleta-disclaimer@2x.png',
-        title: '¡Gana con Ruleta Negocio!',
-        excerpt: 'Acumula giros diarios con tus operaciones digitales y obtén premios.',
+      content2: {
+        title: '<span class="mk-semibold">¡Acumulaste <span class="mkv50--number">10</span> giros!</span>',
+        excerpt: '<p class="mk-text_center">A más operaciones digitales por día, obtendrás más giros en la ruleta y más oportunidades de ganar fabulosos premios.</p>',
+        image: 'https://paolopacheco.github.io/ibk-media/images/ruleta.png',
+        image2x: 'https://paolopacheco.github.io/ibk-media/images/ruleta@2x.png',
+        button: {
+          active: true, // Habilitación del botón.
+          text: 'Girar la ruleta',
+          url: '#'
+        },
+      },
+      timer: {
+        enable: false,
+        time: '5s', // Duración del la barra de progreso.
+        url: '#',
+      },
+      enableClose: true,
+      enableSessionControl: true,
+      btnTwists: {
+        text: '¡Tienes <span>8</span> giros!',
+        image: 'https://paolopacheco.github.io/ibk-media/images/twist.svg '
       }
-    }
+    };
 
-    var disclaimerDeploy = new disclaimer(options);
+    var popup53 = new popupJS(options);
 
     (function () {
-      disclaimerDeploy.init();
+      popup53.btnTwists();
+
+      if (options.enablePopupDeafault) {
+        popup53.button(options.content1);
+      }
     })();
   </script>
 </body>

@@ -21,6 +21,7 @@ mix.options({
       preset: 'default',
     }),
   ],
+  cache: false,
 });
 
-mix.sass('works/work-51/styles.scss', 'works/work-51');
+mix.sass('works/work-53/styles.scss', 'works/work-53');
