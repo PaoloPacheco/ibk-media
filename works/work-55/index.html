@@ -4777,23 +4777,9 @@
 
           radios.forEach(radio => {
             radio.addEventListener('click', (e) => {
-              let input = e.target;
-
-              if (input.checked) {
-                counter++;
-                // console.log("El checkbox está activo");
-              } else {
-                counter--;
-                // console.log("El checkbox no está activo");
-              }
-
-              if (counter > 0) {
-                btnNext.disabled = false;
-              } else {
-                btnNext.disabled = true;
-              }
-
-              // console.log(`Counter:`, counter);
+              const input = e.target;
+              counter = input.checked ? counter + 1 : counter - 1;
+              btnNext.disabled = counter > 0 ? false : true;
             });
           });
         };
