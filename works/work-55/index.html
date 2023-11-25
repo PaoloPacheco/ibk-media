@@ -4625,7 +4625,7 @@
                               </ul>
                             </div>
                             <div class="mkv55--slide__btn_col">
-                              <button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next">Siguiente</button>
+                              <button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" disabled>Siguiente</button>
                             </div>
                           </div>
                         </div>
@@ -4680,7 +4680,9 @@
                                 <li class="active"><a data-slide="2"></a></li>
                               </ul>
                             </div>
-                            <div class="mkv55--slide__btn_col"></div>
+                            <div class="mkv55--slide__btn_col">
+                              <button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" id="finish" disabled>Finalizar</button>
+                              </div>
                           </div>
                         </div>
                       </li>
@@ -4722,78 +4724,19 @@
           overlay.appendChild(popup);
           document.body.appendChild(overlay);
 
+          this.radioEvents();
           this.events(btnEnviar);
           this.events(close);
 
           const buttons = document.querySelectorAll('[data-carousel-btn]');
-          var matches = document.querySelectorAll('.mkv55--questions__radio');
-
-          // matches.forEach(match => {
-          //   match.onchange = function () {
-          //     const slides = match.closest('[data-carousel]').querySelector('[data-slides]');
-          //     const parent = match.closest('.mkv55--slide__body');
-          //     const btnNext = parent.querySelector('.mkv55--slide__btn_next');
-
-          //     const currents = parent.querySelectorAll('.mkv55--questions__radio');
-
-          //     matches.forEach(item => {
-          //       console.log(`slides:`, item);
-          //     });
-          //   }
-          // });
-
-          matches.forEach(match => {
-            match.onchange = function () {
-              const slides = match.closest('[data-carousel]').querySelector('[data-slides]');
-              const activeSlide = slides.querySelector('[data-active]');
-              let newIndex = [...slides.children].indexOf(activeSlide) + 1;
-              let curNext = activeSlide.querySelector('.mkv55--slide__btn_next');
-
-              const radios = activeSlide.querySelectorAll('.mkv55--questions__radio');
-              console.log('radios', radios);
-
-              let isChecked = 1;
-
-              radios.forEach(function (radio, i) {
-                // console.log('radiossss', radio);
-                console.log('sss', i);
-                radios[i].onclick = function () {
-                  console.log('radio');
-
-                  if (radio.checked) {
-                    isChecked++;
-                  } else {
-                    isChecked--;
-                  }
-                }
-              });
-
-              // radios.forEach(radio => {
-              //   console.log('radiossss', radio);
-              //   radio.onclick = function () {
-              //     console.log('radio', isChecked);
-
-              //     if (radio.checked) {
-              //       isChecked++;
-              //     } else {
-              //       isChecked--;
-              //     }
-
-              //     console.log('isChecked:', isChecked);
-              //   }
-              // });
-
-              resultBack.addEventListener('click', () => {
-                result.style.display = "none";
-              })
-            }
-          });
 
           buttons.forEach(btn => {
             btn.addEventListener('click', () => {
               const offset = btn.dataset.carouselBtn === 'next' ? 1 : -1;
               const slides = btn.closest('[data-carousel]').querySelector('[data-slides]');
+              const slidesItems = document.querySelectorAll('.mkv55--slide');
               const activeSlide = slides.querySelector('[data-active]');
+              let curIndex = [...slides.children].indexOf(activeSlide);
               let newIndex = [...slides.children].indexOf(activeSlide) + offset;
 
               if (newIndex < 0) {
@@ -4803,30 +4746,56 @@
                 newIndex = 0;
               }
 
-              if (slides.children[newIndex] != undefined) {
+              if ((curIndex + 1) === slides.children.length) {
+                result.style.display = "flex";
+              } else {
                 slides.children[newIndex].dataset.active = true;
                 delete activeSlide.dataset.active;
-                // upadteBullets(newIndex);
-              } else {
-                result.style.display = "flex";
+
               }
 
-              // slides.children[newIndex].dataset.active = true;
-              // delete activeSlide.dataset.active;
+              this.radioEvents(slides.children[newIndex]);
             });
           });
 
           function upadteBullets(cur) {
             let bullets = popup.querySelectorAll('ul.mk-bullets li');
-
             bullets.forEach(bullet => {
               bullet.classList.remove('active')
             });
-
             bullets[cur].classList.add('active');
           }
 
           this.validator();
+        };
+
+        popupJS.prototype.radioEvents = function (activeSlide = document.querySelector('[data-active]')) {
+          const matches = document.querySelectorAll('.mkv55--questions__radio');
+          const radios = activeSlide.querySelectorAll('.mkv55--questions__radio');
+          const btnNext = activeSlide.querySelector('.mkv55--slide__btn_next');
+          let counter = 0;
+
+          radios.forEach(radio => {
+            radio.addEventListener('click', (e) => {
+              let input = e.target;
+
+              if (input.checked) {
+                counter++;
+                // console.log("El checkbox está activo");
+              } else {
+                counter--;
+                // console.log("El checkbox no está activo");
+              }
+
+              if (counter > 0) {
+                btnNext.disabled = false;
+              } else {
+                btnNext.disabled = true;
+              }
+
+              // console.log(`Counter:`, counter);
+            });
+          });
         };
 
         popupJS.prototype.validator = function name(formId) {
@@ -4846,8 +4815,6 @@
 
             popup.showResult();
           }
-
-          // btnEnviar.addEventListener('click', validate);
         }
 
         popupJS.prototype.overlay = function () {
