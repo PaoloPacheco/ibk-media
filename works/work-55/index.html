@@ -4751,10 +4751,13 @@
               } else {
                 slides.children[newIndex].dataset.active = true;
                 delete activeSlide.dataset.active;
-
               }
 
               this.radioEvents(slides.children[newIndex]);
+
+              resultBack.addEventListener('click', () => {
+                result.style.display = "none";
+              });
             });
           });
 
