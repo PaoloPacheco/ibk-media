@@ -4421,9 +4421,9 @@
 
       popupJS.prototype.content = function (data) {
         const btnNode = `<div class="mkv50--footer">
-            <button type="button" class="mkv50--btn" id="mkv50Btn">` + data.button.text + `</button>
+            <button type="button" class="mkv50--btn" id="mkv50Btn` + data.id + `">` + data.button.text + `</button>
           </div>`;
-        const btnCloseNode = `<div class="mkv50--popup__close" id="mkv50Close"></div>`;
+        const btnCloseNode = `<div class="mkv50--popup__close" id="mkv50Close` + data.id + `"></div>`;
         const btn = data.button.active ? btnNode : '';
         const close = options.enableClose ? btnCloseNode : '';
         const tooltipContent = `<div class="mkv50--wrapper">
@@ -4444,10 +4444,10 @@
                 <h4 class="mkv50--title">` + data.title + `</h4>
                 <div class="mkv50--excerpt">` + data.excerpt + `</div>
               </div>
-              <div id='progressbar1'></div>
             </div>
           </div>`
           + btn + `
+          <div id='progressbar` + data.id + `'></div>
         </div>`;
 
         return tooltipContent;
@@ -4456,20 +4456,18 @@
       popupJS.prototype.button = function (data, sessions = 1) {
         const content = this.content(data);
         const button = document.createElement('div');
-        const sessionStatus = this.sessionControl(5);
+        const sessionStatus = this.cookieControl(5, 24, data.id);
+        // const sessionStatus = this.sessionControl(5);
         const overlayDiv = document.createElement('div');
         const self = this;
-
-
 
         if (!sessionStatus && sessions === 1) {
           return;
         } else {
-
           overlayDiv.classList.add('mkv50--overlay');
           overlayDiv.setAttribute('id', 'mkv50Overlay');
           button.classList.add('mkv50--content');
-          button.setAttribute('id', 'mkv50Button');
+          button.setAttribute('id', 'mkv50Button' + data.id);
 
           document.body.appendChild(overlayDiv);
           button.innerHTML = content;
@@ -4477,35 +4475,34 @@
 
           this.eventDisplayPopup();
 
-          const progressbar = document.querySelector('#progressbar1');
-          const mkv50Btn = document.querySelector('#mkv50Btn');
+          let progressbar = document.querySelector('#progressbar' + data.id);
+          const mkv50Btn = document.querySelector('#mkv50Btn' + data.id);
 
           if (options.enableClose) {
-            this.closePopup();
+            this.closePopup(data.id);
           }
 
-          if (options.timer.enable) {
-            this.createProgressbar('progressbar1', options.timer.time, function () {
-              self.togglePopup();
+          if (data.timer.enable) {
+            this.createProgressbar('progressbar' + data.id, data.timer.time, function () {
+              self.togglePopup(data.id);
               self.eventClosePopup();
             });
           }
 
           mkv50Btn.onclick = function () {
-            self.togglePopup();
+            self.togglePopup(data.id);
             self.eventClickButton();
-            window.open(options.button.url, '_blank').focus();
+            data.button.url();
           }
-
         }
       };
 
-      popupJS.prototype.closePopup = function () {
-        const mkv50Close = document.getElementById('mkv50Close');
+      popupJS.prototype.closePopup = function (id) {
+        const mkv50Close = document.getElementById('mkv50Close' + id);
         const self = this;
 
         mkv50Close.onclick = function () {
-          self.togglePopup();
+          self.togglePopup(id);
         }
       }
 
@@ -4554,9 +4551,52 @@
         return status;
       }
 
-      popupJS.prototype.togglePopup = function () {
-        const popup = document.getElementById('mkv50Button');
+      popupJS.prototype.cookieControl = function ($times = 3, hours = 24, id = '') {
+        let nameCookie = 'counter' + id;
+        let visited = getCookie(nameCookie);
+        let status;
+
+        if (!visited) {
+          setCookie(nameCookie, 1, 1);
+          status = true;
+        } else {
+          let counter = parseInt(visited);
+          if (counter < $times) {
+            counter++;
+            setCookie(nameCookie, counter, 1);
+            status = true;
+          } else {
+            status = false;
+          }
+        }
+
+        function setCookie(name, value, days) {
+          let expires = "";
+          if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (hours * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+          let nameEQ = name + "=";
+          let ca = document.cookie.split(';');
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+          }
+          return null;
+        }
+
+        return status;
+      }
+
+      popupJS.prototype.togglePopup = function (id) {
         const overlay = document.getElementById('mkv50Overlay');
+        const popup = document.getElementById('mkv50Button' + id);
         overlay.remove();
         popup.remove();
       }
@@ -4589,8 +4629,6 @@
         console.log(`Evento click en el botón`);
       }
 
-
-
       popupJS.prototype.clearHTMLTags = function (string) {
         let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
         return stringClear;
@@ -4602,6 +4640,7 @@
     var options = {
       enablePopupDeafault: true,
       content1: {
+        id: 'data-1',
         title: '<span class="mk-bold">¡Giros diarios</span> con tus operaciones digitales!',
         excerpt: '<p>Acumula más giros al realizar estas operaciones en tu app:</p> <ul><li>Pago SUNAT (1 giro)</li><li>Pago de servicios(1 giro)</li><li>Pago de créditos(5 giros)</li><li>Cambio de moneda(5 giros)</li></ul>',
         image: 'https://paolopacheco.github.io/ibk-media/images/ruleta.png',
@@ -4609,10 +4648,19 @@
         button: {
           active: true, // Habilitación del botón.
           text: 'Empezar',
-          url: '#'
+          url: function () {
+            console.log('Click en el botón');
+            return window.open('https://google.com', '_blank').focus();
+          }
+        },
+        timer: {
+          enable: true,
+          time: '5s', // Duración del la barra de progreso.
+          url: '#',
         },
       },
       content2: {
+        id: 'data-2',
         title: '<span class="mk-semibold">¡Acumulaste <span class="mkv50--number">10</span> giros!</span>',
         excerpt: '<p class="mk-text_center">A más operaciones digitales por día, obtendrás más giros en la ruleta y más oportunidades de ganar fabulosos premios.</p>',
         image: 'https://paolopacheco.github.io/ibk-media/images/ruleta.png',
@@ -4620,13 +4668,16 @@
         button: {
           active: true, // Habilitación del botón.
           text: 'Girar la ruleta',
-          url: '#'
+          url: function () {
+            console.log('Click en el botón 2');
+            return window.open('https://amazon.com', '_blank').focus();
+          }
         },
-      },
-      timer: {
-        enable: false,
-        time: '5s', // Duración del la barra de progreso.
-        url: '#',
+        timer: {
+          enable: true,
+          time: '5s', // Duración del la barra de progreso.
+          url: '#',
+        },
       },
       enableClose: true,
       enableSessionControl: true,

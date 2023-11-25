@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
@@ -4374,37 +4375,98 @@
       -webkit-animation-name: bounceOutUp;
       animation-name: bounceOutUp
     }
-  </style>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
-    rel="stylesheet">
+    @font-face {
+      font-family: "Geometria-Light";
+      src: url("../fonts/Geometria-Light.woff") format("woff"), url("../fonts/Geometria-Light.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "Geometria-regular";
+      src: url("../fonts/Geometria-regular.woff") format("woff"), url("../fonts/Geometria-regular.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "Geometria-Medium";
+      src: url("../fonts/Geometria-Medium.woff") format("woff"), url("../fonts/Geometria-Medium.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "Geometria-Bold";
+      src: url("../fonts/Geometria-Bold.woff") format("woff"), url("../fonts/Geometria-Bold.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "Montserrat-Light";
+      src: url("../fonts/Montserrat-Light.woff") format("woff"), url("../fonts/Montserrat-Light.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "Montserrat-regular";
+      src: url("../fonts/Montserrat-regular.woff") format("woff"), url("../fonts/Montserrat-regular.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "Montserrat-Medium";
+      src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "Montserrat-Bold";
+      src: url("../fonts/Montserrat-Bold.woff") format("woff"), url("../fonts/Montserrat-Bold.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "Montserrat-Semibold";
+      src: url("../fonts/Montserrat-Semibold.woff") format("woff"), url("../fonts/Montserrat-Semibold.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal
+    }
+  </style>
 
   <style id="fonts">
     @font-face {
-      font-family: 'Geometria';
-      src: url('../fonts/Geometria-Medium.woff2') format('woff2'),
-        url('../fonts/Geometria-Medium.woff') format('woff'),
-        url('../fonts/Geometria-Medium.svg#Geometria-Medium') format('svg');
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-regular-webfont.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-medium-webfont.woff2') format('woff2');
       font-weight: 500;
       font-style: normal;
       font-display: swap;
     }
 
     @font-face {
-      font-family: 'Geometria';
-      src: url('../fonts/Geometria.woff2') format('woff2'),
-        url('../fonts/Geometria.woff') format('woff'),
-        url('../fonts/Geometria.svg#Geometria') format('svg');
-      font-weight: normal;
+      font-family: 'Omnes';
+      src: url('../fonts/omnes-semibold-webfont.woff2') format('woff2');
+      font-weight: 600;
       font-style: normal;
       font-display: swap;
     }
 
     body {
-      font-family: 'Geometria';
+      font-family: 'Omnes';
     }
   </style>
 
@@ -4412,215 +4474,490 @@
 </head>
 
 <body>
-  <div id="action_insert_21047"></div>
+  <div id="action_insert_168530691210341232">
 
-  <script>
-    var popupJS = (function () {
-      function carousel(options) { }
+    <script>
+      var popupJS = /** @class */ (function () {
+        function popupJS(options) {
+          options.link.target = options.link.target || '_self';
+          this.elementOverlay = this.overlay();
+        }
+        function clearHTMLTags(string) {
+          let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
+          return stringClear;
+        }
+        popupJS.prototype.events = function (close) {
+          var body = document.querySelector('body') || document.body;
+          body.classList.add('tg');
+          var overlay = this.elementOverlay;
+          close.addEventListener('click', function (e) {
+            e.preventDefault();
+            overlay.classList.add('animate__fadeOut');
+            overlay.remove();
+          });
+        };
 
-      carousel.prototype.init = function () {
-        this.show();
-        this.runCarousel();
-      };
+        popupJS.prototype.showResult = function () {
+          var popup = document.getElementById('mkv55Popup');
+          popup.innerHTML = "\n    <div class=\"mkv55--popup_result__wrapper\" id=\"mkv55PopupWrapperResult\">\n <div class=\"mkv55--popup_result__header\">\n    <div class=\"mkv55--popup_result__close\" id=\"mkv55PopupResultClose\"></div>\n    </div>\n    <div class=\"mkv55--popup_result__content\">\n  <div class=\"mkv55--popup_result__row\">\n  <div class=\"mkv55--popup_result__text\">\n    <h5 class=\"mkv55--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv55--popup_result__paragraph\">Recibimos tus datos <br class=\"mkv55--popup_result__br\" />correctamente.</p>\n    </div>    <div class=\"mkv55--popup_result__icon\">\n    <picture class=\"mkv55--popup__picture\">\n        <source srcset=\"".concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv55--popupresult__image\" srcset=\"").concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    </div>\n    </div>\n    </div>");
 
-      carousel.prototype.items = function () {
-        const list = options.items;
-        let active = '';
-        let layout = `<div class="mkv48-carrusel">`;
+          var close = popup.querySelector('.mkv55--popup_result__close');
+          this.events(close);
+        }
 
-        list.forEach((el, index) => {
-          let active = index === 0 ? "active" : "";
-
-          layout += `<div class="mkv48-carrusel-item ${active}">
-            <div class="mkv48-carrusel-item--header">
-              <picture>
-                <source srcset="${el.image}" media="(min-width: 480px)"><source srcset="${el.image2x}">
-                <img class="mkv27--image__background" src="${el.image}" alt="${this.clearHTMLTags(el.title)}">
-              </picture>
-            </div>
-          </div>`;
-          console.log(index);
-        });
-
-
-
-        layout += `</div>`;
-
-        layout += `<button id="boton-anterior" disabled>Anterior</button>
-              <button id="boton-siguiente">Siguiente</button>`
-
-        layout += `<div class="mkv48-botones-navegacion">
-          <button class="mkv48-boton-navegacion">A</button>
-          <button class="mkv48-boton-navegacion">B</button>
-          <button class="mkv48-boton-navegacion">C</button>
-        </div>`;
-
-        return layout;
-      }
-
-      carousel.prototype.content = function () {
-        const items = this.items();
-        const content = `<div class="mkv48--wrapper">
-          <div class="mkv48--popup__close" id="mkv41Close"></div>
-          <div class="mkv48--section" id="mkv41Section">
-            <div class="mkv48--grid">
-              ${items}
+        popupJS.prototype.show = function () {
+          var overlay = this.elementOverlay;
+          var popup = document.createElement('div');
+          popup.setAttribute('id', 'mkv55Popup');
+          popup.classList.add('mkv55--popup');
+          popup.innerHTML = `<div class='mkv55--carousel' data-carousel><div class=\"mkv55--popup__wrapper\" id=\"mkv55PopupWrapper1\">\n
+            <div class=\"mkv55--popup__close\" id=\"mkv55--popup__cerrar\"></div>\n
+              <div class="mkv55--popup__grid">
+                <div class="mkv55--popup__right">
+                  <div class="mkv55--popup__right_header">
+                   <h5 class="mkv55--popup__right_title">¡Felicidades!</h5>
+                   <p class="mkv55--popup__right_paragraph">Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:</p>
+                  </div>
+                  <div class="mkv55--popup__right_body">
+                    <ul data-slides>
+                      <li class='mkv55--slide' data-active>
+                        <div class=\"mkv55--slide__body\">
+                          <div class="mkv55--questions__header">
+                            <h4 class="mkv55--slide__title">` + options.questions.question1.title + `</h4>
+                          </div>
+                          <div class="mkv55--questions__content">
+                            <ul class="mkv55--questions__list">
+                              <li class="mkv55--questions__list_li">
+                                <label for="p1_options_1" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_1" value="` + options.questions.question1.options[0] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[0] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p1_options_2" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_2" value="` + options.questions.question1.options[1] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[1] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p1_options_3" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_3" value="` + options.questions.question1.options[2] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[2] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p1_options_4" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_4" value="` + options.questions.question1.options[3] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[3] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p1_options_5" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_5" value="` + options.questions.question1.options[4] + `" name="pregunta_1" />
+                                  <span>` + options.questions.question1.options[4] + `</span>
+                                </label>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="mkv55--slide__btn_row">
+                            <div class="mkv55--slide__btn_col"></div>
+                            <div class="mkv55--slide__btn_col">
+                              <ul class="mk-dots">
+                                <li class="active"><a data-slide="0"></a></li>
+                                <li><a data-slide="1"></a></li>
+                                <li><a data-slide="2"></a></li>
+                              </ul>
+                            </div>
+                            <div class="mkv55--slide__btn_col">
+                              <button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" disabled>Siguiente</button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class='mkv55--slide'>
+                        <div class="mkv55--slide__body">
+                          <div class="mkv55--questions__header">
+                            <h4 class="mkv55--slide__title">` + options.questions.question2.title + `</h4>
+                          </div>
+                          <div class="mkv55--questions__content">
+                            <ul class="mkv55--questions__list">
+                              <li class="mkv55--questions__list_li">
+                                <label for="p2_options_1" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_1" value="` + options.questions.question2.options[0] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[0] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p2_options_2" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_2" value="` + options.questions.question2.options[1] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[1] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p2_options_3" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_3" value="` + options.questions.question2.options[2] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[2] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p2_options_4" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_4" value="` + options.questions.question2.options[3] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[3] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p2_options_5" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_5" value="` + options.questions.question2.options[4] + `" name="pregunta_2" />
+                                  <span>` + options.questions.question2.options[4] + `</span>
+                                </label>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="mkv55--slide__btn_row">
+                            <div class="mkv55--slide__btn_col">
+                              <button class="mkv55--slide__btn_back mkv55--slide__btn" data-carousel-btn="prev">Atrás</button>
+                            </div>
+                            <div class="mkv55--slide__btn_col">
+                              <ul class="mk-dots">
+                                <li><a data-slide="0"></a></li>
+                                <li class="active"><a data-slide="1"></a></li>
+                                <li><a data-slide="2"></a></li>
+                              </ul>
+                            </div>
+                            <div class="mkv55--slide__btn_col">
+                              <button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next">Siguiente</button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class='mkv55--slide'>
+                        <div class="mkv55--slide__body">
+                          <div class="mkv55--questions__header">
+                            <h4 class="mkv55--slide__title">` + options.questions.question3.title + `</h4>
+                          </div>
+                          <div class="mkv55--questions__content">
+                            <ul class="mkv55--questions__list">
+                              <li class="mkv55--questions__list_li">
+                                <label for="p3_options_1" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_1" value="` + options.questions.question3.options[0] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[0] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p3_options_2" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_2" value="` + options.questions.question3.options[1] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[1] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p3_options_3" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_3" value="` + options.questions.question3.options[2] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[2] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p3_options_4" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_4" value="` + options.questions.question3.options[3] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[3] + `</span>
+                                </label>
+                              </li>
+                              <li class="mkv55--questions__list_li">
+                                <label for="p3_options_5" class="mk-radio--btn2">
+                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_5" value="` + options.questions.question3.options[4] + `" name="pregunta_3" />
+                                  <span>` + options.questions.question3.options[4] + `</span>
+                                </label>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="mkv55--slide__btn_row">
+                            <div class="mkv55--slide__btn_col">
+                              <button class="mkv55--slide__btn_back mkv55--slide__btn" data-carousel-btn="prev">Atrás</button>
+                            </div>
+                            <div class="mkv55--slide__btn_col">
+                              <ul class="mk-dots">
+                                <li><a data-slide="0"></a></li>
+                                <li><a data-slide="1"></a></li>
+                                <li class="active"><a data-slide="2"></a></li>
+                              </ul>
+                            </div>
+                            <div class="mkv55--slide__btn_col"></div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mkv55--questions__loading"></div>
+                </div>
+                <div class="mkv55--result" id="mkv55--result"><div class="mkv55--result__row">
+                  <div class="mkv55--result__content">
+                    <figure class="mkv55--result__figure">
+                      <picture>
+                        <source srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" media="(min-width: 600px)" />
+                        <img class="mkv55--popup__image" srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
+                      </picture>
+                    </figure>
+                    <div class="mkv55--result__text">
+                      <h5 class="mkv55--popup__left_title mkv55--result__title">` + options.titleResult + `</h5>
+                      <div>
+                        <div class="mkv55--popup__btnsinline">
+                          <a class="mkv55--popup__btn  mkv55--result__btn" id="mkv55--popup__enviar" target="_blank" title="` + options.textBtnResult + `">` + options.textBtnResult + `</a>
+                          <a class="mkv55--popup__link" id="mkv55--result__atras" target="_blank" title="No, gracias.">Atrás</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>`;
 
-        return content;
-      }
+          var close = popup.querySelector('.mkv55--popup__close');
+          var saltar = popup.querySelector('.mkv55--slide__saltar');
+          var btnEnviar = popup.querySelector('#mkv55--popup__enviar');
+          var result = popup.querySelector('#mkv55--result');
+          var resultBack = popup.querySelector('#mkv55--result__atras');
+          var bullets = popup.querySelectorAll('ul.mk-bullets li');
 
-      carousel.prototype.show = function () {
-        const overlay = document.createElement('div');
-        const layout = document.createElement('div');
-        const content = this.content();
+          overlay.appendChild(popup);
+          document.body.appendChild(overlay);
 
-        overlay.classList.add('mkv48--overlay');
-        overlay.setAttribute('id', 'mkv48Overlay');
+          this.events(btnEnviar);
+          this.events(close);
 
-        layout.classList.add('mkv48--layout');
-        layout.setAttribute('id', 'mkv48Layout');
-        layout.innerHTML = content;
+          const buttons = document.querySelectorAll('[data-carousel-btn]');
+          var matches = document.querySelectorAll('.mkv55--questions__radio');
 
-        document.body.appendChild(overlay);
-        document.body.appendChild(layout);
-      }
+          // matches.forEach(match => {
+          //   match.onchange = function () {
+          //     const slides = match.closest('[data-carousel]').querySelector('[data-slides]');
+          //     const parent = match.closest('.mkv55--slide__body');
+          //     const btnNext = parent.querySelector('.mkv55--slide__btn_next');
 
-      carousel.prototype.clearHTMLTags = function (string) {
-        let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
-        return stringClear;
-      }
+          //     const currents = parent.querySelectorAll('.mkv55--questions__radio');
 
-      carousel.prototype.runCarousel = function () {
-        const carruselItems = document.getElementsByClassName('mkv48-carrusel-item');
-        const botonesNavegacion = document.getElementsByClassName('mkv48-boton-navegacion');
-        const botonAnterior = document.getElementById('boton-anterior');
-        const botonSiguiente = document.getElementById('boton-siguiente');
-        let currentIndex = 0;
-        let isTransitioning = false; // Flag para evitar transiciones simultáneas
+          //     matches.forEach(item => {
+          //       console.log(`slides:`, item);
+          //     });
+          //   }
+          // });
 
-        function mostrarItem(index) {
-          if (isTransitioning) {
-            return;
-          }
-          isTransitioning = true;
+          matches.forEach(match => {
+            match.onchange = function () {
+              const slides = match.closest('[data-carousel]').querySelector('[data-slides]');
+              const activeSlide = slides.querySelector('[data-active]');
+              let newIndex = [...slides.children].indexOf(activeSlide) + 1;
+              let curNext = activeSlide.querySelector('.mkv55--slide__btn_next');
 
-          // Establecer la dirección de la transición (izquierda o derecha)
-          const direction = index > currentIndex ? 'left' : 'right';
+              const radios = activeSlide.querySelectorAll('.mkv55--questions__radio');
+              console.log('radios', radios);
 
-          // Ajustar la posición del elemento
-          carruselItems[index].style.left = direction === 'left' ? '100%' : '-100%';
-          carruselItems[index].style.display = 'block';
+              let isChecked = 1;
 
-          // Iniciar la transición
-          setTimeout(function () {
-            carruselItems[currentIndex].style.transform = direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)';
-            carruselItems[index].style.transform = 'translateX(0)';
-          }, 0);
+              radios.forEach(function (radio, i) {
+                // console.log('radiossss', radio);
+                console.log('sss', i);
+                radios[i].onclick = function () {
+                  console.log('radio');
 
-          // Esperar a que finalice la transición y restablecer las propiedades
-          setTimeout(function () {
-            carruselItems[currentIndex].style.display = 'none';
-            carruselItems[currentIndex].style.transform = 'translateX(0)';
-            carruselItems[index].style.left = '0';
-            currentIndex = index;
-            isTransitioning = false;
-            actualizarBotonesNavegacion();
-          }, 600);
+                  if (radio.checked) {
+                    isChecked++;
+                  } else {
+                    isChecked--;
+                  }
+                }
+              });
 
-          // Aplicar la clase "active" al botón de navegación correspondiente
-          for (let i = 0; i < botonesNavegacion.length; i++) {
-            botonesNavegacion[i].classList.remove('active');
-          }
-          botonesNavegacion[index].classList.add('active');
-        }
+              // radios.forEach(radio => {
+              //   console.log('radiossss', radio);
+              //   radio.onclick = function () {
+              //     console.log('radio', isChecked);
 
-        function siguienteItem() {
-          let nextIndex = currentIndex + 1;
-          if (nextIndex >= carruselItems.length) {
-            nextIndex = 0;
-          }
-          mostrarItem(nextIndex);
-        }
+              //     if (radio.checked) {
+              //       isChecked++;
+              //     } else {
+              //       isChecked--;
+              //     }
 
-        function anteriorItem() {
-          let prevIndex = currentIndex - 1;
-          if (prevIndex < 0) {
-            prevIndex = carruselItems.length - 1;
-          }
-          mostrarItem(prevIndex);
-        }
+              //     console.log('isChecked:', isChecked);
+              //   }
+              // });
 
-        function actualizarBotonesNavegacion() {
-          if (currentIndex === 0) {
-            botonAnterior.disabled = true;
-          } else {
-            botonAnterior.disabled = false;
-          }
-
-          if (currentIndex === carruselItems.length - 1) {
-            botonSiguiente.disabled = true;
-          } else {
-            botonSiguiente.disabled = false;
-          }
-        }
-
-        // Agregar eventos de click a los botones de navegación
-        botonAnterior.addEventListener('click', anteriorItem);
-        botonSiguiente.addEventListener('click', siguienteItem);
-
-        // Agregar eventos de click a los botones de navegación
-        for (let i = 0; i < botonesNavegacion.length; i++) {
-          botonesNavegacion[i].addEventListener('click', function () {
-            mostrarItem(i);
+              resultBack.addEventListener('click', () => {
+                result.style.display = "none";
+              })
+            }
           });
+
+          buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const offset = btn.dataset.carouselBtn === 'next' ? 1 : -1;
+              const slides = btn.closest('[data-carousel]').querySelector('[data-slides]');
+              const activeSlide = slides.querySelector('[data-active]');
+              let newIndex = [...slides.children].indexOf(activeSlide) + offset;
+
+              if (newIndex < 0) {
+                newIndex = slides.children.length - 1;
+              }
+              if (newIndex >= slides.children.length) {
+                newIndex = 0;
+              }
+
+              if (slides.children[newIndex] != undefined) {
+                slides.children[newIndex].dataset.active = true;
+                delete activeSlide.dataset.active;
+                // upadteBullets(newIndex);
+              } else {
+                result.style.display = "flex";
+              }
+
+              // slides.children[newIndex].dataset.active = true;
+              // delete activeSlide.dataset.active;
+            });
+          });
+
+          function upadteBullets(cur) {
+            let bullets = popup.querySelectorAll('ul.mk-bullets li');
+
+            bullets.forEach(bullet => {
+              bullet.classList.remove('active')
+            });
+
+            bullets[cur].classList.add('active');
+          }
+
+          this.validator();
+        };
+
+        popupJS.prototype.validator = function name(formId) {
+          const btnEnviar = document.getElementById('formSubmit');
+          const updatedEmailError = document.getElementById('updatedEmailError');
+          const termsConditionsError = document.getElementById('termsConditionsError');
+
+          const validate = (e) => {
+            e.preventDefault();
+            var option = document.getElementsByName('opciones');
+            var options = document.querySelectorAll('[name="opciones"]');
+
+            if (!(option[0].checked || option[1].checked || option[2].checked)) {
+              termsConditionsError.innerHTML = "Por favor, selecciones una opción";
+              return false;
+            }
+
+            popup.showResult();
+          }
+
+          // btnEnviar.addEventListener('click', validate);
         }
 
-        // Actualizar el estado inicial de los botones de navegación
-        actualizarBotonesNavegacion;
+        popupJS.prototype.overlay = function () {
+          var overlay = document.createElement('div');
+          overlay.classList.add('mkv55--overlay');
+          return overlay;
+        };
+
+        return popupJS;
+      }());
+
+      var options = {
+        title: '¡Felicidades!',
+        titleResult: '¡Gracias por tus<br> respuestas !',
+        description: 'Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:',
+        imgMain1x: 'https://paolopacheco.github.io/ibk-media/images/Ilustracion_encuesta_CN.svg',
+        imgMain2x: 'https://paolopacheco.github.io/ibk-media/images/Ilustracion_encuesta_CN.svg',
+        link: {
+          url: '#',
+          text: 'Entendido',
+          target: '_blank',
+        },
+        textBtnResult: 'Enviar',
+        questions: {
+          question1: {
+            title: '¿Cómo te sientes hasta hoy usando tu Cuenta Negocio?',
+            options: [
+              'Totalmente satisfecho',
+              'Muy satisfecho',
+              'Satisfecho',
+              'Poco satisfecho',
+              'Nada satisfecho',
+            ]
+          },
+          question2: {
+            title: '¿Qué tan fácil fue ingresar por 1ra vez al App?',
+            options: [
+              'Muy fácil',
+              'Fácil',
+              'Ni fácil, ni difícil',
+              'Difícil',
+              'Muy difícil',
+            ]
+          },
+          question3: {
+            title: '¿Qué tan fácil fue realizar tus transferencias bancarias?',
+            options: [
+              'Muy fácil',
+              'Fácil',
+              'Ni fácil, ni difícil',
+              'Difícil',
+              'Muy difícil',
+            ]
+          },
+        },
+        imgResult1x: 'https://paolopacheco.github.io/ibk-media/images/ilustracion-check.svg',
+        imgResult2x: 'https://paolopacheco.github.io/ibk-media/images/ilustracion-check.svg',
+      };
+      var popup = new popupJS(options);
+
+      popup.show();
+
+      //Boton Entendido
+      // document.getElementById("mkv55--popup__entendido").onclick = function () {
+      //   popUpBte();
+      //   popUpBtn();
+      // };
+
+      function displayLoading() {
+        let loading = document.querySelector('.mkv55--questions__loading');
+        loading.style.display = "block";
+        setTimeout(() => {
+          loading.style.display = "none";
+        }, 850);
+      };
+
+      function popUpBte() {
+        cordova.InAppBrowser.open("https://interbank.pe/100-digital?mcid=app-empresas:referral:2022-12_app_digitalizacion_conversion:bbdd:popup:1", "_system", "location=yes");
       }
 
-      return carousel;
-    }());
+      function popUpBtn() {
+        _satellite.track("trackAction", {
+          eventProperties: {
+            action: {
+              action: "click",
+              category: "campañaDigitalDiciembre - app - yaParticipa",
+              label: "Enviar"
+            }
+          }
+        });
+      }
 
+      //Boton Cerrar
+      document.getElementById("mkv55--popup__cerrar").onclick = function () {
+        popUpClose();
+      };
 
-    const options = {
-      items: [
-        {
-          title: '<span class="mk-semibold">Transferencias inmediatas,</span> rápidas y seguras',
-          text: 'Ingresa al módulo Pagos y Transferencias y realiza transferencias a terceros de manera rápida y segura.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/felicidades-mobil.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/felicidades-mobil.png',
-          btn_text: 'Ir al módulo',
-          btn_link: '#',
-        },
-        {
-          title: '¡Felicidades! Tienes <span class="mk-semibold">un tipo de cambio especial</span>',
-          text: 'Cotiza y cambia soles o dólares de manera fácil, segura y a una tasa especial.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/felicidades.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/felicidades.png',
-          btn_text: 'Ir a cotizar',
-          btn_link: '#',
-        },
-        {
-          title: '¡Felicidades! Tienes <span class="mk-semibold">un tipo de cambio especial</span>',
-          text: 'Cotiza y cambia soles o dólares de manera fácil, segura y a una tasa especial.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/transferencias-inmediatas.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/transferencias-inmediatas.png',
-          btn_text: 'Ir a cotizar',
-          btn_link: '#',
-        },
-      ]
-    };
-
-    var popup = new popupJS(options);
-
-    (function () {
-      popup.init();
-    })();
-  </script>
+      function popUpClose() {
+        _satellite.track("trackAction", {
+          eventProperties: {
+            action: {
+              action: "click",
+              category: "campañaDigitalDiciembre - app - yaParticipa",
+              label: "cerrar"
+            }
+          }
+        });
+      }
+    </script>
+  </div>
 </body>
 
 </html>

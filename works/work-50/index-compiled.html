@@ -4429,7 +4429,337 @@
   <!-- Fin de CSS para pruebas-->
 
   <style>
-   :root{--primary:#05be50;--secondary:#0039a6;--red:#eb0046;--white:#fff;--silver:#d9dadb;--gray:#9b9b9b;--sky:#ccd7ed;--semiwhite:#f3f6fb;--skydark:#6688ca;--dark:#404040;--darkrgb:#0f191e;--blackrgb:#0f191e}.mk-bold{font-weight:700}.mk-semibold{font-weight:500}.mk-container{margin:0 auto;max-width:1066px;width:100%}@media (max-width:1023px){.mk-container{padding:0 24px}}.mk-text_center{text-align:center}.mkv50 *{border:none;box-sizing:border-box;margin:0;padding:0}.mkv50--overlay{background-color:var(--white);z-index:99}.mkv50--overlay,.mkv50--popup{bottom:0;height:100vh;left:0;position:fixed;right:0;top:0;width:100vw}.mkv50--popup{-webkit-box-pack:center;-ms-flex-pack:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;justify-content:center;padding:16px}.mkv50--popup__close{height:16px;position:absolute;right:0;top:0;width:16px;z-index:10}.mkv50--popup__close:after,.mkv50--popup__close:before{background:var(--white);border-radius:2px;content:"";cursor:pointer;display:block;height:2px;left:50%;margin-bottom:4px;position:absolute;top:0;width:20px}.mkv50--popup__close:before{transform:rotate(45deg) translate(-1px,10px)}.mkv50--popup__close:after{transform:rotate(-45deg) translate(-10px,-1px)}@media (min-width:480px){.mkv50--popup__close{right:32px;top:32px}}.mkv50--number{background-color:var(--red);border-radius:50%;color:var(--white);display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;font-size:inherit;height:40px;line-height:24px;width:40px}.mkv50--content,.mkv50--number{-webkit-box-pack:center;-ms-flex-pack:center;align-items:center;justify-content:center}.mkv50--content{background-color:var(--secondary);bottom:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;left:0;padding:20px 24px;position:absolute;right:0;top:0;z-index:101}.mkv50--wrapper{flex-direction:column;gap:24px;height:100%;max-width:960px}.mkv50--section,.mkv50--wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%}.mkv50--section{flex:1 1 auto;position:relative}.mkv50--section__header{color:var(--white)}.mkv50--section__content{-webkit-box-pack:center;-ms-flex-pack:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;flex-direction:column;gap:40px;justify-content:center;width:100%}.mkv50--footer{flex:0 0 auto}.mkv50--title{font-family:Geometria,sans-serif;font-size:24px;font-weight:400;letter-spacing:-.4px;line-height:28px;margin-bottom:20px;text-align:center}@media (min-width:481px){.mkv50--title{font-size:28px;line-height:32px}}.mkv50--excerpt{font-size:16px;line-height:22px}.mkv50--excerpt p{margin-bottom:8px}.mkv50--excerpt ul{list-style:disc;padding-left:24px}.mkv50--btn{-webkit-box-pack:center;-ms-flex-pack:center;background-color:var(--primary);border-radius:4px;color:var(--white);display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;font-family:Geometria;font-size:14px;font-weight:500;justify-content:center;letter-spacing:normal;line-height:40px;padding:0 28px;text-decoration:none;white-space:nowrap;width:100%}.mkv50--twist__content{bottom:40%;position:fixed;right:0;transform:rotate(-90deg);transform-origin:100% 100%}.mkv50--twist__figure{max-width:24px;position:relative;width:24px}.mkv50--twist__image{bottom:0;position:absolute;top:auto}.mkv50--twist__btn{align-items:flex-end;background-color:var(--primary);border-radius:8px 8px 0 0;color:var(--white);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-size:12px;font-weight:500;gap:4px;line-height:16px;padding:4px 6px}.mkv50--twist__btn span{-webkit-box-pack:center;-ms-flex-pack:center;background-color:var(--red);border-radius:50%;color:var(--white);display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;height:16px;justify-content:center;line-height:16px;width:16px}.progressbar{background-color:#fff;border-radius:2px;bottom:0;left:0;margin:0 auto;position:absolute;right:0;width:100%}.progressbar .inner{animation:progressbar-countdown;animation-duration:40s;animation-fill-mode:forwards;animation-iteration-count:1;animation-play-state:paused;animation-timing-function:linear;border-radius:2px;height:4px}@keyframes progressbar-countdown{0%{background:var(--primary);width:100%}to{background:var(--primary);width:0}}
+    :root {
+      --primary: #05be50;
+      --secondary: #0039a6;
+      --red: #eb0046;
+      --white: #fff;
+      --silver: #d9dadb;
+      --gray: #9b9b9b;
+      --sky: #ccd7ed;
+      --semiwhite: #f3f6fb;
+      --skydark: #6688ca;
+      --dark: #404040;
+      --darkrgb: #0f191e;
+      --blackrgb: #0f191e
+    }
+
+    .mk-bold {
+      font-weight: 700
+    }
+
+    .mk-semibold {
+      font-weight: 500
+    }
+
+    .mk-container {
+      margin: 0 auto;
+      max-width: 1066px;
+      width: 100%
+    }
+
+    @media (max-width:1023px) {
+      .mk-container {
+        padding: 0 24px
+      }
+    }
+
+    .mk-text_center {
+      text-align: center
+    }
+
+    .mkv50 * {
+      border: none;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    .mkv50--overlay {
+      background-color: var(--white);
+      z-index: 99
+    }
+
+    .mkv50--overlay,
+    .mkv50--popup {
+      bottom: 0;
+      height: 100vh;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 100vw
+    }
+
+    .mkv50--popup {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: center;
+      padding: 16px
+    }
+
+    .mkv50--popup__close {
+      height: 16px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 16px;
+      z-index: 10
+    }
+
+    .mkv50--popup__close:after,
+    .mkv50--popup__close:before {
+      background: var(--white);
+      border-radius: 2px;
+      content: "";
+      cursor: pointer;
+      display: block;
+      height: 2px;
+      left: 50%;
+      margin-bottom: 4px;
+      position: absolute;
+      top: 0;
+      width: 20px
+    }
+
+    .mkv50--popup__close:before {
+      transform: rotate(45deg) translate(-1px, 10px)
+    }
+
+    .mkv50--popup__close:after {
+      transform: rotate(-45deg) translate(-10px, -1px)
+    }
+
+    @media (min-width:480px) {
+      .mkv50--popup__close {
+        right: 32px;
+        top: 32px
+      }
+    }
+
+    .mkv50--number {
+      background-color: var(--red);
+      border-radius: 50%;
+      color: var(--white);
+      display: -webkit-inline-box;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      font-size: inherit;
+      height: 40px;
+      line-height: 24px;
+      width: 40px
+    }
+
+    .mkv50--content,
+    .mkv50--number {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      align-items: center;
+      justify-content: center
+    }
+
+    .mkv50--content {
+      background-color: var(--secondary);
+      bottom: 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      left: 0;
+      padding: 20px 24px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 101
+    }
+
+    .mkv50--wrapper {
+      flex-direction: column;
+      gap: 24px;
+      height: 100%;
+      max-width: 960px
+    }
+
+    .mkv50--section,
+    .mkv50--wrapper {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      width: 100%
+    }
+
+    .mkv50--section {
+      flex: 1 1 auto;
+      position: relative
+    }
+
+    .mkv50--section__header {
+      color: var(--white)
+    }
+
+    .mkv50--section__content {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      justify-content: center;
+      width: 100%
+    }
+
+    .mkv50--footer {
+      flex: 0 0 auto
+    }
+
+    .mkv50--title {
+      font-family: Geometria, sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: -.4px;
+      line-height: 28px;
+      margin-bottom: 20px;
+      text-align: center
+    }
+
+    @media (min-width:481px) {
+      .mkv50--title {
+        font-size: 28px;
+        line-height: 32px
+      }
+    }
+
+    .mkv50--excerpt {
+      font-size: 16px;
+      line-height: 22px
+    }
+
+    .mkv50--excerpt p {
+      margin-bottom: 8px
+    }
+
+    .mkv50--excerpt ul {
+      list-style: disc;
+      padding-left: 24px
+    }
+
+    .mkv50--btn {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      background-color: var(--primary);
+      border-radius: 4px;
+      color: var(--white);
+      display: -webkit-inline-box;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      font-family: Geometria;
+      font-size: 14px;
+      font-weight: 500;
+      justify-content: center;
+      letter-spacing: normal;
+      line-height: 40px;
+      padding: 0 28px;
+      text-decoration: none;
+      white-space: nowrap;
+      width: 100%
+    }
+
+    .mkv50--twist__content {
+      bottom: 40%;
+      position: fixed;
+      right: 0;
+      transform: rotate(-90deg);
+      transform-origin: 100% 100%
+    }
+
+    .mkv50--twist__figure {
+      max-width: 24px;
+      position: relative;
+      width: 24px
+    }
+
+    .mkv50--twist__image {
+      bottom: 0;
+      position: absolute;
+      top: auto
+    }
+
+    .mkv50--twist__btn {
+      align-items: flex-end;
+      background-color: var(--primary);
+      border-radius: 8px 8px 0 0;
+      color: var(--white);
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 12px;
+      font-weight: 500;
+      gap: 4px;
+      line-height: 16px;
+      padding: 4px 6px
+    }
+
+    .mkv50--twist__btn span {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      background-color: var(--red);
+      border-radius: 50%;
+      color: var(--white);
+      display: -webkit-inline-box;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      height: 16px;
+      justify-content: center;
+      line-height: 16px;
+      width: 16px
+    }
+
+    .progressbar {
+      background-color: #fff;
+      border-radius: 2px;
+      bottom: 0;
+      left: 0;
+      margin: 0 auto;
+      position: absolute;
+      right: 0;
+      width: 100%
+    }
+
+    .progressbar .inner {
+      animation: progressbar-countdown;
+      animation-duration: 40s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-play-state: paused;
+      animation-timing-function: linear;
+      border-radius: 2px;
+      height: 4px
+    }
+
+    @keyframes progressbar-countdown {
+      0% {
+        background: var(--primary);
+        width: 100%
+      }
+
+      to {
+        background: var(--primary);
+        width: 0
+      }
+    }
   </style>
 
   <script>
@@ -4438,9 +4768,9 @@
 
       popupJS.prototype.content = function (data) {
         const btnNode = `<div class="mkv50--footer">
-            <button type="button" class="mkv50--btn" id="mkv50Btn">` + data.button.text + `</button>
+            <button type="button" class="mkv50--btn" id="mkv50Btn` + data.id + `">` + data.button.text + `</button>
           </div>`;
-        const btnCloseNode = `<div class="mkv50--popup__close" id="mkv50Close"></div>`;
+        const btnCloseNode = `<div class="mkv50--popup__close" id="mkv50Close` + data.id + `"></div>`;
         const btn = data.button.active ? btnNode : '';
         const close = options.enableClose ? btnCloseNode : '';
         const tooltipContent = `<div class="mkv50--wrapper">
@@ -4461,10 +4791,10 @@
                 <h4 class="mkv50--title">` + data.title + `</h4>
                 <div class="mkv50--excerpt">` + data.excerpt + `</div>
               </div>
-              <div id='progressbar1'></div>
             </div>
           </div>`
           + btn + `
+          <div id='progressbar` + data.id + `'></div>
         </div>`;
 
         return tooltipContent;
@@ -4473,20 +4803,18 @@
       popupJS.prototype.button = function (data, sessions = 1) {
         const content = this.content(data);
         const button = document.createElement('div');
-        const sessionStatus = this.sessionControl(5);
+        const sessionStatus = this.cookieControl(5, 24, data.id);
+        // const sessionStatus = this.sessionControl(5);
         const overlayDiv = document.createElement('div');
         const self = this;
-
-
 
         if (!sessionStatus && sessions === 1) {
           return;
         } else {
-
           overlayDiv.classList.add('mkv50--overlay');
           overlayDiv.setAttribute('id', 'mkv50Overlay');
           button.classList.add('mkv50--content');
-          button.setAttribute('id', 'mkv50Button');
+          button.setAttribute('id', 'mkv50Button' + data.id);
 
           document.body.appendChild(overlayDiv);
           button.innerHTML = content;
@@ -4494,35 +4822,34 @@
 
           this.eventDisplayPopup();
 
-          const progressbar = document.querySelector('#progressbar1');
-          const mkv50Btn = document.querySelector('#mkv50Btn');
+          let progressbar = document.querySelector('#progressbar' + data.id);
+          const mkv50Btn = document.querySelector('#mkv50Btn' + data.id);
 
           if (options.enableClose) {
-            this.closePopup();
+            this.closePopup(data.id);
           }
 
-          if (options.timer.enable) {
-            this.createProgressbar('progressbar1', options.timer.time, function () {
-              self.togglePopup();
+          if (data.timer.enable) {
+            this.createProgressbar('progressbar' + data.id, data.timer.time, function () {
+              self.togglePopup(data.id);
               self.eventClosePopup();
             });
           }
 
           mkv50Btn.onclick = function () {
-            self.togglePopup();
+            self.togglePopup(data.id);
             self.eventClickButton();
-            window.open(options.button.url, '_blank').focus();
+            data.button.url();
           }
-
         }
       };
 
-      popupJS.prototype.closePopup = function () {
-        const mkv50Close = document.getElementById('mkv50Close');
+      popupJS.prototype.closePopup = function (id) {
+        const mkv50Close = document.getElementById('mkv50Close' + id);
         const self = this;
 
         mkv50Close.onclick = function () {
-          self.togglePopup();
+          self.togglePopup(id);
         }
       }
 
@@ -4571,9 +4898,52 @@
         return status;
       }
 
-      popupJS.prototype.togglePopup = function () {
-        const popup = document.getElementById('mkv50Button');
+      popupJS.prototype.cookieControl = function ($times = 3, hours = 24, id = '') {
+        let nameCookie = 'counter' + id;
+        let visited = getCookie(nameCookie);
+        let status;
+
+        if (!visited) {
+          setCookie(nameCookie, 1, 1);
+          status = true;
+        } else {
+          let counter = parseInt(visited);
+          if (counter < $times) {
+            counter++;
+            setCookie(nameCookie, counter, 1);
+            status = true;
+          } else {
+            status = false;
+          }
+        }
+
+        function setCookie(name, value, days) {
+          let expires = "";
+          if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (hours * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+          let nameEQ = name + "=";
+          let ca = document.cookie.split(';');
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+          }
+          return null;
+        }
+
+        return status;
+      }
+
+      popupJS.prototype.togglePopup = function (id) {
         const overlay = document.getElementById('mkv50Overlay');
+        const popup = document.getElementById('mkv50Button' + id);
         overlay.remove();
         popup.remove();
       }
@@ -4606,8 +4976,6 @@
         console.log(`Evento click en el botón`);
       }
 
-
-
       popupJS.prototype.clearHTMLTags = function (string) {
         let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
         return stringClear;
@@ -4619,6 +4987,7 @@
     var options = {
       enablePopupDeafault: true,
       content1: {
+        id: 'data-1',
         title: '<span class="mk-bold">¡Giros diarios</span> con tus operaciones digitales!',
         excerpt: '<p>Acumula más giros al realizar estas operaciones en tu app:</p> <ul><li>Pago SUNAT (1 giro)</li><li>Pago de servicios(1 giro)</li><li>Pago de créditos(5 giros)</li><li>Cambio de moneda(5 giros)</li></ul>',
         image: 'https://paolopacheco.github.io/ibk-media/images/ruleta.png',
@@ -4626,10 +4995,19 @@
         button: {
           active: true, // Habilitación del botón.
           text: 'Empezar',
-          url: '#'
+          url: function () {
+            console.log('Click en el botón');
+            return window.open('https://google.com', '_blank').focus();
+          }
+        },
+        timer: {
+          enable: true,
+          time: '5s', // Duración del la barra de progreso.
+          url: '#',
         },
       },
       content2: {
+        id: 'data-2',
         title: '<span class="mk-semibold">¡Acumulaste <span class="mkv50--number">10</span> giros!</span>',
         excerpt: '<p class="mk-text_center">A más operaciones digitales por día, obtendrás más giros en la ruleta y más oportunidades de ganar fabulosos premios.</p>',
         image: 'https://paolopacheco.github.io/ibk-media/images/ruleta.png',
@@ -4637,13 +5015,16 @@
         button: {
           active: true, // Habilitación del botón.
           text: 'Girar la ruleta',
-          url: '#'
+          url: function () {
+            console.log('Click en el botón 2');
+            return window.open('https://amazon.com', '_blank').focus();
+          }
         },
-      },
-      timer: {
-        enable: false,
-        time: '5s', // Duración del la barra de progreso.
-        url: '#',
+        timer: {
+          enable: true,
+          time: '5s', // Duración del la barra de progreso.
+          url: '#',
+        },
       },
       enableClose: true,
       enableSessionControl: true,

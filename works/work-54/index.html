@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Documento</title>
 
   <style id="normalize">
     /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -4412,215 +4413,190 @@
 </head>
 
 <body>
-  <div id="action_insert_21047"></div>
 
   <script>
-    var popupJS = (function () {
-      function carousel(options) { }
+    var rainEmojis = (function () {
+      function show(options54) { }
 
-      carousel.prototype.init = function () {
-        this.show();
-        this.runCarousel();
-      };
+      show.prototype.init = function () {
+        const self = this;
+        let duration = options54.duration;
+        this.overlay();
+        this.disclaimer();
 
-      carousel.prototype.items = function () {
-        const list = options.items;
-        let active = '';
-        let layout = `<div class="mkv48-carrusel">`;
+        if (options54.rain.settings.enable) {
+          this.animation();
+        }
 
-        list.forEach((el, index) => {
-          let active = index === 0 ? "active" : "";
-
-          layout += `<div class="mkv48-carrusel-item ${active}">
-            <div class="mkv48-carrusel-item--header">
-              <picture>
-                <source srcset="${el.image}" media="(min-width: 480px)"><source srcset="${el.image2x}">
-                <img class="mkv27--image__background" src="${el.image}" alt="${this.clearHTMLTags(el.title)}">
-              </picture>
-            </div>
-          </div>`;
-          console.log(index);
-        });
-
-
-
-        layout += `</div>`;
-
-        layout += `<button id="boton-anterior" disabled>Anterior</button>
-              <button id="boton-siguiente">Siguiente</button>`
-
-        layout += `<div class="mkv48-botones-navegacion">
-          <button class="mkv48-boton-navegacion">A</button>
-          <button class="mkv48-boton-navegacion">B</button>
-          <button class="mkv48-boton-navegacion">C</button>
-        </div>`;
-
-        return layout;
+        setTimeout(() => {
+          self.closePopup();
+        }, options54.duration);
       }
 
-      carousel.prototype.content = function () {
-        const items = this.items();
-        const content = `<div class="mkv48--wrapper">
-          <div class="mkv48--popup__close" id="mkv41Close"></div>
-          <div class="mkv48--section" id="mkv41Section">
-            <div class="mkv48--grid">
-              ${items}
+      show.prototype.animation = function () {
+        const emojirain = document.createElement("div");
+        const emojiList = options54.rain.icons;
+        emojirain.setAttribute("id", "emojirain");
+        document.body.appendChild(emojirain);
+
+        const emojiCount = emojiList.length;
+        const scale = options54.rain.scale; // Ajusta la escala máxima del tamaño de los emojis.
+        const intervaloTime = options54.rain.settings.intervaloTime; // Ajusta la densidad de los emojis.
+        const duration = options54.rain.settings.duration; // Ajusta la duración del efecto.
+
+        var inter = setInterval(function () {
+          var speed = 1 + Math.random() * 5;
+          var location = Math.random() * document.documentElement.clientWidth;
+          var spin = 1 + Math.random() * 5;
+          var direction = Math.round(Math.random());
+          var orientation = Math.random() * 360;
+          var size = 0.75 + Math.random() * 5;
+          var emoji = Math.round(Math.random() * emojiCount);
+
+          cssString = "position: absolute;";
+          cssString += "transform:";
+          cssString += "translate(" + location + "px," + -3 + "rem) ";
+          cssString += "rotate(" + orientation + "deg) ";
+          cssString += ";";
+          cssString += "animation: falling " + speed + "s linear;";
+
+          var div = document.createElement("div");
+          var divspinner = document.createElement("div");
+          var spinnerString = "animation: spinning " + spin + "s linear infinite;";
+
+          if (direction) spinnerString += "animation-direction: reverse;";
+
+          divspinner.style.cssText = spinnerString;
+
+          if (emojiList[emoji] != undefined) {
+            divspinner.innerHTML = `<img class="emoji--item" src="${emojiList[emoji]
+              }" width="${size * scale}" height="${size * scale}">`;
+          }
+
+          div.style.cssText = cssString;
+          div.appendChild(divspinner);
+          emojirain.appendChild(div);
+
+          setTimeout(function () {
+            emojirain.removeChild(div);
+          }, speed * 1000);
+        }, intervaloTime);
+
+        setTimeout(() => {
+          clearInterval(inter);
+        }, duration);
+
+        setTimeout(() => {
+          emojirain.remove();
+        }, 7500);
+      }
+
+      show.prototype.content = function () {
+        const closeEl = document.createElement("button");
+        const self = this;
+        closeEl.classList.add("mkv54--close");
+        closeEl.setAttribute('id', "mkv54Close");
+        closeEl.setAttribute('type', "button");
+
+        const close = options54.enableClose ? closeEl.outerHTML : '';
+        const data = options54.disclaimer;
+        const content = `<div class="mkv54--wrapper">
+          <div class="mkv54--section">
+            ` + close + `
+            <div class="mkv54--section__content">
+              <div class="mkv54--section__header">
+                <picture class="mkv54--picture">
+                  <source
+                    srcset="` + data.image + `"
+                    media="(max-width: 480px)">
+                  <img class="mkv54--section__image"
+                    src="` + data.image2x + `"
+                    alt="Tenemos nuevo módulo de pago de créditos" width="312">
+                </picture>
+              </div>
+              <div class="mkv54--section__body">
+                <h4 class="mkv54--section__title">` + data.title + `</h4>
+                <h5 class="mkv54--section__subtitle">` + data.subtitle + `</h5>
+                <div class="mkv54--section__excerpt">` + data.excerpt + `</div>
+              </div>
             </div>
           </div>
         </div>`;
 
+        document.addEventListener('click', function (event) {
+          if (event.target.id === 'mkv54Close') {
+            self.closePopup();
+          }
+        })
+
         return content;
       }
 
-      carousel.prototype.show = function () {
-        const overlay = document.createElement('div');
-        const layout = document.createElement('div');
+      show.prototype.disclaimer = function () {
         const content = this.content();
+        const disclaimer = document.createElement('div');
+        disclaimer.classList.add('mkv54--disclaimer');
+        disclaimer.setAttribute('id', 'mkv54Disclaimer');
+        disclaimer.innerHTML = content;
 
-        overlay.classList.add('mkv48--overlay');
-        overlay.setAttribute('id', 'mkv48Overlay');
+        document.body.appendChild(disclaimer);
+        this.eventDisplayPopup();
+      }
 
-        layout.classList.add('mkv48--layout');
-        layout.setAttribute('id', 'mkv48Layout');
-        layout.innerHTML = content;
+      show.prototype.overlay = function () {
+        const overlay = document.createElement('div');
+        overlay.classList.add('mkv54--overlay');
+        overlay.setAttribute('id', 'mkv54Overlay');
 
         document.body.appendChild(overlay);
-        document.body.appendChild(layout);
       }
 
-      carousel.prototype.clearHTMLTags = function (string) {
-        let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
-        return stringClear;
+      show.prototype.closePopup = function () {
+        const overlay = document.getElementById('mkv54Overlay');
+        const disclaimer = document.getElementById('mkv54Disclaimer');
+        overlay.remove();
+        disclaimer.remove();
       }
 
-      carousel.prototype.runCarousel = function () {
-        const carruselItems = document.getElementsByClassName('mkv48-carrusel-item');
-        const botonesNavegacion = document.getElementsByClassName('mkv48-boton-navegacion');
-        const botonAnterior = document.getElementById('boton-anterior');
-        const botonSiguiente = document.getElementById('boton-siguiente');
-        let currentIndex = 0;
-        let isTransitioning = false; // Flag para evitar transiciones simultáneas
-
-        function mostrarItem(index) {
-          if (isTransitioning) {
-            return;
-          }
-          isTransitioning = true;
-
-          // Establecer la dirección de la transición (izquierda o derecha)
-          const direction = index > currentIndex ? 'left' : 'right';
-
-          // Ajustar la posición del elemento
-          carruselItems[index].style.left = direction === 'left' ? '100%' : '-100%';
-          carruselItems[index].style.display = 'block';
-
-          // Iniciar la transición
-          setTimeout(function () {
-            carruselItems[currentIndex].style.transform = direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)';
-            carruselItems[index].style.transform = 'translateX(0)';
-          }, 0);
-
-          // Esperar a que finalice la transición y restablecer las propiedades
-          setTimeout(function () {
-            carruselItems[currentIndex].style.display = 'none';
-            carruselItems[currentIndex].style.transform = 'translateX(0)';
-            carruselItems[index].style.left = '0';
-            currentIndex = index;
-            isTransitioning = false;
-            actualizarBotonesNavegacion();
-          }, 600);
-
-          // Aplicar la clase "active" al botón de navegación correspondiente
-          for (let i = 0; i < botonesNavegacion.length; i++) {
-            botonesNavegacion[i].classList.remove('active');
-          }
-          botonesNavegacion[index].classList.add('active');
-        }
-
-        function siguienteItem() {
-          let nextIndex = currentIndex + 1;
-          if (nextIndex >= carruselItems.length) {
-            nextIndex = 0;
-          }
-          mostrarItem(nextIndex);
-        }
-
-        function anteriorItem() {
-          let prevIndex = currentIndex - 1;
-          if (prevIndex < 0) {
-            prevIndex = carruselItems.length - 1;
-          }
-          mostrarItem(prevIndex);
-        }
-
-        function actualizarBotonesNavegacion() {
-          if (currentIndex === 0) {
-            botonAnterior.disabled = true;
-          } else {
-            botonAnterior.disabled = false;
-          }
-
-          if (currentIndex === carruselItems.length - 1) {
-            botonSiguiente.disabled = true;
-          } else {
-            botonSiguiente.disabled = false;
-          }
-        }
-
-        // Agregar eventos de click a los botones de navegación
-        botonAnterior.addEventListener('click', anteriorItem);
-        botonSiguiente.addEventListener('click', siguienteItem);
-
-        // Agregar eventos de click a los botones de navegación
-        for (let i = 0; i < botonesNavegacion.length; i++) {
-          botonesNavegacion[i].addEventListener('click', function () {
-            mostrarItem(i);
-          });
-        }
-
-        // Actualizar el estado inicial de los botones de navegación
-        actualizarBotonesNavegacion;
+      show.prototype.eventDisplayPopup = function () {
+        console.log(`Evento despliegue del popup`);
       }
 
-      return carousel;
-    }());
+      return show;
+    })();
 
+    var options54 = {
+      enableClose: false,
+      duration: 800000,
+      disclaimer: {
+        backgroundColor: '#0039A6',
+        image: 'https://paolopacheco.github.io/ibk-media/images/ruleta.png',
+        image2x: 'https://paolopacheco.github.io/ibk-media/images/ruleta@2x.png',
+        title: '!Gana con la <span class="mk-semibold">Ruleta Negocio Digital!</span>',
+        subtitle: '<span class="mk-semibold">Realiza operaciones por tu Banca por Internet y/o App Empresas y gana giros diarios para participar.</span>',
+        excerpt: 'Operaciones válidas para participar: Pagos de Sunat, servicios, créditos, planillas, proveedores, CTS y cambio de moneda.',
+      },
+      rain: {
+        settings: {
+          enable: true,
+          scale: 70,
+          intervaloTime: 64,
+          duration: 1000
+        },
+        icons: [
+          "https://paolopacheco.github.io/ibk-media/images/ruleta-disclaimer.png",
+          "https://paolopacheco.github.io/ibk-media/images/ruleta-disclaimer.png",
+          "https://paolopacheco.github.io/ibk-media/images/ruleta-disclaimer.png",
+          "https://paolopacheco.github.io/ibk-media/images/ruleta-disclaimer.png",
+          "https://paolopacheco.github.io/ibk-media/images/ruleta-disclaimer.png",
+        ],
+      },
+    }
 
-    const options = {
-      items: [
-        {
-          title: '<span class="mk-semibold">Transferencias inmediatas,</span> rápidas y seguras',
-          text: 'Ingresa al módulo Pagos y Transferencias y realiza transferencias a terceros de manera rápida y segura.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/felicidades-mobil.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/felicidades-mobil.png',
-          btn_text: 'Ir al módulo',
-          btn_link: '#',
-        },
-        {
-          title: '¡Felicidades! Tienes <span class="mk-semibold">un tipo de cambio especial</span>',
-          text: 'Cotiza y cambia soles o dólares de manera fácil, segura y a una tasa especial.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/felicidades.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/felicidades.png',
-          btn_text: 'Ir a cotizar',
-          btn_link: '#',
-        },
-        {
-          title: '¡Felicidades! Tienes <span class="mk-semibold">un tipo de cambio especial</span>',
-          text: 'Cotiza y cambia soles o dólares de manera fácil, segura y a una tasa especial.',
-          image: 'https://paolopacheco.github.io/ibk-media/images/transferencias-inmediatas.png',
-          image2x: 'https://paolopacheco.github.io/ibk-media/images/transferencias-inmediatas.png',
-          btn_text: 'Ir a cotizar',
-          btn_link: '#',
-        },
-      ]
-    };
-
-    var popup = new popupJS(options);
+    var rainEmojisDeploy = new rainEmojis(options54);
 
     (function () {
-      popup.init();
+      rainEmojisDeploy.init();
     })();
   </script>
 </body>
-
-</html>

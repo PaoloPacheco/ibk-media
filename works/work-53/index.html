@@ -4494,7 +4494,6 @@
             self.eventClickButton();
             window.open(options.button.url, '_blank').focus();
           }
-
         }
       };
 
@@ -4586,8 +4585,6 @@
       popupJS.prototype.eventClickButton = function () {
         console.log(`Evento click en el botón`);
       }
-
-
 
       popupJS.prototype.clearHTMLTags = function (string) {
         let stringClear = string.replaceAll(/<\/?[^>]+(>|$)/gi, "");
