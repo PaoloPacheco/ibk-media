@@ -4511,14 +4511,11 @@
           let dots = '<ul class="mk-dots">';
           let layout = '<ul data-slides>';
 
-          questions.forEach((element, index) => {
-
-          });
-
           if (questions.length > 0) {
             questions.forEach((element, index) => {
               let options = element.options;
               let title = element.title;
+              let unique = element.unique;
               let optionsLayout = '';
               let btnPrev = '';
               let active = (index === 0) ? 'active' : '';
@@ -4538,7 +4535,7 @@
               options.forEach((el, i) => {
                 optionsLayout += `<li class="mkv55--questions__list_li">
                   <label for="p` + index + `_options_` + i + `" class="mk-radio--btn2">
-                    <input type="checkbox" class="mkv55--questions__radio" id="p` + index + `_options_` + i + `" value="${el}" name="pregunta_` + index + `" />
+                    <input type="checkbox" class="mkv55--questions__radio" id="p` + index + `_options_` + i + `" value="${el}" name="pregunta_` + index + `" data-unique="` + unique + `" />
                     <span>${el}</span>
                   </label>
                 </li>`;
@@ -4570,7 +4567,7 @@
 
           return {
             layout,
-            dots
+            dots: ''
           }
         };
 
@@ -4707,10 +4704,19 @@
           let counter = 0;
 
           radios.forEach(radio => {
+            let unique = radio.getAttribute('data-unique');
+            console.log(`unique`, unique);
+
             radio.addEventListener('click', (e) => {
               const input = e.target;
               counter = input.checked ? counter + 1 : counter - 1;
               btnNext.disabled = counter > 0 ? false : true;
+
+              if (unique == 1) {
+                setTimeout(() => {
+                  btnNext.click()
+                }, 200);
+              }
             });
           });
         };
@@ -4760,7 +4766,7 @@
         questions: [
           {
             title: '¿Cómo te sientes hasta hoy usando tu Cuenta Negocio?',
-            unique: false,
+            unique: 0, // 0 o 1. Donde 0 es respuesta múltiple; y 1 es respuesta única.
             options: [
               'Totalmente satisfecho',
               'Muy satisfecho',
@@ -4771,7 +4777,7 @@
           },
           {
             title: '¿Qué tan fácil fue ingresar por 1ra vez al App?',
-            unique: true,
+            unique: 1,
             options: [
               'Muy fácil',
               'Fácil',
@@ -4782,7 +4788,7 @@
           },
           {
             title: '¿Qué tan fácil fue realizar tus transferencias bancarias?',
-            unique: false,
+            unique: 0,
             options: [
               'Muy fácil',
               'Fácil',

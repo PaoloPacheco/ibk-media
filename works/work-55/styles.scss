@@ -251,6 +251,12 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
           background-color: var(--white);
           padding: 48px 24px 24px;
 
+          @include screen-max(679px) {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url('https://paolopacheco.github.io/ibk-media/images/confeti.png');
+          }
+
           @include screen-min(680px) {
             padding: 64px;
             display: flex;
@@ -261,10 +267,6 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         }
 
         &_header {
-          background-color: var(--white);
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-image: url('https://paolopacheco.github.io/ibk-media/images/confeti.png');
         }
 
         &_title {
