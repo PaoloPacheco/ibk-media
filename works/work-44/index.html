@@ -4459,37 +4459,45 @@
         const overlayDiv = document.createElement('div');
         const self = this;
 
-        overlayDiv.classList.add('mkv44--overlay');
-        overlayDiv.setAttribute('id', 'mkv44Overlay');
-        button.classList.add('mkv44--content');
-        button.setAttribute('id', 'mkv44Button');
+        const sessionStatus = this.cookieControl(5, 2, 24, '2');
 
-        document.body.appendChild(overlayDiv);
+        if (!sessionStatus) {
+          return;
+        } else {
+          overlayDiv.classList.add('mkv44--overlay');
+          overlayDiv.setAttribute('id', 'mkv44Overlay');
+          button.classList.add('mkv44--content');
+          button.setAttribute('id', 'mkv44Button');
 
-        button.innerHTML = content;
+          document.body.appendChild(overlayDiv);
 
-        document.body.appendChild(button);
-        this.eventDisplayPopup();
+          button.innerHTML = content;
 
-        const progressbar = document.querySelector('#progressbar1');
-        const mkv44Btn = document.querySelector('#mkv44Btn');
+          document.body.appendChild(button);
+          this.eventDisplayPopup();
 
-        if (options.enableClose) {
-          this.closePopup();
-        }
+          const progressbar = document.querySelector('#progressbar1');
+          const mkv44Btn = document.querySelector('#mkv44Btn');
 
-        if (options.timer.enable) {
-          this.createProgressbar('progressbar1', options.timer.time, function () {
+          if (options.enableClose) {
+            this.closePopup();
+          }
+
+          if (options.timer.enable) {
+            this.createProgressbar('progressbar1', options.timer.time, function () {
+              self.togglePopup();
+              self.eventClosePopup();
+            });
+          }
+
+          mkv44Btn.onclick = function () {
             self.togglePopup();
-            self.eventClosePopup();
-          });
+            self.eventClickButton();
+            window.open(options.button.url, '_blank').focus();
+          }
         }
 
-        mkv44Btn.onclick = function () {
-          self.togglePopup();
-          self.eventClickButton();
-          window.open(options.button.url, '_blank').focus();
-        }
+
       };
 
       popupJS.prototype.closePopup = function () {
@@ -4522,6 +4530,52 @@
 
         progressbar.appendChild(progressbarinner);
         progressbarinner.style.animationPlayState = 'running';
+      }
+
+      popupJS.prototype.cookieControl = function ($times = 3, timesBySession = 1, hours = 24, id = '') {
+        let nameCookie = 'counter' + id;
+        let visited = getCookie(nameCookie);
+        let sessionCounter = sessionStorage.getItem(nameCookie);
+        let status;
+
+        if (!visited) {
+          setCookie(nameCookie, 1, 1);
+          sessionStorage.setItem(nameCookie, 1);
+          status = true;
+        } else {
+          let counter = parseInt(visited);
+          if (counter < $times && (!sessionCounter || parseInt(sessionCounter) < timesBySession)) {
+            counter++;
+            setCookie(nameCookie, counter, 1);
+            sessionStorage.setItem(nameCookie, counter);
+            status = true;
+          } else {
+            status = false;
+          }
+        }
+
+        function setCookie(name, value, days) {
+          let expires = "";
+          if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (hours * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+          let nameEQ = name + "=";
+          let ca = document.cookie.split(';');
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+          }
+          return null;
+        }
+
+        return status;
       }
 
       popupJS.prototype.eventDisplayPopup = function () {
