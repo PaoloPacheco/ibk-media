@@ -1021,6 +1021,17 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
     display: flex;
     gap: 6px;
 
+    &--content {
+      display: flex;
+      padding-bottom: 20px;
+      justify-content: center;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      z-index: 5;
+      pointer-events: none;
+    }
+
     li {
       width: 12px;
       height: 12px;

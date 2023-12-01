@@ -4505,9 +4505,82 @@
           this.events(close);
         }
 
+        popupJS.prototype.questionsLoop = function () {
+          const questions = options.questions;
+          const total = questions.length;
+          let dots = '<ul class="mk-dots">';
+          let layout = '<ul data-slides>';
+
+          questions.forEach((element, index) => {
+
+          });
+
+          if (questions.length > 0) {
+            questions.forEach((element, index) => {
+              let options = element.options;
+              let title = element.title;
+              let optionsLayout = '';
+              let btnPrev = '';
+              let active = (index === 0) ? 'active' : '';
+              let btnNext = '<button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" disabled>Siguiente</button > ';
+
+              dots += `<li class="` + active + `"><a data-slide="` + index + `"></a></li>`;
+
+              if (index > 0) {
+                btnPrev = `<button class="mkv55--slide__btn_back mkv55--slide__btn" data-carousel-btn="prev">Atrás</button>`;
+              }
+
+              if (index === total) {
+                btnNext = `<button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" id="finish" disabled>Finalizar</button>`;
+              }
+
+              options.forEach((el, i) => {
+                optionsLayout += `<li class="mkv55--questions__list_li">
+                  <label for="p1_options_${index + 1}" class="mk-radio--btn2">
+                    <input type="checkbox" class="mkv55--questions__radio" id="p1_options_${index + 1}" value="${el}" name="pregunta_${index + 1}" />
+                    <span>${el}</span>
+                  </label>
+                </li>`;
+              });
+
+
+              layout += `<li class='mkv55--slide' data-active>
+                        <div class=\"mkv55--slide__body\">
+                          <div class="mkv55--questions__header">
+                            <h4 class="mkv55--slide__title">` + title + `</h4>
+                          </div>
+                          <div class="mkv55--questions__content">
+                            <ul class="mkv55--questions__list">
+                              ` + optionsLayout + `
+                            </ul>
+                          </div>
+                          <div class="mkv55--slide__btn_row">
+                            <div class="mkv55--slide__btn_col">` + btnPrev + `</div>
+                            <div class="mkv55--slide__btn_col"></div>
+                            <div class="mkv55--slide__btn_col">` + btnNext + `</div>
+                          </div>
+                        </div>
+                      </li>`;
+            });
+          }
+
+          layout += '</ul>';
+          dots += '</ul>';
+
+          return {
+            layout,
+            dots
+          }
+        };
+
         popupJS.prototype.show = function () {
           var overlay = this.elementOverlay;
           var popup = document.createElement('div');
+          const layoutLoop = this.questionsLoop();
+
+          // console.log(`layout`, layout);
+          // layout;
+
           popup.setAttribute('id', 'mkv55Popup');
           popup.classList.add('mkv55--popup');
           popup.innerHTML = `<div class='mkv55--carousel' data-carousel><div class=\"mkv55--popup__wrapper\" id=\"mkv55PopupWrapper1\">\n
@@ -4519,174 +4592,10 @@
                    <p class="mkv55--popup__right_paragraph">Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:</p>
                   </div>
                   <div class="mkv55--popup__right_body">
-                    <ul data-slides>
-                      <li class='mkv55--slide' data-active>
-                        <div class=\"mkv55--slide__body\">
-                          <div class="mkv55--questions__header">
-                            <h4 class="mkv55--slide__title">` + options.questions[0].title + `</h4>
-                          </div>
-                          <div class="mkv55--questions__content">
-                            <ul class="mkv55--questions__list">
-                              <li class="mkv55--questions__list_li">
-                                <label for="p1_options_1" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_1" value="` + options.questions[0].options[0] + `" name="pregunta_1" />
-                                  <span>` + options.questions[0].options[0] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p1_options_2" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_2" value="` + options.questions[0].options[1] + `" name="pregunta_1" />
-                                  <span>` + options.questions[0].options[1] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p1_options_3" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_3" value="` + options.questions[0].options[2] + `" name="pregunta_1" />
-                                  <span>` + options.questions[0].options[2] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p1_options_4" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_4" value="` + options.questions[0].options[3] + `" name="pregunta_1" />
-                                  <span>` + options.questions[0].options[3] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p1_options_5" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p1_options_5" value="` + options.questions[0].options[4] + `" name="pregunta_1" />
-                                  <span>` + options.questions[0].options[4] + `</span>
-                                </label>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="mkv55--slide__btn_row">
-                            <div class="mkv55--slide__btn_col"></div>
-                            <div class="mkv55--slide__btn_col">
-                              <ul class="mk-dots">
-                                <li class="active"><a data-slide="0"></a></li>
-                                <li><a data-slide="1"></a></li>
-                                <li><a data-slide="2"></a></li>
-                              </ul>
-                            </div>
-                            <div class="mkv55--slide__btn_col">
-                              <button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" disabled>Siguiente</button>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class='mkv55--slide'>
-                        <div class="mkv55--slide__body">
-                          <div class="mkv55--questions__header">
-                            <h4 class="mkv55--slide__title">` + options.questions[1].title + `</h4>
-                          </div>
-                          <div class="mkv55--questions__content">
-                            <ul class="mkv55--questions__list">
-                              <li class="mkv55--questions__list_li">
-                                <label for="p2_options_1" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_1" value="` + options.questions[1].options[0] + `" name="pregunta_2" />
-                                  <span>` + options.questions[1].options[0] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p2_options_2" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_2" value="` + options.questions[1].options[1] + `" name="pregunta_2" />
-                                  <span>` + options.questions[1].options[1] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p2_options_3" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_3" value="` + options.questions[1].options[2] + `" name="pregunta_2" />
-                                  <span>` + options.questions[1].options[2] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p2_options_4" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_4" value="` + options.questions[1].options[3] + `" name="pregunta_2" />
-                                  <span>` + options.questions[1].options[3] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p2_options_5" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p2_options_5" value="` + options.questions[1].options[4] + `" name="pregunta_2" />
-                                  <span>` + options.questions[1].options[4] + `</span>
-                                </label>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="mkv55--slide__btn_row">
-                            <div class="mkv55--slide__btn_col">
-                              <button class="mkv55--slide__btn_back mkv55--slide__btn" data-carousel-btn="prev">Atrás</button>
-                            </div>
-                            <div class="mkv55--slide__btn_col">
-                              <ul class="mk-dots">
-                                <li><a data-slide="0"></a></li>
-                                <li class="active"><a data-slide="1"></a></li>
-                                <li><a data-slide="2"></a></li>
-                              </ul>
-                            </div>
-                            <div class="mkv55--slide__btn_col">
-                              <button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" disabled>Siguiente</button>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class='mkv55--slide'>
-                        <div class="mkv55--slide__body">
-                          <div class="mkv55--questions__header">
-                            <h4 class="mkv55--slide__title">` + options.questions[2].title + `</h4>
-                          </div>
-                          <div class="mkv55--questions__content">
-                            <ul class="mkv55--questions__list">
-                              <li class="mkv55--questions__list_li">
-                                <label for="p3_options_1" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_1" value="` + options.questions[2].options[0] + `" name="pregunta_3" />
-                                  <span>` + options.questions[2].options[0] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p3_options_2" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_2" value="` + options.questions[2].options[1] + `" name="pregunta_3" />
-                                  <span>` + options.questions[2].options[1] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p3_options_3" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_3" value="` + options.questions[2].options[2] + `" name="pregunta_3" />
-                                  <span>` + options.questions[2].options[2] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p3_options_4" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_4" value="` + options.questions[2].options[3] + `" name="pregunta_3" />
-                                  <span>` + options.questions[2].options[3] + `</span>
-                                </label>
-                              </li>
-                              <li class="mkv55--questions__list_li">
-                                <label for="p3_options_5" class="mk-radio--btn2">
-                                  <input type="checkbox" class="mkv55--questions__radio" id="p3_options_5" value="` + options.questions[2].options[4] + `" name="pregunta_3" />
-                                  <span>` + options.questions[2].options[4] + `</span>
-                                </label>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="mkv55--slide__btn_row">
-                            <div class="mkv55--slide__btn_col">
-                              <button class="mkv55--slide__btn_back mkv55--slide__btn" data-carousel-btn="prev">Atrás</button>
-                            </div>
-                            <div class="mkv55--slide__btn_col">
-                              <ul class="mk-dots">
-                                <li><a data-slide="0"></a></li>
-                                <li><a data-slide="1"></a></li>
-                                <li class="active"><a data-slide="2"></a></li>
-                              </ul>
-                            </div>
-                            <div class="mkv55--slide__btn_col">
-                              <button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" id="finish" disabled>Finalizar</button>
-                              </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+                    ` + layoutLoop.layout + `
+                  </div>
+                  <div class="mk-dots--content">
+                    ` + layoutLoop.dots + `
                   </div>
                   <div class="mkv55--questions__loading"></div>
                 </div>
@@ -4782,6 +4691,7 @@
           this.validator();
         };
 
+
         popupJS.prototype.radioEvents = function (activeSlide = document.querySelector('[data-active]')) {
           const matches = document.querySelectorAll('.mkv55--questions__radio');
           const radios = activeSlide.querySelectorAll('.mkv55--questions__radio');
@@ -4874,8 +4784,6 @@
       };
       var responses = [];
       var popup = new popupJS(options);
-
-      console.log(typeof responses);
 
       popup.show();
 
