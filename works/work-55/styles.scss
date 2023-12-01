@@ -224,12 +224,16 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         border-radius: 8px;
         box-shadow: 0 4px 10px 0 #9b9b9b;
         width: 100%;
-        max-width: 320px;
-        height: 494px;
+        height: auto;
+
+        @include screen-min(680px) {
+          height: 390px;
+        }
       }
 
       &__grid {
         height: 100%;
+        width: 100%;
         position: relative;
 
         @include screen-max(679px) {
@@ -237,6 +241,8 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         }
 
         @include screen-min(680px) {
+          display: grid;
+          grid-template-columns: 320px auto;
         }
       }
 
@@ -252,6 +258,21 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
             justify-content: center;
             height: 100%;
           }
+        }
+
+        &_header {
+          background-color: var(--white);
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-image: url('https://paolopacheco.github.io/ibk-media/images/confeti.png');
+        }
+
+        &_title {
+          font-size: 20px;
+          text-align: center;
+          line-height: 1.1;
+          font-weight: 500;
+          margin-bottom: 24px;
         }
 
         &_figure {
@@ -273,6 +294,10 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
             text-align: center;
             font-size: 20px;
           }
+
+          @include screen-min(678px) {
+            text-align: left;
+          }
         }
 
         &_text {
@@ -285,37 +310,30 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
             text-align: center;
           }
         }
-      }
-
-      &__right {
-        background-color: var(--aqua);
-        position: relative;
-        height: 100%;
-
-        &_header {
-          background-color: var(--white);
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-image: url('https://paolopacheco.github.io/ibk-media/images/confeti.png');
-          padding: 48px 24px 16px;
-        }
-
-        &_title {
-          font-size: 20px;
-          text-align: center;
-          line-height: 1.1;
-          font-weight: 500;
-          margin-bottom: 24px;
-        }
-
-        &_body {
-          position: relative;
-        }
 
         &_paragraph {
           text-align: center;
           margin-bottom: 0 !important;
           font-size: 14px;
+
+          @include screen-min(678px) {
+            text-align: left;
+            font-size: 16px;
+          }
+        }
+      }
+
+      &__right {
+        background-color: var(--aqua);
+        position: relative;
+        height: 365px;
+
+        @include screen-min(678px) {
+          height: 100%;
+        }
+
+        &_body {
+          position: relative;
         }
       }
 
@@ -642,7 +660,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
       color: var(--text);
       position: relative;
       width: 100%;
-      max-width: 320px;
+      max-width: 700px;
     }
 
     &--slide {
@@ -659,7 +677,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         border-radius: 8px;
 
         @include screen-min(600px) {
-          padding: 24px 40px 64px;
+          padding: 40px;
         }
       }
 
@@ -849,6 +867,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
     &--questions {
       &__header {
         margin-bottom: 16px;
+        min-height: 32px;
       }
 
       &__content {
@@ -1023,7 +1042,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
     &--content {
       display: flex;
-      padding-bottom: 20px;
+      padding-bottom: 42px;
       justify-content: center;
       width: 100%;
       position: absolute;

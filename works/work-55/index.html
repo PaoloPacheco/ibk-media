@@ -4522,6 +4522,7 @@
               let optionsLayout = '';
               let btnPrev = '';
               let active = (index === 0) ? 'active' : '';
+              let dataActive = (index === 0) ? ' data-active' : '';
               let btnNext = '<button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" disabled>Siguiente</button > ';
 
               dots += `<li class="` + active + `"><a data-slide="` + index + `"></a></li>`;
@@ -4536,15 +4537,15 @@
 
               options.forEach((el, i) => {
                 optionsLayout += `<li class="mkv55--questions__list_li">
-                  <label for="p1_options_${index + 1}" class="mk-radio--btn2">
-                    <input type="checkbox" class="mkv55--questions__radio" id="p1_options_${index + 1}" value="${el}" name="pregunta_${index + 1}" />
+                  <label for="p` + index + `_options_` + i + `" class="mk-radio--btn2">
+                    <input type="checkbox" class="mkv55--questions__radio" id="p` + index + `_options_` + i + `" value="${el}" name="pregunta_` + index + `" />
                     <span>${el}</span>
                   </label>
                 </li>`;
               });
 
 
-              layout += `<li class='mkv55--slide' data-active>
+              layout += `<li class='mkv55--slide' ` + dataActive + `>
                         <div class=\"mkv55--slide__body\">
                           <div class="mkv55--questions__header">
                             <h4 class="mkv55--slide__title">` + title + `</h4>
@@ -4578,19 +4579,26 @@
           var popup = document.createElement('div');
           const layoutLoop = this.questionsLoop();
 
-          // console.log(`layout`, layout);
-          // layout;
-
           popup.setAttribute('id', 'mkv55Popup');
           popup.classList.add('mkv55--popup');
           popup.innerHTML = `<div class='mkv55--carousel' data-carousel><div class=\"mkv55--popup__wrapper\" id=\"mkv55PopupWrapper1\">\n
             <div class=\"mkv55--popup__close\" id=\"mkv55--popup__cerrar\"></div>\n
               <div class="mkv55--popup__grid">
-                <div class="mkv55--popup__right">
-                  <div class="mkv55--popup__right_header">
-                   <h5 class="mkv55--popup__right_title">¡Felicidades!</h5>
-                   <p class="mkv55--popup__right_paragraph">Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:</p>
+                <div class="mkv55--popup__left">
+                  <div class="mkv55--popup__left_content">
+                    <div class="mkv55--popup__left_header">
+                      <figure class="mkv55--popup__left_figure">
+                        <picture>
+                          <source srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" media="(min-width: 600px)" />
+                          <img class="mkv55--popup__image" srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
+                        </picture>
+                      </figure>
+                      <h5 class="mkv55--popup__left_title">¡Felicidades!</h5>
+                      <p class="mkv55--popup__left_paragraph">Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:</p>
+                    </div>
                   </div>
+                </div>
+                <div class="mkv55--popup__right">
                   <div class="mkv55--popup__right_body">
                     ` + layoutLoop.layout + `
                   </div>
@@ -4603,8 +4611,8 @@
                   <div class="mkv55--result__content">
                     <figure class="mkv55--result__figure">
                       <picture>
-                        <source srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" media="(min-width: 600px)" />
-                        <img class="mkv55--popup__image" srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
+                        <source srcset="` + options.imgResult1x + `, ` + options.imgResult2x + ` 2x" media="(min-width: 600px)" />
+                        <img class="mkv55--popup__image" srcset="` + options.imgResult1x + `, ` + options.imgResult2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
                       </picture>
                     </figure>
                     <div class="mkv55--result__text">
@@ -4737,10 +4745,12 @@
 
       var options = {
         title: '¡Felicidades!',
-        titleResult: '¡Gracias por tus<br> respuestas !',
-        description: 'Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:',
         imgMain1x: 'https://paolopacheco.github.io/ibk-media/images/Ilustracion_encuesta_CN.svg',
         imgMain2x: 'https://paolopacheco.github.io/ibk-media/images/Ilustracion_encuesta_CN.svg',
+        titleResult: '¡Gracias por tus<br> respuestas !',
+        imgResult1x: 'https://paolopacheco.github.io/ibk-media/images/Ilustracion_encuesta_CN.svg',
+        imgResult2x: 'https://paolopacheco.github.io/ibk-media/images/Ilustracion_encuesta_CN.svg',
+        description: 'Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:',
         link: {
           url: '#',
           text: 'Entendido',
@@ -4750,6 +4760,7 @@
         questions: [
           {
             title: '¿Cómo te sientes hasta hoy usando tu Cuenta Negocio?',
+            unique: false,
             options: [
               'Totalmente satisfecho',
               'Muy satisfecho',
@@ -4760,6 +4771,7 @@
           },
           {
             title: '¿Qué tan fácil fue ingresar por 1ra vez al App?',
+            unique: true,
             options: [
               'Muy fácil',
               'Fácil',
@@ -4770,6 +4782,7 @@
           },
           {
             title: '¿Qué tan fácil fue realizar tus transferencias bancarias?',
+            unique: false,
             options: [
               'Muy fácil',
               'Fácil',
