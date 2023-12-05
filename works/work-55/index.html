@@ -4521,7 +4521,7 @@
               let btnPrev = '';
               let active = (index === 0) ? 'active' : '';
               let dataActive = (index === 0) ? ' data-active' : '';
-              let btnNext = '<button class="mkv55-2--slide__btn_next mkv55-2--slide__btn" data-carousel-btn="next" disabled>Siguiente</button > ';
+              let btnNext = '<button type="button" class="mkv55-2--slide__btn_next mkv55-2--slide__btn" data-carousel-btn="next" disabled>Siguiente</button > ';
               let bullets = self.bullets(questions.length, index);
 
               dots += `<li class="` + active + `"><a data-slide="` + index + `"></a></li>`;
@@ -4531,7 +4531,7 @@
               }
 
               if (index === total) {
-                btnNext = `<button class="mkv55-2--slide__btn_next mkv55-2--slide__btn" data-carousel-btn="next" id="finish" disabled>Finalizar</button>`;
+                btnNext = `<button type="button" class="mkv55-2--slide__btn_next mkv55-2--slide__btn" data-carousel-btn="next" id="finish" disabled>Finalizar</button>`;
               }
 
               options.forEach((el, i) => {
@@ -4569,8 +4569,7 @@
           dots += '</ul>';
 
           return {
-            layout,
-            dots: ''
+            layout
           }
         };
 
@@ -4600,10 +4599,9 @@
                 </div>
                 <div class="mkv55-2--popup__right">
                   <div class="mkv55-2--popup__right_body">
-                    ` + layoutLoop.layout + `
-                  </div>
-                  <div class="mk-dots--content">
-                    ` + layoutLoop.dots + `
+                    <form action="#" id="mkv55-2Form">
+                      ` + layoutLoop.layout + `
+                    </form>
                   </div>
                   <div class="mkv55-2--questions__loading"></div>
                 </div>
@@ -4637,6 +4635,8 @@
           var result = popup.querySelector('#mkv55-2--result');
           var resultBack = popup.querySelector('#mkv55-2--result__atras');
           var bullets = popup.querySelectorAll('ul.mk-bullets li');
+          const form = popup.querySelector('#mkv55-2Form');
+
 
           overlay.appendChild(popup);
           document.body.appendChild(overlay);
@@ -4644,6 +4644,11 @@
           this.radioEvents();
           this.events(btnEnviar);
           this.events(close);
+
+          btnEnviar.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.form(form);
+          });
 
           const buttons = document.querySelectorAll('[data-carousel-btn]');
 
@@ -4656,19 +4661,6 @@
               const activeSlide = slides.querySelector('[data-active]');
               let curIndex = [...slides.children].indexOf(activeSlide);
               let newIndex = curIndex + offset;
-
-              // if (responses.length < options.questions.length) {
-              //   const pregunta = options.questions[curIndex].title;
-              //   const opciones = [
-              //     "Opción 1",
-              //     "Opción 2",
-              //     "Opción 3",
-              //     "Opción 4"
-              //   ];
-              //   const preguntaYopciones = [pregunta, opciones];
-              //   responses.push(preguntaYopciones);
-              // }
-              // console.log(`responses`, responses);
 
               newIndex = newIndex < 0 ? slides.children.length - 1 : newIndex;
               newIndex = newIndex % slides.children.length;
@@ -4688,7 +4680,7 @@
             });
           });
 
-          this.validator();
+
         };
 
         popupJS.prototype.radioEvents = function (activeSlide = document.querySelector('[data-active]')) {
@@ -4699,7 +4691,6 @@
 
           radios.forEach(radio => {
             let unique = radio.getAttribute('data-unique');
-            console.log(`unique`, unique);
 
             radio.addEventListener('click', (e) => {
               const input = e.target;
@@ -4714,25 +4705,6 @@
             });
           });
         };
-
-        popupJS.prototype.validator = function name(formId) {
-          const btnEnviar = document.getElementById('formSubmit');
-          const updatedEmailError = document.getElementById('updatedEmailError');
-          const termsConditionsError = document.getElementById('termsConditionsError');
-
-          const validate = (e) => {
-            e.preventDefault();
-            var option = document.getElementsByName('opciones');
-            var options = document.querySelectorAll('[name="opciones"]');
-
-            if (!(option[0].checked || option[1].checked || option[2].checked)) {
-              termsConditionsError.innerHTML = "Por favor, selecciones una opción";
-              return false;
-            }
-
-            popup.showResult();
-          }
-        }
 
         popupJS.prototype.overlay = function () {
           var overlay = document.createElement('div');
@@ -4755,10 +4727,29 @@
           }
           layout.appendChild(list);
 
-          console.log('$active', $active);
-          console.log('total', total);
           return layout;
+        };
 
+
+        popupJS.prototype.form = function (formulario) {
+          const datosSeleccionados = {};
+
+          const checkboxes = formulario.querySelectorAll('input[type="checkbox"]');
+          checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+              const pregunta = checkbox.name;
+              const opcion = checkbox.value;
+
+              if (datosSeleccionados.hasOwnProperty(pregunta)) {
+                datosSeleccionados[pregunta].push(opcion);
+              } else {
+                datosSeleccionados[pregunta] = [opcion];
+              }
+            }
+          });
+
+          // Datos del formulario
+          console.log(datosSeleccionados);
         };
 
         return popupJS;

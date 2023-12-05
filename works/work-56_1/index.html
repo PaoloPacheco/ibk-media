@@ -4427,18 +4427,18 @@
       }
 
       show.prototype.init = function () {
-        const col_left_layout = this.col_left_layout();
-        const col_full = this.col_full();
+        const left_layout = this.left_layout();
+        const col_full = this.full_layout();
         const row = document.querySelector('.mkv56-1--demo__row');
-        row.prepend(col_left_layout);
+        row.prepend(left_layout);
         row.append(col_full);
       }
 
-      show.prototype.col_left_layout = function () {
+      show.prototype.left_layout = function () {
         const content = this.content();
         const layout = document.createElement('div');
         layout.setAttribute('id', 'mkv56-1LeftLayout');
-        layout.classList.add('mkv56-1--layout');
+        layout.classList.add('mkv56-1--layout__left');
         layout.classList.add('col-xs-12');
         layout.classList.add('col-4');
 
@@ -4447,11 +4447,11 @@
         return layout;
       }
 
-      show.prototype.col_full_layout = function () {
+      show.prototype.full_layout = function () {
         const content = this.content();
         const layout = document.createElement('div');
         layout.setAttribute('id', 'mkv56-1FullLayout');
-        layout.classList.add('mkv56-1--layout');
+        layout.classList.add('mkv56-1--layout__full');
         layout.classList.add('col-xs-12');
         layout.classList.add('col-4');
 
@@ -4476,7 +4476,17 @@
       excerpt: '¡Sin trámite ni papeleos! La cuenta 100% digital para impulsar tu negocio.',
       details: [
         {
-          icon: 'https://paolopacheco.github.io/ibk-media/images/ilustracion-check.svg',
+          icon: 'https://paolopacheco.github.io/ibk-media/images/app-interbank.png',
+          title: 'Abre tu Cuenta Negocios 100% digital',
+          excerpt: 'Abre tu Cuenta Negocios 100% digital',
+        },
+        {
+          icon: 'https://paolopacheco.github.io/ibk-media/images/app-interbank.png',
+          title: 'Abre tu Cuenta Negocios 100% digital',
+          excerpt: 'Abre tu Cuenta Negocios 100% digital',
+        },
+        {
+          icon: 'https://paolopacheco.github.io/ibk-media/images/app-interbank.png',
           title: 'Abre tu Cuenta Negocios 100% digital',
           excerpt: 'Abre tu Cuenta Negocios 100% digital',
         },
