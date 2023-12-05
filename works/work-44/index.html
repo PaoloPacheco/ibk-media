@@ -4532,7 +4532,7 @@
         progressbarinner.style.animationPlayState = 'running';
       }
 
-      popupJS.prototype.cookieControl = function ($times = 3, timesBySession = 1, hours = 24, id = '') {
+      popupJS.prototype.cookieControl = function ($times = 3, timesBySession = 1, hours = 24, id = 0) {
         let nameCookie = 'counter' + id;
         let visited = getCookie(nameCookie);
         let sessionCounter = sessionStorage.getItem(nameCookie);

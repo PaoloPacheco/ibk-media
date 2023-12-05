@@ -130,7 +130,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
             border-radius: 18px;
             background-color: var(--white);
             font-size: 14px;
-            min-width: 158px;
+            min-width: 184px;
 
             &:hover {
               /* background-color: var(--primary);
@@ -151,7 +151,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
     }
   }
 
-  &v55 {
+  &v55-2 {
     &--overlay {
       background-color: rgba(0, 0, 0, 0.4);
       position: fixed;
@@ -264,9 +264,6 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
             justify-content: center;
             height: 100%;
           }
-        }
-
-        &_header {
         }
 
         &_title {
@@ -878,7 +875,16 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
       }
 
       &__list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+
         &_li {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+
           &:not(:last-of-type) {
             margin-bottom: 8px;
           }

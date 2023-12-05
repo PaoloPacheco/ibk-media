@@ -4498,10 +4498,10 @@
         };
 
         popupJS.prototype.showResult = function () {
-          var popup = document.getElementById('mkv55Popup');
-          popup.innerHTML = "\n    <div class=\"mkv55--popup_result__wrapper\" id=\"mkv55PopupWrapperResult\">\n <div class=\"mkv55--popup_result__header\">\n    <div class=\"mkv55--popup_result__close\" id=\"mkv55PopupResultClose\"></div>\n    </div>\n    <div class=\"mkv55--popup_result__content\">\n  <div class=\"mkv55--popup_result__row\">\n  <div class=\"mkv55--popup_result__text\">\n    <h5 class=\"mkv55--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv55--popup_result__paragraph\">Recibimos tus datos <br class=\"mkv55--popup_result__br\" />correctamente.</p>\n    </div>    <div class=\"mkv55--popup_result__icon\">\n    <picture class=\"mkv55--popup__picture\">\n        <source srcset=\"".concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv55--popupresult__image\" srcset=\"").concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    </div>\n    </div>\n    </div>");
+          var popup = document.getElementById('mkv55-2Popup');
+          popup.innerHTML = "\n    <div class=\"mkv55-2--popup_result__wrapper\" id=\"mkv55-2PopupWrapperResult\">\n <div class=\"mkv55-2--popup_result__header\">\n    <div class=\"mkv55-2--popup_result__close\" id=\"mkv55-2PopupResultClose\"></div>\n    </div>\n    <div class=\"mkv55-2--popup_result__content\">\n  <div class=\"mkv55-2--popup_result__row\">\n  <div class=\"mkv55-2--popup_result__text\">\n    <h5 class=\"mkv55-2--popup_result__title\">¡Envío exitoso!</h5>\n    <p class=\"mkv55-2--popup_result__paragraph\">Recibimos tus datos <br class=\"mkv55-2--popup_result__br\" />correctamente.</p>\n    </div>    <div class=\"mkv55-2--popup_result__icon\">\n    <picture class=\"mkv55-2--popup__picture\">\n        <source srcset=\"".concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" media=\"(min-width: 480px)\">\n        <img class=\"mkv55-2--popupresult__image\" srcset=\"").concat(options.imgResult1x, ", ").concat(options.imgResult2x, " 2x\" alt=\"").concat(clearHTMLTags(options.title), "\">\n      </picture>\n    </div>\n    </div>\n    </div>\n    </div>\n    </div>");
 
-          var close = popup.querySelector('.mkv55--popup_result__close');
+          var close = popup.querySelector('.mkv55-2--popup_result__close');
           this.events(close);
         }
 
@@ -4520,42 +4520,42 @@
               let btnPrev = '';
               let active = (index === 0) ? 'active' : '';
               let dataActive = (index === 0) ? ' data-active' : '';
-              let btnNext = '<button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" disabled>Siguiente</button > ';
+              let btnNext = '<button class="mkv55-2--slide__btn_next mkv55-2--slide__btn" data-carousel-btn="next" disabled>Siguiente</button > ';
 
               dots += `<li class="` + active + `"><a data-slide="` + index + `"></a></li>`;
 
               if (index > 0) {
-                btnPrev = `<button class="mkv55--slide__btn_back mkv55--slide__btn" data-carousel-btn="prev">Atrás</button>`;
+                btnPrev = `<button class="mkv55-2--slide__btn_back mkv55-2--slide__btn" data-carousel-btn="prev">Atrás</button>`;
               }
 
               if (index === total) {
-                btnNext = `<button class="mkv55--slide__btn_next mkv55--slide__btn" data-carousel-btn="next" id="finish" disabled>Finalizar</button>`;
+                btnNext = `<button class="mkv55-2--slide__btn_next mkv55-2--slide__btn" data-carousel-btn="next" id="finish" disabled>Finalizar</button>`;
               }
 
               options.forEach((el, i) => {
-                optionsLayout += `<li class="mkv55--questions__list_li">
+                optionsLayout += `<li class="mkv55-2--questions__list_li">
                   <label for="p` + index + `_options_` + i + `" class="mk-radio--btn2">
-                    <input type="checkbox" class="mkv55--questions__radio" id="p` + index + `_options_` + i + `" value="${el}" name="pregunta_` + index + `" data-unique="` + unique + `" />
+                    <input type="checkbox" class="mkv55-2--questions__radio" id="p` + index + `_options_` + i + `" value="${el}" name="pregunta_` + index + `" data-unique="` + unique + `" />
                     <span>${el}</span>
                   </label>
                 </li>`;
               });
 
 
-              layout += `<li class='mkv55--slide' ` + dataActive + `>
-                        <div class=\"mkv55--slide__body\">
-                          <div class="mkv55--questions__header">
-                            <h4 class="mkv55--slide__title">` + title + `</h4>
+              layout += `<li class='mkv55-2--slide' ` + dataActive + `>
+                        <div class=\"mkv55-2--slide__body\">
+                          <div class="mkv55-2--questions__header">
+                            <h4 class="mkv55-2--slide__title">` + title + `</h4>
                           </div>
-                          <div class="mkv55--questions__content">
-                            <ul class="mkv55--questions__list">
+                          <div class="mkv55-2--questions__content">
+                            <ul class="mkv55-2--questions__list">
                               ` + optionsLayout + `
                             </ul>
                           </div>
-                          <div class="mkv55--slide__btn_row">
-                            <div class="mkv55--slide__btn_col">` + btnPrev + `</div>
-                            <div class="mkv55--slide__btn_col"></div>
-                            <div class="mkv55--slide__btn_col">` + btnNext + `</div>
+                          <div class="mkv55-2--slide__btn_row">
+                            <div class="mkv55-2--slide__btn_col">` + btnPrev + `</div>
+                            <div class="mkv55-2--slide__btn_col"></div>
+                            <div class="mkv55-2--slide__btn_col">` + btnNext + `</div>
                           </div>
                         </div>
                       </li>`;
@@ -4576,48 +4576,48 @@
           var popup = document.createElement('div');
           const layoutLoop = this.questionsLoop();
 
-          popup.setAttribute('id', 'mkv55Popup');
-          popup.classList.add('mkv55--popup');
-          popup.innerHTML = `<div class='mkv55--carousel' data-carousel><div class=\"mkv55--popup__wrapper\" id=\"mkv55PopupWrapper1\">\n
-            <div class=\"mkv55--popup__close\" id=\"mkv55--popup__cerrar\"></div>\n
-              <div class="mkv55--popup__grid">
-                <div class="mkv55--popup__left">
-                  <div class="mkv55--popup__left_content">
-                    <div class="mkv55--popup__left_header">
-                      <figure class="mkv55--popup__left_figure">
+          popup.setAttribute('id', 'mkv55-2Popup');
+          popup.classList.add('mkv55-2--popup');
+          popup.innerHTML = `<div class='mkv55-2--carousel' data-carousel><div class=\"mkv55-2--popup__wrapper\" id=\"mkv55-2PopupWrapper1\">\n
+            <div class=\"mkv55-2--popup__close\" id=\"mkv55-2--popup__cerrar\"></div>\n
+              <div class="mkv55-2--popup__grid">
+                <div class="mkv55-2--popup__left">
+                  <div class="mkv55-2--popup__left_content">
+                    <div class="mkv55-2--popup__left_header">
+                      <figure class="mkv55-2--popup__left_figure">
                         <picture>
                           <source srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" media="(min-width: 600px)" />
-                          <img class="mkv55--popup__image" srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
+                          <img class="mkv55-2--popup__image" srcset="` + options.imgMain1x + `, ` + options.imgMain2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
                         </picture>
                       </figure>
-                      <h5 class="mkv55--popup__left_title">¡Felicidades!</h5>
-                      <p class="mkv55--popup__left_paragraph">Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:</p>
+                      <h5 class="mkv55-2--popup__left_title">¡Felicidades!</h5>
+                      <p class="mkv55-2--popup__left_paragraph">Ha pasado un mes desde que abriste tu <span class="mk-semibold">Cuenta Negocio</span> y nos gustaría conocer:</p>
                     </div>
                   </div>
                 </div>
-                <div class="mkv55--popup__right">
-                  <div class="mkv55--popup__right_body">
+                <div class="mkv55-2--popup__right">
+                  <div class="mkv55-2--popup__right_body">
                     ` + layoutLoop.layout + `
                   </div>
                   <div class="mk-dots--content">
                     ` + layoutLoop.dots + `
                   </div>
-                  <div class="mkv55--questions__loading"></div>
+                  <div class="mkv55-2--questions__loading"></div>
                 </div>
-                <div class="mkv55--result" id="mkv55--result"><div class="mkv55--result__row">
-                  <div class="mkv55--result__content">
-                    <figure class="mkv55--result__figure">
+                <div class="mkv55-2--result" id="mkv55-2--result"><div class="mkv55-2--result__row">
+                  <div class="mkv55-2--result__content">
+                    <figure class="mkv55-2--result__figure">
                       <picture>
                         <source srcset="` + options.imgResult1x + `, ` + options.imgResult2x + ` 2x" media="(min-width: 600px)" />
-                        <img class="mkv55--popup__image" srcset="` + options.imgResult1x + `, ` + options.imgResult2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
+                        <img class="mkv55-2--popup__image" srcset="` + options.imgResult1x + `, ` + options.imgResult2x + ` 2x" alt='` + clearHTMLTags(options.title) + `'>
                       </picture>
                     </figure>
-                    <div class="mkv55--result__text">
-                      <h5 class="mkv55--popup__left_title mkv55--result__title">` + options.titleResult + `</h5>
+                    <div class="mkv55-2--result__text">
+                      <h5 class="mkv55-2--popup__left_title mkv55-2--result__title">` + options.titleResult + `</h5>
                       <div>
-                        <div class="mkv55--popup__btnsinline">
-                          <a class="mkv55--popup__btn  mkv55--result__btn" id="mkv55--popup__enviar" target="_blank" title="` + options.textBtnResult + `">` + options.textBtnResult + `</a>
-                          <a class="mkv55--popup__link" id="mkv55--result__atras" target="_blank" title="No, gracias.">Atrás</a>
+                        <div class="mkv55-2--popup__btnsinline">
+                          <a class="mkv55-2--popup__btn  mkv55-2--result__btn" id="mkv55-2--popup__enviar" target="_blank" title="` + options.textBtnResult + `">` + options.textBtnResult + `</a>
+                          <a class="mkv55-2--popup__link" id="mkv55-2--result__atras" target="_blank" title="No, gracias.">Atrás</a>
                         </div>
                       </div>
                     </div>
@@ -4628,11 +4628,11 @@
           </div>
         </div>`;
 
-          var close = popup.querySelector('.mkv55--popup__close');
-          var saltar = popup.querySelector('.mkv55--slide__saltar');
-          var btnEnviar = popup.querySelector('#mkv55--popup__enviar');
-          var result = popup.querySelector('#mkv55--result');
-          var resultBack = popup.querySelector('#mkv55--result__atras');
+          var close = popup.querySelector('.mkv55-2--popup__close');
+          var saltar = popup.querySelector('.mkv55-2--slide__saltar');
+          var btnEnviar = popup.querySelector('#mkv55-2--popup__enviar');
+          var result = popup.querySelector('#mkv55-2--result');
+          var resultBack = popup.querySelector('#mkv55-2--result__atras');
           var bullets = popup.querySelectorAll('ul.mk-bullets li');
 
           overlay.appendChild(popup);
@@ -4649,7 +4649,7 @@
               const action = btn.dataset.carouselBtn;
               const offset = action === 'next' ? 1 : -1;
               const slides = btn.closest('[data-carousel]').querySelector('[data-slides]');
-              const slidesItems = document.querySelectorAll('.mkv55--slide');
+              const slidesItems = document.querySelectorAll('.mkv55-2--slide');
               const activeSlide = slides.querySelector('[data-active]');
               let curIndex = [...slides.children].indexOf(activeSlide);
               let newIndex = curIndex + offset;
@@ -4698,9 +4698,9 @@
 
 
         popupJS.prototype.radioEvents = function (activeSlide = document.querySelector('[data-active]')) {
-          const matches = document.querySelectorAll('.mkv55--questions__radio');
-          const radios = activeSlide.querySelectorAll('.mkv55--questions__radio');
-          const btnNext = activeSlide.querySelector('.mkv55--slide__btn_next');
+          const matches = document.querySelectorAll('.mkv55-2--questions__radio');
+          const radios = activeSlide.querySelectorAll('.mkv55-2--questions__radio');
+          const btnNext = activeSlide.querySelector('.mkv55-2--slide__btn_next');
           let counter = 0;
 
           radios.forEach(radio => {
@@ -4742,7 +4742,7 @@
 
         popupJS.prototype.overlay = function () {
           var overlay = document.createElement('div');
-          overlay.classList.add('mkv55--overlay');
+          overlay.classList.add('mkv55-2--overlay');
           return overlay;
         };
 
@@ -4807,13 +4807,13 @@
       popup.show();
 
       //Boton Entendido
-      // document.getElementById("mkv55--popup__entendido").onclick = function () {
+      // document.getElementById("mkv55-2--popup__entendido").onclick = function () {
       //   popUpBte();
       //   popUpBtn();
       // };
 
       function displayLoading() {
-        let loading = document.querySelector('.mkv55--questions__loading');
+        let loading = document.querySelector('.mkv55-2--questions__loading');
         loading.style.display = "block";
         setTimeout(() => {
           loading.style.display = "none";
@@ -4837,7 +4837,7 @@
       }
 
       //Boton Cerrar
-      document.getElementById("mkv55--popup__cerrar").onclick = function () {
+      document.getElementById("mkv55-2--popup__cerrar").onclick = function () {
         popUpClose();
       };
 
