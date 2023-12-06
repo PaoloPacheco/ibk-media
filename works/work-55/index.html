@@ -4537,8 +4537,8 @@
               options.forEach((el, i) => {
                 optionsLayout += `<li class="mkv55-2--questions__list_li">
                   <label for="p` + index + `_options_` + i + `" class="mk-radio--btn2">
-                    <input type="checkbox" class="mkv55-2--questions__radio" id="p` + index + `_options_` + i + `" value="${el}" name="pregunta_` + index + `" data-unique="` + unique + `" />
-                    <span>${el}</span>
+                    <input type="checkbox" class="mkv55-2--questions__radio" id="p` + index + `_options_` + i + `" value="` + el + `" name="pregunta_` + index + `" data-unique="` + unique + `" />
+                    <span>` + el + `</span>
                   </label>
                 </li>`;
               });

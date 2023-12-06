@@ -4413,10 +4413,11 @@
 
 <body>
 
-  <div class="mkv56-1--demo__row">
+  <div class="grid">
+    <div class="mkv56-1--demo__left col-xs-12 col-4">Reiko</div>
 
-    <div class="mkv56-1--demo__right aside-left col-xs-12 col-8">
-      Reiko
+    <div class="mkv56-1--demo__right col-xs-12 col-8">
+      Hola
     </div>
   </div>
 
@@ -4427,51 +4428,127 @@
       }
 
       show.prototype.init = function () {
-        const left_layout = this.left_layout();
-        const col_full = this.full_layout();
-        const row = document.querySelector('.mkv56-1--demo__row');
-        row.prepend(left_layout);
-        row.append(col_full);
+        const row = options.target;
+        const col_left = options.target_left;
+        const col_right = options.target_right;
+        const content_full = this.footer_layout();
+        const content_left = this.left_layout();
+
+        row.classList.add('mkv56-1--row');
+        col_left.classList.add('mkv56-1--layout__left');
+        col_right.classList.add('mkv56-1--layout__right');
+
+        col_left.innerHTML = content_left.outerHTML;
+        row.append(content_full);
+
+        this.resizeEvent();
       }
 
       show.prototype.left_layout = function () {
-        const content = this.content();
+        const content = this.left_content();
         const layout = document.createElement('div');
         layout.setAttribute('id', 'mkv56-1LeftLayout');
-        layout.classList.add('mkv56-1--layout__left');
-        layout.classList.add('col-xs-12');
-        layout.classList.add('col-4');
+        layout.classList.add('mkv56-1--layout__left-content');
 
         layout.innerHTML = content;
 
         return layout;
       }
 
-      show.prototype.full_layout = function () {
-        const content = this.content();
+      show.prototype.footer_layout = function () {
+        const content = this.footer_content();
         const layout = document.createElement('div');
-        layout.setAttribute('id', 'mkv56-1FullLayout');
+        layout.setAttribute('id', 'mkv56-1Footer');
+        layout.classList.add('mkv56-1--layout__footer');
         layout.classList.add('mkv56-1--layout__full');
-        layout.classList.add('col-xs-12');
-        layout.classList.add('col-4');
 
         layout.innerHTML = content;
 
         return layout;
       }
 
+      show.prototype.left_content = function () {
+        let details = options.details;
+        let detailsList = '';
+
+        details.forEach(el => {
+          detailsList += `<div class="mkv56-1--details__item">
+                <div class="mkv56-1--details__row">
+                  <div class="mkv56-1--details__figure">
+                    <img src="` + el.icon + `" alt="" />
+                  </div>
+                  <div class="mkv56-1--details__text">
+                    <p><span class="mk-semibold">` + el.title + `</span> ` + el.excerpt + `</p>
+                  </div>
+                </div>
+              </div>`;
+        });
 
 
-      show.prototype.content = function () {
-        const content = 'Hola';
+        const content = `<div class="mkv56-1--left__content">
+          <div class="mkv56-1--left__header"><h3 class="mkv56-1--left__title">` + options.title + `</h3><p>` + options.excerpt + `</p></div>
+          <div class="mkv56-1--left__body">
+            <div class="mkv56-1--details">` + detailsList + `
+            </div>
+          </div>
+        </div>`;
 
         return content;
+      }
+
+
+      show.prototype.footer_content = function () {
+        const content = `<div class="mkv56-1--footer__content">
+          Gol
+        </div>`;
+
+        return content;
+      }
+
+      show.prototype.resizeEvent = function () {
+        const row = options.target;
+        const rightLeft = options.target_left;
+        const rightCol = options.target_right;
+        const footer = document.querySelector('#mkv56-1Footer');
+
+        const rightLeftHeight = rightLeft.offsetHeight;
+
+        const observer = new ResizeObserver(entries => {
+          for (let entry of entries) {
+            const nuevoAncho = entry.contentRect.width;
+            const nuevoAlto = entry.contentRect.height;
+
+            if (nuevoAlto > rightLeftHeight) {
+              row.classList.add('mkv56-1--row__vertical');
+              footer.classList.remove('mkv56-1--layout__full');
+              rightCol.classList.add('mkv56-1--layout__fullcol');
+            } else {
+              row.classList.remove('mkv56-1--row__vertical');
+              footer.classList.add('mkv56-1--layout__full');
+              rightCol.classList.remove('mkv56-1--layout__fullcol');
+            }
+
+            console.log(`El rightCol ha cambiado de tamaño a ${nuevoAncho}px de ancho y ${nuevoAlto}px de alto`);
+          }
+        });
+
+        observer.observe(rightCol);
       }
 
       return show;
     })();
 
     var options = {
+      target: document.querySelector('.grid'),
+      target_left: document.querySelector("div.mkv56-1--demo__left"),
+      target_right: document.querySelector("div.mkv56-1--demo__right"),
+
+
+      // target: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div"),  // El selector del contendor correspondiente a producción.
+
+      // target_right: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.col-xs-12.col-4.text-center.container-workflow__layout-a"),   // El selector de la columna izquierda correspondiente a producción.
+
+      // target_right: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8"),  // El selector de la columna derecha correspondiente a producción.
       title: 'Abre tu Cuenta Negocios 100% digital',
       excerpt: '¡Sin trámite ni papeleos! La cuenta 100% digital para impulsar tu negocio.',
       details: [
@@ -4481,12 +4558,12 @@
           excerpt: 'Abre tu Cuenta Negocios 100% digital',
         },
         {
-          icon: 'https://paolopacheco.github.io/ibk-media/images/app-interbank.png',
+          icon: 'https://paolopacheco.github.io/ibk-media/images/prestamo-credito.png',
           title: 'Abre tu Cuenta Negocios 100% digital',
           excerpt: 'Abre tu Cuenta Negocios 100% digital',
         },
         {
-          icon: 'https://paolopacheco.github.io/ibk-media/images/app-interbank.png',
+          icon: 'https://paolopacheco.github.io/ibk-media/images/ahorro.png',
           title: 'Abre tu Cuenta Negocios 100% digital',
           excerpt: 'Abre tu Cuenta Negocios 100% digital',
         },

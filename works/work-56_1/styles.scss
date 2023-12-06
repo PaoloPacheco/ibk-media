@@ -170,15 +170,126 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
       }
     }
 
+    &--row {
+      @include screen-min(768px) {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+
+        &__vertical {
+          grid-template-rows: 100vh 1fr; /* Primera fila de 100px de altura fija, segunda fila ajustada automáticamente */
+        }
+      }
+    }
+
     &--layout {
       &__left {
-        padding: 50px 0 0 8%;
         background-color: #05be50;
-        min-height: 100vh;
+        padding: 20px 24px;
+        color: white;
+        max-width: none !important;
 
-        @media (max-width: 768px) {
-          padding: 10px 15px 30px;
-          order: 1;
+        @include screen-min(768px) {
+          padding: 48px;
+        }
+
+        @include screen-min(1024px) {
+          min-height: 100vh;
+        }
+
+        @include screen-min(1600px) {
+          padding: 76px;
+        }
+      }
+
+      &__right {
+        max-width: none !important;
+      }
+
+      &__footer {
+        padding: 52px 42px;
+        background-color: #f8f8f8;
+      }
+
+      &__full {
+        @include screen-min(768px) {
+          grid-column: span 2 / span 2;
+        }
+      }
+
+      &__fullcol {
+        @include screen-min(768px) {
+          grid-row: span 2 / span 2;
+        }
+      }
+    }
+
+    &--left {
+      &__content {
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      &__header {
+        margin-bottom: 20px;
+
+        @include screen-min(768px) {
+          margin-bottom: 16px;
+        }
+      }
+
+      &__title {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.15;
+        margin-bottom: 16px;
+        font-family: 'Geometria';
+
+        @include screen-min(768px) {
+          margin-bottom: 24px;
+          font-size: 32px;
+        }
+
+        @include screen-min(1200px) {
+          font-size: 48px;
+        }
+      }
+    }
+
+    &--details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include screen-min(768px) {
+        gap: 20px;
+      }
+
+      &__row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        @include screen-min(768px) {
+          gap: 10px;
+        }
+      }
+
+      &__figure {
+        width: 32px;
+        min-width: 32px;
+        max-width: 32px;
+
+        @include screen-min(767px) {
+          width: 80px;
+          min-width: 80px;
+          max-width: 80px;
+        }
+      }
+
+      &__text {
+        font-size: 12px;
+
+        @include screen-min(768px) {
+          font-size: 16px;
         }
       }
     }
