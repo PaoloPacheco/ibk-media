@@ -90,16 +90,23 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
       list-style: decimal;
     }
 
-    &--disc {
+    &--brand {
       li {
         position: relative;
         padding-left: 20px;
+        margin-bottom: 16px;
+
+        @include screen-min(480px) {
+          padding-left: 32px;
+          margin-bottom: 20px;
+        }
 
         &:before {
           display: flex;
           position: absolute;
           content: '·';
-          font-size: 30px;
+          color: var(--primary);
+          font-size: 56px;
           line-height: 20px;
           left: 6px;
           top: 2px;
@@ -152,6 +159,15 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
   }
 
   &v56-1 {
+    &--tab {
+      display: none; /* Oculta todas las pestañas por defecto */
+    }
+
+    /* Estilos para el contenido de las pestañas */
+    &--tab-content {
+      display: none; /* Oculta todo el contenido por defecto */
+    }
+
     &--demo {
       &__row {
         box-sizing: border-box;
@@ -183,10 +199,12 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
     &--layout {
       &__left {
-        background-color: #05be50;
+        background-color: var(--primary);
         padding: 20px 24px;
         color: white;
         max-width: none !important;
+        display: flex;
+        align-items: center;
 
         @include screen-min(768px) {
           padding: 48px;
@@ -206,8 +224,28 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
       }
 
       &__footer {
-        padding: 52px 42px;
+        padding: 32px;
         background-color: #f8f8f8;
+
+        @include screen-min(768px) {
+          padding: 52px 42px;
+        }
+
+        &.half {
+          @include screen-min(481px) {
+            padding-top: 24px;
+            padding-bottom: 24px;
+
+            .mkv56-1--faqs__row {
+              grid-template-columns: 1fr;
+            }
+
+            .mkv56-1--tabs__button {
+              font-size: 16px;
+              height: 94px;
+            }
+          }
+        }
       }
 
       &__full {
@@ -290,6 +328,107 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
         @include screen-min(768px) {
           font-size: 16px;
+        }
+      }
+    }
+
+    &--tabs {
+      &__container {
+        display: flex;
+
+        @include screen-min(480px) {
+          flex-direction: row;
+        }
+      }
+
+      &__button {
+        justify-content: center;
+        text-align: center;
+        flex: 1;
+        height: 64px;
+        border-bottom: 2px solid #eceded;
+        color: #b7babc;
+        font-size: 14px;
+        font-weight: 500;
+
+        &.active {
+          color: var(--primary);
+          border-color: var(--primary);
+        }
+
+        @include screen-min(480px) {
+          height: 80px;
+          font-size: 20px;
+        }
+
+        @include screen-min(767px) {
+          height: 110px;
+        }
+      }
+
+      &__content {
+        padding-top: 36px;
+
+        @include screen-min(767px) {
+          padding-top: 52px;
+        }
+      }
+    }
+
+    &--faqs {
+      &__title {
+        font-size: 24px;
+        font-weight: 300;
+        font-family: 'Geometria', sans-serif;
+
+        @include screen-min(767px) {
+          margin-bottom: 20px;
+        }
+      }
+
+      &__row {
+        display: grid;
+        gap: 36px;
+        grid-template-columns: 1fr;
+
+        @include screen-min(767px) {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        @include screen-min(767px) {
+          grid-template-columns: 2fr 3fr;
+        }
+
+        @include screen-min(1024px) {
+          grid-template-columns: 1fr 2fr;
+        }
+      }
+
+      &__content {
+        @include screen-min(767px) {
+          font-size: 18px;
+          line-height: 1.25;
+        }
+      }
+
+      &__item {
+        margin-bottom: 20px;
+
+        @include screen-min(767px) {
+          margin-bottom: 36px;
+        }
+
+        &__title {
+          margin-bottom: 16px;
+          font-weight: 500;
+          color: var(--dark);
+
+          @include screen-min(767px) {
+            margin-bottom: 20px;
+          }
+        }
+
+        &__body {
         }
       }
     }
