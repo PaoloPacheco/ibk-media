@@ -4412,29 +4412,28 @@
 </head>
 
 <body>
-
+  <div class="container-banner mkv56-2--demo__top">Top</div>
   <div class="grid">
-    <div class="mkv56-1--demo__left col-xs-12 col-4">Hola</div>
-
-    <div class="mkv56-1--demo__right col-xs-12 col-8">
-      Hola
-    </div>
+    <div class="mkv56-2--demo__left col-xs-12 col-4">Hola</div>
+    <div class="mkv56-2--demo__right col-xs-12 col-8">Hola</div>
   </div>
 
   <script>
-    const leftColumn56 = (function name() {
+    var leftColumn56_2 = (function name() {
       function show(options) { }
 
       show.prototype.init = function () {
         const row = options.target;
+        const col_top = options.target_top;
         const col_left = options.target_left;
         const col_right = options.target_right;
         const content_full = this.footer_layout();
         const content_left = this.left_layout();
 
-        row.classList.add('mkv56-1--row');
-        col_left.classList.add('mkv56-1--layout__left');
-        col_right.classList.add('mkv56-1--layout__right');
+        row.classList.add('mkv56-2--row');
+        col_top.remove();
+        col_left.classList.add('mkv56-2--layout__left');
+        col_right.classList.add('mkv56-2--layout__right');
 
         col_left.innerHTML = content_left.outerHTML;
         row.append(content_full);
@@ -4446,8 +4445,8 @@
       show.prototype.left_layout = function () {
         const content = this.left_content();
         const layout = document.createElement('div');
-        layout.setAttribute('id', 'mkv56-1LeftLayout');
-        layout.classList.add('mkv56-1--layout__left-content');
+        layout.setAttribute('id', 'mkv56-2LeftLayout');
+        layout.classList.add('mkv56-2--layout__left-content');
 
         layout.innerHTML = content;
 
@@ -4457,9 +4456,9 @@
       show.prototype.footer_layout = function () {
         const content = this.footer_content();
         const layout = document.createElement('div');
-        layout.setAttribute('id', 'mkv56-1Footer');
-        layout.classList.add('mkv56-1--layout__footer');
-        layout.classList.add('mkv56-1--layout__full');
+        layout.setAttribute('id', 'mkv56-2Footer');
+        layout.classList.add('mkv56-2--layout__footer');
+        layout.classList.add('mkv56-2--layout__full');
 
         layout.innerHTML = content;
 
@@ -4471,12 +4470,12 @@
         let detailsList = '';
 
         details.forEach(el => {
-          detailsList += `<div class="mkv56-1--details__item">
-                <div class="mkv56-1--details__row">
-                  <div class="mkv56-1--details__figure">
+          detailsList += `<div class="mkv56-2--details__item">
+                <div class="mkv56-2--details__row">
+                  <div class="mkv56-2--details__figure">
                     <img src="` + el.icon + `" alt="" />
                   </div>
-                  <div class="mkv56-1--details__text">
+                  <div class="mkv56-2--details__text">
                     <p><span class="mk-semibold">` + el.title + `</span> ` + el.excerpt + `</p>
                   </div>
                 </div>
@@ -4484,10 +4483,10 @@
         });
 
 
-        const content = `<div class="mkv56-1--left__content">
-          <div class="mkv56-1--left__header"><h3 class="mkv56-1--left__title">` + options.title + `</h3><p>` + options.excerpt + `</p></div>
-          <div class="mkv56-1--left__body">
-            <div class="mkv56-1--details">` + detailsList + `
+        const content = `<div class="mkv56-2--left__content">
+          <div class="mkv56-2--left__header"><h3 class="mkv56-2--left__title">` + options.title + `</h3><p class="mkv56-2--left__excerpt">` + options.excerpt + `</p></div>
+          <div class="mkv56-2--left__body">
+            <div class="mkv56-2--details">` + detailsList + `
             </div>
           </div>
         </div>`;
@@ -4498,8 +4497,8 @@
 
       show.prototype.footer_content = function () {
         const self = this;
-        const content = `<div class="mkv56-1--footer__content">
-          <div class="tabs mkv56-1--tabs"><div class="mkv56-1--tabs__container" id="tabContainer"></div><div class="mkv56-1--tabs__content" id="tabContentContainer"></div></div>
+        const content = `<div class="mkv56-2--footer__content">
+          <div class="tabs mkv56-2--tabs"><div class="mkv56-2--tabs__container" id="tabContainer"></div><div class="mkv56-2--tabs__content" id="tabContentContainer"></div></div>
         </div>`;
 
         return content;
@@ -4509,7 +4508,7 @@
         const row = options.target;
         const rightLeft = options.target_left;
         const rightCol = options.target_right;
-        const footer = document.querySelector('#mkv56-1Footer');
+        const footer = document.querySelector('#mkv56-2Footer');
         const rightLeftHeight = rightLeft.offsetHeight;
 
         const observer = new ResizeObserver(entries => {
@@ -4518,15 +4517,15 @@
             const nuevoAlto = entry.contentRect.height;
 
             if (nuevoAlto > rightLeftHeight) {
-              row.classList.add('mkv56-1--row__vertical');
-              footer.classList.remove('mkv56-1--layout__full');
+              row.classList.add('mkv56-2--row__vertical');
+              footer.classList.remove('mkv56-2--layout__full');
               footer.classList.add('half');
-              rightCol.classList.add('mkv56-1--layout__fullcol');
+              rightCol.classList.add('mkv56-2--layout__fullcol');
             } else {
-              row.classList.remove('mkv56-1--row__vertical');
-              footer.classList.add('mkv56-1--layout__full');
+              row.classList.remove('mkv56-2--row__vertical');
+              footer.classList.add('mkv56-2--layout__full');
               footer.classList.remove('half');
-              rightCol.classList.remove('mkv56-1--layout__fullcol');
+              rightCol.classList.remove('mkv56-2--layout__fullcol');
             }
 
             console.log(`El rightCol ha cambiado de tamaño a ${nuevoAncho}px de ancho y ${nuevoAlto}px de alto`);
@@ -4544,7 +4543,7 @@
         tabs.forEach(function (tab, index) {
           var tabButton = document.createElement('button');
           var tabButtonSpan = document.createElement('span');
-          tabButton.classList.add('mkv56-1--tabs__button');
+          tabButton.classList.add('mkv56-2--tabs__button');
           tabButton.setAttribute('type', 'button');
 
           tabButtonSpan.textContent = tab.name;
@@ -4552,14 +4551,14 @@
           tabButton.appendChild(tabButtonSpan);
 
           tabButton.onclick = function () {
-            var tabContent = document.getElementsByClassName('mkv56-1-tabs-content');
+            var tabContent = document.getElementsByClassName('mkv56-2-tabs-content');
             for (var i = 0; i < tabContent.length; i++) {
               tabContent[i].style.display = 'none';
             }
 
             document.getElementById('tabContent' + index).style.display = 'block';
 
-            var tabButtons = document.getElementsByClassName('mkv56-1--tabs__button');
+            var tabButtons = document.getElementsByClassName('mkv56-2--tabs__button');
             for (var i = 0; i < tabButtons.length; i++) {
               tabButtons[i].classList.remove('active');
             }
@@ -4571,13 +4570,13 @@
 
           var tabContent = document.createElement('div');
           tabContent.innerHTML = tab.content;
-          tabContent.classList.add('mkv56-1-tabs-content');
+          tabContent.classList.add('mkv56-2-tabs-content');
           tabContent.setAttribute('id', 'tabContent' + index);
 
           tabContentContainer.appendChild(tabContent);
         });
 
-        document.getElementsByClassName('mkv56-1--tabs__button')[0].click();
+        document.getElementsByClassName('mkv56-2--tabs__button')[0].click();
       }
 
       return show;
@@ -4591,46 +4590,47 @@
 
     var options = {
       target: document.querySelector('.grid'),
-      target_left: document.querySelector("div.mkv56-1--demo__left"),
-      target_right: document.querySelector("div.mkv56-1--demo__right"),
+      target_top: document.querySelector('div.mkv56-2--demo__top'),
+      target_left: document.querySelector("div.mkv56-2--demo__left"),
+      target_right: document.querySelector("div.mkv56-2--demo__right"),
 
       // target: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div"),  // El selector del contendor correspondiente a producción.
 
-      // target_right: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8"),  // El selector de la columna derecha correspondiente a producción.
-
       // target_left: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.col-xs-12.col-4.text-center.container-workflow__layout-a"),   // El selector de la columna izquierda correspondiente a producción.
+
+      // target_right: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8"),  // El selector de la columna derecha correspondiente a producción.
 
       title: 'Abre tu Cuenta Negocios 100% digital',
       excerpt: '¡Sin trámite ni papeleos! La cuenta 100% digital para impulsar tu negocio.',
       tabs: [
         {
           name: 'Preguntas Frecuentes',
-          content: `<div class="mkv56-1--faqs__row">
-            <div class="mkv56-1--faqs__col">
-              <h3 class="mkv56-1--faqs__title">Preguntas Frecuentes</h3>
+          content: `<div class="mkv56-2--faqs__row">
+            <div class="mkv56-2--faqs__col">
+              <h3 class="mkv56-2--faqs__title">Preguntas Frecuentes</h3>
             </div>
-            <div class="mkv56-1--faqs__col">
-              <div class="mkv56-1--faqs__content"><div class="mkv56-1--faqs__item">
-              <h4 class="mkv56-1--faqs__item__title">¿Quiénes pueden abrir una Cuenta Negocios?</h4>
-              <div class="mkv56-1--faqs__item__body">Pueden solicitarla todos los clientes y clientes nuevos Interbank, tanto Empresas(Ruc 20) como personas naturales con negocio(DNI o Ruc 10).En el caso de Persona Jurídica solo aplican para empresas con un máximo de 2 representantes legales con firma conjunta.</div>
-            </div><div class="mkv56-1--faqs__item">
-              <h4 class="mkv56-1--faqs__item__title">¿Si no traigo documentos de mi empresa como saben que soy el representante legal?</h4>
-              <div class="mkv56-1--faqs__item__body">Con todos los datos completados nosotros obtenemos la documentación de Sunarp para que no tengas que gestionarla tú mismo. En caso validemos que los datos entregados no son los correctos, procedemos con el bloqueo de la cuenta y se comunica el motivo vía correo electrónico al e-mail del representante legal que indicaste en el momento de apertura.</div>
-            </div><div class="mkv56-1--faqs__item">
-              <h4 class="mkv56-1--faqs__item__title">¿Cuáles son los costos por la apertura de la Cuenta Negocios?</h4>
-              <div class="mkv56-1--faqs__item__body">La única comisión que se cobra es por la gestión de documentos de Sunarp, este es de S/ 75 o USD 25 de acuerdo a tarifario. Este cobro se efectúa una única vez y es cargado en tu cuenta posterior a la validación de los poderes de tu empresa.</div>
+            <div class="mkv56-2--faqs__col">
+              <div class="mkv56-2--faqs__content"><div class="mkv56-2--faqs__item">
+              <h4 class="mkv56-2--faqs__item__title">¿Quiénes pueden abrir una Cuenta Negocios?</h4>
+              <div class="mkv56-2--faqs__item__body">Pueden solicitarla todos los clientes y clientes nuevos Interbank, tanto Empresas(Ruc 20) como personas naturales con negocio(DNI o Ruc 10).En el caso de Persona Jurídica solo aplican para empresas con un máximo de 2 representantes legales con firma conjunta.</div>
+            </div><div class="mkv56-2--faqs__item">
+              <h4 class="mkv56-2--faqs__item__title">¿Si no traigo documentos de mi empresa como saben que soy el representante legal?</h4>
+              <div class="mkv56-2--faqs__item__body">Con todos los datos completados nosotros obtenemos la documentación de Sunarp para que no tengas que gestionarla tú mismo. En caso validemos que los datos entregados no son los correctos, procedemos con el bloqueo de la cuenta y se comunica el motivo vía correo electrónico al e-mail del representante legal que indicaste en el momento de apertura.</div>
+            </div><div class="mkv56-2--faqs__item">
+              <h4 class="mkv56-2--faqs__item__title">¿Cuáles son los costos por la apertura de la Cuenta Negocios?</h4>
+              <div class="mkv56-2--faqs__item__body">La única comisión que se cobra es por la gestión de documentos de Sunarp, este es de S/ 75 o USD 25 de acuerdo a tarifario. Este cobro se efectúa una única vez y es cargado en tu cuenta posterior a la validación de los poderes de tu empresa.</div>
             </div></div></div>
             </div>
           </div>`,
         },
         {
           name: 'Requisitos',
-          content: `<div class="mkv56-1--faqs__row">
-            <div class="mkv56-1--faqs__col">
-              <h3 class="mkv56-1--faqs__title">Considera estos consejos si tu empresa tiene RUC 20</h3>
+          content: `<div class="mkv56-2--faqs__row">
+            <div class="mkv56-2--faqs__col">
+              <h3 class="mkv56-2--faqs__title">Considera estos consejos si tu empresa tiene RUC 20</h3>
             </div>
-            <div class="mkv56-1--faqs__col">
-              <div class="mkv56-1--faqs__content">
+            <div class="mkv56-2--faqs__col">
+              <div class="mkv56-2--faqs__content">
                 <ul class="mk-list--brand">
                 <li>Exclusivo para empresas que facturen de 5 millones de soles a menos.</li>
                 <li>Solo para empresas que tengan residencia fiscal o tributaria en el Perú.</li>
@@ -4646,17 +4646,17 @@
         {
           icon: 'https://paolopacheco.github.io/ibk-media/images/app-interbank.png',
           title: 'Abre tu Cuenta Negocios 100% digital',
-          excerpt: 'Abre tu Cuenta Negocios 100% digital',
+          excerpt: 'para Empresas GRATIS',
         },
         {
           icon: 'https://paolopacheco.github.io/ibk-media/images/prestamo-credito.png',
           title: 'Abre tu Cuenta Negocios 100% digital',
-          excerpt: 'Abre tu Cuenta Negocios 100% digital',
+          excerpt: 'si abres tu cuenta en soles y dólares',
         },
         {
           icon: 'https://paolopacheco.github.io/ibk-media/images/ahorro.png',
           title: 'Abre tu Cuenta Negocios 100% digital',
-          excerpt: 'Abre tu Cuenta Negocios 100% digital',
+          excerpt: 'siempre que transacciones con tu cuenta para empresas que son Persona Jurídica',
         },
       ],
       faqs: {
@@ -4689,10 +4689,17 @@
 
     }
 
-    var leftColumn56Deploy = new leftColumn56(options);
+    var leftColumn56Deploy = new leftColumn56_2(options);
 
-    (function () {
-      leftColumn56Deploy.init();
+    // (function () {
+    //   leftColumn56Deploy.init();
+    // })();
+    (async function () {
+      try {
+        await leftColumn56Deploy.init();
+      } catch (error) {
+        console.error(error);
+      }
     })();
   </script>
 </body>
