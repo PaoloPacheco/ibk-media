@@ -4468,8 +4468,16 @@
       show.prototype.left_content = function () {
         let details = options.details;
         let detailsList = '';
+        let detailsListCarousel = '';
+        let checked = ''
 
-        details.forEach(el => {
+        details.forEach((el, i) => {
+          if (i === 0) {
+            checked = 'checked="checked"'
+          } else {
+            checked = ''
+          }
+          console.log(`i`, i);
           detailsList += `<div class="mkv56-2--details__item">
                 <div class="mkv56-2--details__row">
                   <div class="mkv56-2--details__figure">
@@ -4480,13 +4488,41 @@
                   </div>
                 </div>
               </div>`;
+
+          detailsListCarousel += `<input class="carousel-active" type="radio" id="carousel-` + i + `" name="carousel" aria-hidden="true" hidden ` + checked + `/>
+            <div class="carousel-item">
+              <div class="mkv56-2--details__row">
+                <div class="mkv56-2--details__figure">
+                  <img src="` + el.icon + `" alt="" />
+                </div>
+                <div class="mkv56-2--details__text">
+                  <p><span class="mk-semibold">` + el.title + `</span> ` + el.excerpt + `</p>
+                </div>
+              </div>
+            </div>`;
         });
 
         const content = `<div class="mkv56-2--left__content">
           <div class="mkv56-2--left__header"><h3 class="mkv56-2--left__title">` + options.title + `</h3><p class="mkv56-2--left__excerpt">` + options.excerpt + `</p></div>
           <div class="mkv56-2--left__body">
             <div class="mkv56-2--details mkv56-2--details-lg">` + detailsList + `</div>
-            <div class="mkv56-2--details mkv56-2--details-sm">` + detailsList + `</div>
+            <div class="mkv56-2--details mkv56-2--details-sm"></div>
+            <div class="mkv56-2--details mkv56-2--details-sm">
+              <div id="carousel" class="carousel">
+                ` + detailsListCarousel + `
+                <ol class="carousel-indicators" aria-label="Carousel navigation" aria-hidden="true">
+                  <li>
+                    <label for="carousel-0" class="carousel-indicator" title="Jump to carousel item #1">●</label>
+                  </li>
+                  <li>
+                    <label for="carousel-1" class="carousel-indicator" title="Jump to carousel item #2">●</label>
+                  </li>
+                  <li>
+                    <label for="carousel-2" class="carousel-indicator" title="Jump to carousel item #3">●</label>
+                  </li>
+                </ol>
+              </div>
+            </div>
           </div>
         </div>`;
 
