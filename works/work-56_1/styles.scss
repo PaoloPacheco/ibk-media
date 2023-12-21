@@ -328,6 +328,20 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         gap: 20px;
       }
 
+      &-sm {
+        @include screen-min(768px) {
+          display: none;
+        }
+      }
+
+      &-lg {
+        display: none;
+
+        @include screen-min(768px) {
+          display: block;
+        }
+      }
+
       &__row {
         display: flex;
         align-items: center;
