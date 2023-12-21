@@ -4440,6 +4440,10 @@
 
         this.tabs();
         this.resizeEvent();
+
+        setTimeout(() => {
+          this.carouselAuto();
+        }, 1000);
       }
 
       show.prototype.left_layout = function () {
@@ -4469,15 +4473,11 @@
         let details = options.details;
         let detailsList = '';
         let detailsListCarousel = '';
+        let detailsCarouselDots = '';
         let checked = ''
 
         details.forEach((el, i) => {
-          if (i === 0) {
-            checked = 'checked="checked"'
-          } else {
-            checked = ''
-          }
-          console.log(`i`, i);
+          checked = (i === 0) ? 'checked="checked"' : '';
           detailsList += `<div class="mkv56-2--details__item">
                 <div class="mkv56-2--details__row">
                   <div class="mkv56-2--details__figure">
@@ -4489,8 +4489,8 @@
                 </div>
               </div>`;
 
-          detailsListCarousel += `<input class="carousel-active" type="radio" id="carousel-` + i + `" name="carousel" aria-hidden="true" hidden ` + checked + `/>
-            <div class="carousel-item">
+          detailsListCarousel += `<input class="mkv56-2-carousel-active" type="radio" id="mkv56-2-carousel-` + i + `" name="mkv56-2-carousel" aria-hidden="true" hidden ` + checked + `/>
+            <div class="mkv56-2-carousel-item">
               <div class="mkv56-2--details__row">
                 <div class="mkv56-2--details__figure">
                   <img src="` + el.icon + `" alt="" />
@@ -4500,26 +4500,19 @@
                 </div>
               </div>
             </div>`;
+
+          detailsCarouselDots += `<li><label for="mkv56-2-carousel-` + i + `" class="mkv56-2-carousel-indicator"></label></li>`
         });
 
         const content = `<div class="mkv56-2--left__content">
           <div class="mkv56-2--left__header"><h3 class="mkv56-2--left__title">` + options.title + `</h3><p class="mkv56-2--left__excerpt">` + options.excerpt + `</p></div>
           <div class="mkv56-2--left__body">
             <div class="mkv56-2--details mkv56-2--details-lg">` + detailsList + `</div>
-            <div class="mkv56-2--details mkv56-2--details-sm"></div>
             <div class="mkv56-2--details mkv56-2--details-sm">
-              <div id="carousel" class="carousel">
+              <div id="mkv56-2-carousel" class="mkv56-2-carousel">
                 ` + detailsListCarousel + `
-                <ol class="carousel-indicators" aria-label="Carousel navigation" aria-hidden="true">
-                  <li>
-                    <label for="carousel-0" class="carousel-indicator" title="Jump to carousel item #1">●</label>
-                  </li>
-                  <li>
-                    <label for="carousel-1" class="carousel-indicator" title="Jump to carousel item #2">●</label>
-                  </li>
-                  <li>
-                    <label for="carousel-2" class="carousel-indicator" title="Jump to carousel item #3">●</label>
-                  </li>
+                <ol class="mkv56-2-carousel-indicators" aria-label="Carousel navigation" aria-hidden="true">
+                  ` + detailsCarouselDots + `
                 </ol>
               </div>
             </div>
@@ -4612,6 +4605,50 @@
         });
 
         document.getElementsByClassName('mkv56-2--tabs__button')[0].click();
+      }
+
+      show.prototype.carouselAuto = function () {
+        (function () {
+          var carousel = {
+            ittem: document.getElementById('mkv56-2-carousel'),
+            interval: 2000,
+            items: document.getElementsByClassName('mkv56-2-carousel-active'),
+            itemsLength: 0,
+            controls: document.getElementsByClassName('mkv56-2-carousel-control'),
+            controlsLength: 0
+          };
+          var carouselTimer = setInterval(carouselPlay, carousel.interval);
+
+          carousel.itemsLength = carousel.items.length;
+          carousel.controlsLength = carousel.controls.length;
+
+          function carouselControls() {
+            for (var i = carousel.controlsLength; i--;) {
+              carousel.controls[i].addEventListener('click', carouselReset, false);
+            }
+          }
+
+          function carouselPlay() {
+            for (var i = carousel.itemsLength; i--;) {
+              if (carousel.items[i].checked) {
+                if (i !== carousel.itemsLength - 1) {
+                  carousel.items[i + 1].checked = true;
+                } else if (i === carousel.itemsLength - 1) {
+                  setTimeout(function () {
+                    carousel.items[0].checked = true;
+                  }, 0);
+                }
+              }
+            }
+          }
+
+          function carouselReset() {
+            console.log(1)
+            clearInterval(carouselTimer);
+            carouselTimer = setInterval(carouselPlay, carousel.interval);
+          }
+          carouselControls();
+        })();
       }
 
       return show;
