@@ -211,6 +211,11 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
         max-width: none !important;
         display: flex;
         align-items: center;
+        order: initial !important;
+
+        @include screen-max(768px) {
+          order: initial !important;
+        }
 
         @include screen-min(768px) {
           padding: 48px !important;
@@ -231,7 +236,14 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
       &__right {
         max-width: none !important;
-        padding: 0 !important;
+
+        @include screen-max(767px) {
+          padding: 0 4% 40px !important;
+        }
+
+        @include screen-min(768px) {
+          padding: 0 !important;
+        }
 
         .data-verification-view {
           border: 0 !important;

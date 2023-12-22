@@ -4443,6 +4443,7 @@
 
         setTimeout(() => {
           this.carouselAuto();
+          this.changeTitle();
         }, 1000);
       }
 
@@ -4607,11 +4608,21 @@
         document.getElementsByClassName('mkv56-2--tabs__button')[0].click();
       }
 
+      show.prototype.changeTitle = function () {
+        const title = options.titles.cur_title;
+        const subtitle = options.titles.cur_subtitle;
+        const subtitle2 = options.titles.cur_subtitle2;
+
+        subtitle.remove();
+        subtitle2.remove();
+        title.textContent = options.titles.new_title;
+      }
+
       show.prototype.carouselAuto = function () {
         (function () {
           var carousel = {
             ittem: document.getElementById('mkv56-2-carousel'),
-            interval: 2000,
+            interval: options.interval,
             items: document.getElementsByClassName('mkv56-2-carousel-active'),
             itemsLength: 0,
             controls: document.getElementsByClassName('mkv56-2-carousel-control'),
@@ -4666,16 +4677,20 @@
       target_left: document.querySelector("div.mkv56-2--demo__left"),
       target_right: document.querySelector("div.mkv56-2--demo__right"),
 
-
-
       // target: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div"),  // El selector del contendor correspondiente a producción.
 
-      // target_top: document.querySelector(""),  // El selector del contendor correspondiente a producción.
+      // target_top: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > div.container-banner"),  // El selector del contendor correspondiente a producción.
 
       // target_left: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.col-xs-12.col-4.text-center.container-workflow__layout-a"),   // El selector de la columna izquierda correspondiente a producción.
 
       // target_right: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8"),  // El selector de la columna derecha correspondiente a producción.
-
+      titles: {
+        cur_title: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8.mkv56-2--layout__right > busin-business-account > busin-business-account-ui > div > busin-data-verification-step > busin-data-verification-step-ui > section > div > div.grid.hidden-desktop.mt-30.mb-30.text-xs-center"),
+        cur_subtitle: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8.mkv56-2--layout__right > busin-business-account > busin-business-account-ui > div > busin-data-verification-step > busin-data-verification-step-ui > section > div > div:nth-child(3)"),
+        cur_subtitle2: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8.mkv56-2--layout__right > busin-business-account > busin-business-account-ui > div > busin-data-verification-step > busin-data-verification-step-ui > section > div > div:nth-child(3)"),
+        new_title: 'Ingresa los datos de tu negocio'
+      },
+      interval: 3500,
       title: 'Abre tu Cuenta Negocios 100% digital',
       excerpt: '¡Sin trámite ni papeleos! La cuenta 100% digital para impulsar tu negocio.',
       tabs: [
@@ -4762,7 +4777,6 @@
           'Tu empresa debe tener un Representante Legal con poderes a sola firma. Si son dos Representantes Legales con poderes a firma conjunta, ambos deben acercarse a Tienda para abrir su Cuenta Negocios.'
         ]
       }
-
     }
 
     var leftColumn56Deploy = new leftColumn56_2(options);
