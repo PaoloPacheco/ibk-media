@@ -181,6 +181,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 16px;
     }
 
     &--wrapper {
@@ -261,11 +262,27 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
       line-height: 16px;
       padding: 5px 6px;
       color: var(--text);
-      margin-bottom: 12px;
+      margin-bottom: 4px;
 
       @include screen-min(480px) {
+        margin-bottom: 20px;
         line-height: 19px;
         font-size: 16px;
+      }
+    }
+
+    &--path {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 174px;
+
+      @include screen-min(480px) {
+        width: 240px;
+      }
+
+      img {
+        display: block;
       }
     }
 
