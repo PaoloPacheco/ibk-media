@@ -4413,7 +4413,7 @@
 
 <body>
   <script>
-    var modal_57 = (function name() {
+    var modal_58 = (function name() {
       function show(options) { }
 
       show.prototype.init = function () {
@@ -4441,20 +4441,29 @@
           <div class="mkv58--wrapper">
             <div class="mkv58--content">
               <div class="mkv58--close">
-                <img src="https://paolopacheco.github.io/ibk-media/images/Fill.svg" />
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.77659 8L15.632 2.14466C15.8693 1.90735 16 1.59187 16 1.25631C16 0.920717 15.8694 0.605278 15.6322 0.368184C15.3949 0.130759 15.0794 0 14.7437 0C14.408 0 14.0925 0.130722 13.8554 0.368037L8 6.22345L2.14477 0.368184C1.90753 0.130759 1.59194 0 1.25631 0C0.920644 0 0.605131 0.130722 0.368037 0.367926C0.130722 0.605241 0 0.920717 0 1.25631C0 1.59191 0.130685 1.90735 0.367963 2.14455L6.22341 8L0.368037 13.8553C0.130722 14.0927 0 14.4081 0 14.7437C0 15.0793 0.130648 15.3947 0.367816 15.6319C0.605057 15.8692 0.920644 16 1.25631 16C1.59198 16 1.90749 15.8693 2.14463 15.632L8 9.77655L13.8553 15.6319C14.0925 15.8692 14.408 16 14.7437 16C15.0794 16 15.3949 15.8693 15.632 15.6321C15.8693 15.3948 16 15.0793 16 14.7437C16 14.4081 15.8693 14.0927 15.632 13.8554L9.77659 8Z" />
+                </svg>
+              </div>
+              <div class="mkv58--header">
+                <div class="mkv58--header__content">
+                  <picture class="mkv58--header__picture">
+                    <source srcset="` + options.image1x + `, ` + options.image2x + ` 2x" media="(min-width: 600px)" />
+                    <img src="` + options.image2x + `" class="mkv58--header__img" alt="" />
+                  </picture>
+                </div>
               </div>
               <div class="mkv58--body">
                 <h3 class="mkv58--title">` + options.title + `</h3>
-                <div class="mkv58--excerpt">` + options.excerpt + `</div>
                 <div class="mkv58--text">` + options.text + `</div>
                 <div class="mkv58--footer">
                   <div className="mkv58--footer__col">
-                    <a href="` + options.button.link + `" class="mkv58--button" target="` + options.button.target + `">` + options.button.text + `</a>
+                    <a href="` + options.button.link + `" class="mkv58--button mkv58--button__white" target="` + options.disclaim.target + `" id="mkv58_button_false">` + options.disclaim.text + `</a>
+                  </div>
+                  <div className="mkv58--footer__col">
+                    <a href="` + options.button.link + `" class="mkv58--button mkv58--button__primary" target="` + options.button.target + `" id="mkv58_button_true">` + options.button.text + `</a>
                   </div>
                 </div>
-              </div>
-              <div class="mkv58--path">
-                <img src="` + options.path + `" alt="" />
               </div>
             </div>
           </div>
@@ -4478,13 +4487,20 @@
 
       show.prototype.click_button = function (e) {
         const overlay = document.querySelector('.mkv58--overlay');
-        const button = document.querySelector('.mkv58--button');
+        const button_true = document.querySelector('#mkv58_button_true');
+        const button_false = document.querySelector('#mkv58_button_false');
         const self = this;
 
-        button.addEventListener('click', function (e) {
+        button_true.addEventListener('click', function (e) {
           e.preventDefault();
           overlay.remove();
-          self.button_track();
+          self.button_true_track();
+        });
+
+        button_false.addEventListener('click', function (e) {
+          e.preventDefault();
+          overlay.remove();
+          self.button_false_track();
         });
       }
 
@@ -4496,19 +4512,28 @@
         console.log(`Evento de despliegue del modal.`);
       }
 
-      show.prototype.button_track = function (close) {
-        console.log(`Evento de clic en el botón.`);
+      show.prototype.button_true_track = function (close) {
+        console.log(`Evento de clic en el botón "` + options.button.text + `".`);
+      }
+
+      show.prototype.button_false_track = function (close) {
+        console.log(`Evento de clic en el botón "` + options.disclaim.text + `"".`);
       }
 
       return show;
     })();
 
     var options = {
-      title: 'Solo tienes hasta el 2 de enero <span>para migrar</span>',
-      excerpt: 'Tu inicio de sesión a la Banca por Internet ahora será solo con tu doc. de identidad.',
-      text: 'Si tienes alguna duda y/o consulta comunícate con tu Ejecutivo de Negocios asignado o llama a Solución Empresa al (01) 311 90001.',
-      image: 'https://paolopacheco.github.io/ibk-media/images/img-58.png',
+      title: '¡Ya no podrás ingresar a partir del 2 de enero!',
+      text: '<span>Realiza tu cambio de inicio de sesión de TIE a DNI.</span><br /> Si tienes alguna duda y/o consulta comunícate con tu Ejecutivo de Negocios asignado o con Solución Empresa al (01) 311 9001.',
+      image1x: 'https://paolopacheco.github.io/ibk-media/images/img-58.png',
+      image2x: 'https://paolopacheco.github.io/ibk-media/images/img-58.png',
       path: 'https://paolopacheco.github.io/ibk-media/images/group-57.png',
+      disclaim: {
+        text: 'Lo haré luego',
+        link: '#',
+        target: '_blank',
+      },
       button: {
         text: 'Házlo aquí',
         link: '#',
@@ -4516,10 +4541,10 @@
       }
     }
 
-    var modal57Deploy = new modal_57(options);
+    var modal58Deploy = new modal_58(options);
 
     (function () {
-      modal57Deploy.init();
+      modal58Deploy.init();
     })();
 
   </script>
