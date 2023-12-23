@@ -214,7 +214,7 @@ $lightbg-text: rgba(0, 0, 0, 0.84);
 
       &::before,
       &::after {
-        content: '';
+        // content: '';
         display: block;
         background: var(--gray);
         margin-bottom: 4px;
