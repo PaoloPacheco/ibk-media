@@ -4376,11 +4376,7 @@
     }
   </style>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/byl8ulp.css">
 
   <style id="fonts">
     @font-face {
@@ -4445,12 +4441,21 @@
           <div class="mkv59--row">
             <div class="mkv59--header">
               <picture class="mkv58--picture">
-                <source srcset="` + options.image1x + `, ` + options.image2x + ` 2x" media="(min-width: 600px)" />
+                <source srcset="` + options.image1x + `" media="(max-width: 600px)" />
                 <img src="` + options.image2x + `" class="mkv59--img" alt="" />
               </picture>
             </div>
-            <div class="mkv59--body"></div>
-            <div class="mkv59--footer"></div>
+            <div class="mkv59--body">
+              <h3 class="mkv59--title">` + options.title + `</h3>
+              <p class="mkv59--excerpt">` + options.excerpt + `</p>
+              <p class="mkv59--text">` + options.text + `</p>
+            </div>
+            <div class="mkv59--footer">
+              <p class="mkv59--disclaim">
+                <img src="` + options.disclaim.icon + `" alt="` + options.disclaim.text + `" />
+                ` + options.disclaim.text + `
+              </p>
+            </div>
           </div>
         </div>`;
 
@@ -4474,17 +4479,10 @@
       text: '¡Haz el cambio en solo 2 pasos!',
       image1x: 'https://paolopacheco.github.io/ibk-media/images/image-59@1x.png',
       image2x: 'https://paolopacheco.github.io/ibk-media/images/image-59@2x.png',
-      path: 'https://paolopacheco.github.io/ibk-media/images/group-57.png',
       disclaim: {
-        text: 'Lo haré luego',
-        link: '#',
-        target: '_blank',
+        text: 'Fecha límite 2 de enero',
+        icon: 'https://paolopacheco.github.io/ibk-media/images/icon-alert_28-28.png',
       },
-      button: {
-        text: 'Házlo aquí',
-        link: '#',
-        target: '_blank',
-      }
     }
 
     var modal59Deploy = new modal_59(options);
