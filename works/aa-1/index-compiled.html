@@ -4434,95 +4434,202 @@
   <!-- Fin de CSS para pruebas-->
 
   <style>
-    @charset "UTF-8";:root{--primary:#05be50;--secondary:#0039a6;--blue:#2f4a9f;--secondaryrgb:#0039a6;--light:#c1c0c0;--white:#fff;--error:#d93549;--silver:#dadbdc;--gray:#9b9b9b;--text:#333;--aqua:#cdf2dc;--sky:#ccd7ed;--semiwhite:#f3f6fb;--skydark:#6688ca;--dark:#0f191e;--darkrgb:#0f191e;--blackrgb:#0f191e}.mk-medium{font-weight:500}.mk-medium,.mk-semibold{font-family:Omnes,sans-serif}.mk-semibold{font-weight:600}.mk-container{margin:0 auto;max-width:1066px;width:100%}@media (max-width:1023px){.mk-container{padding:0 24px}}.mk-sronly{clip:rect(0,0,0,0);border:0;-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px}.mk-input--linebottom{border-bottom:1px solid rgba(0,0,0,.4)!important;display:block;font-size:15px;line-height:32px;width:100%}.mk-input--error{color:var(--error);font-size:12px}.mk-list--decimal{list-style:decimal;padding-left:20px}.mk-list--brand li{margin-bottom:16px;padding-left:20px;position:relative}@media (min-width:480px){.mk-list--brand li{margin-bottom:20px;padding-left:32px}}.mk-list--brand li:before{color:var(--primary);content:"·";display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-size:56px;left:6px;line-height:20px;position:absolute;top:2px}.mk-radio--btn2{margin-bottom:0;position:relative}.mk-radio--btn2 input[type=checkbox],.mk-radio--btn2 input[type=radio]{left:0;position:absolute;top:0;visibility:hidden}.mk-radio--btn2 input[type=checkbox]~span,.mk-radio--btn2 input[type=radio]~span{-webkit-box-pack:center;-ms-flex-pack:center;background-color:var(--white);border-radius:18px;cursor:pointer;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;font-size:14px;justify-content:center;line-height:36px;min-width:184px;padding:0 12px}.mk-radio--btn2 input[type=checkbox]:checked~span,.mk-radio--btn2 input[type=radio]:checked~span{background-color:var(--primary);color:var(--white)}.mkv59-demo--container{margin:0 auto;max-width:1024px;padding:0 24px;width:100%}.mkv59--content{background-color:#3361b8;border-radius:5px;padding:24px 32px 20px;position:relative}@media (min-width:480px){.mkv59--content{padding:24px}}@media (min-width:767px){.mkv59--content{padding:8px 24px 0}}.mkv59--row{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;flex-direction:column}@media (min-width:767px){.mkv59--row{flex-direction:row}}.mkv59--header{display:none;width:100%}@media (min-width:480px){.mkv59--header{align-items:flex-end;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:50%}}@media (min-width:960px){.mkv59--header{width:30%}}.mkv59--body{color:var(--white);font-family:omnes-pro,sans-serif;font-size:18px;font-weight:500;line-height:20px;padding:0 0 24px;text-align:center;width:100%}@media (min-width:480px){.mkv59--body{padding:16px 10px 24px;text-align:left;width:50%}}@media (min-width:767px){.mkv59--body{padding:20px 10px 48px;width:70%}}@media (min-width:960px){.mkv59--body{font-size:22px;line-height:26px;padding:20px 10px 26px}}.mkv59--title{color:#ffcd00;display:block;font-family:omnes-pro,sans-serif;font-size:24px;font-style:normal;font-weight:500;line-height:26px;margin-bottom:16px}@media (min-width:960px){.mkv59--title{font-size:28px;line-height:32px;margin-bottom:4px}}.mkv59--excerpt{margin-bottom:10px}.mkv59--text{font-size:15px}@media (min-width:960px){.mkv59--text{font-size:18px}}.mkv59--picture{display:block}.mkv59--picture__sm{-webkit-box-pack:center;-ms-flex-pack:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;justify-content:center;margin-bottom:12px}.mkv59--picture__sm img{width:110px}@media (min-width:767px){.mkv59--picture__sm{display:none}}.mkv59--footer{width:100%}@media (min-width:480px){.mkv59--footer{bottom:14px;position:absolute;right:14px;width:auto}}.mkv59--disclaim{-webkit-box-align:center;-ms-flex-align:center;-webkit-box-pack:center;-ms-flex-pack:center;align-items:center;color:var(--white);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-family:omnes-pro,sans-serif;font-size:14px;font-weight:500;gap:6px;justify-content:center;line-height:18px}@media (min-width:960px){.mkv59--disclaim{font-size:20px;line-height:26px}}.mkv59--img{display:block}
+    @charset "UTF-8";:root{--primary:#05be50;--secondary:#0039a6;--blue:#2f4a9f;--secondaryrgb:#0039a6;--light:#c1c0c0;--white:#fff;--error:#d93549;--silver:#dadbdc;--gray:#9b9b9b;--text:#333;--aqua:#cdf2dc;--sky:#ccd7ed;--semiwhite:#f3f6fb;--skydark:#6688ca;--dark:#0f191e;--darkrgb:#0f191e;--blackrgb:#0f191e}.mkaa1-overlay{-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-align:center;-ms-flex-align:center;--color-softgreen:#e5f6ed;--color-blue:#2f4a9f;--color-label-active:#ff9f21;--color-button-disabled:#bebebe;--color-button-enabled:#00a94f;--color-green:#00a94f;--color-text:#333;--scrollbar-width:4px;--scrollbar-track-color:#f1f1f100;--scrollbar-thumb-color:#88888880;--scrollbar-thumb-color-hover:#888888aa;align-items:center;background:rgba(0,0,0,.2);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-family:Geometria,sans-serif!important;height:100vh;justify-content:center;width:100vw}@media (max-width:600px){.mkaa1-overlay{padding:30px 16px}}.mkaa1-overlay *{scrollbar-width:var(--scrollbar-width)}.mkaa1-overlay ::-webkit-scrollbar{width:var(--scrollbar-width)}.mkaa1-overlay ::-webkit-scrollbar-track{background-color:var(--scrollbar-track-color)}.mkaa1-overlay ::-webkit-scrollbar-thumb{background-color:var(--scrollbar-thumb-color);border-radius:20px}.mkaa1-overlay ::-webkit-scrollbar-thumb:hover{background-color:var(--scrollbar-thumb-color-hover)}.mkaa1-popup{background:#f7f7f7;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.5);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;max-height:485px;overflow:hidden;position:relative}@media (min-width:601px){.mkaa1-popup{min-width:700px}}@media (max-width:600px){.mkaa1-popup{border-radius:10px;flex-direction:column}}.mkaa1-popup__close{cursor:pointer;height:50px;position:absolute;right:0;top:0;width:50px}.mkaa1-popup__close:after,.mkaa1-popup__close:before{background:#bfc5dd;border-radius:5px;bottom:0;content:"";height:3px;left:0;margin:auto;position:absolute;right:0;top:0;width:20px}.mkaa1-popup__close:before{transform:rotate(45deg)}.mkaa1-popup__close:after{transform:rotate(-45deg)}.mkaa1-popup__color-blue{color:var(--color-blue)}.mkaa1-popup__text-title{font-family:Geometria,sans-serif;font-size:22px;font-weight:700}@media (max-width:600px){.mkaa1-popup__text-title{color:var(--color-text);font-weight:500;text-align:center}}.mkaa1-popup__text-subtitle{font-family:Geometria,sans-serif;font-size:20px;font-weight:500;text-align:center}@media (max-width:600px){.mkaa1-popup__text-subtitle{font-size:15px}}.mkaa1-popup__text-p{font-family:Geometria,sans-serif;font-size:18px;font-weight:400}@media (max-width:600px){.mkaa1-popup__text-p{font-size:14px;text-align:center}}.mkaa1-popup__left{-webkit-box-align:center;-ms-flex-align:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-flex:1;align-items:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;flex:1 0 auto;gap:8px;justify-content:center;padding:30px}@media (min-width:601px){.mkaa1-popup__left{width:320px}}.mkaa1-popup__left-content{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;flex-direction:column;gap:8px;max-width:210px}@media (max-width:600px){.mkaa1-popup__left-content{max-width:240px}.mkaa1-popup__left-content-image{display:none}}.mkaa1-popup__left-thankyou{display:none}.mkaa1-popup__right{background-color:var(--color-softgreen);padding:50px 30px;width:100%}@media (max-width:600px){.mkaa1-popup__right{overflow:auto;padding:24px}}.mkaa1-popup__right-content{-webkit-box-align:center;-ms-flex-align:center;-webkit-box-pack:justify;-ms-flex-pack:justify;align-items:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;flex-direction:column;gap:24px;height:100%;justify-content:space-between;margin:auto;max-width:300px}@media (max-width:600px){.mkaa1-popup__right-content{height:auto;max-width:240px}}.mkaa1-popup__right-content-options{-webkit-box-flex:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;flex:1;flex-direction:column;gap:12px}@media (min-width:601px){.mkaa1-popup__right-content-options{width:270px}}.mkaa1-popup__right-content-options-input{display:none}.mkaa1-popup__right-content-options-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;flex-direction:column;gap:14px;max-height:170px;overflow-y:scroll}.mkaa1-popup__right-content-options-label{background-color:#fff;border-radius:50px;color:var(--color-text);cursor:pointer;font-size:16px;font-weight:400;line-height:24px;padding:8px 12px;text-align:center;transition:.3s;width:100%}@media (max-width:600px){.mkaa1-popup__right-content-options-label{font-size:14px}}.mkaa1-popup__right-content-options-label:has(input:checked),.mkaa1-popup__right-content-options-label:is(:hover){background:var(--color-label-active);color:#fff}.mkaa1-popup__right-content-options-text{background:none;border:none;border-bottom:1px solid var(--color-green);color:#000;display:none;line-height:24px;padding-bottom:5px}.mkaa1-popup__right-content-options-text.active{display:block}.mkaa1-popup__right-content-submit{background-color:var(--color-button-disabled);border-radius:40px;color:#fff;font-size:16px;line-height:24px;padding:8px 16px;pointer-events:none;text-align:center;transition:.3s}@media (min-width:601px){.mkaa1-popup__right-content-submit{width:270px}}.mkaa1-popup__right-content-submit.active{background-color:var(--color-button-enabled);color:#fff;pointer-events:all}.mkaa1-popup.completed .mkaa1-popup__left-content,.mkaa1-popup.completed .mkaa1-popup__right{display:none}.mkaa1-popup.completed .mkaa1-popup__left-thankyou{display:block;max-width:250px;text-align:center}
   </style>
 </head>
 <body>
 	
-  <div id="action_insert_1232">
-    <script>
-    var modal_59 = (function name() {
-      function show(options) { }
+    <!-- Solo demo -->
+    <div class="mkaa1">
+        <script>
+            var aa1 = (function () {
+                function modal(params) {
+                    this.params = params;
+                }
 
-      show.prototype.init = function () {
-        this.display();
-      }
+                modal.prototype = {
+                    init: function() {
+                        const self = this;
+                        this.createPopup();
+                        self.targetEvents('abrir');
 
-      show.prototype.overlay = function () {
-        var overlay = document.createElement('div');
-        overlay.classList.add('mkv59--container');
-        return overlay;
-      }
+                        // Listener radios
+                        const overlay = document.querySelector('.mkaa1-overlay');
+                        const popup = overlay.querySelector('.mkaa1-popup');
+                        const inputText = overlay.querySelector('.mkaa1-popup__right-content-options-text');
+                        const submitButton = overlay.querySelector('.mkaa1-popup__right-content-submit');
+                        const closeButton = overlay.querySelector('.mkaa1-popup__close');
 
-      show.prototype.display = function () {
-        const container = options.container || document.body;
-        const overlay = this.overlay();
-        const modal = document.createElement('div');
-        modal.setAttribute('id', 'mkv59Popup');
-        modal.classList.add('mkv59--banner');
+                        document.querySelectorAll('.mkaa1-popup__right-content-options-input').forEach(function(el, i){
+                            el.addEventListener('change', function(event){
+                                const value = event.target.value;
+                                if(value === 'otro') {
+                                    inputText.value = '';
+                                    inputText.classList.add('active');
+                                    submitButton.classList.remove('active');
+                                    inputText.focus();
+                                } else {
+                                    inputText.value = value;
+                                    inputText.classList.remove('active');
+                                    submitButton.classList.add('active');
+                                }
 
-        this.display_track();
+                                self.targetEvents('almacenar', value || 'otro');
+                            })
+                        })
 
-        modal.innerHTML = `<div class="mkv59--content">
-          <div class="mkv59--row">
-            <div class="mkv59--header">
-              <picture class="mkv59--picture mkv59--picture__lg">
-                <source srcset="` + options.image1x + `" media="(max-width: 600px)" />
-                <img src="` + options.image2x + `" class="mkv59--img" alt="" />
-              </picture>
-            </div>
-            <div class="mkv59--body">
-              <h3 class="mkv59--title">` + options.title + `</h3>
-              <p class="mkv59--excerpt">` + options.excerpt + `</p>
-              <picture class="mkv59--picture__sm">
-                <source srcset="` + options.image1x + `" media="(max-width: 600px)" />
-                <img src="` + options.image2x + `" class="mkv59--img" alt="" />
-              </picture>
-              <p class="mkv59--text">` + options.text + `</p>
-            </div>
-            <div class="mkv59--footer">
-              <p class="mkv59--disclaim">
-                <img src="` + options.disclaim.icon + `" class="mkv59--disclaim__icon" alt="` + options.disclaim.text + `" />
-                <span class="mkv59--disclaim__text">` + options.disclaim.text + `</span>
-              </p>
-            </div>
-          </div>
-        </div>`;
+                        // Activate submit button
+                        inputText.addEventListener('input', function(event) {
+                            const text = event.target.value;
+                            const minLength = self.params.respuestas.otro.minlength;
+                            const maxLength = self.params.respuestas.otro.maxlength;
+                            if(text.length > maxLength) {
+                                this.value = text.slice(0, maxLength);
+                                return;
+                            }
+                            
+                            if( self.validateInput(text) && (text.length > minLength) ) {
+                                submitButton.classList.add('active');
+                            } else {
+                                submitButton.classList.remove('active');
+                            }
+                        })
 
-        overlay.appendChild(modal);
-        container.appendChild(overlay);
-      }
+                        // On submit button
+                        submitButton.addEventListener('click', function(){
+                            if(this.classList.contains('active')) {
+                                self.targetEvents('finalizar', inputText.value);
+                                popup.classList.add('completed');
+                            }
+                        })
 
+                        // Closes popup
+                        closeButton.addEventListener('click', function(){
+                            overlay.remove();
+                            self.targetEvents('cerrar');
+                        })
+                    },
+                    createPopup: function() {
+                        const containerEl = document.body;
+                        const modalEl = document.createElement('div');
+                        modalEl.classList.add('mkaa1-overlay')
 
+                        const textos = this.params.textos;
+                        const imagenes = this.params.imagenes;
+                        
+                        // Opciones
+                        var opcionesHtml = '<div class="mkaa1-popup__right-content-options-gradient"><div class="mkaa1-popup__right-content-options-wrapper">';
 
-      show.prototype.display_track = function (close) {
-        console.log(`Evento de despliegue del modal.`);
-      }
+                        this.params.respuestas.opciones.forEach(function (opcion) {
+                            opcionesHtml += `<label class="mkaa1-popup__right-content-options-label"><input type="radio" name="mkaa1-input-radio" class="mkaa1-popup__right-content-options-input" value="`+ opcion +`">`+ opcion +`</label>`;
+                        });
 
-      return show;
-    })();
+                        // Otro
+                        opcionesHtml += `<label class="mkaa1-popup__right-content-options-label"><input type="radio" name="mkaa1-input-radio" class="mkaa1-popup__right-content-options-input" value="otro">`+ this.params.respuestas.otro.titulo +`</label>`;
 
-    var options = {
-      container: document.querySelector('.mkv59-demo--container'),
-      title: '¡Debes migrar tu inicio de sesión!',
-      excerpt: 'Ahora deberás ingresar con tu documento de identidad y una contraseña más segura',
-      text: '¡Haz el cambio en solo 2 pasos!',
-      image1x: 'https://paolopacheco.github.io/ibk-media/images/image-59@1x.png',
-      image2x: 'https://paolopacheco.github.io/ibk-media/images/image-59@2x.png',
-      disclaim: {
-        text: 'Fecha límite 2 de enero',
-        icon: 'https://paolopacheco.github.io/ibk-media/images/icon-alert_28-28.png',
-      },
-    }
+                        opcionesHtml += `</div></div>`;
+                        // Input oculto
+                        opcionesHtml += `<textarea type="text" class="mkaa1-popup__right-content-options-text" placeholder="`+ this.params.respuestas.otro.placeholder +`"></textarea>`;
 
-    var modal59Deploy = new modal_59(options);
+                        // Overlay
+                        modalEl.innerHTML = 
+                        `<div class="mkaa1-popup">
+                            <div class="mkaa1-popup__close"></div>
+                            <div class="mkaa1-popup__left">
+                                <div class="mkaa1-popup__left-content">
+                                    <img src="`+ imagenes.izquierdaImagen +`" class="mkaa1-popup__left-content-image" alt="`+ textos.izquierdaTitulo +`">
+                                    <h3 class="mkaa1-popup__text-title mkaa1-popup__color-blue">`+ textos.izquierdaTitulo +`</h3>
+                                    <p class="mkaa1-popup__text-p">`+ textos.izquierdaBajada +`</p>
+                                </div>
+                                <div class="mkaa1-popup__left-thankyou">
+                                    <figure>
+                                        <picture>
+                                            <source srcset="`+ imagenes.graciasImagenDesktop +`" media="(min-width: 600px)">
+                                            <img src="`+ imagenes.graciasImagenMobile +`" alt="`+ textos.graciasTitulo +`">
+                                        </picture>
+                                    </figure>
+                                    <h3 class="mkaa1-popup__text-title mkaa1-popup__color-blue">`+ textos.graciasTitulo +`</h3>
+                                </div>
+                            </div>
+                            <div class="mkaa1-popup__right">
+                                <div class="mkaa1-popup__right-content">
+                                    <h4 class="mkaa1-popup__text-subtitle">`+ textos.derechaTitulo +`</h4>
+                                    <div class="mkaa1-popup__right-content-options">
+                                        ` + opcionesHtml + `
+                                    </div>
+                                    <button class="mkaa1-popup__right-content-submit">`+ textos.derechaBoton +`</button>
+                                </div>
+                            </div>
+                        </div>`;
 
-    (function () {
-      modal59Deploy.init();
-    })();
+                        containerEl.appendChild(modalEl);
+                    },
+                    validateInput: function(text) {
+                        const pattern = new RegExp("^[ " + this.params.respuestas.otro.validate + "]+$");
 
-  </script>
-  </div>
+                        return pattern.test(text);
+                    },
+                    targetEvents: function(eventType, text) {
+                        switch(eventType){
+                            case 'abrir':
+                                // Evento
+                                console.log('Evento: Abrir popup')
+                                // Fin Evento
+                                break;
+                            case 'almacenar':
+                                // Evento
+                                console.log('Evento: Clic en opción: ' + text)
+                                // Fin Evento
+                                break;
+                            case 'finalizar':
+                                // Evento
+                                console.log('Evento: Finalizar. Opción elegida: ' + text)
+                                // Fin Evento
+                                break;
+                            case 'cerrar':
+                                // Evento
+                                console.log('Evento: Cerrar popup')
+                                // Fin Evento
+                                break;
+                        }
+                    }
+                }
+
+                return modal;
+            })();
+
+            var options = {
+                respuestas: {
+                    opciones: ['Solo estaba simulando', 'Tengo un mejor tipo de cambio'],
+                    otro: {
+                        titulo: 'Otro motivo',
+                        placeholder: 'Ingresa el motivo',
+                        minlength: 5,
+                        maxlength: 30,
+                        validate: `abcdefghijklmnñopqrstuvwxyzáéíóúÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789!@#$%^&*()`
+                    }
+                },
+                textos: {
+                    izquierdaTitulo: "¿Qué pasó?",
+                    izquierdaBajada: "Notamos que saliste del módulo de cambio y nos gustaría conocer la razón:",
+                    derechaTitulo: "¿Por qué no continuaste la operación de cambio de moneda?",
+                    derechaBoton: "Enviar",
+                    graciasTitulo: "¡Gracias por tu respuesta!"
+                },
+                imagenes: {
+                    izquierdaImagen: "https://raw.githubusercontent.com/PaoloPacheco/ibk-media/master/images/aa/1-bubble-message.png",
+                    graciasImagenMobile: "https://github.com/PaoloPacheco/ibk-media/blob/master/images/aa/1-thankyou-%401x.png",
+                    graciasImagenDesktop: "https://raw.githubusercontent.com/PaoloPacheco/ibk-media/master/images/aa/1-thankyou-%402x.png"
+                }
+            }
+
+            var newModal = new aa1(options);
+            (function() {
+                newModal.init();
+            })();
+        </script>
+    </div>
+    <!-- Fin solo demo -->
 	
 </body>
 </html>
