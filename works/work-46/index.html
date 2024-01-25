@@ -4509,12 +4509,6 @@
         this.closePopup();
       };
 
-      popupJS.prototype.inputText = function () {
-        otherTextarea = `<div class="mkv46--description__content"><textarea type="text" class="mk-ipt__text" name="mkv46--description" id="mkv46--other__text" placeholder="Ingresa el motivo" maxlength="` + options.questions.other.maxlength + `"></textarea></div><div class="mkv46--body__footer"><button class="mkv46--btn" id="mkv46Btn" type="button" disabled>` + options.questions.btnText + `</button></div>`;
-
-        return otherTextarea;
-      }
-
       popupJS.prototype.response = function () {
         const mkv46Section = document.getElementById('mkv46Section');
         const response = `<div class="mkv46--response">
