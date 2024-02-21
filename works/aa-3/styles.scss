@@ -1,0 +1,239 @@
+:root {
+  --primary: #05be50;
+  --secondary: #0039a6;
+  --blue: #2f4a9f;
+  --secondaryrgb: rgb(0, 57, 166);
+  --light: #c1c0c0;
+  --white: #fff;
+  --error: #d93549;
+  --silver: #dadbdc;
+  --gray: #9b9b9b;
+  --text: #333;
+  --aqua: #cdf2dc;
+  --sky: #ccd7ed;
+  --semiwhite: #f3f6fb;
+  --skydark: #6688ca;
+  --dark: #0f191e;
+  --darkrgb: rgb(15, 25, 30);
+  --blackrgb: rgb(15, 25, 30);
+}
+
+.mkaa3 {
+    
+}
+
+@mixin screen-max($max) {
+    @media (max-width: $max) {
+      @content;
+    }
+}
+  
+@mixin screen-min($min) {
+    @media (min-width: $min) {
+    @content;
+    }
+}
+
+.mkaa {
+    &-bold {
+        font-weight: 700;
+    }
+
+    &-semibold {
+        font-weight: 500;
+    }
+
+    &-container {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1066px;
+
+        @include screen-max(1023px) {
+            padding: 0 24px;
+        }
+    }
+
+    &-text {
+        &_center {
+            text-align: center;
+        }
+    }
+
+    &v51 {
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    &--animation {
+        position: fixed;
+        width: 100%;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+
+        &.display {
+        animation: fadeAndUp ease-out 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        }
+
+        &.hiden {
+        animation: fadeAndBottom ease-out 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        }
+    }
+
+    &--disclaimer {
+        font-family: 'Geometria', sans-serif;
+        padding: 0 24px;
+
+        &__content {
+            padding: 10px 24px 0;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        &__row {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        &__figure {
+            min-width: 68px;
+            width: 68px;
+        }
+
+        &__image {
+            height: auto;
+        }
+
+        &__text {
+            font-size: 14px;
+            padding: 0 16px 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-weight: 500;
+        }
+        &__open {
+            font-weight: 700;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            &-icon {
+                height: 20px;
+            }
+        }
+
+        &__title {
+        line-height: 1;
+        margin-bottom: 4px;
+        font-weight: 500;
+        }
+
+        &__excerpt {
+        line-height: 14px;
+        }
+
+        &__close {
+        display: block;
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        width: 10px;
+        height: 10px;
+        z-index: 10;
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            background: var(--white);
+            width: 12px;
+            height: 1px;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            cursor: pointer;
+        }
+
+        &::before {
+            transform: rotate(45deg) translate(-1px, 7px);
+        }
+
+        &::after {
+            transform: rotate(-45deg) translate(-7px, -1px);
+        }
+
+        @include screen-min(480px) {
+        }
+        }
+    }
+    }
+}
+
+@keyframes fadeAndUp {
+    0% {
+    opacity: 0;
+    transform: translateY(200px);
+    }
+    100% {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+@keyframes fadeAndBottom {
+    0% {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    100% {
+    opacity: 0;
+    transform: translateY(200px);
+    }
+}
+
+.progressbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 2px;
+    background-color: #fff;
+
+    .inner {
+    border-radius: 2px;
+    height: 4px;
+    animation: progressbar-countdown;
+    animation-duration: 40s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    }
+}
+
+@keyframes progressbar-countdown {
+    0% {
+    width: 100%;
+    background: var(--primary);
+    }
+    100% {
+    width: 0%;
+    background: var(--primary);
+    }
+}
+  
