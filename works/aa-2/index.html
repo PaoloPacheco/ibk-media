@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -4376,11 +4376,7 @@
     }
   </style>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/byl8ulp.css">
 
   <style id="fonts">
     @font-face {
@@ -4408,392 +4404,240 @@
     }
   </style>
 
+<!-- Demo -->
+  <style>
+    body {
+        background: #CCC;
+    }
+
+    .demo {
+        width: 400px;
+        height: 100vh;
+        background: white;
+        margin: auto;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .demo-buttons {
+        height: 80px;
+        background: tomato;
+        width: 100%;
+    }
+
+    .demo-buttons ul {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        gap: 10px;
+    }
+
+    .demo-buttons ul li {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .demo-icon {
+        width: 30px;
+        height: 30px;
+        background: #222;
+    }   
+  </style>
+<!-- Fin Demo -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="container-banner mkv56-2--demo__top">Top</div>
-  <div class="grid">
-    <div class="mkv56-2--demo__left col-xs-12 col-4">Hola</div>
-    <div class="mkv56-2--demo__right col-xs-12 col-8">Hola</div>
-  </div>
+    <!-- Demo -->
+    <div class="demo">
+        <div class="demo-buttons">
+            <ul>
+                <li>
+                    <div class="demo-icon"></div>
+                    <div class="demo-text">Inicio</div>
+                </li>
+                <li>
+                    <div class="demo-icon"></div>
+                    <div class="demo-text">Operar</div>
+                </li>
+                <li class="demo-selection">
+                    <div class="demo-icon"></div>
+                    <div class="demo-text">Autorizar</div>
+                </li>
+                <li>
+                    <div class="demo-icon"></div>
+                    <div class="demo-text">Cuenta</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Fin Demo -->
 
-  <script>
-    var leftColumn56_2 = (function name() {
-      function show(options) { }
-
-      show.prototype.init = function () {
-        document.querySelector('.container-workflow__layout-a').classList.remove('container-workflow__layout-a')
-
-        const row = options.target;
-        const col_top = options.target_top;
-        const col_left = options.target_left;
-        const col_right = options.target_right;
-        const content_full = this.footer_layout();
-        const content_left = this.left_layout();
-
-        row.classList.add('mkv56-2--row');
-        col_top.remove();
-        col_left.classList.add('mkv56-2--layout__left');
-        col_right.classList.add('mkv56-2--layout__right');
-
-        col_left.innerHTML = content_left.outerHTML;
-        row.append(content_full);
-
-        this.tabs();
-        this.resizeEvent();
-
-        setTimeout(() => {
-          this.carouselAuto();
-          this.changeTitle();
-        }, 1000);
-      }
-
-      show.prototype.left_layout = function () {
-        const content = this.left_content();
-        const layout = document.createElement('div');
-        layout.setAttribute('id', 'mkv56-2LeftLayout');
-        layout.classList.add('mkv56-2--layout__left-content');
-
-        layout.innerHTML = content;
-
-        return layout;
-      }
-
-      show.prototype.footer_layout = function () {
-        const content = this.footer_content();
-        const layout = document.createElement('div');
-        layout.setAttribute('id', 'mkv56-2Footer');
-        layout.classList.add('mkv56-2--layout__footer');
-        layout.classList.add('mkv56-2--layout__full');
-
-        layout.innerHTML = content;
-
-        return layout;
-      }
-
-      show.prototype.left_content = function () {
-        let details = options.details;
-        let detailsList = '';
-        let detailsListCarousel = '';
-        let detailsCarouselDots = '';
-        let checked = ''
-
-        details.forEach((el, i) => {
-          checked = (i === 0) ? 'checked="checked"' : '';
-          detailsList += `<div class="mkv56-2--details__item">
-                <div class="mkv56-2--details__row">
-                  <div class="mkv56-2--details__figure">
-                    <img src="` + el.icon + `" alt="" />
-                  </div>
-                  <div class="mkv56-2--details__text">
-                    <p><span class="mk-semibold">` + el.title + `</span> ` + el.excerpt + `</p>
-                  </div>
-                </div>
-              </div>`;
-
-          detailsListCarousel += `<input class="mkv56-2-carousel-active" type="radio" id="mkv56-2-carousel-` + i + `" name="mkv56-2-carousel" aria-hidden="true" hidden ` + checked + `/>
-            <div class="mkv56-2-carousel-item">
-              <div class="mkv56-2--details__row">
-                <div class="mkv56-2--details__figure">
-                  <img src="` + el.icon + `" alt="" />
-                </div>
-                <div class="mkv56-2--details__text">
-                  <p><span class="mk-semibold">` + el.title + `</span> ` + el.excerpt + `</p>
-                </div>
-              </div>
-            </div>`;
-
-          detailsCarouselDots += `<li><label for="mkv56-2-carousel-` + i + `" class="mkv56-2-carousel-indicator"></label></li>`
-        });
-
-        const content = `<div class="mkv56-2--left__content">
-          <div class="mkv56-2--left__header"><h3 class="mkv56-2--left__title">` + options.title + `</h3><p class="mkv56-2--left__excerpt">` + options.excerpt + `</p></div>
-          <div class="mkv56-2--left__body">
-            <div class="mkv56-2--details mkv56-2--details-lg">` + detailsList + `</div>
-            <div class="mkv56-2--details mkv56-2--details-sm">
-              <div id="mkv56-2-carousel" class="mkv56-2-carousel">
-                ` + detailsListCarousel + `
-                <ol class="mkv56-2-carousel-indicators" aria-label="Carousel navigation" aria-hidden="true">
-                  ` + detailsCarouselDots + `
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>`;
-
-        return content;
-      }
-
-
-      show.prototype.footer_content = function () {
-        const self = this;
-        const content = `<div class="mkv56-2--footer__content">
-          <div class="tabs mkv56-2--tabs"><div class="mkv56-2--tabs__container" id="tabContainer"></div><div class="mkv56-2--tabs__content" id="tabContentContainer"></div></div>
-        </div>`;
-
-        return content;
-      }
-
-      show.prototype.resizeEvent = function () {
-        const row = options.target;
-        const rightLeft = options.target_left;
-        const rightCol = options.target_right;
-        const footer = document.querySelector('#mkv56-2Footer');
-        const rightLeftHeight = rightLeft.offsetHeight;
-
-        const observer = new ResizeObserver(entries => {
-          for (let entry of entries) {
-            const nuevoAncho = entry.contentRect.width;
-            const nuevoAlto = entry.contentRect.height;
-
-            if (nuevoAlto > rightLeftHeight) {
-              row.classList.add('mkv56-2--row__vertical');
-              footer.classList.remove('mkv56-2--layout__full');
-              footer.classList.add('half');
-              rightCol.classList.add('mkv56-2--layout__fullcol');
-            } else {
-              row.classList.remove('mkv56-2--row__vertical');
-              footer.classList.add('mkv56-2--layout__full');
-              footer.classList.remove('half');
-              rightCol.classList.remove('mkv56-2--layout__fullcol');
-            }
-
-            console.log(`El rightCol ha cambiado de tamaño a ${nuevoAncho}px de ancho y ${nuevoAlto}px de alto`);
-          }
-        });
-
-        observer.observe(rightCol);
-      }
-
-      show.prototype.tabs = function () {
-        var tabContainer = document.getElementById('tabContainer');
-        var tabContentContainer = document.getElementById('tabContentContainer');
-        const tabs = options.tabs;
-
-        tabs.forEach(function (tab, index) {
-          var tabButton = document.createElement('button');
-          var tabButtonSpan = document.createElement('span');
-          tabButton.classList.add('mkv56-2--tabs__button');
-          tabButton.setAttribute('type', 'button');
-
-          tabButtonSpan.textContent = tab.name;
-
-          tabButton.appendChild(tabButtonSpan);
-
-          tabButton.onclick = function () {
-            var tabContent = document.getElementsByClassName('mkv56-2-tabs-content');
-            for (var i = 0; i < tabContent.length; i++) {
-              tabContent[i].style.display = 'none';
-            }
-
-            document.getElementById('tabContent' + index).style.display = 'block';
-
-            var tabButtons = document.getElementsByClassName('mkv56-2--tabs__button');
-            for (var i = 0; i < tabButtons.length; i++) {
-              tabButtons[i].classList.remove('active');
-            }
-
-            this.classList.add('active');
-          };
-
-          tabContainer.appendChild(tabButton);
-
-          var tabContent = document.createElement('div');
-          tabContent.innerHTML = tab.content;
-          tabContent.classList.add('mkv56-2-tabs-content');
-          tabContent.setAttribute('id', 'tabContent' + index);
-
-          tabContentContainer.appendChild(tabContent);
-        });
-
-        document.getElementsByClassName('mkv56-2--tabs__button')[0].click();
-      }
-
-      show.prototype.changeTitle = function () {
-        const title = options.titles.cur_title;
-        const subtitle = options.titles.cur_subtitle;
-        const subtitle2 = options.titles.cur_subtitle2;
-
-        subtitle.remove();
-        subtitle2.remove();
-        title.textContent = options.titles.new_title;
-      }
-
-      show.prototype.carouselAuto = function () {
-        (function () {
-          var carousel = {
-            ittem: document.getElementById('mkv56-2-carousel'),
-            interval: options.interval,
-            items: document.getElementsByClassName('mkv56-2-carousel-active'),
-            itemsLength: 0,
-            controls: document.getElementsByClassName('mkv56-2-carousel-control'),
-            controlsLength: 0
-          };
-          var carouselTimer = setInterval(carouselPlay, carousel.interval);
-
-          carousel.itemsLength = carousel.items.length;
-          carousel.controlsLength = carousel.controls.length;
-
-          function carouselControls() {
-            for (var i = carousel.controlsLength; i--;) {
-              carousel.controls[i].addEventListener('click', carouselReset, false);
-            }
-          }
-
-          function carouselPlay() {
-            for (var i = carousel.itemsLength; i--;) {
-              if (carousel.items[i].checked) {
-                if (i !== carousel.itemsLength - 1) {
-                  carousel.items[i + 1].checked = true;
-                } else if (i === carousel.itemsLength - 1) {
-                  setTimeout(function () {
-                    carousel.items[0].checked = true;
-                  }, 0);
+    <!-- Código -->
+    <div class="mkaa2">
+        <script>
+            var aa2 = (function () {
+                function wizard(params) {
+                    this.params = params;
                 }
-              }
+
+                wizard.prototype = {
+                    init: function() {
+                        this.createOverlay();
+                    },
+                    createOverlay: function() {
+                        const { highlightDiv, highlightIcon } = this.params.selector;
+                        const { 
+                            overlayColor, 
+                            transitionSeconds, 
+                            showOverlay, 
+                            showDot, 
+                            dotColor, 
+                            dotSize,
+                            automatedCloseSeconds
+                        } = this.params.configuracion;
+                        const { mainText } = this.params.textos;
+                        const targetElement = document.querySelector(highlightDiv);
+                        const iconElement = document.querySelector(highlightIcon);
+
+                        if (targetElement) {
+                            const rect = targetElement.getBoundingClientRect();
+                            const icon = iconElement.getBoundingClientRect();
+
+                            // Container
+                            const highlightContainer = document.createElement('div');
+                            highlightContainer.classList.add('mkaa2-container');
+                            highlightContainer.style.setProperty('--transition', transitionSeconds);
+
+                            // Cerrar en click
+                            highlightContainer.addEventListener('click', () => {
+                                highlightContainer.classList.add('disable');
+                                this.targetEvents('cerrar', 'click');
+
+                                setTimeout(() => {
+                                    highlightContainer.remove();
+                                }, 5000);
+                            })
+
+                            if(showDot === 'true') {
+                                const dotElement = document.createElement('span');
+                                dotElement.classList.add('mkaa2-dot');
+                                dotElement.style.setProperty('--dot-color', dotColor);
+                                dotElement.style.setProperty('--dot-size', dotSize);
+                                dotElement.style.top = `${ icon.top }px`;
+                                dotElement.style.left = `${ icon.left + iconElement.offsetWidth }px`;
+                                highlightContainer.appendChild(dotElement);
+                            }
+
+                            // Overlay color
+                            if(showOverlay === 'true') {
+                                const highlightDiv = document.createElement('div');
+                                highlightDiv.classList.add('mkaa2-highlight');
+                                highlightDiv.style.top = `${rect.top}px`;
+                                highlightDiv.style.left = `${rect.left}px`;
+                                highlightDiv.style.width = `${rect.width}px`;
+                                highlightDiv.style.height = `${rect.height}px`;
+                                highlightDiv.style.outlineColor = `${ overlayColor }`;
+                                highlightContainer.appendChild(highlightDiv);
+                            }
+
+                            // Message
+                            const highlightMessage = document.createElement('div');
+                            highlightMessage.classList.add('mkaa2-message');
+                            
+                            const highlightMessageText = document.createElement('p');
+                            highlightMessageText.classList.add('mkaa2-message-text');
+                            highlightMessageText.innerHTML = mainText;
+
+                            highlightMessage.style.top = `${rect.top}px`;
+                            highlightMessage.style.left = `${rect.left}px`;
+
+
+                            highlightMessage.appendChild(highlightMessageText);
+                            highlightContainer.appendChild(highlightMessage);
+                            document.body.appendChild(highlightContainer);
+
+                            // Cerrar por tiempo
+                            setTimeout(() => {
+                                highlightContainer.classList.add('disable');
+                                this.targetEvents('cerrar', 'tiempo');
+
+                                setTimeout(() => {
+                                    highlightContainer.remove();
+                                }, 5000);
+                            }, this.parseTimeToMilliseconds(automatedCloseSeconds));
+
+                            // Click en selector
+                            targetElement.addEventListener('click', () => {
+                                this.targetEvents('click');
+                            });
+
+                            this.targetEvents('abrir');
+                        }
+                    },
+                    targetEvents: function(eventType, text) {
+                        switch(eventType){
+                            case 'abrir':
+                                // Evento
+                                console.log('Evento: Abrir popup')
+                                // Fin Evento
+                                break;
+                            case 'click':
+                                // Evento
+                                console.log('Evento: Se ha dado click al selector');
+                                // Fin Evento
+                                break;
+                            case 'cerrar':
+                                // Evento
+                                // Text: Cerrado por: Tiempo / Click (en overlay)
+                                console.log(`Evento: Overlay cerrado por ${ text }`);
+                                // Fin Evento
+                                break;
+                        }
+                    },
+                    parseTimeToMilliseconds: function(time) {
+                        const seconds = parseFloat(time);
+                        if (isNaN(seconds)) {
+                            return 20000;
+                        }
+
+                        return seconds * 1000;
+                    }
+                }
+
+                return wizard;
+            })();
+
+            var options = {
+                selector: {
+                    highlightDiv: '.demo-selection',
+                    highlightIcon: '.demo-selection .demo-icon'
+                },
+                textos: {
+                    mainText: '¡Añadimos <strong>nuevos productos</strong> para que sigas potenciando tu empresa!',
+                },
+                configuracion: {
+                    showOverlay: 'true', // Activar el fondo plomo, true / false
+                    showDot: 'true', // Activar el punto, true / false
+                    dotColor: '#FF0000', // Color del punto
+                    dotSize: '10px',
+                    overlayColor: 'rgba(0,0,0,.8)',
+                    transitionSeconds: '0.7s',
+                    automatedCloseSeconds: '10s'
+                }
             }
-          }
 
-          function carouselReset() {
-            console.log(1)
-            clearInterval(carouselTimer);
-            carouselTimer = setInterval(carouselPlay, carousel.interval);
-          }
-          carouselControls();
-        })();
-      }
-
-      return show;
-    })();
-
-    var ConvertStringToHTML = function (str) {
-      let parser = new DOMParser();
-      let doc = parser.parseFromString(str, 'text/html');
-      return doc;
-    }
-
-    var options = {
-      target: document.querySelector('.grid'),
-      target_top: document.querySelector('div.mkv56-2--demo__top'),
-      target_left: document.querySelector("div.mkv56-2--demo__left"),
-      target_right: document.querySelector("div.mkv56-2--demo__right"),
-
-      // target: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div"),  // El selector del contendor correspondiente a producción.
-
-      // target_top: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > div.container-banner"),  // El selector del contendor correspondiente a producción.
-
-      // target_left: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.col-xs-12.col-4.text-center.container-workflow__layout-a"),   // El selector de la columna izquierda correspondiente a producción.
-
-      // target_right: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8"),  // El selector de la columna derecha correspondiente a producción.
-      titles: {
-        cur_title: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8.mkv56-2--layout__right > busin-business-account > busin-business-account-ui > div > busin-data-verification-step > busin-data-verification-step-ui > section > div > div.grid.hidden-desktop.mt-30.mb-30.text-xs-center"),
-        cur_subtitle: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8.mkv56-2--layout__right > busin-business-account > busin-business-account-ui > div > busin-data-verification-step > busin-data-verification-step-ui > section > div > div:nth-child(3)"),
-        cur_subtitle2: document.querySelector("body > hyperloop-root > hyperloop-home-ui > div.home_body > hyperloop-businnessaccount > hyperloop-businnessaccount-ui > section > div > div.aside-left.col-xs-12.col-8.mkv56-2--layout__right > busin-business-account > busin-business-account-ui > div > busin-data-verification-step > busin-data-verification-step-ui > section > div > div:nth-child(3)"),
-        new_title: 'Ingresa los datos de tu negocio'
-      },
-      interval: 3500,
-      title: 'Abre tu Cuenta Negocios 100% digital',
-      excerpt: '¡Sin trámite ni papeleos! La cuenta 100% digital para impulsar tu negocio.',
-      tabs: [
-        {
-          name: 'Preguntas Frecuentes',
-          content: `<div class="mkv56-2--faqs__row">
-            <div class="mkv56-2--faqs__col">
-              <h3 class="mkv56-2--faqs__title">Preguntas Frecuentes</h3>
-            </div>
-            <div class="mkv56-2--faqs__col">
-              <div class="mkv56-2--faqs__content"><div class="mkv56-2--faqs__item">
-              <h4 class="mkv56-2--faqs__item__title">¿Quiénes pueden abrir una Cuenta Negocios?</h4>
-              <div class="mkv56-2--faqs__item__body">Pueden solicitarla todos los clientes y clientes nuevos Interbank, tanto Empresas(Ruc 20) como personas naturales con negocio(DNI o Ruc 10).En el caso de Persona Jurídica solo aplican para empresas con un máximo de 2 representantes legales con firma conjunta.</div>
-            </div><div class="mkv56-2--faqs__item">
-              <h4 class="mkv56-2--faqs__item__title">¿Si no traigo documentos de mi empresa como saben que soy el representante legal?</h4>
-              <div class="mkv56-2--faqs__item__body">Con todos los datos completados nosotros obtenemos la documentación de Sunarp para que no tengas que gestionarla tú mismo. En caso validemos que los datos entregados no son los correctos, procedemos con el bloqueo de la cuenta y se comunica el motivo vía correo electrónico al e-mail del representante legal que indicaste en el momento de apertura.</div>
-            </div><div class="mkv56-2--faqs__item">
-              <h4 class="mkv56-2--faqs__item__title">¿Cuáles son los costos por la apertura de la Cuenta Negocios?</h4>
-              <div class="mkv56-2--faqs__item__body">La única comisión que se cobra es por la gestión de documentos de Sunarp, este es de S/ 75 o USD 25 de acuerdo a tarifario. Este cobro se efectúa una única vez y es cargado en tu cuenta posterior a la validación de los poderes de tu empresa.</div>
-            </div></div></div>
-            </div>
-          </div>`,
-        },
-        {
-          name: 'Requisitos',
-          content: `<div class="mkv56-2--faqs__row">
-            <div class="mkv56-2--faqs__col">
-              <h3 class="mkv56-2--faqs__title">Considera estos consejos si tu empresa tiene RUC 20</h3>
-            </div>
-            <div class="mkv56-2--faqs__col">
-              <div class="mkv56-2--faqs__content">
-                <ul class="mk-list--brand">
-                <li>Exclusivo para empresas que facturen de 5 millones de soles a menos.</li>
-                <li>Solo para empresas que tengan residencia fiscal o tributaria en el Perú.</li>
-                <li>No aplica para empresas que formen parte de esta <a href="#" target="_blank">lista de rubros</a>.</li>
-                <li>Tu empresa debe tener un Representante Legal con poderes a sola firma. Si son dos Representantes Legales con poderes a firma conjunta, ambos deben acercarse a Tienda para abrir su Cuenta Negocios.</li>
-              </ul>
-              </div>
-            </div>
-          </div>`,
-        }
-      ],
-      details: [
-        {
-          icon: 'https://paolopacheco.github.io/ibk-media/images/app-interbank.png',
-          title: 'Abre tu Cuenta Negocios 100% digital',
-          excerpt: 'para Empresas GRATIS',
-        },
-        {
-          icon: 'https://paolopacheco.github.io/ibk-media/images/prestamo-credito.png',
-          title: 'Abre tu Cuenta Negocios 100% digital',
-          excerpt: 'si abres tu cuenta en soles y dólares',
-        },
-        {
-          icon: 'https://paolopacheco.github.io/ibk-media/images/ahorro.png',
-          title: 'Abre tu Cuenta Negocios 100% digital',
-          excerpt: 'siempre que transacciones con tu cuenta para empresas que son Persona Jurídica',
-        },
-      ],
-      faqs: {
-        title: 'Preguntas Frecuentes',
-        items: [
-          {
-            question: '¿Quiénes pueden abrir una Cuenta Negocios?',
-            answer: 'Pueden solicitarla todos los clientes y clientes nuevos Interbank, tanto Empresas(Ruc 20) como personas naturales con negocio(DNI o Ruc 10).En el caso de Persona Jurídica solo aplican para empresas con un máximo de 2 representantes legales con firma conjunta.'
-          },
-          {
-            question: '¿Si no traigo documentos de mi empresa como saben que soy el representante legal?',
-            answer: 'Con todos los datos completados nosotros obtenemos la documentación de Sunarp para que no tengas que gestionarla tú mismo. En caso validemos que los datos entregados no son los correctos, procedemos con el bloqueo de la cuenta y se comunica el motivo vía correo electrónico al e-mail del representante legal que indicaste en el momento de apertura.'
-          },
-          {
-            question: '¿Cuáles son los costos por la apertura de la Cuenta Negocios?',
-            answer: 'La única comisión que se cobra es por la gestión de documentos de Sunarp, este es de S/ 75 o USD 25 de acuerdo a tarifario. Este cobro se efectúa una única vez y es cargado en tu cuenta posterior a la validación de los poderes de tu empresa.'
-          },
-        ]
-      },
-      requirements: {
-        tab: 'Requisitos',
-        title: 'Considera estos consejos si tu empresa tiene RUC 20',
-        items: [
-          'Exclusivo para empresas que facturen de 5 millones de soles a menos.',
-          'Solo para empresas que tengan residencia fiscal o tributaria en el Perú.',
-          'No aplica para empresas que formen parte de esta <a href="#" target="_blank">lista de rubros</a>.',
-          'Tu empresa debe tener un Representante Legal con poderes a sola firma. Si son dos Representantes Legales con poderes a firma conjunta, ambos deben acercarse a Tienda para abrir su Cuenta Negocios.'
-        ]
-      }
-    }
-
-    var leftColumn56Deploy = new leftColumn56_2(options);
-
-    // (function () {
-    //   leftColumn56Deploy.init();
-    // })();
-    (async function () {
-      try {
-        await leftColumn56Deploy.init();
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  </script>
+            var initWizard = new aa2(options);
+            (function() {
+                initWizard.init();
+            })();
+        </script>
+    </div>
+    <!-- Código -->
 </body>
 
 </html>

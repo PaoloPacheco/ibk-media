@@ -1,0 +1,89 @@
+:root {
+  --primary: #05be50;
+  --secondary: #0039a6;
+  --blue: #2f4a9f;
+  --secondaryrgb: rgb(0, 57, 166);
+  --light: #c1c0c0;
+  --white: #fff;
+  --error: #d93549;
+  --silver: #dadbdc;
+  --gray: #9b9b9b;
+  --text: #333;
+  --aqua: #cdf2dc;
+  --sky: #ccd7ed;
+  --semiwhite: #f3f6fb;
+  --skydark: #6688ca;
+  --dark: #0f191e;
+  --darkrgb: rgb(15, 25, 30);
+  --blackrgb: rgb(15, 25, 30);
+}
+
+.mkaa2 {
+    &-container {
+        transition: var(--transition);
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 97;
+        &.disable {
+            pointer-events: none;
+            .mkaa2-highlight,
+            .mkaa2-message {
+                transition: var(--transition);
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    }
+    &-highlight {
+        position: absolute;
+        z-index: 96;
+        border-radius: 150px 150px 0 0;
+        outline: 9999px solid black;
+        left: calc(50% - 33px);
+        bottom: 0;
+        min-width: 66px;
+        height: 56px;
+    }
+    &-message {
+        width: 165px;
+        transform: translate(-55px, calc(-100% - 20px));
+        padding: 12px;
+        background: var(--secondary);
+        color: white;
+        position: absolute;
+        z-index: 97;
+        text-align: center;
+        box-sizing: content-box;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0,0,0,.1);
+        top: calc(100% - 60px);
+        left: calc(50% - 40px);
+        &:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            transform: rotate(45deg);
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        &-text {
+            font-size: 12px;
+            font-family: 'Geometria-regular', 'Geometria', sans-serif;
+        }
+    }
+    &-dot {
+        position: absolute;
+        background-color: var(--dot-color);
+        width: var(--dot-size);
+        height: var(--dot-size);
+        display: block;
+        z-index: 96;
+        border-radius: 50%;
+    }
+}
