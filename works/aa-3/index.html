@@ -4406,7 +4406,27 @@
 
 <!-- Demo -->
   <style>
-    
+    body {
+        width: 420px;
+        height: 100vh;
+        background: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+    .demo {
+        background: white;
+        height: 100%;
+        width: 100%;
+    }
+
+    .mkaa3-overlay {
+        max-width: 420px;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
   </style>
 <!-- Fin Demo -->
   <link rel="stylesheet" href="styles.css">
@@ -4415,12 +4435,12 @@
 <body>
     <!-- Demo -->
     <div class="demo">
-        
+        <div _ngcontent-ng-c1925512730="" class="ticket bg-extended-grey-4 px-m pb-[15px] pt-[27px]"><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Número de solicitud:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1">108208</p></div><!----><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Cuenta de cargo:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1"> Cuenta Corriente Soles<br _ngcontent-ng-c1925512730=""> 100-7001060267 </p></div><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Servicio:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1"> 56789<br _ngcontent-ng-c1925512730=""> FE Y ALEGRÍA </p></div><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Cuotas a pagar:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1"> Sin cuotas </p></div><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Fecha y hora de operación:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1">21/02/2024 - 7:36 AM</p></div><!----><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="text-paragraph-2">* Revisa el estado de tu solicitud en <span _ngcontent-ng-c1925512730="" class="font-bold">“Ver más”</span></p></div><!----></div>
     </div>
     <!-- Fin Demo -->
 
     <!-- Código -->
-    <div class="mkaa2">
+    <div class="mkaa3">
         <script>
         var disclaimer = (function () {
             function show(options) { }
@@ -4446,13 +4466,12 @@
                 document.body.appendChild(animationMain);
 
                 setTimeout(() => {
-                animationMain.classList.add('display');
+                    animationMain.classList.add('display');
                 }, 500);
 
                 setTimeout(() => {
-                animationMain.classList.remove('display');
-                animationMain.classList.add('hiden');
-
+                    animationMain.classList.remove('display');
+                    animationMain.classList.add('hiden');
                 }, duration);
 
                 setTimeout(() => {
@@ -4462,6 +4481,11 @@
                 if (options.enableDisclaimerClose) {
                     this.close();
                 }
+
+                // Abrir formulario
+                document.querySelector('.mkaav51--disclaimer__row').addEventListener('click', () => {
+                    this.option_1();
+                });
 
                 return animationMain;
             }
@@ -4514,6 +4538,118 @@
                         animationMain.remove();
                     }, duration * 2);
                 }
+
+                document.addEventListener('aa3/closeFirstPopup', () => {
+                    target.classList.remove('display');
+                    target.classList.add('hiden');
+
+                    setTimeout(() => {
+                        animationMain.remove();
+                    }, duration * 2);
+                })
+            }
+
+            show.prototype.option_1 = function() {
+                // Close First Popup
+                const eventClose = new Event('aa3/closeFirstPopup');
+                document.dispatchEvent(eventClose);
+
+                const { servicio, cuenta, fecha } = options.selector;
+                const { maxAmountCharge } = options.configuracion;
+
+                const { value: textServicio, title: valueServicio } = this.extractAndTrim(servicio);
+                const { title: textCuenta, value: valueCuenta } = this.extractAndTrim(cuenta);
+                const valueFecha = document.querySelector(fecha).textContent;
+                const symbolSoles = textCuenta.toLowerCase().includes('soles');
+
+                // Wrapper full screen
+                const bodyChild = document.createElement('div');
+                bodyChild.classList.add('mkaa3-overlay');
+
+                const html = `
+                    <div class="mkaa3-wrapper">
+                        <div class="mkaa3-wrapper__header">
+                            <button class="mkaa3-wrapper__header-close"><img class="mkaav51--disclaimer__open-icon" src="` + options.content.iconAngle + `" /></button>
+                            <h3 class="mkaa3-wrapper__header-title">Afiliación a Pago Recurrente</h3>
+                        </div>
+
+                        <div class="mkaa3-wrapper__body">
+                            <h3 class="mkaa3-wrapper__body-title">¡Estás a un paso de afiliar este servicio a Pago Recurrente!</h3>
+                            <div class="mkaa3-wrapper__body-form">
+                                <div class="mkaa3-wrapper__body-form-wrapper">
+                                    <p class="mkaa3-wrapper__body-form-label">Cuenta de cargo</p>
+                                    <div class="mkaa3-wrapper__body-form-input">
+                                        <p class="mkaa3-wrapper__body-form-text">
+                                            ${ textCuenta }<br/>
+                                            ${ valueCuenta }
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mkaa3-wrapper__body-form-wrapper">
+                                    <p class="mkaa3-wrapper__body-form-label">Cuenta de cargo</p>
+                                    <div class="mkaa3-wrapper__body-form-input">
+                                        <p class="mkaa3-wrapper__body-form-text">
+                                            ${ textServicio }<br/>
+                                            ${ valueServicio }
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mkaa3-wrapper__body-form-wrapper">
+                                    <p class="mkaa3-wrapper__body-form-label">Monto máximo a cobrar</p>
+                                    <div class="mkaa3-wrapper__body-form-input active">
+                                        <label for="mkaa3-wrapper__body-form-amount" class="mkaa3-wrapper__body-form-amount-symbol">${ symbolSoles ? 'S/' : '$' }</label>
+                                        <input id="mkaa3-wrapper__body-form-amount" class="mkaa3-wrapper__body-form-amount" type="number" placeholder="Monto máximo por recibo">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mkaa3-wrapper__body-notice">
+
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                bodyChild.innerHTML = html;
+                document.body.appendChild(bodyChild);
+
+                // Valor máximo
+                document.querySelector('.mkaa3-wrapper__body-form-amount').addEventListener('input', (ev) => {
+                    if(ev.target.value > maxAmountCharge){
+                        ev.target.value = maxAmountCharge;
+                    }
+                });
+            }
+
+            show.prototype.extractAndTrim = function(selector) {
+                const element = document.querySelector(selector);
+
+                const [title, value] = element.innerHTML.split(/<br[^>]*>/);
+
+                return {
+                    title: title.trim(),
+                    value: value.trim()
+                };
+            }
+
+            show.targetEvents = function(eventType, text) {
+                switch(eventType){
+                    case 'abrir':
+                        // Evento
+                        console.log('Evento: Abrir popup')
+                        // Fin Evento
+                        break;
+                    case 'click':
+                        // Evento
+                        console.log('Evento: Se ha dado click al selector');
+                        // Fin Evento
+                        break;
+                    case 'cerrar':
+                        // Evento
+                        // Text: Cerrado por: Tiempo / Click (en overlay)
+                        console.log(`Evento: Overlay cerrado por ${ text }`);
+                        // Fin Evento
+                        break;
+                }
             }
 
             return show;
@@ -4529,15 +4665,20 @@
             },
             content: {
                 backgroundColor: '#0039A6',
-                image: 'https://paolopacheco.github.io/ibk-media/images/Persona.png',
+                image: 'https://raw.githubusercontent.com/PaoloPacheco/ibk-media/master/images/Persona.png',
                 iconAngle: 'https://paolopacheco.github.io/ibk-media/images/angle-right.svg',
+                noticeIcon: 'https://paolopacheco.github.io/ibk-media/images/notice_blue.svg',
                 excerpt: '¡Evita las moras! Afilia este servicio a pago recurrente',
                 cta: 'AFÍLIATE AQUÍ'
             },
             selector: {
-                    'cuenta': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(2) > p.text-paragraph-1',
-                    'servicio': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(3) > p.text-paragraph-1',
-                    'fecha': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(5) > p.text-paragraph-1'
+                'cuenta': 'body > div.demo > div > div:nth-child(2) > p.text-paragraph-1',
+                'servicio': 'body > div.demo > div > div:nth-child(3) > p.text-paragraph-1',
+                'fecha': 'body > div.demo > div > div:nth-child(5) > p.text-paragraph-1'
+
+                // 'cuenta': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(2) > p.text-paragraph-1',
+                // 'servicio': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(3) > p.text-paragraph-1',
+                // 'fecha': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(5) > p.text-paragraph-1'
             },
             textos: {
             },
@@ -4551,53 +4692,6 @@
         (function () {
             pagoRecurrente.init();
         })();
-
-            var aa3 = (function () {
-                function form(params) {
-                    this.params = params;
-                }
-
-                form.prototype = {
-                    init: function() {
-                        
-                    },
-                    targetEvents: function(eventType, text) {
-                        switch(eventType){
-                            case 'abrir':
-                                // Evento
-                                console.log('Evento: Abrir popup')
-                                // Fin Evento
-                                break;
-                            case 'click':
-                                // Evento
-                                console.log('Evento: Se ha dado click al selector');
-                                // Fin Evento
-                                break;
-                            case 'cerrar':
-                                // Evento
-                                // Text: Cerrado por: Tiempo / Click (en overlay)
-                                console.log(`Evento: Overlay cerrado por ${ text }`);
-                                // Fin Evento
-                                break;
-                        }
-                    }
-                }
-
-                return form;
-            })();
-
-            var options = {
-                selector: {
-                    'cuenta': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(2) > p.text-paragraph-1',
-                    'servicio': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(3) > p.text-paragraph-1',
-                    'fecha': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(5) > p.text-paragraph-1'
-                },
-                textos: {
-                },
-                configuracion: {
-                    'maxAmountCharge': 5000,
-                }
-            }
         </script>
     </div>
     <!-- Código -->

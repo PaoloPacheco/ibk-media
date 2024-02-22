@@ -18,10 +18,6 @@
   --blackrgb: rgb(15, 25, 30);
 }
 
-.mkaa3 {
-    
-}
-
 @mixin screen-max($max) {
     @media (max-width: $max) {
       @content;
@@ -114,6 +110,7 @@
 
         &__image {
             height: auto;
+            display: flex;
         }
 
         &__text {
@@ -181,6 +178,118 @@
     }
     }
 }
+
+.mkaa3 {
+    &-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: white;
+    }
+    &-wrapper {
+        // width: 100vw;
+        // min-height: 100vh;
+        z-index: 99;
+        &__header {
+            position: relative;
+            padding: 16px 24px;
+            border-bottom: 1px solid #ECEDED;
+            &-close {
+                position: absolute;
+                left: 16px;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                transform: rotate(180deg);
+            }
+            &-title {
+                text-align: center;
+                font-size: 16px;
+                color: #0f191e;
+                font-weight: 500;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+            }
+        }
+        &__body {
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            &-title {
+                font-weight: 500;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                color: #0f191e;
+                font-size: 16px;
+            }
+
+            &-form {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                &-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+                &-label {
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #0f191e
+                }
+                &-input {
+                    padding: 12px 20px;
+                    width: 100%;
+                    border: 1px solid #D9DADB;
+                    border-radius: 4px;
+                    background: #FBFBFB;
+                    &.active {
+                        background: white;
+                        display: flex;
+                        gap: 6px;
+                    }
+
+                    &:has(.mkaa3-wrapper__body-form-amount:placeholder-shown) {
+                        .mkaa3-wrapper__body-form-amount-symbol {
+                            color: #B7BABC;
+                        }
+                    }
+                }
+                &-text {
+                    font-size: 14px;
+                    color: #878c8f;
+                    font-weight: 500;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+
+                }
+                &-amount {
+                    border: none;
+                    background: none;
+                    font-weight: 500;
+                    color: #0F191E;
+                    width: 100%;
+                    &::placeholder {
+                        font-weight: 500;
+                        color: #B7BABC;
+                    }
+                    &:placeholder-shown {
+                        color: #B7BABC;
+                    }
+
+                    &-symbol {
+                        color: #0F191E;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            &-notice {
+                
+            }
+        }
+    }
+}
+
 
 @keyframes fadeAndUp {
     0% {

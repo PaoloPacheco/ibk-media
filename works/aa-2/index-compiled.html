@@ -4533,15 +4533,14 @@
                             overlayColor, 
                             transitionSeconds, 
                             showOverlay, 
+                            showMessage,
                             showDot, 
                             dotColor, 
                             dotSize,
                             automatedCloseSeconds
                         } = this.params.configuracion;
                         const { mainText } = this.params.textos;
-                        // const targetElement = document.querySelector(highlightDiv);
                         const targetElement = document.querySelector(highlightSelector);
-                        // const iconElement = document.querySelector(highlightIcon);
                         const iconElement = document.querySelector(iconSelector);
 
                         if (targetElement) {
@@ -4575,27 +4574,24 @@
                                 highlightContainer.appendChild(highlightDiv);
                             }
 
-                            // Message
-                            const highlightMessage = document.createElement('div');
-                            highlightMessage.classList.add('mkaa2-message');
-                            
-                            const highlightMessageText = document.createElement('p');
-                            highlightMessageText.classList.add('mkaa2-message-text');
-                            highlightMessageText.innerHTML = mainText;
+                            if(showMessage === 'true'){
+                                // Message
+                                const highlightMessage = document.createElement('div');
+                                highlightMessage.classList.add('mkaa2-message');
+                                
+                                const highlightMessageText = document.createElement('p');
+                                highlightMessageText.classList.add('mkaa2-message-text');
+                                highlightMessageText.innerHTML = mainText;
 
-                            highlightMessage.style.top = `${rect.top}px`;
-                            highlightMessage.style.left = `${rect.left}px`;
+                                highlightMessage.style.top = `${rect.top}px`;
+                                highlightMessage.style.left = `${rect.left}px`;
 
 
-                            highlightMessage.appendChild(highlightMessageText);
-                            highlightContainer.appendChild(highlightMessage);
+                                highlightMessage.appendChild(highlightMessageText);
+                                highlightContainer.appendChild(highlightMessage);
+                            }
+
                             document.body.appendChild(highlightContainer);
-
-                            // Click en selector
-                            targetElement.addEventListener('click', () => {
-                                highlightContainer.remove();
-                                this.targetEvents('click');
-                            });
 
                             // Cerrar por tiempo
                             const timeout = setTimeout(() => {
@@ -4609,8 +4605,28 @@
                                 }, 5000);
                             }, this.parseTimeToMilliseconds(automatedCloseSeconds));
 
+                            // Click en selector - Enviar evento
+                            if (!targetElement.hasAttribute('data-mkaa2-click-listener')) {
+                                targetElement.setAttribute('data-mkaa2-click-listener', true);
+                                
+                                targetElement.addEventListener('click', () => {
+                                    this.targetEvents('click');
+                                });
+                            }
+
+                            // Click en selector - Eliminar punto
+                            targetElement.addEventListener('click', () => {
+                                highlightContainer.remove();
+                            });
+
                             // Cerrar en click
-                            highlightContainer.addEventListener('click', () => {
+                            highlightContainer.addEventListener('click', (ev) => {
+                                const self = this;
+                                if(ev.target.classList.contains('mkaa2-highlight')) {
+                                    highlightContainer.remove();
+                                    self.targetEvents('redirect');
+                                };
+
                                 highlightContainer.classList.add('disable');
                                 clearInterval(timeout);
                                 this.targetEvents('cerrar', 'click');
@@ -4620,11 +4636,18 @@
                                     if(highlightMessage) highlightMessage.remove();
                                 }, 5000);
                             })
+                            
                             this.targetEvents('abrir');
                         }
                     },
+                    
                     targetEvents: function(eventType, text) {
                         switch(eventType){
+                            case 'redirect':
+                                // Código Redirect
+                                console.log('Evento: Redirect');
+                                ejecutEventAppRoute('/main/discover/discover-list');
+                                break;
                             case 'abrir':
                                 // Evento
                                 console.log('Evento: Abrir popup')
@@ -4658,8 +4681,8 @@
 
             var options = {
                 selector: {
-                    // highlightSelector: document.querySelector("body > div.demo > div > ul > li.demo-selection"),
-                    // iconSelector: document.querySelector("body > div.demo > div > ul > li.demo-selection > div.demo-icon"),
+                    // highlightSelector: "body > div.demo > div > ul > li.demo-selection",
+                    // iconSelector: "body > div.demo > div > ul > li.demo-selection > div.demo-icon",
                     highlightSelector: "body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > ion-tab-bar > ion-tab-button:nth-child(3)",
                     iconSelector: "body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > ion-tab-bar > ion-tab-button:nth-child(3) > ion-icon"
                 },
@@ -4669,6 +4692,7 @@
                 configuracion: {
                     showOverlay: 'true', // Activar el fondo plomo, true / false
                     showDot: 'true', // Activar el punto, true / false
+                    showMessage: 'true', // Activar el mensaje
                     dotColor: '#FF0000', // Color del punto
                     dotSize: '10px',
                     overlayColor: 'rgba(0,0,0,.8)',
