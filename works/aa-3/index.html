@@ -4555,7 +4555,7 @@
                 document.dispatchEvent(eventClose);
 
                 const { servicio, cuenta, fecha } = options.selector;
-                const { maxAmountCharge } = options.configuracion;
+                const { maxAmountCharge, minAmountCharge } = options.configuracion;
 
                 const { value: textServicio, title: valueServicio } = this.extractAndTrim(servicio);
                 const { title: textCuenta, value: valueCuenta } = this.extractAndTrim(cuenta);
@@ -4569,7 +4569,7 @@
                 const html = `
                     <div class="mkaa3-wrapper">
                         <div class="mkaa3-wrapper__header">
-                            <button class="mkaa3-wrapper__header-close"><img class="mkaav51--disclaimer__open-icon" src="` + options.content.iconAngle + `" /></button>
+                            <button class="mkaa3-wrapper__header-close"><img class="mkaav51--disclaimer__open-icon" src="${ options.content.iconAngle }" /></button>
                             <h3 class="mkaa3-wrapper__header-title">Afiliación a Pago Recurrente</h3>
                         </div>
 
@@ -4603,8 +4603,15 @@
                                 </div>
                             </div>
                             <div class="mkaa3-wrapper__body-notice">
-
+                                <img class="mkaa3-wrapper__body-notice-icon" src="${ options.content.iconNotice }" />
+                                <p class="mkaa3-wrapper__body-notice-text">No se realizará el pago si el monto del recibo es mayor al monto máximo ingresado.</p>
                             </div>
+                            <div class="mkaa3-wrapper__body-tyc">
+                                <input type="checkbox" class="mkaa3-wrapper__body-tyc-input" id="mkaa3-wrapper__body-tyc-input" name="mkaa3-tyc"/>
+                                <label class="mkaa3-wrapper__body-tyc-label" for="mkaa3-wrapper__body-tyc-input"><p>He leído y acepto los <span class="mkaa3-wrapper__body-tyc-label-opentyc">Términos y Condiciones</span>.</p></label>
+                            </div>
+
+                            <button class="mkaa3-wrapper__body-button disabled">Enviar</button>
                         </div>
                     </div>
                 `;
@@ -4612,12 +4619,53 @@
                 bodyChild.innerHTML = html;
                 document.body.appendChild(bodyChild);
 
+                const inputAmount = document.querySelector('.mkaa3-wrapper__body-form-amount');
+                const inputTyc = document.querySelector('.mkaa3-wrapper__body-tyc-input');
+                const buttonSend = document.querySelector('.mkaa3-wrapper__body-button');
+
                 // Valor máximo
-                document.querySelector('.mkaa3-wrapper__body-form-amount').addEventListener('input', (ev) => {
-                    if(ev.target.value > maxAmountCharge){
-                        ev.target.value = maxAmountCharge;
-                    }
+                inputAmount.addEventListener('input', (ev) => {
+                    ev.target.value = Math.min(Math.max(ev.target.value, minAmountCharge), maxAmountCharge);
                 });
+
+                // Habilitar botón
+                inputAmount.addEventListener('input', () => {
+                    if(! inputTyc.checked || inputAmount.value === '') {
+                        buttonSend.classList.add('disabled');
+                    } else {
+                        buttonSend.classList.remove('disabled');
+                    }
+                })
+
+                inputTyc.addEventListener('input', () => {
+                    if(! inputTyc.checked || inputAmount.value === '') {
+                        buttonSend.classList.add('disabled');
+                    } else {
+                        buttonSend.classList.remove('disabled');
+                    }
+                })
+
+                // Enviar
+                buttonSend.addEventListener('click', () => {
+                    console.log('targetEvents exitoso');
+                    this.popupCompletedOne();
+                });
+
+                // Popup Tyc
+                document.querySelector('.mkaa3-wrapper__body-tyc-label-opentyc').addEventListener('click', (ev) => {
+                    ev.preventDefault();
+                    console.log('open pop up');
+                })
+            }
+
+            show.prototype.popupCompletedOne = function() {
+                const html = `
+                    <div class="mkaa3-wrapper__success">
+                        <div class="mkaa3-wrapper__success-content">
+                            <img class="mkaa3-wrapper__success-icon">
+                        </div>
+                    </div>
+                `;
             }
 
             show.prototype.extractAndTrim = function(selector) {
@@ -4667,7 +4715,8 @@
                 backgroundColor: '#0039A6',
                 image: 'https://raw.githubusercontent.com/PaoloPacheco/ibk-media/master/images/Persona.png',
                 iconAngle: 'https://paolopacheco.github.io/ibk-media/images/angle-right.svg',
-                noticeIcon: 'https://paolopacheco.github.io/ibk-media/images/notice_blue.svg',
+                iconNotice: 'https://paolopacheco.github.io/ibk-media/images/notice_blue.svg',
+                iconExitoso: 'https://paolopacheco.github.io/ibk-media/images/icon_exitoso.svg',
                 excerpt: '¡Evita las moras! Afilia este servicio a pago recurrente',
                 cta: 'AFÍLIATE AQUÍ'
             },
@@ -4684,6 +4733,7 @@
             },
             configuracion: {
                 'maxAmountCharge': 5000,
+                'minAmountCharge': 0,
             }
         }
 
