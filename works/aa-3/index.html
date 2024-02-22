@@ -4659,13 +4659,20 @@
             }
 
             show.prototype.popupCompletedOne = function() {
+                const { iconExitoso } = options.content;
+                const htmlChild = document.createElement('div');
+                htmlChild.classList.add('mkaa3-wrapper__success');
                 const html = `
-                    <div class="mkaa3-wrapper__success">
-                        <div class="mkaa3-wrapper__success-content">
-                            <img class="mkaa3-wrapper__success-icon">
-                        </div>
+                    <div class="mkaa3-wrapper__success-content">
+                        <img class="mkaa3-wrapper__success-content-icon" src="${ iconExitoso }">
+                        <h3 class="mkaa3-wrapper__success-content-title">Envío exitoso</h3>
+                        <p class="mkaa3-wrapper__success-content-subtitle">Tu solicitud fue enviada satisfactoriamente.</p>
+                        <button class="mkaa3-wrapper__success-content-button">Entendido</button>
                     </div>
                 `;
+
+                htmlChild.innerHTML = html;
+                document.body.appendChild(htmlChild);
             }
 
             show.prototype.extractAndTrim = function(selector) {
