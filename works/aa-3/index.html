@@ -4484,7 +4484,12 @@
 
                 // Abrir formulario
                 document.querySelector('.mkaav51--disclaimer__row').addEventListener('click', () => {
-                    this.option_1();
+                    this.targetEvents('abrir');
+                    if(options.configuracion.tipo === 1) {
+                        this.option_1();
+                    } else {
+                        this.option_2();
+                    }
                 });
 
                 return animationMain;
@@ -4549,6 +4554,32 @@
                 })
             }
 
+            show.prototype.option_2 = function() {
+                // Close First Popup
+                const eventClose = new Event('aa3/closeFirstPopup');
+                document.dispatchEvent(eventClose);
+
+                const { servicio, cuenta, fecha } = options.selector;
+                const { maxAmountCharge, minAmountCharge } = options.configuracion;
+
+                const { value: textServicio, title: valueServicio } = this.extractAndTrim(servicio);
+                const { title: textCuenta, value: valueCuenta } = this.extractAndTrim(cuenta);
+
+                const valueFecha = document.querySelector(fecha).textContent;
+                const symbolSoles = textCuenta.toLowerCase().includes('soles');
+
+                const bodyChild = document.createElement('div');
+                bodyChild.classList.add('mkaa3-overlay', 'bg-opacity');
+
+                const html = `<div class="mkaa3-popup">
+                    <div class="mkaa3-popup__header"></div>
+                    <div class="mkaa3-popup__body"></div>
+                </div>`;
+
+                bodyChild.innerHTML = html;
+                document.body.appendChild(bodyChild);
+            }
+
             show.prototype.option_1 = function() {
                 // Close First Popup
                 const eventClose = new Event('aa3/closeFirstPopup');
@@ -4586,7 +4617,7 @@
                                     </div>
                                 </div>
                                 <div class="mkaa3-wrapper__body-form-wrapper">
-                                    <p class="mkaa3-wrapper__body-form-label">Cuenta de cargo</p>
+                                    <p class="mkaa3-wrapper__body-form-label">Nombre de servicio</p>
                                     <div class="mkaa3-wrapper__body-form-input">
                                         <p class="mkaa3-wrapper__body-form-text">
                                             ${ textServicio }<br/>
@@ -4623,6 +4654,12 @@
                 const inputTyc = document.querySelector('.mkaa3-wrapper__body-tyc-input');
                 const buttonSend = document.querySelector('.mkaa3-wrapper__body-button');
 
+                // Cerrar popup
+                document.querySelector('.mkaa3-wrapper__header-close').addEventListener('click', () => {
+                    this.targetEvents('cerrar', 'incompleto');
+                    bodyChild.remove();
+                })
+
                 // Valor máximo
                 inputAmount.addEventListener('input', (ev) => {
                     ev.target.value = Math.min(Math.max(ev.target.value, minAmountCharge), maxAmountCharge);
@@ -4647,15 +4684,39 @@
 
                 // Enviar
                 buttonSend.addEventListener('click', () => {
-                    console.log('targetEvents exitoso');
+                    const monto = document.querySelector('.mkaa3-wrapper__body-form-amount').value;
+                    this.targetEvents('enviar', `${ textCuenta }: ${ valueCuenta }. Servicio: ${ textServicio } ${ valueServicio }. Fecha: ${ valueFecha }. Monto ${ symbolSoles ? 'S/' + monto : '$' + monto }`);
                     this.popupCompletedOne();
                 });
 
                 // Popup Tyc
                 document.querySelector('.mkaa3-wrapper__body-tyc-label-opentyc').addEventListener('click', (ev) => {
                     ev.preventDefault();
-                    console.log('open pop up');
+                    this.targetEvents('abrirTyc');
+                    this.openTyc();
                 })
+            }
+
+            show.prototype.openTyc = function() {
+                const htmlChild = document.createElement('div');
+                htmlChild.classList.add('mkaa3-tyc');
+
+                const html = `
+                    <div class="mkaa3-tyc__close">
+                        <span class="mkaa3-tyc__close-icon"></span>
+                    </div>
+                    <div class="mkaa3-tyc__content">
+                        ${ options.content.tyc }
+                    </div>
+                `;
+
+                htmlChild.innerHTML = html;
+                document.body.appendChild(htmlChild);
+
+                document.querySelector('.mkaa3-tyc__close').addEventListener('click', () => {
+                    this.targetEvents('cerrarTyc');
+                    htmlChild.remove();
+                });
             }
 
             show.prototype.popupCompletedOne = function() {
@@ -4673,6 +4734,13 @@
 
                 htmlChild.innerHTML = html;
                 document.body.appendChild(htmlChild);
+
+                // Cerrar experiencia
+                document.querySelector('.mkaa3-wrapper__success-content-button').addEventListener('click', () => {
+                    this.targetEvents('cerrar', 'completo');
+                    document.querySelector('.mkaa3-wrapper').remove();
+                    document.querySelector('.mkaa3-wrapper__success').remove();
+                })
             }
 
             show.prototype.extractAndTrim = function(selector) {
@@ -4686,23 +4754,22 @@
                 };
             }
 
-            show.targetEvents = function(eventType, text) {
+            show.prototype.targetEvents = function(eventType, data) {
                 switch(eventType){
                     case 'abrir':
-                        // Evento
-                        console.log('Evento: Abrir popup')
-                        // Fin Evento
+                        console.log('Evento: Abrir pago recurrente')
                         break;
-                    case 'click':
-                        // Evento
-                        console.log('Evento: Se ha dado click al selector');
-                        // Fin Evento
+                    case 'enviar':
+                        console.log(`Evento: Envio formulario. Datos: ${ data }`);
                         break;
                     case 'cerrar':
-                        // Evento
-                        // Text: Cerrado por: Tiempo / Click (en overlay)
-                        console.log(`Evento: Overlay cerrado por ${ text }`);
-                        // Fin Evento
+                        console.log(`Evento: Cerrar. Estado de la experiencia: ${ data }`);
+                        break;
+                    case 'abrirTyc':
+                        console.log(`Evento: Abrir TYC`);
+                        break;
+                    case 'cerrarTyc':
+                        console.log(`Evento: Cerrar TYC`);
                         break;
                 }
             }
@@ -4725,7 +4792,15 @@
                 iconNotice: 'https://paolopacheco.github.io/ibk-media/images/notice_blue.svg',
                 iconExitoso: 'https://paolopacheco.github.io/ibk-media/images/icon_exitoso.svg',
                 excerpt: '¡Evita las moras! Afilia este servicio a pago recurrente',
-                cta: 'AFÍLIATE AQUÍ'
+                cta: 'AFÍLIATE AQUÍ',
+                tyc: `<h2>Términos y condiciones</h2>
+                <p>Por tu seguridad, ten en cuenta lo siguiente</p>
+                <ul>
+                    <li>Interbank efectuará la transferencia por cuenta y riesgo del cliente ordenante, quien declara la licitud de la misma y el origen lícito de los fondos que transfiere.</li>
+                    <li>Los bancos del exterior podrán deducir cualquier costo, gasto, tributo y/o comisión de los importes de la transferencia, lo cual incluye, de ser aplicable, la conversión a la moneda local del país de destino y de acuerdo a sus procesos establecidos.</li>
+                    <li>Interbank efectuará la transferencia por cuenta y riesgo del cliente ordenante, quien declara la licitud de la misma y el origen lícito de los fondos que transfiere.</li>
+                    <li>Interbank efectuará la transferencia por cuenta y riesgo del cliente ordenante, quien declara la licitud de la misma y el origen lícito de los fondos que transfiere.</li>
+                </ul>`
             },
             selector: {
                 'cuenta': 'body > div.demo > div > div:nth-child(2) > p.text-paragraph-1',
@@ -4739,7 +4814,8 @@
             textos: {
             },
             configuracion: {
-                'maxAmountCharge': 5000,
+                'tipo': 2, // Popup opción A o B (1: Opción A, 2: Opción B)
+                'maxAmountCharge': 50000, // Monto máximo para ingresar en input
                 'minAmountCharge': 0,
             }
         }
