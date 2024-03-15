@@ -4436,6 +4436,7 @@
     <!-- Demo -->
     <div class="demo">
         <div _ngcontent-ng-c1925512730="" class="ticket bg-extended-grey-4 px-m pb-[15px] pt-[27px]"><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Número de solicitud:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1">108208</p></div><!----><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Cuenta de cargo:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1"> Cuenta Corriente Soles<br _ngcontent-ng-c1925512730=""> 100-7001060267 </p></div><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Servicio:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1"> 56789<br _ngcontent-ng-c1925512730=""> FE Y ALEGRÍA </p></div><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Cuotas a pagar:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1"> Sin cuotas </p></div><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="font-bold text-paragraph-2">Fecha y hora de operación:</p><p _ngcontent-ng-c1925512730="" class="text-paragraph-1">21/02/2024 - 7:36 AM</p></div><!----><div _ngcontent-ng-c1925512730="" class="mb-xs-2"><p _ngcontent-ng-c1925512730="" class="text-paragraph-2">* Revisa el estado de tu solicitud en <span _ngcontent-ng-c1925512730="" class="font-bold">“Ver más”</span></p></div><!----></div>
+        <button class="demo-button">Nuevo pago</button>
     </div>
     <!-- Fin Demo -->
 
@@ -4537,6 +4538,7 @@
 
                 closeBtn.onclick = function () {
                     target.classList.remove('display');
+                    target.classList.remove('static');
                     target.classList.add('hiden');
 
                     setTimeout(() => {
@@ -4544,8 +4546,18 @@
                     }, duration * 2);
                 }
 
-                document.addEventListener('aa3/closeFirstPopup', () => {
+                document.addEventListener('aa3/appendPopup', () => {
+                    const siblingElement = document.querySelector(options.selector.insertarBanner);
+
+                    target.classList.add('static');
+                    // target.classList.remove('display');
+
+                    siblingElement.parentNode.insertBefore(target, siblingElement);
+                })
+
+                document.addEventListener('aa3/closePopup', () =>{
                     target.classList.remove('display');
+                    target.classList.remove('static');
                     target.classList.add('hiden');
 
                     setTimeout(() => {
@@ -4554,39 +4566,15 @@
                 })
             }
 
-            show.prototype.option_2 = function() {
-                // Close First Popup
-                const eventClose = new Event('aa3/closeFirstPopup');
-                document.dispatchEvent(eventClose);
-
-                const { servicio, cuenta, fecha } = options.selector;
-                const { maxAmountCharge, minAmountCharge } = options.configuracion;
-
-                const { value: textServicio, title: valueServicio } = this.extractAndTrim(servicio);
-                const { title: textCuenta, value: valueCuenta } = this.extractAndTrim(cuenta);
-
-                const valueFecha = document.querySelector(fecha).textContent;
-                const symbolSoles = textCuenta.toLowerCase().includes('soles');
-
-                const bodyChild = document.createElement('div');
-                bodyChild.classList.add('mkaa3-overlay', 'bg-opacity');
-
-                const html = `<div class="mkaa3-popup">
-                    <div class="mkaa3-popup__header"></div>
-                    <div class="mkaa3-popup__body"></div>
-                </div>`;
-
-                bodyChild.innerHTML = html;
-                document.body.appendChild(bodyChild);
-            }
-
             show.prototype.option_1 = function() {
                 // Close First Popup
-                const eventClose = new Event('aa3/closeFirstPopup');
+                const eventClose = new Event('aa3/appendPopup');
                 document.dispatchEvent(eventClose);
 
                 const { servicio, cuenta, fecha } = options.selector;
                 const { maxAmountCharge, minAmountCharge } = options.configuracion;
+                const { iconAngle, iconNotice } = options.content;
+                const { textos } = options;
 
                 const { value: textServicio, title: valueServicio } = this.extractAndTrim(servicio);
                 const { title: textCuenta, value: valueCuenta } = this.extractAndTrim(cuenta);
@@ -4600,15 +4588,15 @@
                 const html = `
                     <div class="mkaa3-wrapper">
                         <div class="mkaa3-wrapper__header">
-                            <button class="mkaa3-wrapper__header-close"><img class="mkaav51--disclaimer__open-icon" src="${ options.content.iconAngle }" /></button>
-                            <h3 class="mkaa3-wrapper__header-title">Afiliación a Pago Recurrente</h3>
+                            <button class="mkaa3-wrapper__header-close"><img class="mkaav51--disclaimer__open-icon" src="${ iconAngle }" /></button>
+                            <h3 class="mkaa3-wrapper__header-title">${ textos.titulo }</h3>
                         </div>
 
                         <div class="mkaa3-wrapper__body">
-                            <h3 class="mkaa3-wrapper__body-title">¡Estás a un paso de afiliar este servicio a Pago Recurrente!</h3>
+                            <p class="mkaa3-wrapper__body-title">${ textos.subtitulo }</p>
                             <div class="mkaa3-wrapper__body-form">
                                 <div class="mkaa3-wrapper__body-form-wrapper">
-                                    <p class="mkaa3-wrapper__body-form-label">Cuenta de cargo</p>
+                                    <p class="mkaa3-wrapper__body-form-label">${ textos.tituloCuenta }</p>
                                     <div class="mkaa3-wrapper__body-form-input">
                                         <p class="mkaa3-wrapper__body-form-text">
                                             ${ textCuenta }<br/>
@@ -4617,7 +4605,7 @@
                                     </div>
                                 </div>
                                 <div class="mkaa3-wrapper__body-form-wrapper">
-                                    <p class="mkaa3-wrapper__body-form-label">Nombre de servicio</p>
+                                    <p class="mkaa3-wrapper__body-form-label">${ textos.tituloServicio }</p>
                                     <div class="mkaa3-wrapper__body-form-input">
                                         <p class="mkaa3-wrapper__body-form-text">
                                             ${ textServicio }<br/>
@@ -4626,23 +4614,23 @@
                                     </div>
                                 </div>
                                 <div class="mkaa3-wrapper__body-form-wrapper">
-                                    <p class="mkaa3-wrapper__body-form-label">Monto máximo a cobrar</p>
+                                    <p class="mkaa3-wrapper__body-form-label">${ textos.tituloMonto }</p>
                                     <div class="mkaa3-wrapper__body-form-input active">
                                         <label for="mkaa3-wrapper__body-form-amount" class="mkaa3-wrapper__body-form-amount-symbol">${ symbolSoles ? 'S/' : '$' }</label>
-                                        <input id="mkaa3-wrapper__body-form-amount" class="mkaa3-wrapper__body-form-amount" type="number" placeholder="Monto máximo por recibo">
+                                        <input id="mkaa3-wrapper__body-form-amount" class="mkaa3-wrapper__body-form-amount" type="text" placeholder="${ textos.placeholderMonto }">
                                     </div>
                                 </div>
                             </div>
                             <div class="mkaa3-wrapper__body-notice">
-                                <img class="mkaa3-wrapper__body-notice-icon" src="${ options.content.iconNotice }" />
-                                <p class="mkaa3-wrapper__body-notice-text">No se realizará el pago si el monto del recibo es mayor al monto máximo ingresado.</p>
+                                <img class="mkaa3-wrapper__body-notice-icon" src="${ iconNotice }" />
+                                <p class="mkaa3-wrapper__body-notice-text">${ textos.notificacion }</p>
                             </div>
                             <div class="mkaa3-wrapper__body-tyc">
                                 <input type="checkbox" class="mkaa3-wrapper__body-tyc-input" id="mkaa3-wrapper__body-tyc-input" name="mkaa3-tyc"/>
-                                <label class="mkaa3-wrapper__body-tyc-label" for="mkaa3-wrapper__body-tyc-input"><p>He leído y acepto los <span class="mkaa3-wrapper__body-tyc-label-opentyc">Términos y Condiciones</span>.</p></label>
+                                <label class="mkaa3-wrapper__body-tyc-label" for="mkaa3-wrapper__body-tyc-input"><p>${ textos.tituloTyc } <span class="mkaa3-wrapper__body-tyc-label-opentyc">${ textos.abrirTyc }</span>.</p></label>
                             </div>
 
-                            <button class="mkaa3-wrapper__body-button disabled">Enviar</button>
+                            <button class="mkaa3-wrapper__body-button disabled">${ textos.botonEnviar }</button>
                         </div>
                     </div>
                 `;
@@ -4662,20 +4650,36 @@
 
                 // Valor máximo
                 inputAmount.addEventListener('input', (ev) => {
-                    ev.target.value = Math.min(Math.max(ev.target.value, minAmountCharge), maxAmountCharge);
+                    this.targetEvents('montoEditado');
+                    let enteredValue = ev.target.value;
+
+                    buttonSend.classList.add('disabled');
+
+                    if (!this.isValidNumberOrCurrency(enteredValue) || ev.target.value === '') {
+                        ev.target.value = '';
+                    } else {
+                        let numericValue = parseFloat(enteredValue.replace(/[^\d.]/g, ''));
+                        if (numericValue < minAmountCharge) {
+                            return;
+                        }
+
+                        if(inputTyc.checked) {
+                            buttonSend.classList.remove('disabled');
+                        }
+
+                        if(numericValue > maxAmountCharge) {
+                            ev.target.value = new Intl.NumberFormat().format(maxAmountCharge);
+                            return;
+                        }
+
+                        const formattedValue = new Intl.NumberFormat().format(numericValue);
+                        ev.target.value = formattedValue;
+                    }
                 });
 
                 // Habilitar botón
-                inputAmount.addEventListener('input', () => {
-                    if(! inputTyc.checked || inputAmount.value === '') {
-                        buttonSend.classList.add('disabled');
-                    } else {
-                        buttonSend.classList.remove('disabled');
-                    }
-                })
-
                 inputTyc.addEventListener('input', () => {
-                    if(! inputTyc.checked || inputAmount.value === '') {
+                    if(! inputTyc.checked || inputAmount.value === '' || inputAmount.value < minAmountCharge) {
                         buttonSend.classList.add('disabled');
                     } else {
                         buttonSend.classList.remove('disabled');
@@ -4684,9 +4688,139 @@
 
                 // Enviar
                 buttonSend.addEventListener('click', () => {
-                    const monto = document.querySelector('.mkaa3-wrapper__body-form-amount').value;
+                    const monto = document.querySelector('.mkaa3-wrapper__body-form-amount').value || 'Vacío';
                     this.targetEvents('enviar', `${ textCuenta }: ${ valueCuenta }. Servicio: ${ textServicio } ${ valueServicio }. Fecha: ${ valueFecha }. Monto ${ symbolSoles ? 'S/' + monto : '$' + monto }`);
-                    this.popupCompletedOne();
+                    this.popupCompleted();
+                });
+
+                // Popup Tyc
+                document.querySelector('.mkaa3-wrapper__body-tyc-label-opentyc').addEventListener('click', (ev) => {
+                    ev.preventDefault();
+                    this.targetEvents('abrirTyc');
+                    this.openTyc();
+                })
+            }
+
+            show.prototype.isValidNumberOrCurrency = function(value) {
+                const regex = /^[0-9,.$]*$/; // Allow digits, commas, dots, and dollar signs
+                return regex.test(value);
+            }
+
+            show.prototype.option_2 = function() {
+                // Close First Popup
+                const eventClose = new Event('aa3/appendPopup');
+                document.dispatchEvent(eventClose);
+
+                const { servicio, cuenta, fecha } = options.selector;
+                const { maxAmountCharge, minAmountCharge } = options.configuracion;
+                const { headerPopUp } = options.content;
+                const { textos } = options;
+
+                const { value: textServicio, title: valueServicio } = this.extractAndTrim(servicio);
+                const { title: textCuenta, value: valueCuenta } = this.extractAndTrim(cuenta);
+
+                const valueFecha = document.querySelector(fecha).textContent;
+                const symbolSoles = textCuenta.toLowerCase().includes('soles');
+
+                const bodyChild = document.createElement('div');
+                bodyChild.classList.add('mkaa3-overlay', 'bg-opacity');
+
+                const html = `<div class="mkaa3-popup">
+                    <div class="mkaa3-popup__header" style="background-image: url(${ headerPopUp })">
+                        <span class="mkaa3-popup__header-close"></span>
+                    </div>
+                    <div class="mkaa3-popup__body">
+                        <h3 class="mkaa3-popup__body-title">${ textos.titulo }</h3>
+                        <p class="mkaa3-popup__body-subtitle">${ textos.subtitulo }</p>
+                        <div class="mkaa3-popup__body-data">
+                            <div class="mkaa3-popup__body-data-item">
+                                <h4 class="mkaa3-popup__body-data-title">${ textos.tituloCuenta }</h4>
+                                <p class="mkaa3-popup__body-data-subtitle">
+                                    ${ textCuenta }<br/>${ valueCuenta }
+                                </p>
+                            </div>
+                            <div class="mkaa3-popup__body-data-item">
+                                <h4 class="mkaa3-popup__body-data-title">${ textos.tituloServicio }</h4>
+                                <p class="mkaa3-popup__body-data-subtitle">
+                                    ${ textServicio }<br/>${ valueServicio }
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mkaa3-wrapper__body-form-wrapper">
+                            <p class="mkaa3-wrapper__body-form-label">${ textos.tituloMonto }</p>
+                            <div class="mkaa3-wrapper__body-form-input active">
+                                <label for="mkaa3-wrapper__body-form-amount" class="mkaa3-wrapper__body-form-amount-symbol">${ symbolSoles ? 'S/' : '$' }</label>
+                                <input id="mkaa3-wrapper__body-form-amount" class="mkaa3-wrapper__body-form-amount" type="text" placeholder="${ textos.placeholderMonto }">
+                            </div>
+                        </div>
+                        <div class="mkaa3-popup__body-tyc">
+                            <div class="mkaa3-wrapper__body-tyc">
+                                <input type="checkbox" class="mkaa3-wrapper__body-tyc-input" id="mkaa3-wrapper__body-tyc-input" name="mkaa3-tyc"/>
+                                <label class="mkaa3-wrapper__body-tyc-label" for="mkaa3-wrapper__body-tyc-input"><p>${ textos.tituloTyc } <span class="mkaa3-wrapper__body-tyc-label-opentyc">${ textos.abrirTyc }</span>.</p></label>
+                            </div>
+                        </div>
+                        <button class="mkaa3-wrapper__body-button disabled">${ textos.botonEnviar }</button>
+                    </div>
+                </div>`;
+
+                bodyChild.innerHTML = html;
+                document.body.appendChild(bodyChild);
+
+                const inputAmount = document.querySelector('.mkaa3-wrapper__body-form-amount');
+                const inputTyc = document.querySelector('.mkaa3-wrapper__body-tyc-input');
+                const buttonSend = document.querySelector('.mkaa3-wrapper__body-button');
+
+                // Cerrar popup
+                document.querySelector('.mkaa3-popup__header-close').addEventListener('click', () => {
+                    this.targetEvents('cerrar', 'incompleto');
+                    bodyChild.remove();
+                })
+
+                // Valor máximo
+                inputAmount.addEventListener('input', (ev) => {
+                    this.targetEvents('montoEditado');
+                    let enteredValue = ev.target.value;
+
+                    buttonSend.classList.add('disabled');
+
+                    if (!this.isValidNumberOrCurrency(enteredValue) || ev.target.value === '') {
+                        ev.target.value = '';
+                    } else {
+                        let numericValue = parseFloat(enteredValue.replace(/[^\d.]/g, ''));
+                        if (numericValue < minAmountCharge) {
+                            return;
+                        }
+
+                        if(inputTyc.checked) {
+                            buttonSend.classList.remove('disabled');
+                        }
+
+                        if(numericValue > maxAmountCharge) {
+                            ev.target.value = new Intl.NumberFormat().format(maxAmountCharge);
+                            return;
+                        }
+
+                        const formattedValue = new Intl.NumberFormat().format(numericValue);
+                        ev.target.value = formattedValue;
+                    }
+                });
+
+                // Habilitar botón
+                inputTyc.addEventListener('input', () => {
+                    if(! inputTyc.checked || inputAmount.value === '' || inputAmount.value < minAmountCharge ) {
+                        buttonSend.classList.add('disabled');
+                    } else {
+                        buttonSend.classList.remove('disabled');
+                    }
+                })
+
+                // Enviar
+                buttonSend.addEventListener('click', () => {
+                    const monto = document.querySelector('.mkaa3-wrapper__body-form-amount').value || 'Vacío';
+                    document.querySelector('.mkaa3-overlay')?.remove();
+
+                    this.targetEvents('enviar', `${ textCuenta }: ${ valueCuenta }. Servicio: ${ textServicio } ${ valueServicio }. Fecha: ${ valueFecha }. Monto ${ symbolSoles ? 'S/' + monto : '$' + monto }`);
+                    this.popupCompleted();
                 });
 
                 // Popup Tyc
@@ -4719,18 +4853,39 @@
                 });
             }
 
-            show.prototype.popupCompletedOne = function() {
+            show.prototype.popupCompleted = function() {
                 const { iconExitoso } = options.content;
+                const { textos } = options;
+
                 const htmlChild = document.createElement('div');
                 htmlChild.classList.add('mkaa3-wrapper__success');
-                const html = `
-                    <div class="mkaa3-wrapper__success-content">
-                        <img class="mkaa3-wrapper__success-content-icon" src="${ iconExitoso }">
-                        <h3 class="mkaa3-wrapper__success-content-title">Envío exitoso</h3>
-                        <p class="mkaa3-wrapper__success-content-subtitle">Tu solicitud fue enviada satisfactoriamente.</p>
-                        <button class="mkaa3-wrapper__success-content-button">Entendido</button>
-                    </div>
-                `;
+
+                let html = '';
+
+                if(options.configuracion.tipo === 1) {
+                    html = `
+                        <div class="mkaa3-wrapper__success-content mkaa3-option-1">
+                            <img class="mkaa3-wrapper__success-content-icon" src="${ iconExitoso }">
+                            <h3 class="mkaa3-wrapper__success-content-title">${ textos.exitosoTitulo }</h3>
+                            <p class="mkaa3-wrapper__success-content-subtitle">${ textos.exitosoSubtitulo }</p>
+                            <button class="mkaa3-wrapper__success-content-button">${ textos.exitosoBoton }</button>
+                        </div>
+                    `;
+                } else {
+                    html = `
+                        <div class="mkaa3-wrapper__success-content mkaa3-option-2">
+                            <div class="mkaa3-popup__header" style="background-image: url(${ options.content.headerPopUp })">
+                                <span class="mkaa3-popup__header-close"></span>
+                            </div>
+                            <div class="mkaa3-wrapper__success-content">
+                                <img class="mkaa3-wrapper__success-content-icon" src="${ iconExitoso }">
+                                <h3 class="mkaa3-wrapper__success-content-title">${ textos.exitosoTitulo }</h3>
+                                <p class="mkaa3-wrapper__success-content-subtitle">${ textos.exitosoSubtitulo }</p>
+                                <button class="mkaa3-wrapper__success-content-button">${ textos.exitosoBoton }</button>
+                            </div>
+                        </div>
+                    `;
+                }
 
                 htmlChild.innerHTML = html;
                 document.body.appendChild(htmlChild);
@@ -4738,9 +4893,21 @@
                 // Cerrar experiencia
                 document.querySelector('.mkaa3-wrapper__success-content-button').addEventListener('click', () => {
                     this.targetEvents('cerrar', 'completo');
-                    document.querySelector('.mkaa3-wrapper').remove();
-                    document.querySelector('.mkaa3-wrapper__success').remove();
+                    document.querySelector('.mkaa3-overlay')?.remove();
+                    document.querySelector('.mkaa3-wrapper__success')?.remove();
+                    document.querySelector('.mkaa3-wrapper__success')?.remove();
                 })
+
+                // Cerrar popup
+                document.querySelector('.mkaa3-popup__header-close')?.addEventListener('click', () => {
+                    this.targetEvents('cerrar', 'completo');
+                    document.querySelector('.mkaa3-overlay')?.remove();
+                    document.querySelector('.mkaa3-wrapper__success')?.remove();
+                    document.querySelector('.mkaa3-wrapper__success')?.remove();
+                })
+
+                const eventClose = new Event('aa3/closePopup');
+                document.dispatchEvent(eventClose);
             }
 
             show.prototype.extractAndTrim = function(selector) {
@@ -4791,6 +4958,7 @@
                 iconAngle: 'https://paolopacheco.github.io/ibk-media/images/angle-right.svg',
                 iconNotice: 'https://paolopacheco.github.io/ibk-media/images/notice_blue.svg',
                 iconExitoso: 'https://paolopacheco.github.io/ibk-media/images/icon_exitoso.svg',
+                headerPopUp: 'https://paolopacheco.github.io/ibk-media/images/persona_bg.png',
                 excerpt: '¡Evita las moras! Afilia este servicio a pago recurrente',
                 cta: 'AFÍLIATE AQUÍ',
                 tyc: `<h2>Términos y condiciones</h2>
@@ -4803,24 +4971,40 @@
                 </ul>`
             },
             selector: {
-                'cuenta': 'body > div.demo > div > div:nth-child(2) > p.text-paragraph-1',
-                'servicio': 'body > div.demo > div > div:nth-child(3) > p.text-paragraph-1',
-                'fecha': 'body > div.demo > div > div:nth-child(5) > p.text-paragraph-1'
+                'cuenta': 'body > div.demo > div > div:nth-child(2) > p.text-paragraph-1', // Elegir el párrafo que contiene solo los textos
+                'servicio': 'body > div.demo > div > div:nth-child(3) > p.text-paragraph-1', // Elegir el párrafo que contiene solo los textos
+                'fecha': 'body > div.demo > div > div:nth-child(5) > p.text-paragraph-1', // Elegir el párrafo que contiene solo la fecha
+                'insertarBanner': 'body > div.demo > button',
 
                 // 'cuenta': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(2) > p.text-paragraph-1',
                 // 'servicio': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(3) > p.text-paragraph-1',
-                // 'fecha': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(5) > p.text-paragraph-1'
+                // 'fecha': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div.ticket.bg-extended-grey-4.px-m > div:nth-child(5) > p.text-paragraph-1',
+                // 'insertarBanner': 'body > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > divbody > ibk-root > ion-app > ion-router-outlet > ibk-business > ibk-footer-tab > ion-tabs > div > ion-router-outlet > ibk-pay-service-constancy > ion-content > div:last-child',
+
             },
             textos: {
+                titulo: '¡Felicidades!',
+                subtitulo: 'Estás a un paso de afiliar<br/> este servicio a Pago Recurrente',
+                tituloCuenta: 'Cuenta de cargo',
+                tituloServicio: 'Servicio',
+                tituloMonto: 'Ingresa el monto máximo a cobrar',
+                placeholderMonto: 'Monto máximo por recibo',
+                tituloTyc: 'He leído y acepto los',
+                abrirTyc: 'Términos y Condiciones',
+                notificacion: 'No se realizará el pago si el monto del recibo es mayor al monto máximo ingresado.',
+                botonEnviar: 'Enviar',
+                exitosoTitulo: 'Envío exitoso',
+                exitosoSubtitulo: 'Tu solicitud fue enviada satisfactoriamente.',
+                exitosoBoton: 'Entendido'
             },
             configuracion: {
                 'tipo': 2, // Popup opción A o B (1: Opción A, 2: Opción B)
                 'maxAmountCharge': 50000, // Monto máximo para ingresar en input
-                'minAmountCharge': 0,
+                'minAmountCharge': 5, // Monto mínimo
             }
         }
 
-        const pagoRecurrente = new disclaimer(options);
+        var pagoRecurrente = new disclaimer(options);
 
         (function () {
             pagoRecurrente.init();

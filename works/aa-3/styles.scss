@@ -81,6 +81,17 @@
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
         }
+
+        &.static {
+            display: block;
+            animation-duration: 0s;
+            position: static !important;
+            margin-bottom: 20px;
+            margin-top: -10px;
+            .mkaav51--disclaimer {
+                padding: 0;
+            }
+        }
     }
 
     &--disclaimer {
@@ -262,6 +273,9 @@
                             color: #B7BABC;
                         }
                     }
+                    &:has(.mkaa3-wrapper__body-form-amount:focus) {
+                        border-color: var(--primary);
+                    }
                 }
                 &-text {
                     font-size: 14px;
@@ -276,6 +290,12 @@
                     font-weight: 500;
                     color: #0F191E;
                     width: 100%;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    &:hover, &:active, &:focus {
+                        border: none !important;
+                        outline: none !important;
+                        box-shadow: none !important;
+                    }
                     &::placeholder {
                         font-weight: 500;
                         color: #B7BABC;
@@ -398,13 +418,34 @@
             justify-content: center;
             align-items: center;
             &-content {
-                padding: 30px 24px 24px;
                 background: white;
                 border-radius: 8px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 20px;
+
+                &.mkaa3-option {
+                    &-1 {
+                        padding: 30px 24px 24px;
+                        gap: 20px;
+                        .mkaa3-wrapper__success-content-subtitle {
+                            text-align: center;
+                            margin: auto;
+                        }
+                    }
+                    &-2 {
+                        gap: 6px;
+                        .mkaa3-wrapper__success-content {
+                            padding: 0px 24px 24px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8px;
+                            &-button {
+                                margin-top: 16px;
+                            }
+                        }
+                    }
+                }
                 &-icon {
                     width: 48px;
                     height: 48px;
@@ -420,6 +461,7 @@
                     font-size: 14px;
                     font-weight: 400;
                     font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    text-align: center;
                 }
                 &-button {
                     background: var(--primary);
@@ -431,6 +473,13 @@
                     font-weight: 500;
                     border-radius: 4px;
                 }
+                &-option2 {
+                    padding: 20px;
+                }
+            }
+
+            .mkaa3-popup__header {
+                width: 100%;
             }
         }
     }
@@ -439,11 +488,98 @@
         background: white;
         max-width: 350px;
         width: 100%;
+        border-radius: 8px;
         &__header {
-
+            height: 125px;
+            background-size: contain;
+            background-position: top;
+            background-size: calc(100% + 4px);
+            background-repeat: no-repeat;
+            position: relative;
+            &-close {
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 20px;
+                cursor: pointer;
+                &:before, &:after {
+                    content: "";
+                    width: 2px;
+                    height: 20px;
+                    background: white;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    margin: auto;
+                    border-radius: 30px;
+                }
+                &:before {
+                    transform: rotate(-45deg);
+                }
+                &:after {
+                    transform: rotate(45deg);
+                }
+            }
         }
         &__body{
             padding: 15px 20px 30px;
+            &-title {
+                font-weight: 500;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                color: #0f191e;
+                font-size: 20px;
+                text-align: center;
+                margin-bottom: 8px;
+            }
+            &-subtitle {
+                font-weight: 400;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                color: #0f191e;
+                font-size: 16px;
+                text-align: center;
+            }
+            &-data {
+                margin: 16px 0;
+                display: flex;
+                justify-content: center;
+                &-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+                    padding: 0 8px;
+                    &:first-child:after {
+                        content: "";
+                        height: 100%;
+                        width: 1px;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        background: #ECEDED;
+                    }
+                }
+                &-title {
+                    font-weight: 700;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    color: #0f191e;
+                    font-size: 12px;
+                    text-align: center;
+                }
+                &-subtitle {
+                    font-weight: 400;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    color: #0f191e;
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+            &-tyc {
+                margin-top: 30px;
+            }
         }
     }
 
