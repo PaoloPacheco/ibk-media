@@ -1,0 +1,542 @@
+:root {
+  --primary: #05be50;
+  --secondary: #0039a6;
+  --blue: #2f4a9f;
+  --secondaryrgb: rgb(0, 57, 166);
+  --light: #c1c0c0;
+  --white: #fff;
+  --error: #d93549;
+  --silver: #dadbdc;
+  --gray: #9b9b9b;
+  --text: #333;
+  --aqua: #cdf2dc;
+  --sky: #ccd7ed;
+  --semiwhite: #f3f6fb;
+  --skydark: #6688ca;
+  --dark: #0f191e;
+  --darkrgb: rgb(15, 25, 30);
+  --blackrgb: rgb(15, 25, 30);
+}
+
+$geometria: 'Geometria-regular', 'Geometria', sans-serif;
+
+.mkaa6 {
+    &-hide {
+        display: none !important;
+    }
+
+    &-title {
+        max-width: 1024px;
+        padding: 0 30px;
+        @media (max-width: 768px) {
+            padding: 0;
+        }
+        &__main {
+            margin-top: 20px;
+            font-family: $geometria;
+            padding: 0 30px;
+        }
+        &__desc {
+            font-weight: 500;
+            font-size: 20px;
+            font-family: $geometria;
+            padding: 0 30px;
+            @media (max-width: 768px) {
+                font-size: 12px;
+            }
+        }
+    }
+
+    &-notice {
+        max-width: 1024px;
+        margin: auto;
+        margin-bottom: 60px;
+        @media (max-width: 768px) {
+            display: none;
+        }
+        &.mobile {
+            position: relative;
+            @media (min-width: 768px) {
+                display: none;
+            }
+            @media (max-width: 768px) {
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+        &__box {
+            padding: 20px 40px;
+            border-radius: 5px;
+            background-color: #FBFBFB;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            @media (max-width: 768px) {
+                gap: 12px;
+                margin-top: 20px;
+            }
+            &-icon {
+                width: 60px;
+                height: 60px;
+                object-fit: contain;
+            }
+            &-text {
+                color: var(--secondary);
+                font-family: $geometria;
+                font-weight: 400;
+                font-size: 16px;
+            }
+        }
+    }
+
+    &-cuentas {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        column-gap: 32px;
+        row-gap: 0;
+        @media (max-width: 768px) {
+            display: block !important;
+        }
+        > div {
+            &:first-child {
+                display: none !important;
+            }
+            &:nth-child(2) {
+                width: 100%;
+                max-width: none;
+                @media (max-width: 768px) {
+                    padding: 0 30px;
+                }
+            }
+        }
+        .container-header__title {
+            position: relative;
+            &:nth-child(1) {
+                p {
+                    font-family: $geometria;
+                    font-weight: 700;
+                }
+            }
+            @media (max-width: 768px) {
+                .desc-coopy {
+                    position: absolute;
+                    right: 0;
+                    top: 40px;;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                }
+            }
+        }
+        .container-header__item {
+            &:nth-child(2) {
+                float: left;
+            }
+            &:nth-child(2),
+            &:nth-child(3) {
+                margin-top: 20px;
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                @media (max-width: 960px) {
+                    width: 100%;
+                }
+                div {
+                    max-width: none;
+                    &:nth-child(1) {
+                        margin: 0;
+                        p {
+                            font-family: $geometria;
+                            font-weight: 500;
+                            font-size: 16px;
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        margin: 0;
+                    }
+                }
+            }
+
+            &:nth-child(4) {
+                display: flex;
+                gap: 45px;
+                div:nth-child(1) {
+                    max-width: fit-content;
+                    p {
+                        font-family: $geometria;
+                        font-weight: 500;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    display: flex;
+                    flex-wrap: nowrap;
+                }
+            }
+        }
+
+        &__qr {
+            margin-top: 40px;
+            @media (max-width: 768px) {
+                padding: 0 30px;
+            }
+
+            &-mobile {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 30px;
+            }
+            &-box {
+                background-color: #F3F6FB;
+                border-radius: 5px;
+                padding: 25px 20px;
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                @media (max-width: 768px) {
+                    display: none;
+                }
+                &.mobile {
+                    display: none;
+                    @media (max-width: 768px) {
+                        display: block;
+                        padding-bottom: 0;
+                    }
+                }
+                &-left {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    @media screen and (min-width: 769px) {
+                        width: 265px;
+                    }
+                    &-title {
+                        font-family: $geometria;
+                        font-size: 26px;
+                        color: var(--secondary);
+                        font-weight: 500;
+                        max-width: 200px;
+                        @media (max-width: 768px) {
+                            text-align: center;
+                            max-width: 300px;
+                            margin: auto;
+                        }
+                    }
+                    &-subtitle {
+                        font-family: $geometria;
+                        font-size: 15px;
+                        color: var(--dark);
+                        line-height: 22px;
+                        @media (max-width: 768px) {
+                            text-align: center;
+                            max-width: 270px;
+                            margin: auto;
+                            margin-top: 16px;
+                        }
+                    }
+                    &-stores {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 12px;
+                        @media (max-width: 960px) {
+                            flex-direction: column;
+                        }
+                        @media (max-width: 768px) {
+                            display: block;
+                        }
+
+                        &-button {
+                            display: flex;
+                            flex: 1;
+                            gap: 8px;
+                            background-color: var(--secondary);
+                            justify-content: center;
+                            align-items: center;
+                            padding: 10px 8px;
+                            border-radius: 50px;
+                            &:last-child {
+                                @media (max-width: 768px) {
+                                    margin-top: 20px;
+                                }
+                            }
+                            &-p {
+                                font-size: 10px;
+                                font-weight: 300;
+                                font-family: $geometria;
+                                color: white;
+                                strong {
+                                    font-weight: 500;
+                                    display: block;
+                                    font-size: 11px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &-right {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    justify-content: center;
+                    align-items: center;
+                    max-width: 180px;
+                    &-icon {
+                        max-width: 163px
+                    }
+                    &-text {
+                        font-family: $geometria;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-align: center;
+                        color: #878C8F;
+                    }
+                }
+            }
+        }
+
+        &__activar {
+            border-radius: 5px;
+            grid-row: 1 / span 2;
+            grid-column-start: 2;
+            border: 1px solid #D8D8D8;
+            padding: 50px 30px;
+            height: 100%;
+            @media (max-width: 768px) {
+                padding: 0 30px;
+                border: none;
+                position: relative;
+                padding-top: 40px;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 170px;
+                    height: 1px;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    top: 0;
+                    background-color: #D9DADB;
+                }
+            }
+            &-box {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 40px;
+                &-title {
+                    font-family: $geometria;
+                    font-weight: 500;
+                    font-size: 32px;
+                    color: var(--dark);
+                    @media (max-width: 768px) {
+                        display: block;
+                        font-size: 24px;
+                        text-align: center;
+                        max-width: 250px;
+                        margin: auto;
+                    }
+                }
+                &-steps {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 50px;
+                    flex: 1;
+                    &-item {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 20px;
+                        @media (max-width: 960px) {
+                            flex-direction: column;
+                        }
+                        @media (max-width: 768px) {
+                            flex-direction: row;
+                            align-items: flex-start;
+                        }
+
+                        &.mobile {
+                            margin-top: 20px;
+                        }
+
+                        &-icon {
+                            max-width: 115px;
+                            @media (max-width: 768px) {
+                                width: 75px;
+                            }
+                        }
+
+                        &-content {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 12px;
+                            &-title {
+                                font-family: $geometria;
+                                font-size: 16px;
+                                font-weight: 500;
+                                color: #333;
+                            }
+                            &-p {
+                                font-family: $geometria;
+                                font-size: 12px;
+                                .green, .blue, a {
+                                    font-weight: 500;
+                                }
+                                .green {
+                                    color: var(--primary)
+                                }
+                                .blue {
+                                    color: var(--secondary)
+                                }
+                                a {
+                                    color: var(--primary);
+                                    // padding-left: 20px;
+                                    &:before {
+                                        content: "";
+                                        width: 20px;
+                                        height: 16px;
+                                        background-image: var(--whatsapp);
+                                        display: inline-block;
+                                        background-position: center;
+                                        background-repeat: no-repeat;
+                                        background-size: contain;
+                                        transform: translateY(2px);
+                                    }
+                                }
+                                br {
+                                    margin-top: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-dudas {
+        margin-top: 140px !important;
+        margin-bottom: 60px !important;
+        padding: 0 30px;
+
+        @media (max-width: 768px) {
+            margin-top: 40px !important;
+        }
+
+        .content-banner {
+            max-width: 1024px !important;
+            height: auto !important;
+            max-height: none;
+            position: relative;
+        }
+
+        .banner-wsp {
+            background-color: var(--primary) !important;
+            padding: 20px 20px;
+            // position: absolute !important
+            @media (max-width: 768px) {
+                justify-content: flex-start;
+            }
+        }
+
+        .banner-wsp__image {
+            height: 100% !important;
+            position: static !important;
+
+            img {
+                bottom: 0 !important;
+                top: auto !important;
+                @media (max-width: 768px) {
+                    right: 10px;
+                    left: auto !important;
+                    transform: none !important
+                }
+            }
+        }
+
+        .banner-wsp__desc {
+            @media (max-width: 768px) {
+                padding-top: 0 !important;
+                text-align: left !important;
+                max-width: 70%;
+                margin-left: 0 !important;
+                display: block !important;
+                h5 {
+                    font-size: 24px !important;
+                }
+            }
+        }
+
+        &__title {
+            font-family: $geometria;
+            font-size: 32px;
+            color: white;
+            font-weight: 500;
+        }
+        &__subtitle {
+            font-family: $geometria;
+            font-size: 18px;
+            font-weight: 300;
+            color: white;
+            margin-top: 20px;
+            a {
+                font-weight: 500;
+                text-decoration: underline;
+                &:before {
+                    content: "";
+                    width: 20px;
+                    height: 16px;
+                    background-image: var(--whatsapp);
+                    display: inline-block;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    transform: translateY(2px);
+                }
+            }
+        }
+
+        &__notice {
+            max-width: 1024px;
+            // padding: 0 30px;
+            margin: auto;
+            margin-top: 20px;
+            &-box {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                @media (max-width: 768px) {
+                    align-items: flex-start;
+                }
+                &-text {
+                    font-family: $geometria;
+                    font-size: 16px;
+                    color: var(--secondary);
+                    font-weight: 300;
+                    a {
+                        color: var(--primary) !important;
+                    }
+                }
+            }
+
+            @media (max-width: 768px) {
+                position: relative;
+                padding-bottom: 60px;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 170px;
+                    height: 1px;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    bottom: 0;
+                    background-color: #D9DADB;
+                }
+            }
+        }
+    }
+}

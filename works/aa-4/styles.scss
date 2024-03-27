@@ -1,0 +1,630 @@
+:root {
+  --primary: #05be50;
+  --secondary: #0039a6;
+  --blue: #2f4a9f;
+  --secondaryrgb: rgb(0, 57, 166);
+  --light: #c1c0c0;
+  --white: #fff;
+  --error: #d93549;
+  --silver: #dadbdc;
+  --gray: #9b9b9b;
+  --text: #333;
+  --aqua: #cdf2dc;
+  --sky: #ccd7ed;
+  --semiwhite: #f3f6fb;
+  --skydark: #6688ca;
+  --dark: #0f191e;
+  --darkrgb: rgb(15, 25, 30);
+  --blackrgb: rgb(15, 25, 30);
+}
+
+@mixin screen-max($max) {
+    @media (max-width: $max) {
+      @content;
+    }
+}
+  
+@mixin screen-min($min) {
+    @media (min-width: $min) {
+    @content;
+    }
+}
+
+.mkaa4 {
+    &-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: white;
+        width: 100vw;
+        height: 100vh;
+        &.bg-opacity {
+            background: rgba(0,0,0,.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    &-wrapper {
+        // width: 100vw;
+        // min-height: 100vh;
+        z-index: 99;
+        &__header {
+            position: relative;
+            padding: 16px 24px;
+            border-bottom: 1px solid #ECEDED;
+            &-close {
+                position: absolute;
+                left: 16px;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                transform: rotate(180deg);
+            }
+            &-title {
+                text-align: center;
+                font-size: 16px;
+                color: #0f191e;
+                font-weight: 500;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+            }
+        }
+        &__body {
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: white;
+            &-title {
+                font-weight: 400;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                color: #0f191e;
+                font-size: 16px;
+            }
+
+            &-form {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                &-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+                &-label {
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #0f191e
+                }
+                &-input {
+                    padding: 12px 20px;
+                    width: 100%;
+                    border: 1px solid #D9DADB;
+                    border-radius: 4px;
+                    background: #FBFBFB;
+                    &.active {
+                        background: white;
+                        display: flex;
+                        gap: 6px;
+                    }
+                    &.disabled {
+                        opacity: .5;
+                    }
+
+                    &.not-completed {
+                        border-color: rgba(255,0,0,.3);
+                    }
+
+                    &.layout-cloud {
+                        display: flex;
+                        gap: 12px;
+                        flex-wrap: wrap;
+                    }
+
+                    &.layout-vertical {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+                    }
+
+                    &:has(input:placeholder-shown) input {
+                        color: #B7BABC;
+                    }
+                    &:has(input:focus) {
+                        border-color: var(--primary);
+                    }
+                }
+                &-text {
+                    font-size: 14px;
+                    color: #878c8f;
+                    font-weight: 500;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+
+                }
+
+                .input-style {
+                    border: none;
+                    background: none;
+                    font-weight: 500;
+                    color: #0F191E;
+                    width: 100%;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    &:hover, &:active, &:focus {
+                        border: none !important;
+                        outline: none !important;
+                        box-shadow: none !important;
+                    }
+                }
+
+                &-checkbox{
+                    &-label {
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: #0f191e;
+                        font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                        display: flex;
+                        gap: 2px;
+                        align-items: center;
+                        position: relative;
+                        cursor: pointer;
+
+                        &:before {
+                            content: "";
+                            border: 2px solid #B7BABC;
+                            width: 18px;
+                            height: 18px;
+                            accent-color: var(--primary);
+                            border-radius: 4px;
+                            appearance: none;
+                            background-color: transparent;
+                        }
+                    }
+
+                    &.type-checkbox {
+                        padding: 0;
+                        height: initial;
+                        width: initial;
+                        margin-bottom: 0;
+                        display: none;
+                        cursor: pointer;
+    
+                        &:checked + .mkaa4-wrapper__body-form-checkbox-label {
+                            &:before {
+                                border-color: var(--primary);
+                                background-color: var(--primary);
+                            }
+                            &:after {
+                                content: "";
+                                border: solid #fff;
+                                border-width: 0 2px 2px 0;
+                                display: block;
+                                height: 12px;
+                                left: 6px;
+                                margin: auto;
+                                position: absolute;
+                                top: 2px;
+                                transform: rotate(45deg);
+                                width: 6px;
+                            }
+                        }
+                    }
+                }
+
+                &-switch {
+                    &-input {
+                        display: none;
+                        &:checked + .mkaa4-wrapper__body-form-switch-slider {
+                            background: var(--primary);
+                            &:before{
+                                left: 11px;
+                            }
+                        }
+                    }
+                    &-label {
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: #0f191e;
+                        font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                        display: flex;
+                        gap: 2px;
+                        align-items: center;
+                        position: relative;
+                        display: flex;
+                        gap: 10px;
+                        cursor: pointer;
+                        &.switch-left {
+                            flex-direction: row-reverse;
+                        }
+                    }
+                    &-slider {
+                        display: block;
+                        border-radius: 50px;
+                        height: 20px;
+                        width: 30px;
+                        background: #D9DADB;
+                        padding: 1px;
+                        position: relative;
+                        min-width: 30px;
+                        &:before {
+                            content: "";
+                            width: 18px;
+                            height: 18px;
+                            background: white;
+                            border-radius: 50%;
+                            position: absolute;
+                            left: 1px;
+                            top: 0;
+                            bottom: 0;
+                            transition: .3s;
+                            margin: auto;
+                        }
+                    }
+
+
+                }
+
+
+                .type-text {
+                    &::placeholder {
+                        font-weight: 500;
+                        color: #B7BABC;
+                    }
+                    &:placeholder-shown {
+                        color: #B7BABC;
+                    }
+
+                    &-symbol {
+                        color: #0F191E;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            &-notice {
+                display: flex;
+                background: #E0F0FA;
+                border-radius: 4px;
+                padding: 12px;
+                gap: 8px;
+                &-icon {
+                    width: 18px;
+                    height: 18px;
+                }
+                &-text {
+                    font-size: 12px;
+                    color: #0f191e;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    font-weight: 400;
+                }
+            }
+
+            &-tyc {
+                display: flex;
+                gap: 8px;
+                &-input{
+                    padding: 0;
+                    height: initial;
+                    width: initial;
+                    margin-bottom: 0;
+                    display: none;
+                    cursor: pointer;
+
+                    &:checked + .mkaa4-wrapper__body-tyc-label {
+                        &:before {
+                            border-color: var(--primary);
+                            background-color: var(--primary);
+                        }
+                        &:after {
+                            content: "";
+                            border: solid #fff;
+                            border-width: 0 2px 2px 0;
+                            display: block;
+                            height: 12px;
+                            left: 6px;
+                            margin: auto;
+                            position: absolute;
+                            top: 2px;
+                            transform: rotate(45deg);
+                            width: 6px;
+                        }
+                    }
+                }
+                &-label{
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: #0f191e;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+                    position: relative;
+                    cursor: pointer;
+                    &-opentyc {
+                        font-weight: 500;
+                        color: var(--primary);
+                    }
+                    &:before {
+                        content: "";
+                        border: 2px solid #B7BABC;
+                        width: 18px;
+                        height: 18px;
+                        accent-color: var(--primary);
+                        border-radius: 4px;
+                        appearance: none;
+                        background-color: transparent;
+                    }
+                }
+            }
+
+            &-button {
+                background: var(--primary);
+                width: 100%;
+                padding: 12px;
+                color: white;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                border-radius: 4px;
+                &.disabled {
+                    background: #ECEDED;
+                    color: #B7BABC;
+                    pointer-events: none;
+                    user-select: none;
+                }
+            }
+        }
+
+        &__success {
+            background: rgba(0,0,0,.4);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &-content {
+                background: white;
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                &.mkaa4-option {
+                    &-1 {
+                        padding: 30px 24px 24px;
+                        gap: 20px;
+                        .mkaa4-wrapper__success-content-subtitle {
+                            text-align: center;
+                            margin: auto;
+                        }
+                    }
+                    &-2 {
+                        gap: 6px;
+                        .mkaa4-wrapper__success-content {
+                            padding: 0px 24px 24px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8px;
+                            &-button {
+                                margin-top: 16px;
+                            }
+                        }
+                    }
+                }
+                &-icon {
+                    width: 48px;
+                    height: 48px;
+                }
+                &-title {
+                    color: #0F191E;
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                }
+                &-subtitle {
+                    color: #0F191E;
+                    font-size: 14px;
+                    font-weight: 400;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    text-align: center;
+                }
+                &-button {
+                    background: var(--primary);
+                    width: 100%;
+                    padding: 12px;
+                    color: white;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    border-radius: 4px;
+                }
+                &-option2 {
+                    padding: 20px;
+                }
+            }
+
+            .mkaa4-popup__header {
+                width: 100%;
+            }
+        }
+    }
+
+    &-popup {
+        background: white;
+        max-width: 350px;
+        width: 100%;
+        border-radius: 8px;
+        &__header {
+            height: 125px;
+            background-size: contain;
+            background-position: top;
+            background-size: calc(100% + 4px);
+            background-repeat: no-repeat;
+            position: relative;
+            &-close {
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 20px;
+                cursor: pointer;
+                &:before, &:after {
+                    content: "";
+                    width: 2px;
+                    height: 20px;
+                    background: white;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    margin: auto;
+                    border-radius: 30px;
+                }
+                &:before {
+                    transform: rotate(-45deg);
+                }
+                &:after {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+        &__body{
+            padding: 15px 20px 30px;
+            &-title {
+                font-weight: 500;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                color: #0f191e;
+                font-size: 20px;
+                text-align: center;
+                margin-bottom: 8px;
+            }
+            &-subtitle {
+                font-weight: 400;
+                font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                color: #0f191e;
+                font-size: 16px;
+                text-align: center;
+            }
+            &-data {
+                margin: 16px 0;
+                display: flex;
+                justify-content: center;
+                &-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+                    padding: 0 8px;
+                    &:first-child:after {
+                        content: "";
+                        height: 100%;
+                        width: 1px;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        background: #ECEDED;
+                    }
+                }
+                &-title {
+                    font-weight: 700;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    color: #0f191e;
+                    font-size: 12px;
+                    text-align: center;
+                }
+                &-subtitle {
+                    font-weight: 400;
+                    font-family: 'Geometria-regular', 'Geometria', sans-serif;
+                    color: #0f191e;
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+            &-tyc {
+                margin-top: 30px;
+            }
+        }
+    }
+
+    &-tyc {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        padding: 8px 24px 24px;
+        background: white;
+        &__close {
+            display: flex;
+            justify-content: flex-end;
+            cursor: pointer;
+            &-icon {
+                width: 30px;
+                height: 30px;
+                display: block;
+                position: relative;
+                &:before, &:after {
+                    content: "";
+                    width: 2px;
+                    height: 20px;
+                    background: var(--primary);
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    margin: auto;
+                    border-radius: 30px;
+                }
+                &:before {
+                    transform: rotate(-45deg);
+                }
+                &:after {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+        &__content {
+            color: #0F191E;
+            font-family: 'Geometria-regular', 'Geometria', sans-serif;
+            overflow: auto;
+            max-height: 100%;
+            height: 100%;
+            h2 {
+                margin-bottom: 20px;
+                font-size: 16px;
+                font-weight: 500;
+            }
+            ul {
+                margin-top: 10px;
+                font-size: 12px;
+            }
+            p {
+                font-size: 12px;
+            }
+            li {
+                padding-left: 20px;
+                padding-bottom: 10px;
+                position: relative;
+                &:before {
+                    content: "";
+                    width: 6px;
+                    height: 6px;
+                    background: var(--primary);
+                    border-radius: 50%;
+                    display: block;
+                    position: absolute;
+                    left: 4px;
+                    top: 5px;
+                }
+            }
+        }
+    }
+}
